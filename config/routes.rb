@@ -1,7 +1,8 @@
-Kimaya::Application.routes.draw do
+Kimaya::Application.routes.draw do |map| 
 
-  devise_for :users
-
+  devise_for :users, :controllers => {:registrations => "admin/home", :sessions => "sessions", :confirmations => "user"} do 
+    match 'reset_password' => 'admin/home#reset_password'
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

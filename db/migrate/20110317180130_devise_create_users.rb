@@ -2,11 +2,24 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def self.up
     create_table(:users) do |t|
       t.database_authenticatable :null => false
+
+      t.integer :user_id, :unique => true
+      t.string :name
+      t.string :address
+      t.string :city
+      t.string :pincode
+      t.string :residence_telephone
+      t.string :emergency_telephone
+      t.string :mobile_number
+      t.string :additional_detail
+
+
+
       t.recoverable
       t.rememberable
       t.trackable
 
-      # t.confirmable
+      t.confirmable
       # t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :both
       # t.token_authenticatable
 

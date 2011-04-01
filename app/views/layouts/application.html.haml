@@ -13,11 +13,10 @@
         #user-navigation
           %ul.wat-cf
             %li
-              %a{:href => "#"}= t("web-app-theme.profile", :default => "Profile")
-            %li
-              %a{:href => "#"}= t("web-app-theme.settings", :default => "Settings")
-            %li
-              %a.logout{:href => "/logout"}= t("web-app-theme.logout", :default => "Logout")
+              - if user_signed_in?
+                %a.logout{:href => destroy_user_session_path}= t("web-app-theme.logout", :default => "Logout")
+              - else
+                %a.logout{:href => new_user_session_path}= t("web-app-theme.logout", :default => "Login")
         #main-navigation
           %ul.wat-cf
       #wrapper.wat-cf
@@ -25,11 +24,10 @@
           - flash.each do |type, message|
             %div{:class => "message #{type}"}
               %p= message
-        #main
-          = yield
-          #footer
-            .block
-              %p
-                Copyright &copy; #{Time.now.year} Kimaya TPN.
+        = yield
+        #footer
+          .block
+            %p
+              Copyright &copy; #{Time.now.year} Kimaya TPN.
         #sidebar
           = yield :sidebar

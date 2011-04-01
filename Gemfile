@@ -8,7 +8,7 @@ gem 'rails', '3.0.3'
 gem 'mysql2'
 gem 'haml'
 gem 'will_paginate', '3.0.pre2'
-gem 'devise'
+gem 'devise', '1.1.8'
  
 group :development, :test do
     gem 'hpricot'
@@ -17,6 +17,8 @@ group :development, :test do
     gem 'web-app-theme'
     gem 'mongrel'
 end
+
+gem "cancan"
 
 # Use unicorn as the web server
 # gem 'unicorn'
