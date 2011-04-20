@@ -2,8 +2,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def self.up
     create_table(:users) do |t|
       t.database_authenticatable :null => false
-
-      t.integer :user_id, :unique => true
       t.string :name
       t.string :address
       t.string :city

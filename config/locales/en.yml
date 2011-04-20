@@ -2,4 +2,23 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      messages:
+      
+      #patient
+        registration_number_invalid: "Enter valid rgistration number"
+        patient_name_blank: "Please enter patient name"
+        date_of_birth_blank: "Please enter the date of birth"
+        birth_weight_invalid: "Please enter valid birth wieght"
+        address_blank: "Please enter the address"
+        gender_id_blank: "Please select the gender"
+        phone_number_invalid: "Please enter valid telephone number"
+        mobile_number_invalid: "Please enter valid mobile number"
+      
+      #additives
+        additive_name_blank: "Please enter additive name"
+        market_name_blank: "Please enter market name"
+        unit_blank: "Unit is blank "
+        constant_invalid: "Please enter valid constant"
+

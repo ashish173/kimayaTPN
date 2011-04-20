@@ -41,8 +41,10 @@ class Admin::HomeController < Devise::RegistrationsController
   def require_no_authentication
     if (current_user.present? and current_user.role?(SUPER_ADMIN))
       new_user_registration_path 
+    elsif (current_user.present? and current_user.role?(DOCTOR))
+      redirect_to patient_index_path
     else
-      redirect_to root_path
+      redirect_to root_path 
     end
   end
 end

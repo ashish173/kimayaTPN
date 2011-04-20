@@ -40,7 +40,7 @@
   color: #36393d;
 }
 
-a:link, a:visited, a:hover, a:active, h1, h2, h3 
+a:link, a:visited, a:hover, a:active, h1, h3 
 {
   border-bottom: 5px ;
   text-decoration: none;
@@ -54,8 +54,18 @@ body {
 }
 
 hr {
-  background: #f0f0ee;
+  background: #36393d;
   color: #f0f0ee;
+}
+
+.field_error_message{
+  display: inline-block;
+  color: #7A1818; 
+  width: 100%;
+}
+
+#content select.myselect {
+  width: 2100px;
 }
 
 #header {
@@ -97,7 +107,21 @@ hr {
 
 #content {
   margin: 20px;
+  width: 90%;
 }
+
+#profile
+{
+  float:left
+}
+
+#profile h1
+{
+  margin: 10px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
 #main .block .content {
   background: #FFF;
   padding-top: 1px;
@@ -152,6 +176,29 @@ hr {
   padding: 10px 15px;
 }
 
+h2 {
+  font-size: 13px;
+  color: #1a1a1a;
+  margin: 0;
+  border-bottom: 5px ;
+  text-decoration: none;
+}
+
+h3 {
+  background: none repeat scroll 0 0 #7A1818;
+  color: #FFFFFF;
+  border-bottom: 5px solid #1a1a1a;
+  font-size: 13px;
+  margin: 0;
+  padding: 10px 15px;
+}
+
+h4 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+}
+
 h5 {
   background: none repeat scroll 0 0 #36393D;
   font-size: 100px;
@@ -159,6 +206,13 @@ h5 {
   font-family: helvetica, arial, sans-serif;
   color: #FFF;
   margin: 100px; 
+}
+
+h6 {
+  font-size: 15px;
+  font-weight: normal;
+  margin: 0;
+
 }
 
 #main-navigation ul li {
@@ -263,6 +317,12 @@ h5 {
 }
 
 /* tables */
+
+.table {
+  border-collapse separate;
+  border-spacing 0;
+
+} 
 
 .table th {
   background: #36393d;  

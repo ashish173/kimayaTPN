@@ -18,8 +18,7 @@ group :development, :test do
     gem 'mongrel'
 end
 
-gem "cancan"
-
+gem 'cancan'
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -1,0 +1,96 @@
+= stylesheet_link_tag "jquery.ui.datepicker","jquery-ui-1.8.11.custom", "facebox"
+= javascript_include_tag "jquery.ui.datepicker", "application"
+:javascript
+  $(document).ready(function($) {
+    $('a[rel*=facebox]').facebox({
+      loadingImage : '/images/loading.gif',
+      close_image   : '/images/closelabel.png',
+    });
+  }) 
+
+= form_for(@patient, :url => patient_index_path, :remote => true) do |f|
+  #content
+    .form
+      .columns 
+        .wat-cf
+          .column
+            .left
+              .group
+                %p
+                  = f.label :registration_number 
+                  *
+                  %br
+                  = f.text_field :registration_number
+              .group
+                %p
+                  = f.label :name
+                  *  
+                  %br
+                  = f.text_field :name
+              .group
+                %p
+                  = f.label :gender_id
+                  *
+                  %br
+                  = f.select :gender_id,  Gender.all.collect{|g| [g.name, g.gender_id]}, {:include_blank => "--select--"}
+              .group
+                %p
+                  = f.label :date_of_birth
+                  *
+                  %br
+                  = f.text_field :date_of_birth, :id => "datepicker", :size => 7
+              .group
+                %p
+                  = f.label :birth_weight
+                  = "(kg)"
+                  *
+                  %br
+                  = f.text_field :birth_weight, :size => 7
+              .group
+                %p
+                  = f.label :additional_detail
+                  %br
+                  = f.text_area :additional_detail, :rows => 3, :cols => 40
+              .group
+                %p
+                  = f.submit "Create"
+                  = button_to_function "Cancel", "$.facebox.close()"
+          .column
+            .right
+              .group
+                %p
+                  = f.label :address
+                  *
+                  %br
+                  = f.text_field :address
+              .group
+                %p
+                  = f.label :city
+                  %br
+                  = f.text_field :city
+              .group
+                %p
+                  = f.label :state
+                  %br
+                  = f.text_field :state
+              .group
+                %p
+                  = f.label :pincode
+                  %br
+                  = f.text_field :pincode
+              .group
+                %p
+                  = f.label :residence_telephone
+                  %br
+                  = f.text_field :residence_telephone
+              .group
+                %p
+                  = f.label :emergency_telephone
+                  *
+                  %br
+                  = f.text_field :emergency_telephone
+              .group
+                %p
+                  = f.label :mobile_number
+                  %br
+                  = f.text_field :mobile_number

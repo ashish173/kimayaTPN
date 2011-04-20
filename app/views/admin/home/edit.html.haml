@@ -1,17 +1,11 @@
-#sidebar
-  %h3 Users
-  #content  
-    = render :partial => "home/index"
 #main 
-  %h3 Sign Up
-  = form_for(@user, :url => user_registration_path) do |f|
-    = devise_error_messages!
+  %h3 Update Profile
+  = form_for(@user, :url =>  user_registration_path, :method => :put) do |f|
+    - if @user.errors.present?
+      - @user.errors.full_messages.each do |error|
+        %br
+        = error
     #content 
-      %p
-        = f.label :email
-        *
-        %br/
-        = f.text_field :email
       %p
         = f.label :name
         *
@@ -42,12 +36,4 @@
         %br/
         = f.text_field :mobile_number
       %p
-        = f.label :additional_detail
-        %br/
-        = f.text_field :additional_detail
-      %p
-        = f.hidden_field :roles_mask, :value => params[:for]
-      %p
-        = f.submit "Sign up"
-        %br
-      = render :partial => "devise/shared/links"
+        = f.submit "Update"

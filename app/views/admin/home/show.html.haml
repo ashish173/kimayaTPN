@@ -1,0 +1,20 @@
+#main 
+  #profile
+    %p
+      %h1 Name -  #{@user.name}
+    %p
+      %h1 Address - #{@user.address}
+    %p
+      %h1 City - #{@user.city}
+    %p
+      %h1 Pincode - #{@user.pincode}
+    %p
+      %h1 Residence Telephone - #{@user.residence_telephone}
+    %p
+      %h1 Emergency Telephone - #{@user.emergency_telephone}
+    %p
+      %h1 Mobile Number - #{@user. mobile_number}
+#sidebar
+  <input type ="button" onclick="history.go(-1); return true;" value="Back", title='click here to cancel'/>
+  #patient
+    = button_to "Edit", edit_user_registration_path, :method => :get

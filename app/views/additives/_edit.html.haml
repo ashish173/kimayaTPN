@@ -1,0 +1,25 @@
+= form_for(@additive, :url => additive_path(@additive), :method => :put, :remote => true) do |f|
+  #content
+    %p
+      %h4
+        = "Additive Name" 
+      %h2  
+        = @additive.name
+      %p
+        %h4
+          = "Market Name"
+        %h2
+          = @additive.market_name
+      %br
+    %p
+      %h4  
+        = f.label :market_name
+      = f.text_field :market_name
+    %p
+      %h4  
+        = f.label :constant
+        = @additive.unit
+      = f.text_field :constant, :size => 26
+    %p
+      = f.submit "Update"
+    = button_to_function "Cancel", "$.facebox.close()"

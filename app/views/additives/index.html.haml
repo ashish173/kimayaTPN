@@ -1,0 +1,43 @@
+:javascript
+  $(document).ready(function(){
+    $("#accordion").accordion();
+
+    $('.accordion .head').click(function() {
+      $(this).next().toggle("slow");
+      return false;
+    }).next().hide();
+
+  });
+
+#main
+  %h3 Market Additives 
+  #sidebar
+    %br
+      = link_to raw("<span>Add Market Additive</span>"), new_additive_path, :rel => 'facebox'
+  #content
+    #accordion
+      - @additives.each do |additive|
+        %div
+          = "#{additive[1].first.name}(#{additive[1].first.unit})"
+        %div
+          %table{:height => 100, :width => 500, :style=> "border: 1px solid Black",  :cellspacing => 15} 
+            %tr{:align => 'left'}
+              %th
+              %th Market Name
+              %th Constant
+            - additive[1].each do |obj|
+              %tr{:align => 'left'}
+                %td
+                %td
+                  = obj.market_name
+                %td
+                  = obj.constant
+                %td
+                  = link_to raw("<span>Edit</span>"), edit_additive_path(obj.id), :rel => 'facebox'
+                  = "|"
+                  = link_to raw("<span>Delete</span>"), additive_path(obj.id), :method => :delete
+
+#sidebar
+  %h3 Patients
+  #content
+    = link_to "Market Additives",  additives_path

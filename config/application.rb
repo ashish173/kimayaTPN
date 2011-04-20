@@ -31,7 +31,7 @@ module Kimaya
     # config.i18n.default_locale = :de
 
     # JavaScript files you want as :defaults (application.js is always included).
-    # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
+     config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -41,5 +41,14 @@ module Kimaya
     config.to_prepare do
         Devise::SessionsController.layout "sign"
     end
+  end
+end
+ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+  p html_tag
+  if html_tag =~ /<label/
+    %(<span class=\"field_with_errors\">#{html_tag}</span>).html_safe
+  else
+   err_msg = instance.error_message.kind_of?(Array) ? instance.error_message.first : instance.error_message
+    %(<span class=\"field_with_errors\">#{html_tag}</span><span class='field_error_message'>#{err_msg}</span>).html_safe
   end
 end

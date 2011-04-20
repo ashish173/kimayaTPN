@@ -1,0 +1,30 @@
+#main
+  %h3 Patients
+  #sidebar
+    %br
+      = link_to raw("<span>Add Patient</span>"), new_patient_path, :rel => 'facebox'
+  #content
+    %table{:height => 100, :width => 500} 
+      %tr{:align => 'center'}
+        %th Name
+        %th Birth Wt.
+        %th Registration number
+        %th Gender ID
+        %th Phone Number
+
+      - @patient.each do |patient|
+        %tr
+          %td
+            =  patient.name
+          %td
+            =  patient.birth_weight
+          %td
+            =  patient.registration_number
+          %td
+            =  patient.gender_id
+          %td
+            =  patient.emergency_telephone
+#sidebar
+  %h3 Patients
+  #content
+    = link_to "Patient",  patient_index_path

@@ -254,15 +254,39 @@ input.checkbox {
 }
 
 .form .columns .column {
-  width: 48%;
+  width: 100%;
+}
+
+.form .columns .right1 .left {
+  float: left;
+  width: 45%;
+}
+.form .columns .right1 .right {
+  float: right;
+  width: 55%;
 }
 
 .form .columns .left {
   float: left;
+  width: 33.15%;
 }
 
+.form .columns .center {
+  width: 20%;
+  float: right;
+}
+
+.form .columns .right1 {
+  float: right;
+  width: 65%;
+}
+.form .columns .left1 {
+  float: left;
+  width: 35%;
+}
 .form .columns .right {
   float: right;
+  width: 40%;
 }
 
 .form label.label, .form input.text_field, .form textarea.text_area {

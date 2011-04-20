@@ -1,0 +1,55 @@
+= #Form to edit user profile
+
+= form_for(@user, :url => update_path, :remote => true) do |f|
+  #content
+    .form
+      .columns 
+        .wat-cf
+          .column
+            .left
+              .group
+                %p
+                  = f.label :user_name
+                  *
+                  %br
+                  = f.text_field :name
+              .group
+                %p
+                  = f.label :address
+                  %br
+                  = f.text_field :address
+              .group
+                %p
+                  = f.label :emergency_telephone
+                  %br
+                  = f.text_field :emergency_telephone
+              .group
+                %p
+                  = f.label :mobile_number
+                  %br
+                  = f.text_field :mobile_number
+          .column
+            .right
+              .group
+                %p
+                  = f.label :city
+                  %br
+                  = f.text_field :city
+              .group
+                %p
+                  = f.label :pincode
+                  %br
+                  = f.text_field :pincode
+              .group
+                %p
+                  = f.label :residence_telephone
+                  *
+                  %br
+                  = f.text_field :residence_telephone
+              .group
+                %p
+                  = f.label :additional_detail
+                  %br
+                  = f.text_area :additional_detail, :rows => 3, :cols => 40
+    = f.submit "Update"
+    = button_to_function "Cancel", "$.facebox.close()"
