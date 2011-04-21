@@ -28,8 +28,9 @@ class User < ActiveRecord::Base
   def role?(role)
     self.roles_mask == role
   end
+
   before_validation(:on => :create) do
-    self.password = ActiveSupport::SecureRandom.base64(6)
+    self.password = ActiveSupport::SecureRandom.base64(6) if self.password.nil?
   end
 end
 
