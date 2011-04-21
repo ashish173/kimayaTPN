@@ -11,7 +11,11 @@ class Admin::HomeController < Devise::RegistrationsController
       flash[:notice] = "Successfully created User." 
       render :action => 'new'
     else
-      render :action => 'new'
+      if params[:roles_mask].nil?
+        flash[:notice] = "Please select user role." 
+      end
+        render :action => 'new'
+
     end
   end
 
@@ -25,7 +29,7 @@ class Admin::HomeController < Devise::RegistrationsController
       if user_signed_in?
         if success
           flash[:notice] = 'Password is successfully changed.'
-          root_path
+          redirect_to root_path
         else
           flash[:notice] = "Password doesn't matched"
           redirect_to reset_password_path(:id => params[:id])

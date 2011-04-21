@@ -1,16 +1,26 @@
-%h2 Sign in
+%h3 Sign in
 
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
   = devise_error_messages!
-  %p 
-    = f.label :email 
   %br
-    = f.text_field :email
-
-  %p 
-    = f.label :password 
+  %br
+  %br
+  %table
+    %tr 
+      %th{:align => 'left'}
+        = f.label :email 
+        = ":"
+      %td
+        = f.text_field :email
     %br
-    = f.password_field :password
+    %tr 
+      %th
+        %br
+        = f.label :password 
+        = ":"
+      %td
+        %br
+        = f.password_field :password
   - if devise_mapping.rememberable?
     %p 
       = f.check_box :remember_me 

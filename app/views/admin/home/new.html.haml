@@ -5,7 +5,6 @@
 #main 
   %h3 Sign Up
   = form_for(@user, :url => user_registration_path) do |f|
-    = devise_error_messages!
     #content 
       %p
         = f.label :email

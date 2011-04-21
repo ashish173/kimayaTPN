@@ -17,8 +17,11 @@ en:
         mobile_number_invalid: "Please enter valid mobile number"
       
       #additives
-        additive_name_blank: "Please enter additive name"
+        additive_name_blank: "Please select additive name"
         market_name_blank: "Please enter market name"
         unit_blank: "Unit is blank "
         constant_invalid: "Please enter valid constant"
 
+      #user
+        user_name_blank: "Please enter user name"
+        email_blank: "Please enter email"

@@ -2,11 +2,13 @@
 = javascript_include_tag "jquery-1.5.1", "jquery-ui-1.8.11.custom"
 
 :javascript
-  $(document).ready(function($) {
-    $('.additive').click(function() {
-          $('#dialog').dialog('open');
-    });
-  })  
+  $(function() {
+      $("#opener").click(function() {
+        $("#dialog").dialog( "open");
+        return false;
+      });
+  });
+
 
 = form_for(@value, :url => tpns_path, :remote => true) do |f|
   #content
@@ -16,7 +18,7 @@
           .column
             .left
               = label :doctor, "doctor"
-              = text_field :doctor, "doctor", :size => 23
+              = text_field :doctor, "doctor", :size => 23, :value => current_user.name
             .center
               = label :birth_weight, "Birth Weight"
               = text_field :birth_weight, "doctor", :size => 5 
@@ -24,7 +26,7 @@
               = label :patient_name, "Patient Name"
               = text_field :doctor, "doctor", :size => 23
       %p
-      %hr
+        %hr
         .columns
           .wat-cf
             .column
@@ -90,7 +92,7 @@
                   .left
                     = f.text_field :amino_acid, :size => 3, :default => 0
                   .center
-                    = link_to "Amino Acid Concentration", "#", :class => "additive"
+                    = link_to "Aminon", "#", :class => "additive", :id => "opener"
                   .right
                     = "(%)"
                 %br
