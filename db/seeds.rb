@@ -5,6 +5,14 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+# create admin user
+
+user = User.create!(:name => "admin", :email => "kimaya@joshsoftware.com", :roles_mask => Role.index("Super Admin"), :password => "admin123", :residence_telephone => "020-023-4342")
+user.confirm!
+user.save
+
+
 Gender.destroy_all
 Gender.create(:gender_id => 1, :name => 'Unknown')
 Gender.create(:gender_id => 2, :name => 'Single Male')

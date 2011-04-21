@@ -24,4 +24,3 @@ en:
 
       #user
         user_name_blank: "Please enter user name"
-        email_blank: "Please enter email"

@@ -3,7 +3,8 @@
   #content  
     = render :partial => "home/index"
 #main 
-  %h3 Sign Up
+  %h3 
+    = "Invite #{Role[params[:for].to_i]}"
   = form_for(@user, :url => user_registration_path) do |f|
     #content 
       %p
@@ -30,6 +31,7 @@
         = f.text_field :pincode
       %p
         = f.label :residence_telephone
+        *
         %br/
         = f.text_field :residence_telephone
       %p  
@@ -47,6 +49,4 @@
       %p
         = f.hidden_field :roles_mask, :value => params[:for]
       %p
-        = f.submit "Sign up"
-        %br
-      = render :partial => "devise/shared/links"
+        = f.submit "Invite"

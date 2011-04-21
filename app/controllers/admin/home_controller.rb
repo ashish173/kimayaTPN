@@ -11,11 +11,10 @@ class Admin::HomeController < Devise::RegistrationsController
       flash[:notice] = "Successfully created User." 
       render :action => 'new'
     else
-      if params[:roles_mask].nil?
+      if params[:user][:roles_mask].empty?
         flash[:notice] = "Please select user role." 
       end
-        render :action => 'new'
-
+      render :action => 'new'
     end
   end
 
