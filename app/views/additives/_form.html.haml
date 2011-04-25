@@ -28,12 +28,12 @@
     %p
       %h4
         = f.label :market_name
-      = f.text_field :market_name
+      = f.text_field :market_name, :size => 31
     %p
       %h4
         = f.label :constant
         = f.label :%, :id => "unit"
-      = f.text_field :constant, :size => 26
+      = f.text_field :constant, :size => 31
     %p
       = f.hidden_field :unit
     = f.submit "Create"

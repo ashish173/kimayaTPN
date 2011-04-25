@@ -1,52 +1,7 @@
-#sidebar
-  %h3 Users
-  #content  
-    = render :partial => "home/index"
-#main 
-  %h3 
+%h3
+  - if params[:for].to_i==0
+    = "All Users"
+  - else
     = "Invite #{Role[params[:for].to_i]}"
-  = form_for(@user, :url => user_registration_path) do |f|
-    #content 
-      %p
-        = f.label :email
-        *
-        %br/
-        = f.text_field :email
-      %p
-        = f.label :name
-        *
-        %br/
-        = f.text_field :name
-      %p
-        = f.label :address
-        %br/
-        = f.text_field :address  
-      %p
-        = f.label :city
-        %br/
-        = f.text_field :city  
-      %p
-        = f.label :pincode
-        %br/
-        = f.text_field :pincode
-      %p
-        = f.label :residence_telephone
-        *
-        %br/
-        = f.text_field :residence_telephone
-      %p  
-        = f.label :emergency_telephone
-        %br/
-        = f.text_field :emergency_telephone    
-      %p
-        = f.label :mobile_number
-        %br/
-        = f.text_field :mobile_number
-      %p
-        = f.label :additional_detail
-        %br/
-        = f.text_field :additional_detail
-      %p
-        = f.hidden_field :roles_mask, :value => params[:for]
-      %p
-        = f.submit "Invite"
+#doctor
+  = render :partial => 'form'

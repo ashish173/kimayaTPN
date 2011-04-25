@@ -1,0 +1,54 @@
+#sidebar
+  %h3 Users
+  #content
+    %p
+      = link_to "Doctors", users_path(:for => DOCTOR)
+    %p
+      = link_to "Nutritionists", users_path(:for => NUTRITIONIST)
+#main
+  %h3
+    - if params[:for].to_i== NUTRITIONIST
+      = "NUTRITIONISTS"
+    - else
+      = "DOCTORS"
+  #sidebar
+    #content  
+      = render :partial => "home/index"
+  #main
+    #content
+      - if @doctors.length != 0 
+        %table{:height => 100, :width => 500}
+          %tr{:align => 'left'}
+            %th Name
+            %th Email
+            %th Phone Number
+          -@doctors.each do |doctor|
+            %tr
+              %td
+                = doctor.name
+              %td
+                = doctor.email
+              %td
+                = doctor.residence_telephone
+              %td
+                = link_to raw("<span>Edit</span>"), edit_user_path(doctor.id), :rel => 'facebox'
+                = "|"
+                = link_to raw("<span>Delete</span>"), user_path(doctor.id), :method => :delete
+      - if @nutritionists.length != 0 
+        %table{:height => 100, :width => 500}
+          %tr{:align => 'left'}
+            %th Name
+            %th Email
+            %th Phone Number
+          -@nutritionists.each do |nutritionist|
+            %tr
+              %td
+                = nutritionist.name
+              %td
+                = nutritionist.email
+              %td
+                = nutritionist.residence_telephone
+              %td
+                = link_to raw("<span>Edit</span>"), edit_user_path(nutritionist.id), :rel => 'facebox'
+                = "|"
+                = link_to raw("<span>Delete</span>"), user_path(nutritionist.id), :method => :delete

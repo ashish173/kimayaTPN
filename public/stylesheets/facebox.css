@@ -31,7 +31,7 @@
   width: 900px;
 }
 
-#facebox .content .new_patient, #facebox .content .edit_user {
+#facebox .content .new_patient, #facebox .content .edit_user, #facebox .content .new_user {
   width: 700px;
 }
 #facebox .content .new_patient, #facebox .content .edit_user, #facebox .content .new_tpn{

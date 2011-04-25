@@ -3,8 +3,8 @@
   %head
     %title Kimaya TPN
     = stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/drastic-dark/style", "web-app-theme/override", :cache => true
-    = stylesheet_link_tag  "jquery.ui.accordion", "facebox", "jquery-ui-1.8.11.custom","jquery.ui.dialog" 
-    = javascript_include_tag "jquery-1.5.1", "jquery-ui-min","application", "rails", "facebox", "jquery-ui-1.8.11.custom", "jquery.ui.dialog" 
+    = stylesheet_link_tag  "jquery.ui.accordion", "facebox", "jquery-ui-1.8.11.custom","jquery.ui.dialog"
+    = javascript_include_tag "jquery-1.5.1", "jquery-ui-min","application", "rails", "facebox", "jquery-ui-1.8.11.custom"
     = csrf_meta_tag
   %body
     #container
@@ -16,9 +16,9 @@
             %li               
               - if user_signed_in?
                 - if current_user.role?(DOCTOR)
-                  = link_to raw("<span>TPN</span>"), new_tpn_path, :rel => 'facebox'
+                  %a{:href => patients_path}= t("web-app-theme.logout", :default => "Home")
                   %a{:href => additives_path}= t("web-app-theme.logout", :default => "Administration")
-                  %a{:href => display_path}= t("web-app-theme.logout", :default => "Profile")
+                  %a{:href => user_path(current_user)}= t("web-app-theme.logout", :default => "Edit Profile")
                 %a.logout{:href => destroy_user_session_path}= t("web-app-theme.logout", :default => "Logout")
               - else
                 %a.logout{:href => new_user_session_path}= t("web-app-theme.logout", :default => "Login")

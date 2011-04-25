@@ -26,5 +26,8 @@
             =  patient.emergency_telephone
 #sidebar
   %h3 Patients
-  #content
-    = link_to "Patient",  patient_index_path
+  %ul{:class => :navigation}
+    %li
+      = link_to "Patient",  patients_path
+    %li
+      = link_to "TPN", new_tpn_path, :rel => :facebox

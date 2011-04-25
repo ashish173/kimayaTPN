@@ -1,53 +1,43 @@
 class Admin::HomeController < Devise::RegistrationsController 
 
-
   def new 
     @user = User.new(params[:user])
+    render :layout => false
   end 
 
   def create
     @user = User.new(params[:user])
-    if @user.save
-      flash[:notice] = "Successfully created User." 
-      render :action => 'new'
-    else
-      if params[:user][:roles_mask].empty?
-        flash[:notice] = "Please select user role." 
+    respond_to do |format|
+      if @user.save
+        flash[:notice] = "User is Successfully created" 
+        format.html {redirect_to(users_path)}
+        format.js {
+          render :js => "window.location='#{users_path}'"
+        }
+      else
+        format.js {render :partial => 'new'}
       end
-      render :action => 'new'
     end
   end
 
   def reset_password
-
     @user = User.find(params[:id])
     if request.get?
       reset_password_path(:id => params[:id])
     else
       success =  @user.reset_password!(params[:user][:password], params[:user][:password_confirmation])
-      if user_signed_in?
-        if success
-          flash[:notice] = 'Password is successfully changed.'
-          redirect_to root_path
-        else
-          flash[:notice] = "Password doesn't matched"
-          redirect_to reset_password_path(:id => params[:id])
-        end
+      
+      if success
+        flash[:notice] = 'Password is successfully changed.'
+        redirect_to my_home_path 
       else
-        if success
-          sign_in(@user)
-          current_user = @user if !current_user.present?
-        end
+        flash[:notice] = "Password doesn't matched"
+        redirect_to reset_password_path(:id => params[:id])
       end
     end
   end
+
   def require_no_authentication
-    if (current_user.present? and current_user.role?(SUPER_ADMIN))
-      new_user_registration_path 
-    elsif (current_user.present? and current_user.role?(DOCTOR))
-      redirect_to patient_index_path
-    else
-      redirect_to root_path 
-    end
+    #override this method as we need the sign up page after the user logged in 
   end
 end

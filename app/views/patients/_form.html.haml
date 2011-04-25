@@ -8,7 +8,7 @@
     });
   }) 
 
-= form_for(@patient, :url => patient_index_path, :remote => true) do |f|
+= form_for(@patient, :url => patients_path, :remote => true) do |f|
   #content
     .form
       .columns 
@@ -32,25 +32,25 @@
                   = f.label :gender_id
                   *
                   %br
-                  = f.select :gender_id,  Gender.all.collect{|g| [g.name, g.gender_id]}, {:include_blank => "--select--"}
+                  = f.select :gender_id,  Gender.all.collect{|g| [g.name, g.gender_id]}, {:include_blank => "--select--"}, :style => "width:293px;"
               .group
                 %p
                   = f.label :date_of_birth
                   *
                   %br
-                  = f.text_field :date_of_birth, :id => "datepicker", :size => 7
+                  = f.text_field :date_of_birth, :id => "datepicker"
               .group
                 %p
                   = f.label :birth_weight
                   = "(kg)"
                   *
                   %br
-                  = f.text_field :birth_weight, :size => 7
+                  = f.text_field :birth_weight
               .group
                 %p
                   = f.label :additional_detail
                   %br
-                  = f.text_area :additional_detail, :rows => 3, :cols => 40
+                  = f.text_area :additional_detail, :rows => 3, :cols => 39
               .group
                 %p
                   = f.submit "Create"

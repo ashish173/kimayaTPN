@@ -54,7 +54,4 @@
 #sidebar
   %h3  Go for 
   #content
-    = link_to raw("<span>Edit profile</span>"), edit_path(@user.id), :rel => 'facebox'
-    %br
-    %br
-    = link_to "Patient", patient_index_path
+    = link_to raw("<span>Edit profile</span>"), edit_user_path(@user.id), :rel => 'facebox'

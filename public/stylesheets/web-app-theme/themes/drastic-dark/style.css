@@ -397,6 +397,10 @@ h6 {
   border: 1px solid #1FDF00;
   background-color: #BBFFB6;
 }
+.flash .alert {
+  border: 1px solid #fbb;
+  background-color: #fdd;
+}
 
 /* lists */
 

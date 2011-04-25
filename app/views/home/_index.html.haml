@@ -1,4 +1,4 @@
-= link_to "Invite Doctor",  new_user_registration_path(:for => DOCTOR)
-%br 
-%br
-= link_to "Invite Nutritionist", new_user_registration_path(:for => NUTRITIONIST)
+- if params[:for].to_i == NUTRITIONIST 
+  = link_to raw("<span>Invite Nutritionists</span>"), new_user_registration_path(:for => NUTRITIONIST), :rel => 'facebox'
+- else
+  = link_to raw("<span>Invite Doctors</span>"), new_user_registration_path(:for => DOCTOR), :rel => 'facebox'
