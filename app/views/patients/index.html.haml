@@ -24,10 +24,14 @@
             =  patient.gender_id
           %td
             =  patient.emergency_telephone
+          %td
+            = link_to "Edit", edit_patient_path(patient.id), :rel => 'facebox'
+            = '|'
+            = link_to "Delete", patient_path(patient.id), :method => 'delete'
 #sidebar
-  %h3 Patients
+  %h3 Go for
   %ul{:class => :navigation}
     %li
-      = link_to "Patient",  patients_path
+      = link_to "Patients",  patients_path
     %li
       = link_to "TPN", new_tpn_path, :rel => :facebox

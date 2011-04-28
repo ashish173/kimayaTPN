@@ -7,7 +7,7 @@
     });
   }) 
 
-= form_for(@patient, :url => patients_path, :remote => true) do |f|
+= form_for(@patient, :url => patient_path, :remote => true) do |f|
   #content
     .form
       .columns 
@@ -52,7 +52,7 @@
                   = f.text_area :additional_detail, :rows => 3, :cols => 39
               .group
                 %p
-                  = f.submit "Create"
+                  = f.submit "Update"
                   = button_to_function "Cancel", "$.facebox.close()"
           .column
             .right
