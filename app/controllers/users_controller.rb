@@ -1,15 +1,11 @@
 class UsersController < ApplicationController
   
+  layout 'admin'
   before_filter :is_super_admin?
 
   def index
-   @doctors = User.doctors
-   @nutritionists = User.nutritionists
-    if(params[:for].to_i == NUTRITIONIST)
-      @doctors=[]
-    else
-      @nutritionists=[]
-    end
+   @selected_menu == params[:for].to_i
+   @users = @selected_menu == DOCTOR ? User.doctors : User.nutritionists
   end
 
   def show

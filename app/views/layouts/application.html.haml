@@ -2,37 +2,28 @@
 %html
   %head
     %title Kimaya TPN
-    = stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/drastic-dark/style", "web-app-theme/override", :cache => true
+    = stylesheet_link_tag "reset", "grid", "styles", "tablesorter", "jquery.wysiwyg", "theme-blue", :cache => true
     = stylesheet_link_tag  "jquery.ui.accordion", "facebox", "jquery-ui-1.8.11.custom","jquery.ui.dialog"
     = javascript_include_tag "jquery-1.5.1", "jquery-ui-min","application", "rails", "facebox", "jquery-ui-1.8.11.custom"
     = csrf_meta_tag
   %body
-    #container
-      #header
-        %h1
-          %a{:href => "/"} Kimaya TPN
-        #user-navigation
-          %ul.wat-cf
-            %li               
-              - if user_signed_in?
-                - if current_user.role?(DOCTOR)
-                  %a{:href => patients_path}= t("web-app-theme.logout", :default => "Home")
-                  %a{:href => additives_path}= t("web-app-theme.logout", :default => "Administration")
-                  %a{:href => user_path(current_user)}= t("web-app-theme.logout", :default => "Edit Profile")
-                %a.logout{:href => destroy_user_session_path}= t("web-app-theme.logout", :default => "Logout")
-              - else
-                %a.logout{:href => new_user_session_path}= t("web-app-theme.logout", :default => "Login")
-        #main-navigation
-          %ul.wat-cf
-      #wrapper.wat-cf
-        .flash
-          - flash.each do |type, message|
-            %div{:class => "message #{type}"}
-              %p= message
-        = yield
-        #footer
-          .block
-            %p
-              Copyright &copy; #{Time.now.year} Kimaya TPN.
-        #sidebar
-          = yield :sidebar
+    #header
+      = render :partial => "/layouts/shared/tabs"
+      - if content_for?(:menu)
+        #header-main
+          .container_12
+            .grid_12
+              = yield :menu
+            %div{:style => "clear: both;"}
+        %div{:style => "clear: both;"}
+    .container_12
+      = yield
+      %div{:style => "clear:both;"}
+    #footer
+      .container_12
+        .grid_12
+          %p
+            \&copy; 2010.
+            %a{:href => "http://www.joshsoftware.com", :title => "Josh Software Pvt Ltd."} Kimaya TPN
+      %div{:style => "clear:both;"}
+    / End #footer

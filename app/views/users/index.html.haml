@@ -1,54 +1,38 @@
-#sidebar
-  %h3 Users
-  #content
-    %p
-      = link_to "Doctors", users_path(:for => DOCTOR)
-    %p
-      = link_to "Nutritionists", users_path(:for => NUTRITIONIST)
-#main
-  %h3
-    - if params[:for].to_i== NUTRITIONIST
-      = "NUTRITIONISTS"
-    - else
-      = "DOCTORS"
-  #sidebar
-    #content  
-      = render :partial => "home/index"
-  #main
-    #content
-      - if @doctors.length != 0 
-        %table{:height => 100, :width => 500}
-          %tr{:align => 'left'}
-            %th Name
-            %th Email
-            %th Phone Number
-          -@doctors.each do |doctor|
+.grid_12
+  = raw display_message
+  .bottom-spacing
+    .float-right
+      %a.button{:href => new_user_registration_path, :rel => :facebox}
+        %span
+          Invite Doctor
+          = image_tag('/images/plus-small.gif', :height => "9", :width => "12")
+  .module
+    %h2
+      %span 
+        = @selected_menu
+    .module-table-body
+      %table#myTable.tablesorter
+        %thead
+          %tr
+            %th{:style => "width:5%"} No
+            %th{:style => "width:20%"} Name 
+            %th{:style => "width:21%"} Email 
+            %th{:style => "width:21%"} Phone Number 
+        %tbody
+          - counter = 1
+          - @users.each do |user|
             %tr
+              %td.align-center 
+                = counter
+              %td 
+                = user.name
               %td
-                = doctor.name
+                = user.email
               %td
-                = doctor.email
+                = user.mobile_number
               %td
-                = doctor.residence_telephone
-              %td
-                = link_to raw("<span>Edit</span>"), edit_user_path(doctor.id), :rel => 'facebox'
-                = "|"
-                = link_to raw("<span>Delete</span>"), user_path(doctor.id), :method => :delete
-      - if @nutritionists.length != 0 
-        %table{:height => 100, :width => 500}
-          %tr{:align => 'left'}
-            %th Name
-            %th Email
-            %th Phone Number
-          -@nutritionists.each do |nutritionist|
-            %tr
-              %td
-                = nutritionist.name
-              %td
-                = nutritionist.email
-              %td
-                = nutritionist.residence_telephone
-              %td
-                = link_to raw("<span>Edit</span>"), edit_user_path(nutritionist.id), :rel => 'facebox'
-                = "|"
-                = link_to raw("<span>Delete</span>"), user_path(nutritionist.id), :method => :delete
+                %a{:href => ""}
+                  %img{:alt => "edit", :height => "16", :src => "pencil.gif", :tppabs => "http://www.xooom.pl/work/magicadmin/images/pencil.gif", :width => "16"}/
+                %a{:href => ""}
+                  %img{:alt => "delete", :height => "16", :src => "bin.gif", :tppabs => "http://www.xooom.pl/work/magicadmin/images/bin.gif", :width => "16"}/
+    .pagination

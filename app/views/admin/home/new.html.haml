@@ -1,7 +1,9 @@
-%h3
-  - if params[:for].to_i==0
-    = "All Users"
-  - else
-    = "Invite #{Role[params[:for].to_i]}"
-#doctor
-  = render :partial => 'form'
+#frmPop
+  .grid_12
+    .module#no_background
+      %h3
+        %span Invite 
+    .module-body
+      #doctor
+        = render :partial => 'form'
+    %div{:style => "clear:both;"}
