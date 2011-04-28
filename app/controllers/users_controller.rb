@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :is_super_admin?
 
   def index
-   @selected_menu == params[:for].to_i
+   @selected_menu = params[:for].to_i
    @users = @selected_menu == DOCTOR ? User.doctors : User.nutritionists
   end
 

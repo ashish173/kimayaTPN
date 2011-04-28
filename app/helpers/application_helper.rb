@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def if_current(current)
-    "id='current'" if current
+    'current' if current
   end
 
   def display_message
