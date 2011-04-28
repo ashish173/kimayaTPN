@@ -2,11 +2,6 @@ Kimaya::Application.routes.draw do |map|
 
   devise_for :users, :controllers => {:registrations => "admin/home", :sessions => "sessions", :confirmations => "confirmations"} do 
     match 'reset_password' => 'admin/home#reset_password'
-  #  match 'edit' => 'user#edit'
-    match 'index' => 'admin/home#index'
-  #  match 'display' => 'user#display'
-  #  match 'update' => 'user#update', :method => :post
-  #  match 'destroy' => 'user#destroy'
   end
   
   resources :users

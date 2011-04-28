@@ -1,9 +1,9 @@
 #sidebar
   %h3 Users
-  #content
-    %p
+  %ul{:class => :navigation}
+    %li
       = link_to "Doctors", users_path(:for => DOCTOR)
-    %p
+    %li
       = link_to "Nutritionists", users_path(:for => NUTRITIONIST)
 #main
   %h3

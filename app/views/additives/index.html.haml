@@ -38,6 +38,7 @@
                   = link_to raw("<span>Delete</span>"), additive_path(obj.id), :method => :delete
 
 #sidebar
-  %h3 Patients
-  #content
-    = link_to "Market Additives",  additives_path
+  %h3 Additives
+  %ul{:class => :navigation}
+    %li
+      = link_to "Market Additives",  additives_path

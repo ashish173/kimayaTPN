@@ -53,5 +53,6 @@
               #{@user.mobile_number}
 #sidebar
   %h3  Go for 
-  #content
-    = link_to raw("<span>Edit profile</span>"), edit_user_path(@user.id), :rel => 'facebox'
+  %ul{:class => :navigation}
+    %li
+      = link_to raw("<span>Edit profile</span>"), edit_user_path(@user.id), :rel => 'facebox'

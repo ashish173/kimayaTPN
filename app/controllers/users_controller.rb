@@ -28,9 +28,9 @@ class UsersController < ApplicationController
       if @user.save
         flash[:notice] = "Successfully updated profile"
         if is_super_admin? 
-          format.html { redirect_to(index_path) }
+          format.html { redirect_to(users_path) }
           format.js {
-            render :js => "window.location='#{index_path}'"
+            render :js => "window.location='#{users_path}'"
           }
         else
           format.html { redirect_to(user_path) }
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     respond_to do |format|
-      format.html{redirect_to index_path}
+      format.html{redirect_to users_path}
     end
   end
 end 

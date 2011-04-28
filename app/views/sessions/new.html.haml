@@ -1,14 +1,3 @@
-:javascript
-  $(function() {
-      initialize_form();
-
-      var v = $("#frmAdmin").jcheck({notifiers: ["custom_errors"], live_notifiers: ["custom_errors"], field_prefix: "user"});
-      v.validates("email", "password",{presence: true});
-      v.validates_format_of("email", {"with": "email"});
-  });
-
-
-
 %h3 Sign in
 
 = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:id => "frmAdmin"}) do |f|
