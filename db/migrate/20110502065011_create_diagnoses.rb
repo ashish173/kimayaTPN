@@ -1,6 +1,7 @@
 class CreateDiagnoses < ActiveRecord::Migration
   def self.up
     create_table :diagnoses do |t|
+      t.references :investigation
       t.boolean :hypoglycemia
       t.string  :hypoglycemia_episode
       t.boolean :hyperglycemia

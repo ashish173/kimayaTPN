@@ -1,6 +1,7 @@
 class CreateBiochemistryAssessments < ActiveRecord::Migration
   def self.up
     create_table :biochemistry_assessments do |t|
+      t.references :investigation
       t.string :serum_urea
       t.string :serum_creatinine
       t.string :triglycerides
