@@ -1,3 +1,13 @@
-%h3 User Profile
-#user
-  =render :partial => 'form'
+#header
+  .container_12
+    .grid_12
+      .module
+        #form-header
+          #logo
+            %ul{:id=> 'navi'}
+              %li
+                %h3
+                  User Profile
+        .module-body
+          #user
+            =render :partial => 'form'

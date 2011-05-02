@@ -9,32 +9,33 @@
       var name = $("#tpn_market_additive_name").val()
       if(name == 'Amino Acid'){
         $("#tpn_market_additive_unit").val("(%)");
-        $("#unit").html("(%)");
+        $("#unit").html("Constant (%)");
         }
       else
       {
         $("#tpn_market_additive_unit").val("(meq/ml)");
-        $("#unit").html("(meq/ml)");
+        $("#unit").html("Constant (meq/ml)");
       }
 
   }
 
 = form_for(@additive, :url => additives_path, :remote => true) do |f|
-  #content
-    %p
-      %h4
-        = f.label :additive_name
-      = f.select :name, TpnMarketAdditive.all.uniq_by(&:name).collect{|g| [g.name, g.name]}, {:include_blank => "--Select--"}, :style => "width:300px;"
-    %p
-      %h4
-        = f.label :market_name
-      = f.text_field :market_name, :size => 31
-    %p
-      %h4
-        = f.label :constant
-        = f.label :%, :id => "unit"
-      = f.text_field :constant, :size => 31
-    %p
-      = f.hidden_field :unit
-    = f.submit "Create"
-    = button_to_function "Cancel", "$.facebox.close()"
+  #header
+    .container_12
+      .grid_6
+        %p
+          %h5
+            = f.label :additive_name
+          = f.select :name, TpnMarketAdditive.all.uniq_by(&:name).collect{|g| [g.name, g.name]}, {:include_blank => "--Select--"}, :style => "width:300px;"
+        %p
+          %h5
+            = f.label :market_name
+          = f.text_field :market_name, :size => 31
+        %p
+          %h5
+            = f.label :%, :id => "unit"
+          = f.text_field :constant, :size => 31
+        %p
+          = f.hidden_field :unit
+        = f.submit "Create"
+        = button_to_function "Cancel", "$.facebox.close()"

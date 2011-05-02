@@ -1,0 +1,9 @@
+- content_for :user do
+  #logo
+    %ul#nav
+      %li
+        = link_to "Patient", patients_path 
+      %li
+        = link_to "Administrator", additives_path
+
+= render :file => 'layouts/application'

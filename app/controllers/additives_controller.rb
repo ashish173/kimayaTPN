@@ -1,5 +1,7 @@
 class AdditivesController < ApplicationController
 
+  layout 'user'
+
   def index
     @additives = TpnMarketAdditive.all.group_by(&:name)
   end

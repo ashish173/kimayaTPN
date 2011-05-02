@@ -1,31 +1,22 @@
-%h3 Sign in
-
-= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:id => "frmAdmin"}) do |f|
-  = devise_error_messages!
-  %br
-  %br
-  %br
-  %table
-    %tr 
-      %th{:align => 'left'}
-        = f.label :email 
-        = ":"
-      %td
-        = f.text_field :email
-    %br
-    %tr 
-      %th
-        %br
-        = f.label :password 
-        = ":"
-      %td
-        %br
-        = f.password_field :password
-  - if devise_mapping.rememberable?
-    %p 
-      = f.check_box :remember_me 
-      = f.label :remember_me
-  %p
-    = f.submit "Sign in"
-= render :partial => "devise/shared/links"
+.grid_6
+  .module
+    %h2
+      %span Sign In
+    .module-body
+      .flash
+        - flash.each do |type, message|
+          %span{:class => "notification n-error"}
+            = message
+      = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:id => "frmAdmin"}) do |f|
+        %p
+          %label Email 
+          = f.text_field :email, :class => "input-medium"
+        %p
+          %label Password
+          = f.password_field :password, :class => "input-medium"
+        %p
+          = render :partial => "devise/shared/links"
+        %fieldset
+          = f.submit "Sign in", :class => "submit-green"
+  %div{:style => "clear:both;"}
 

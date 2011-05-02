@@ -2,13 +2,27 @@
 %html
   %head
     %title Kimaya TPN
-    = stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/drastic-dark/style", "web-app-theme/override", :cache => true
+    = stylesheet_link_tag "reset", "grid", "styles", "tablesorter", "jquery.wysiwyg", "theme-blue", :cache => true
     = csrf_meta_tag
   %body
-    #container
-      #box
-        .flash
-          - flash.each do |type, message|
-            %div{:class => "message #{type}"}
-              %p= message
+    #header
+      / Header. Status part
+      #header-status
+        .container_12
+          .grid_8
+            \&nbsp;
+          .grid_4
+            \&nbsp;
+        %div{:style => "clear:both;"}
+      / End #header-status
+      / Header. Main part
+      #header-main
+        .container_12
+        / End. .container_12
+      / End #header-main
+      %div{:style => "clear: both;"}
+      / Sub navigation
+    / End #header
+    .container_12
+      .prefix_3
         = yield

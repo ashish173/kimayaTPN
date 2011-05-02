@@ -1,37 +1,56 @@
-#main
-  %h3 Patients
-  #sidebar
-    %br
-      = link_to raw("<span>Add Patient</span>"), new_patient_path, :rel => 'facebox'
-  #content
-    %table{:height => 100, :width => 500} 
-      %tr{:align => 'center'}
-        %th Name
-        %th Birth Wt.
-        %th Registration number
-        %th Gender ID
-        %th Phone Number
-
-      - @patient.each do |patient|
+#subnav
+  .container_12
+    .grid_12
+      %ul
+        %li 
+          =link_to "Basic Information" ,  patients_path
+        %li 
+          = link_to "Patient history", patient_path(Patient.first.id)
+        %li 
+          =# link_to "TPN", new_tpn_path, :rel => :facebox
+.grid_12
+  = raw display_message
+  .bottom-spacing
+    .float-right
+      %a.button{:href => new_patient_path, :rel => :facebox}
+        %span
+          Add patient 
+          = image_tag('/images/plus-small.gif', :height => "9", :width => "12")
+.module
+  %h2
+    %span 
+      Patients
+  .module-table-body
+    %table#myTable.tablesorter
+      %thead
         %tr
-          %td
-            =  patient.name
-          %td
-            =  patient.birth_weight
-          %td
-            =  patient.registration_number
-          %td
-            =  patient.gender_id
-          %td
-            =  patient.emergency_telephone
-          %td
-            = link_to "Edit", edit_patient_path(patient.id), :rel => 'facebox'
-            = '|'
-            = link_to "Delete", patient_path(patient.id), :method => 'delete'
-#sidebar
-  %h3 Go for
-  %ul{:class => :navigation}
-    %li
-      = link_to "Patients",  patients_path
-    %li
-      = link_to "TPN", new_tpn_path, :rel => :facebox
+          %th{:style => "width:5%"} No
+          %th{:style => "width:15%"} Name 
+          %th{:style => "width:10%"} Birth Wt. 
+          %th{:style => "width:15%"} Registration number
+          %th{:style => "width:10%"} Gender ID
+          %th{:style => "width:15%"} Phone Number 
+          %th{:style => "width:10%"} 
+      %tbody
+        - counter = 1
+        - @patient.each do |patient|
+          %tr
+            %td.align-center 
+              =  counter
+            %td
+              =  patient.name
+            %td
+              =  patient.birth_weight
+            %td
+              =  patient.registration_number
+            %td
+              =  patient.gender_id
+            %td
+              =  patient.emergency_telephone
+            %td
+              %a{:href => edit_patient_path(patient.id), :rel => :facebox}
+                %img{:alt => "edit", :height => "16", :src => "/images/pencil.gif", :width => "16"}/
+              %a{:href => patient_path(patient.id), :rel => :facebox}
+                %img{:alt => "show", :height => "16", :src => "/images/bin.gif", :width => "16"}/
+              = link_to(image_tag("/images/cross-small.gif",:height => "16", :width => "16"), patient_path(patient.id), :method => 'delete')
+          - counter = counter+1

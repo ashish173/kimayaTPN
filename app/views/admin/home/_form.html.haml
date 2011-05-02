@@ -1,65 +1,36 @@
-= #Form to edit user profile
-
 = form_for(@user, :url => user_registration_path(:for => params[:for]), :remote => true) do |f|
-  #content
-    .form
-      .columns 
-        .wat-cf
-          .column
-            .left
-              .group
-                %p
-                  = f.label :email
-                  *
-                  %br
-                  = f.text_field :email
-              .group
-                %p
-                  = f.label :name
-                  *
-                  %br
-                  = f.text_field :name
-              .group
-                %p
-                  = f.label :address
-                  %br
-                  = f.text_field :address
-              .group
-                %p
-                  = f.label :mobile_number
-                  %br
-                  = f.text_field :mobile_number
-              .group
-                %br
-                %br
-                  = f.submit "Invite"
-                  = button_to_function "Cancel", "$.facebox.close()"
-          .column
-            .right
-              .group
-                %p
-                  = f.label :city
-                  %br
-                  = f.text_field :city
-              .group
-                %p
-                  = f.label :pincode
-                  %br
-                  = f.text_field :pincode
-              .group
-                %p
-                  = f.label :residence_telephone
-                  *
-                  %br
-                  = f.text_field :residence_telephone
-              .group
-                %p
-                  = f.label :emergency_telephone
-                  %br
-                  = f.text_field :emergency_telephone
-              .group
-                %p
-                  = f.label :additional_detail
-                  %br
-                  = f.text_area :additional_detail, :rows => 3, :cols => 40
-              = f.hidden_field :roles_mask, :value => params[:for]
+  .div{:style => "width:300px;float:left;"}
+    %p
+      = f.label :email, "Email *"
+      = f.text_field :email, :class => "input-long"
+    %p
+      = f.label :name, "Name *"
+      = f.text_field :name, :class => "input-long"
+    %p
+      = f.label :address
+      = f.text_field :address, :class => "input-long"
+    %p
+      = f.label :mobile_number
+      = f.text_field :mobile_number, :class => "input-long"
+    %br
+    %br
+    = f.submit "Invite", :class => "submit-green"
+    = button_to_function "Cancel", "$.facebox.close();", :class => "submit-gray"
+  .div{:style => "width:300px;float:left;"}
+    %p
+      = f.label :city
+      = f.text_field :city, :class => "input-long"
+    %p
+      = f.label :pincode
+      = f.text_field :pincode, :class => "input-long"
+    %p
+      = f.label :residence_telephone, "Residence Telephone *"
+      = f.text_field :residence_telephone, :class => "input-long"
+    %p
+      = f.label :emergency_telephone
+      = f.text_field :emergency_telephone, :class => "input-long"
+    %p
+      = f.label :additional_detail
+      = f.text_area :additional_detail, :rows => 3, :cols => 40, :class => "input-long"
+      = f.hidden_field :roles_mask, :value => params[:for]
+  .div{:style => "width:600px;"}

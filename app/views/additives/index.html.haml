@@ -9,36 +9,51 @@
 
   });
 
-#main
-  %h3 Market Additives 
-  #sidebar
-    %br
-      = link_to raw("<span>Add Market Additive</span>"), new_additive_path, :rel => 'facebox'
-  #content
+#subnav
+  .container_12
+    .grid_12
+      %ul
+        %li 
+          = link_to "Market Additives",  additives_path
+.grid_12
+  = raw display_message
+  .bottom-spacing
+    .float-right
+      %a.button{:href => new_additive_path, :rel => :facebox}
+        %span
+          Add Market Additive
+          = image_tag('/images/plus-small.gif', :height => "9", :width => "12")
+.module
+  %h2
+    %span 
+      Market Additives 
+  .module-table-body
     #accordion
       - @additives.each do |additive|
         %div
           = "#{additive[1].first.name}(#{additive[1].first.unit})"
         %div
-          %table{:height => 100, :width => 500, :style=> "border: 1px solid Black",  :cellspacing => 15} 
-            %tr{:align => 'left'}
-              %th
-              %th Market Name
-              %th Constant
-            - additive[1].each do |obj|
-              %tr{:align => 'left'}
-                %td
-                %td
-                  = obj.market_name
-                %td
-                  = obj.constant
-                %td
-                  = link_to raw("<span>Edit</span>"), edit_additive_path(obj.id), :rel => 'facebox'
-                  = "|"
-                  = link_to raw("<span>Delete</span>"), additive_path(obj.id), :method => :delete
-
-#sidebar
-  %h3 Additives
-  %ul{:class => :navigation}
-    %li
-      = link_to "Market Additives",  additives_path
+          - counter = 1
+          %table#myTable.tablesorter
+            %thead
+              %tr
+                %th{:style => "width:15%"} No
+                %th{:style => "width:45%"} Market Name 
+                %th{:style => "width:20%"} Constant 
+                %th{:style => "width:20%"} 
+                %th
+            %tbody
+              - counter = 1
+              - additive[1].each do |obj|
+                %tr
+                  %td.align-center 
+                    =  counter
+                  %td
+                    = obj.market_name
+                  %td
+                    = obj.constant
+                  %td
+                    %a{:href => edit_additive_path(obj.id), :rel => :facebox}
+                      %img{:alt => "edit", :height => "16", :src => "/images/pencil.gif", :width => "16"}/
+                    = link_to(image_tag("/images/cross-small.gif",:height => "16", :width => "16"), additive_path(obj.id), :method => 'delete')
+                - counter = counter+1

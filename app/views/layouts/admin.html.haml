@@ -1,0 +1,9 @@
+- content_for :menu do
+  #logo
+    %ul#nav
+      %li{:id => if_current(@selected_menu == DOCTOR)}
+        = link_to "Doctors", users_path(:for => DOCTOR) 
+      %li{:id => if_current(@selected_menu == NUTRITIONIST)}
+        = link_to "Nutritionists", users_path(:for => NUTRITIONIST) 
+
+= render :file => 'layouts/application'

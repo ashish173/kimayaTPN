@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+  layout 'user'
 
   #list all existing patient
   def index
@@ -45,6 +46,10 @@ class PatientsController < ApplicationController
         format.js {render :partial => 'new'}
       end
     end
+  end
+
+  def show
+    @patient = Patient.find(params[:id])
   end
 
   def destroy

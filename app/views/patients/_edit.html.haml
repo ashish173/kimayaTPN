@@ -8,88 +8,49 @@
   }) 
 
 = form_for(@patient, :url => patient_path, :remote => true) do |f|
-  #content
-    .form
-      .columns 
-        .wat-cf
-          .column
-            .left
-              .group
-                %p
-                  = f.label :registration_number 
-                  *
-                  %br
-                  = f.text_field :registration_number
-              .group
-                %p
-                  = f.label :name
-                  *  
-                  %br
-                  = f.text_field :name
-              .group
-                %p
-                  = f.label :gender_id
-                  *
-                  %br
-                  = f.select :gender_id,  Gender.all.collect{|g| [g.name, g.gender_id]}, {:include_blank => "--select--"}, :style => "width:293px;"
-              .group
-                %p
-                  = f.label :date_of_birth
-                  *
-                  %br
-                  = f.text_field :date_of_birth, :id => "datepicker"
-              .group
-                %p
-                  = f.label :birth_weight
-                  = "(kg)"
-                  *
-                  %br
-                  = f.text_field :birth_weight
-              .group
-                %p
-                  = f.label :additional_detail
-                  %br
-                  = f.text_area :additional_detail, :rows => 3, :cols => 39
-              .group
-                %p
-                  = f.submit "Update"
-                  = button_to_function "Cancel", "$.facebox.close()"
-          .column
-            .right
-              .group
-                %p
-                  = f.label :address
-                  *
-                  %br
-                  = f.text_field :address
-              .group
-                %p
-                  = f.label :city
-                  %br
-                  = f.text_field :city
-              .group
-                %p
-                  = f.label :state
-                  %br
-                  = f.text_field :state
-              .group
-                %p
-                  = f.label :pincode
-                  %br
-                  = f.text_field :pincode
-              .group
-                %p
-                  = f.label :residence_telephone
-                  %br
-                  = f.text_field :residence_telephone
-              .group
-                %p
-                  = f.label :emergency_telephone
-                  *
-                  %br
-                  = f.text_field :emergency_telephone
-              .group
-                %p
-                  = f.label :mobile_number
-                  %br
-                  = f.text_field :mobile_number
+  #header
+    .container_12
+      .grid_6
+        %p
+          = f.label "registration_number *"
+          = f.text_field :registration_number
+        %p
+          = f.label "name *"
+          = f.text_field :name
+        %p
+          = f.label "gender_id *"
+          = f.select :gender_id,  Gender.all.collect{|g| [g.name, g.gender_id]}, {:include_blank => "--select--"}, :style => "width:293px;"
+        %p
+          = f.label "date_of_birth *"
+          = f.text_field :date_of_birth, :id => "datepicker"
+        %p
+          = f.label "birth_weight(kg) *"
+          = f.text_field :birth_weight
+        %p
+          = f.label :additional_detail
+          = f.text_area :additional_detail, :rows => 3, :cols => 39
+        %p
+          = f.submit "Update"
+          = button_to_function "Cancel", "$.facebox.close()"
+      .grid_6
+        %p
+          = f.label "address *"
+          = f.text_field :address
+        %p
+          = f.label :city
+          = f.text_field :city
+        %p
+          = f.label :state
+          = f.text_field :state
+        %p
+          = f.label :pincode
+          = f.text_field :pincode
+        %p
+          = f.label :residence_telephone
+          = f.text_field :residence_telephone
+        %p
+          = f.label "emergency_telephone *"
+          = f.text_field :emergency_telephone
+        %p
+          = f.label :mobile_number
+          = f.text_field :mobile_number
