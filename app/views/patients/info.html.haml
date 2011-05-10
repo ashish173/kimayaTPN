@@ -1,0 +1,12 @@
+#subnav
+  .container_12
+    .grid_12
+      %ul
+        %li 
+          = link_to "Basic Information" , edit_patient_path(@patient)
+        %li 
+          = link_to "Patient history", "#"
+.container_12
+  .module
+  .module-body
+    = render :partial => 'history'

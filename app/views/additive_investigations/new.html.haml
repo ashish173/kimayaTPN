@@ -1,0 +1,10 @@
+#subnav
+  .container_12
+    .grid_12
+      %ul
+        %li 
+          =  link_to "Daily Investigation" ,  new_patient_investigation_path(@patient)
+        %li 
+          = link_to "TPN additives", "#"
+.container_12
+  = render :partial => 'form'

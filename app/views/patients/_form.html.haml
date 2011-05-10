@@ -1,6 +1,6 @@
 = javascript_include_tag "jquery.ui.datepicker", "application"
 
-= form_for(@patient, :url => patients_path, :remote => true) do |f|
+= form_for(@patient, :url => patients_path) do |f|
   #header
     .container_12
       .grid_6
@@ -15,16 +15,13 @@
           = f.select :gender_id,  Gender.all.collect{|g| [g.name, g.gender_id]}, {:include_blank => "--select--"}, :style => "width:293px;"
         %p
           = f.label "date_of_birth *"
-          = f.text_field :date_of_birth, :id => "datepicker"
+          = f.text_field :date_of_birth, :class=> "datepicker"
         %p
           = f.label "birth_weight(kg) *"
           = f.text_field :birth_weight
         %p
           = f.label :additional_detail
           = f.text_area :additional_detail, :rows => 3, :cols => 39
-        %p
-          = f.submit "Create"
-          = button_to_function "Cancel", "$.facebox.close()"
       .grid_6
         %p
           = f.label "address *"
@@ -47,3 +44,11 @@
         %p
           = f.label :mobile_number
           = f.text_field :mobile_number
+      .grid_6
+        &nbsp;
+      .grid_6
+        .grid_5
+          = f.submit "Create"
+          = f.submit "Next"
+        .grid_3
+          = button_to "Cancel", patients_path

@@ -4,6 +4,7 @@ class CreateMotherHistories < ActiveRecord::Migration
       t.references :patient
       t.boolean :is_anc
       t.string :post_obstetric_history
+      t.string :maternal_usg
       t.string :age
       t.string :pre_pregnancy_weight
       t.string :height
@@ -18,4 +19,6 @@ class CreateMotherHistories < ActiveRecord::Migration
   def self.down
     drop_table :mother_histories
   end
+
+
 end

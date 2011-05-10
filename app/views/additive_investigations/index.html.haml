@@ -1,0 +1,159 @@
+.grid_12
+  = raw display_message
+  .bottom-spacing
+    .float-right
+      %a.button{:href => new_patient_path}
+        %span
+          Add patient 
+          = image_tag('/images/plus-small.gif', :height => "9", :width => "12")
+.module
+  %h2
+    %span 
+      Investigations for patient
+      &nbsp;&nbsp;
+      = @patient.name
+  .module-table-body
+    %table#myTable.tablesorter
+      %thead
+        %tr
+          %th{:style => "width:5px"} Date
+          - @additive_investigations.each do |inv|
+            %th{:style => "width:130px"} 
+              = inv.investigated_on
+            %th
+      %tbody
+        - counter = 1
+        - @additive_investigations.each do |inv|
+          %tr
+            %td
+              %br
+              %br
+              %br
+              %br
+              %br
+              %br
+              %br
+              %br
+              TPN additives
+            %td
+              %table
+                %thead
+                  %th{:style => "width:90px"}
+                  %th
+                %tbody
+                %tr
+                  %td
+                    Day Of Life
+                  %td
+                    = inv.tpn_additive.day_of_life
+                %tr
+                  %td
+                    Day Of TPN
+                  %td
+                    = inv.tpn_additive.day_of_tpn
+                %tr
+                  %td
+                    Fluid Intake
+                  %td
+                    = inv.tpn_additive.fluid_intake
+                %tr
+                  %td
+                    Enteral Feeds
+                  %td
+                    = inv.tpn_additive.enteral_feeds
+                %tr
+                  %td
+                    TPN Volume
+                  %td
+                    = inv.tpn_additive.tpn_volume
+                %tr
+                  %td
+                    Amino Acids
+                  %td
+                    = inv.tpn_additive.amino_acids
+                %tr
+                  %td
+                    Lipids
+                  %td
+                    = inv.tpn_additive.lipids
+                %tr
+                  %td
+                    Tpn Calories
+                  %td
+                    = inv.tpn_additive.tpn_calories
+                %tr
+                  %td
+                    DIR
+                  %td
+                    = inv.tpn_additive.dir
+                %tr
+                  %td
+                    NER
+                  %td
+                    = inv.tpn_additive.ner
+          %tr
+            %td
+              %br
+              %br
+              Enteral 
+              %br
+              Diagnosis 
+            %td
+              %table
+                %thead
+                  %th
+                  %th{:style => "width:40px"}
+                %tbody
+                %tr
+                  %td
+                    Enteral Nutrition Type
+                  %td
+                    = inv.enteral_diagnosis.enteral_nutrition_type
+                %tr
+                  %td
+                    Enteral Nutrition 
+                  %td
+                    = inv.enteral_diagnosis.enteral_nutrition
+                %tr
+                  %td
+                    Enteral Calories
+                  %td
+                    = inv.enteral_diagnosis.enteral_calories
+          %tr
+            %td{:style => "width:20px"}
+              %br
+              %br
+              Anthropometric
+              %br
+              Measurements
+            %td{:style => "width:20px"}
+              %table
+                %thead
+                  %th
+                  %th{:style => "width:20px"}
+                %tbody
+                %tr
+                  %td
+                    Weight
+                  %td
+                    = inv.anthropometric_measurement.weight_measured_date
+                  %td
+                    = inv.anthropometric_measurement.weight
+                %tr
+                  %td
+                    Head Circ 
+                  %td
+                    = inv.anthropometric_measurement.head_circ_measured_date
+                  %td
+                    = inv.anthropometric_measurement.head_circ
+                %tr
+                  %td
+                    Length
+                  %td
+                    = inv.anthropometric_measurement.length_measured_date
+                  %td
+                    = inv.anthropometric_measurement.length
+          %tr
+            %td
+              %td
+                = button_to "Edit", edit_patient_additive_investigation_path(@patient, @investigation)

@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
+
+  has_many :user_patients, :through => :admissions, :source => :patient
+  has_many :admissions
+
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable, :confirmable
   validates_presence_of :name, :message => :user_name_blank

@@ -1,0 +1,247 @@
+.grid_12
+  = raw display_message
+  .bottom-spacing
+    .float-right
+      %a.button{:href => new_patient_path}
+        %span
+          Add patient 
+          = image_tag('/images/plus-small.gif', :height => "9", :width => "12")
+.module
+  %h2
+    %span 
+      Investigations for patient
+      = @patient.name
+  .module-table-body
+    %table#myTable.tablesorter
+      %thead
+        %tr
+          %th{:style => "width:5px"} Date
+          - @investigations.each do |inv|
+            %th
+              = inv.investigated_on
+            %th
+      %tbody
+        - counter = 1
+        - @investigations.each do |inv|
+          %tr
+            %td{:style => "width:20px"}
+              Blood Sugar Monitoring
+            %td{:style => "width:20px"}
+              %table
+                %tr
+                  %td
+                    Date
+                  %td
+                    = inv.blood_sugar_monitor_on
+                %tr
+                  %td
+                    Details
+                  %td
+                    = inv.blood_sugar_monitor_details
+          %tr
+            %td{:style => "width:20px"}
+              %br
+              %br
+              Arterial 
+              %br
+              Blood
+              %br
+              Gas
+              %br
+              Analysis
+            %td{:style => "width:20px"}
+              %table
+                %thead
+                  %th
+                  %th{:style => "width:20px"}
+                %tbody
+                %tr
+                  %td
+                    pH:
+                  %td
+                    = inv.blood_analysis.ph
+                %tr
+                  %td
+                    PCO2
+                  %td
+                    = inv.blood_analysis.pco2
+                %tr
+                  %td
+                    PaO2
+                  %td
+                    = inv.blood_analysis.pao2
+                %tr
+                  %td
+                    HCO3
+                  %td
+                    = inv.blood_analysis.hco3
+                %tr
+                  %td
+                    ABE
+                  %td
+                    = inv.blood_analysis.abe
+                %tr
+                  %td
+                    SO2
+                  %td
+                    = inv.blood_analysis.so2
+          %tr
+            %td{:style => "width:20px"}
+              %br
+              %br
+              &nbsp;&nbsp;&nbsp;D 
+              %br
+              &nbsp;&nbsp;&nbsp;i
+              %br
+              &nbsp;&nbsp;&nbsp;a
+              %br
+              &nbsp;&nbsp;&nbsp;g
+              %br
+              &nbsp;&nbsp;&nbsp;n
+              %br
+              &nbsp;&nbsp;&nbsp;o
+              %br
+              &nbsp;&nbsp;&nbsp;s
+              %br
+              &nbsp;&nbsp;&nbsp;i
+              %br
+              &nbsp;&nbsp;&nbsp;s
+            %td{:style => "width:20px"}
+              %table
+                %thead
+                  %th{:style => "width:50px"}
+                  %th{:style => "width:50px"}
+                %tbody
+                %tr
+                  %td
+                    Hypoglycemia
+                  %td
+                    = inv.diagnosis.hypoglycemia
+                %tr
+                  %td
+                    Hyperglycemia 
+                  %td
+                    = inv.diagnosis.hyperglycemia
+                %tr
+                  %td
+                    Spesis
+                  %td
+                    = inv.diagnosis.spesis
+                %tr
+                  %td
+                    Sepsis Details
+                  %td
+                    = inv.diagnosis.sepsis_details
+                %tr
+                  %td
+                    Exhange
+                  %td
+                    = inv.diagnosis.exhange
+                %tr
+                  %td
+                    Thrombocytopenia 
+                  %td
+                    = inv.diagnosis.thrombocytopenia
+                %tr
+                  %td
+                    Dol 
+                  %td
+                    = inv.diagnosis.dol
+                %tr
+                  %td
+                    haemorrhage
+                  %td
+                    = inv.diagnosis.haemorrhage
+                %tr
+                  %td
+                    Grade 
+                  %td
+                    = inv.diagnosis.grade
+          %tr
+            %td{:style => "width:20px"}
+              %br
+              %br
+                Bio-
+              %br
+                chemistry 
+              %br
+                Assessment
+            %td{:style => "width:20px"}
+              %table
+                %thead
+                  %th
+                  %th{:style => "width:20px"}
+                %tbody
+                %tr
+                  %td
+                    Serum 
+                    Urea
+                  %td
+                    = inv.biochemistry_assessment.serum_urea
+                %tr
+                  %td
+                    Serum 
+                    Creatinine 
+                  %td
+                    = inv.biochemistry_assessment.serum_creatinine
+                %tr
+                  %td
+                    Triglycerides
+                  %td
+                    = inv.biochemistry_assessment.triglycerides
+                %tr
+                  %td
+                    Urine
+                    Area
+                  %td
+                    = inv.biochemistry_assessment.urine_area
+                %tr
+                  %td
+                    Bilirubin
+                  %td
+                    = inv.biochemistry_assessment.bilirubin
+          %tr
+            %td{:style => "width:20px"}
+              %br
+              %br
+              %br
+              %br
+              Electro -
+              %br
+              &nbsp;&nbsp;&nbsp;lytes
+            %td{:style => "width:20px"}
+              %table
+                %thead
+                  %th
+                  %th{:style => "width:20px"}
+                %tbody
+                %tr
+                  %td
+                    Sodium
+                  %td
+                    = inv.electrolyte.sodium
+                %tr
+                  %td
+                    Calcium
+                  %td
+                    = inv.electrolyte.calcium
+                %tr
+                  %td
+                    Potassium
+                  %td
+                    = inv.electrolyte.potassium
+                %tr
+                  %td
+                    Urea
+                  %td
+                    = inv.electrolyte.urea
+                %tr
+                  %td
+                    Triglycerides
+                  %td
+                    = inv.electrolyte.triglycerides
+                %tr
+                  %td
+                    Creatinin
+                  %td
+                    = inv.electrolyte.creatinin

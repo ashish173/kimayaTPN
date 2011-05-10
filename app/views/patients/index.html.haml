@@ -1,18 +1,8 @@
-#subnav
-  .container_12
-    .grid_12
-      %ul
-        %li 
-          =link_to "Basic Information" ,  patients_path
-        %li 
-          = link_to "Patient history", patient_path(Patient.first.id)
-        %li 
-          =# link_to "TPN", new_tpn_path, :rel => :facebox
 .grid_12
   = raw display_message
   .bottom-spacing
     .float-right
-      %a.button{:href => new_patient_path, :rel => :facebox}
+      %a.button{:href => new_patient_path}
         %span
           Add patient 
           = image_tag('/images/plus-small.gif', :height => "9", :width => "12")
@@ -25,12 +15,14 @@
       %thead
         %tr
           %th{:style => "width:5%"} No
-          %th{:style => "width:15%"} Name 
+          %th{:style => "width:10%"} Name 
           %th{:style => "width:10%"} Birth Wt. 
           %th{:style => "width:15%"} Registration number
           %th{:style => "width:10%"} Gender ID
-          %th{:style => "width:15%"} Phone Number 
-          %th{:style => "width:10%"} 
+          %th{:style => "width:10%"} Phone Number 
+          %th{:style => "width:5%"} Profile
+          %th{:style => "width:5%"} Investigations
+          %th{:style => "width:5%"} Additives
       %tbody
         - counter = 1
         - @patient.each do |patient|
@@ -48,9 +40,15 @@
             %td
               =  patient.emergency_telephone
             %td
-              %a{:href => edit_patient_path(patient.id), :rel => :facebox}
+              %a{:href => edit_patient_path(patient.id)}
                 %img{:alt => "edit", :height => "16", :src => "/images/pencil.gif", :width => "16"}/
-              %a{:href => patient_path(patient.id), :rel => :facebox}
+              %a{:href => patient_path(patient.id)}
                 %img{:alt => "show", :height => "16", :src => "/images/bin.gif", :width => "16"}/
               = link_to(image_tag("/images/cross-small.gif",:height => "16", :width => "16"), patient_path(patient.id), :method => 'delete')
+            %td
+              %a{:href => patient_investigations_path(patient)}
+                %img{:alt => "show", :height => "16", :src => "/images/bin.gif", :width => "16"}/
+            %td
+              %a{:href => patient_additive_investigations_path(patient)}
+                %img{:alt => "show", :height => "16", :src => "/images/bin.gif", :width => "16"}/
           - counter = counter+1

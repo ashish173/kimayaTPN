@@ -1,3 +1,21 @@
-%h3 New Patient
-#edit_patient
-  = render :partial => 'form'
+#subnav
+  .container_12
+    .grid_12
+      %ul
+        %li 
+          = link_to "Basic Information", "#"
+        %li 
+          = link_to "Daily Investigation", "#"
+        %li 
+          = link_to "Patient history", "#"
+        %li 
+          = link_to "TPN additives", "#"
+.container_12
+  .grid_1
+    &nbsp;
+  .grid_9
+    .module
+      %h2
+        %span New Patient
+    .module-body
+      = render :partial => 'form'

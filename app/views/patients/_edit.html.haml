@@ -7,7 +7,7 @@
     });
   }) 
 
-= form_for(@patient, :url => patient_path, :remote => true) do |f|
+= form_for(@patient, :url => patient_path) do |f|
   #header
     .container_12
       .grid_6
@@ -22,7 +22,7 @@
           = f.select :gender_id,  Gender.all.collect{|g| [g.name, g.gender_id]}, {:include_blank => "--select--"}, :style => "width:293px;"
         %p
           = f.label "date_of_birth *"
-          = f.text_field :date_of_birth, :id => "datepicker"
+          = f.text_field :date_of_birth, :class => "datepicker"
         %p
           = f.label "birth_weight(kg) *"
           = f.text_field :birth_weight
@@ -31,7 +31,8 @@
           = f.text_area :additional_detail, :rows => 3, :cols => 39
         %p
           = f.submit "Update"
-          = button_to_function "Cancel", "$.facebox.close()"
+          = f.submit "Next"
+          = button_to "Cancel", patients_path 
       .grid_6
         %p
           = f.label "address *"

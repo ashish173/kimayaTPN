@@ -1,0 +1,212 @@
+= javascript_include_tag "jquery.ui.datepicker", "application"
+= form_for(@investigation, :url => patient_additive_investigation_path(@patient,@investigation)) do |f|
+  #header
+  .container_12
+    .grid_6
+      .module
+        %h2
+          %span TPN Additives
+      %table#myTable.tablesorter
+        %thead
+          %tr{:height => 30}
+            %th{:style => "width:32%"} Date
+            - @additives.each do |obj|
+              %th{:style => "width:13%"} 
+                = obj.investigation.investigated_on.strftime('%d-%b')
+            %th{:style => "width:13%"} 
+              = Date.today.strftime('%d-%b')
+            %th{:style => "width:13%"}  
+              Avg
+        %tbody
+          = f.fields_for :tpn_additive do |inv|
+            %tr{:id => 'dol'}
+              %td Day of Life
+              - sum = 0 
+              - @additives.each do |obj|
+                %td
+                  = obj.day_of_life
+                  - sum += obj.day_of_life if obj.day_of_life.present?
+              %td
+                = inv.text_field :day_of_life, :size => 3
+              %td
+                = @additives.length==0 ? @investigation.tpn_additive.day_of_life : sum/@additives.length
+            %tr{:id => 'dot'}
+              %td Day of TPN
+              - sum = 0 
+              - @additives.each do |obj|
+                %td
+                  = obj.day_of_tpn
+                  - sum += obj.day_of_tpn if obj.day_of_tpn.present?
+              %td
+                = inv.text_field :day_of_tpn, :size => 3
+              %td
+                = @additives.length==0 ? @investigation.tpn_additive.day_of_tpn : sum/@additives.length
+            %tr{:id => 'fluid'} 
+              %td Fluid Intake(ml/kg)
+              - sum = 0 
+              - @additives.each do |obj|
+                %td
+                  = obj.fluid_intake
+                  - sum += obj.fluid_intake if obj.fluid_intake.present?
+              %td
+                = inv.text_field :fluid_intake, :size => 3
+              %td
+                = @additives.length==0 ? @investigation.tpn_additive.fluid_intake : sum/@additives.length
+            %tr{:id => 'ef'}
+              %td Enteral Feeds(ml/day)
+              - sum = 0 
+              - @additives.each do |obj|
+                %td
+                  = obj.enteral_feeds
+                  - sum += obj.enteral_feeds if obj.enteral_feeds.present?
+              %td
+                = inv.text_field :enteral_feeds, :size => 3
+              %td
+                = @additives.length==0 ? @investigation.tpn_additive.enteral_feeds : sum/@additives.length
+            %tr{:id => 'tpnv'}
+              %td TPN volume
+              - sum = 0 
+              - @additives.each do |obj|
+                %td
+                  = obj.tpn_volume
+                  - sum += obj.tpn_volume if obj.tpn_volume.present?
+              %td
+                = inv.text_field :tpn_volume, :size => 3
+              %td
+                = @additives.length==0 ? @investigation.tpn_additive.tpn_volume : sum/@additives.length
+            %tr{:id => 'amino'}
+              %td Amino Acids(g/kg)
+              - sum = 0 
+              - @additives.each do |obj|
+                %td
+                  = obj.amino_acids
+                  - sum += obj.amino_acids if obj.amino_acids.present?
+              %td
+                = inv.text_field :amino_acids, :size => 3
+              %td
+                = @additives.length==0 ? @investigation.tpn_additive.amino_acids : sum/@additives.length
+            %tr{:id => 'lipid'}
+              %td Lipids(g/kg)
+              - sum = 0 
+              - @additives.each do |obj|
+                %td
+                  = obj.lipids
+                  - sum += obj.lipids if obj.lipids.present?
+              %td
+                = inv.text_field :lipids, :size => 3
+              %td
+                = @additives.length==0 ? @investigation.tpn_additive.lipids : sum/@additives.length
+            %tr{:id => 'tpncal'}
+              %td TPN Calories(Cal/kg)
+              - sum = 0 
+              - @additives.each do |obj|
+                %td
+                  = obj.tpn_calories
+                  - sum += obj.tpn_calories if obj.tpn_calories.present?
+              %td
+                = inv.text_field :tpn_calories, :size => 3
+              %td
+                = @additives.length==0 ? @investigation.tpn_additive.tpn_calories : sum/@additives.length
+            %tr{:id => 'dir'}
+              %td DIR
+              - sum = 0 
+              - @additives.each do |obj|
+                %td
+                  = obj.dir
+                  - sum += obj.dir if obj.dir.present? 
+              %td
+                = inv.text_field :dir, :size => 3
+              %td
+                = @additives.length==0 ? @investigation.tpn_additive.dir : sum/@additives.length
+            %tr{:id => 'ner'}
+              %td NER
+              - sum = 0 
+              - @additives.each do |obj|
+                %td
+                  = obj.ner 
+                  - sum += obj.ner if obj.ner.present?
+              %td
+                = inv.text_field :ner, :size => 3
+              %td
+                = @additives.length==0 ? @investigation.tpn_additive.ner : sum/@additives.length
+    .grid_6
+      = f.fields_for :enteral_diagnosis do |inv|
+        .grid_12
+          .module
+            %h2
+              %span Enteral Nutrition
+          .grid_6
+            = inv.radio_button :enteral_nutrition_type, "EBM", :class => 'type'
+            EBM
+            .grid_12
+              %br  
+            .grid_12
+              .module
+                %h2
+                  %span EBM
+                %table#myTable.tablesorter
+                  %thead
+                    %tr
+                      %th{:style => "width:10%"}
+                      %th
+                  %tbody
+                    %tr
+                      %td
+                        = inv.radio_button :enteral_nutrition, "EBM only", :class => 'ebm'
+                      %td
+                        EBM only
+                    %tr
+                      %td
+                        = inv.radio_button :enteral_nutrition, "EBM + MCT", :class => 'ebm'
+                      %td
+                        EBM + MCT
+                    %tr
+                      %td
+                        = inv.radio_button :enteral_nutrition, "EBM + HMF", :class => 'ebm'
+                      %td
+                        EBM + HMF
+                    %tr
+                      %td
+                        = inv.radio_button :enteral_nutrition, "EBM + MCT + HMF", :class => 'ebm'
+                      %td
+                        EBM + MCT + HMF
+          .grid_6 
+            = inv.radio_button :enteral_nutrition_type, "Formula Feeds", :class => 'type'
+            Formula Feeds
+        .grid_4
+          .module
+            %h4
+              Enteral Calories
+        .grid_6 
+          = inv.text_field :enteral_calories, :size => 7
+      .grid_12
+        .module
+          %h2
+            %span Anthropometric Measurments 
+        = f.fields_for :anthropometric_measurement do |am|
+          .grid_12
+            .grid_2
+              Weight
+            = am.text_field :weight_measured_date,:class => 'datepicker', :size => 7
+            = am.text_field :weight,:size => 7
+            Kg.
+          .grid_12
+            .grid_2
+              Head Circ
+            = am.text_field :head_circ_measured_date, :class => 'datepicker', :size => 7
+            = am.text_field :head_circ,:size => 7
+            cm.
+          .grid_12
+            .grid_2
+              Length
+            = am.text_field :length_measured_date, :class => 'datepicker', :size => 7
+            = am.text_field :length,:size => 7
+            cm.
+  .module
+    .grid_5
+      &nbsp;
+    .grid_5
+      .grid_2
+        = f.submit "Save"
+      .grid_2
+        = button_to "Cancel", patients_path

@@ -1,0 +1,232 @@
+= javascript_include_tag "jquery.ui.datepicker", "application"
+%strong Select date
+= text_field :day, '',:class => 'datepicker', :size => 7
+= form_for(@investigation, :url => patient_investigations_path(@patient.id)) do |f|
+  #header
+    .container_12
+      .grid_6
+        .grid_12
+          .module
+            %h2
+              %span Arterial Blood Gas Analysis
+          %table#myTable.tablesorter
+            %thead
+              %tr
+                %th{:style => "width:20%"}
+                %th{:style => "width:30%"}
+                %th{:style => "width:20%"}
+                %th{:style => "width:30%"}
+            %tbody
+              = f.fields_for :blood_analysis do |b|
+                %tr
+                  %td
+                    &nbsp; pH:
+                  %td
+                    = b.text_field :ph, :size => 10
+                  %td
+                    HCO3
+                  %td
+                    = b.text_field :hco3, :size => 10
+                %tr
+                  %td
+                    &nbsp; PCO2
+                  %td
+                    = b.text_field :pco2, :size => 10
+                  %td
+                    ABE
+                  %td
+                    = b.text_field :abe, :size => 10
+                %tr
+                  %td
+                    &nbsp; PaO2
+                  %td
+                    = b.text_field :pao2, :size => 10
+                  %td
+                    SO2
+                  %td
+                    = b.text_field :so2, :size => 10
+          .module 
+            %h2
+              %span Diagnosis
+          %table#myTable.tablesorter
+            %thead
+              %tr
+                %th{:style => "width:25%"}
+                %th{:style => "width:15%"}
+                %th{:style => "width:15%"}
+                %th{:style => "width:35%"}
+            %tbody
+              = f.fields_for :diagnosis do |d|
+                %tr
+                  %td
+                    Hypoglycaemia: 
+                  %td
+                    = d.radio_button :hypoglycemia, false, :class => 'hyperglycemia'
+                    = "No"
+                  %td
+                    = d.radio_button :hypoglycemia, true, :class => 'hyperglycemia'
+                    = "Yes"
+                  %td
+                    .grid_6
+                      Episodes:
+                    .grid_6
+                      = d.text_field :hypoglycemia_episode, :size => 10
+                %tr
+                  %td
+                    Hyperglycemia:
+                  %td
+                    = d.radio_button :hyperglycemia, false,  :class => 'hyperglycemia'
+                    = "No"
+                  %td
+                    = d.radio_button :hyperglycemia, true, :class => 'hyperglycemia'
+                    = "Yes"
+                  %td
+                    .grid_6
+                      Episodes:
+                    .grid_6
+                      = d.text_field :hyperglycemia_episode, :size => 10
+                %tr
+                  %td
+                    Sepsis: 
+                  %td
+                    = d.radio_button :spesis, false, :class => 'sepsis'
+                    = "No"
+                  %td
+                    = d.radio_button :spesis, true, :class => 'sepsis'
+                    = "Yes"
+                  %td
+                    = d.select :sepsis_details,["asf","asfd"],{:include_blank => "--select--"}, :style => "width:220px;"
+                %tr
+                  %td
+                    Exhange 
+                  %td
+                    = d.radio_button :exhange, false, :class => 'exhange'
+                    = "No"
+                  %td
+                    = d.radio_button :exhange, true, :class => 'exhange'
+                    = "Yes"
+                  %td
+                %tr
+                  %td
+                    Thrombocytopenia 
+                  %td
+                    = d.radio_button :thrombocytopenia, false, :class => 'thrombocytopenia'
+                    = "No"
+                  %td
+                    = d.radio_button :thrombocytopenia, true, :class => 'thrombocytopenia'
+                    = "Yes"
+                  %td
+                    .grid_6
+                      Dol:
+                    .grid_6
+                      = d.text_field :dol, :size => 10
+                %tr
+                  %td
+                    Intra Ventricular Haemorrhaae 
+                  %td 
+                    = d.radio_button :haemorrhage, false, :class => 'haemorrhage'
+                    = "No"
+                  %td
+                    = d.radio_button :haemorrhage, true, :class => 'haemorrhage'
+                    = "Yes"
+                  %td
+                    .grid_6
+                      Grade:
+                    .grid_6
+                      = d.text_field :grade, :size => 10
+      .grid_6
+        .grid_12
+          .module
+            %h2
+              %span Biochemistry Assessment
+          %table#myTable.tablesorter
+            %thead
+              %tr
+                %th{:style => "width:25%"}
+                %th{:style => "width:30%"}
+                %th{:style => "width:20%"}
+                %th{:style => "width:25%"}
+            %tbody
+              = f.fields_for :biochemistry_assessment do |ba|
+                %tr
+                  %td
+                    Serum Urea
+                  %td
+                    = ba.text_field :serum_urea, :size => 10
+                  %td
+                    Urine Area
+                  %td
+                    = ba.text_field :urine_area, :size => 10
+                %tr
+                  %td
+                    Serum Creatinine
+                  %td
+                    = ba.text_field :serum_creatinine, :size => 10
+                  %td
+                    Bilirubin
+                  %td
+                    = ba.text_field :bilirubin, :size => 10
+                %tr
+                  %td
+                    Triglycerides
+                  %td
+                    = ba.text_field :triglycerides, :size => 10
+        &nbsp;
+        .grid_12
+          .module
+            %h2
+              %span Electrolytes
+          %table#myTable.tablesorter
+            %thead
+              %tr
+                %th{:style => "width:20%"}
+                %th{:style => "width:30%"}
+                %th{:style => "width:20%"}
+                %th{:style => "width:30%"}
+            %tbody
+              = f.fields_for :electrolyte do |e|
+                %tr
+                  %td
+                    Sodium
+                  %td
+                    = e.text_field :sodium, :size => 10
+                  %td
+                    Calcium
+                  %td
+                    = e.text_field :calcium, :size => 10
+                %tr
+                  %td
+                    Potassium
+                  %td
+                    = e.text_field :potassium, :size => 10
+                  %td
+                    Urea
+                  %td
+                    = e.text_field :urea, :size => 10
+                %tr
+                  %td
+                    Triglycerides
+                  %td
+                    = e.text_field :triglycerides, :size => 10
+                  %td
+                    Creatinin
+                  %td
+                    = e.text_field :creatinin, :size => 10
+        .grid_12
+          .module
+            %h2
+              %span Blood Sugar Monitoring
+          = f.text_field :blood_sugar_monitor_on, :class => 'datepicker', :size => 10
+          = f.text_field :blood_sugar_monitor_details, :size => 10
+          = f.hidden_field :patient_id, :value => @patient.id
+          = f.hidden_field :investigated_on, :value => Date.today
+  .module
+    .grid_5
+      &nbsp;
+    .grid_5
+      .grid_2
+        = f.submit "Create"
+        = f.submit "Next"
+      .grid_2
+        = button_to "Cancel", patients_path
+        

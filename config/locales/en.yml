@@ -7,7 +7,8 @@ en:
       messages:
       
       #patient
-        registration_number_invalid: "Enter valid rgistration number"
+        registration_number_blank: "Please enter rgistration number"
+        registration_number_not_unique: "Registration number is already exist"
         patient_name_blank: "Please enter patient name"
         date_of_birth_blank: "Please enter the date of birth"
         birth_weight_invalid: "Please enter valid birth wieght"
@@ -24,3 +25,6 @@ en:
 
       #user
         user_name_blank: "Please enter user name"
+    
+      #investigation
+        blood_sugar_monitor_on_blank: "Please enter date"

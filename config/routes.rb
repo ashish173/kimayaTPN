@@ -6,8 +6,16 @@ Kimaya::Application.routes.draw do |map|
   
   resources :users
   resources :additives
-  resources :patients 
-  resources :tpns
+
+  resources :patients do
+    get 'info'
+    get 'investigate'
+    put 'history'
+    resources :investigations, :on => :collection
+    resources :additive_investigations, :on => :collection
+    resources :tpns, :on => :collection
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -4,6 +4,7 @@ class CreatePatientHistories < ActiveRecord::Migration
       t.references :patient
       t.string :gestational_age
       t.string :gender_details
+      t.string :ga
       t.string :mode_of_delivery
       t.string :rupture_of_membranes
       t.string :apgar_score_1

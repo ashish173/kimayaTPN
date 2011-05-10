@@ -1,178 +1,212 @@
-= javascript_include_tag "jquery.ui.datepicker", "application"
-.container_12
-  .grid_6
-    .module
-      %h2
-        %span Mother's history
-    %table#myTable.tablesorter
-      %thead
-        %tr
-          %th{:style => "width:27%"}
-          %th{:style => "width:75%"}
-      %tbody
-        %tr
-          %td
-          %td
+#header
+  .container_12
+    .grid_1
+      &nbsp;
+    .grid_10
+      .module
+        %h2
+          %span Patient's profile
+      .grid_6
+        %p
+          %strong
+            Name
+          %br
+          = @patient.name
+      .grid_6
+        %p
+          %strong
+            Date of birth
+          %br
+          = @patient.date_of_birth
+      .grid_6
+        %p  
+          %strong
+            Gender
+          %br
+          = Gender.find(@patient.gender_id).name
+      .grid_6
+        %p
+          %strong
+            Birth Weight
+          %br
+          = @patient.birth_weight
+      .grid_6
+        %p
+          %strong
+            Address
+          %br
+          = @patient.address
+      .grid_6
+        %p
+          %strong
+            City
+          %br
+          = @patient.city
+      .grid_6
+        %p
+          %strong
+            Pincode
+          %br
+          = @patient.pincode
+      .grid_6
+        %p  
+          %strong
+            State
+          %br
+          = @patient.state
+      .grid_6
+        %p
+          %strong
+            Residence Telephone
+          %br
+          = @patient.residence_telephone
+      .grid_6
+        %p
+          %strong
+            Emergency Telephone
+          %br
+          = @patient.pincode
+      .grid_6
+        %p
+          %strong
+            Mobile Number
+          %br
+          = @patient.pincode
+      .grid_6
+        %p
+          %strong
+            Additional Detail
+          %br
+          = @patient.additional_detail
+      .grid_6
+        &nbsp;
+      .grid_6
+        &nbsp;
+      .module
+        .grid_6
+          %h2
+            %span Mother's history
+          &nbsp;
+          %p
             .grid_6
-              = radio_button("post", "category", "rails")
-              ANC
+              %strong ANC
             .grid_6
-              = radio_button("post", "category", "rails")
-              Non ANC
-        %tr
-          %td Past Obstetric History
-          %td
-            .grid_4
-              =  check_box("post", "validated")
-              G
-            .grid_4
-              =  check_box("post", "validated")
-              P
-            .grid_4
-              =  check_box("post", "validated")
-              A
-        %tr
-          %td Maternal USG
-          %td
-            = text_field(:post, :title, :size => 30)
-        %tr
-          %td Age:
-          %td
-            .grid_4
-              = radio_button("post", "category", "rails")
-              = "< 18"
-            .grid_4
-              = radio_button("post", "category", "rails")
-              = "18 - 35"
-            .grid_4
-              = radio_button("post", "category", "rails")
-              = "> 35"
-        %tr
-          %td Pre-pregnancy wt.
-          %td
+              = @mother_history.try(:is_anc)
+            .grid_12
+              &nbsp;
+          %p
             .grid_6
-              = radio_button("post", "category", "rails")
-              = "<= 40kg"
+              %strong Post Obstetric History
             .grid_6
-              = radio_button("post", "category", "rails")
-              = "> 40kg"
-        %tr
-          %td Height:
-          %td
+              = @mother_history.try(:post_obstetric_history)
+            .grid_12
+              &nbsp;
+          %p
             .grid_6
-              = radio_button("post", "category", "rails")
-              = "<= 145 cm"
+              %strong Maternal USG
             .grid_6
-              = radio_button("post", "category", "rails")
-              = "> 145 cm"
-        %tr
-          %td Toxemia:
-          %td
-            .grid_4
-              = radio_button("post", "category", "rails")
-              mild
-            .grid_4
-              = radio_button("post", "category", "rails")
-              moderate
-            .grid_4
-              = radio_button("post", "category", "rails")
-              severe 
-        %tr
-          %td Diabetes
-          %td
-            .grid_4
-              = radio_button("post", "category", "rails")
-              Gestational
-            .grid_4
-              = radio_button("post", "category", "rails")
-              IDDM
-            .grid_4
-              = radio_button("post", "category", "rails")
-              NIDDM
-        %tr
-          %td Medical Problems:
-          %td
-            = text_field(:post, :title, :size => 35)
-        %tr
-          %td
-          %td
-            .grid_4
-              = radio_button("post", "category", "rails")
-              Drugs
-            .grid_4
-              = radio_button("post", "category", "rails")
-              Smoking
-            .grid_4
-              = radio_button("post", "category", "rails")
-              Alcholism
-        %tr
-          %td Antenatal Steroids
-          %td
+              = @mother_history.try(:maternal_usg)
+            .grid_12
+              &nbsp;
+          %p
             .grid_6
-              = radio_button("post", "category", "rails")
-              Yes
+              %strong Age
             .grid_6
-              = radio_button("post", "category", "rails")
-              No
-  .grid_6
-    .module
-      %h2
-        %span Birth history
-    %table#myTable.tablesorter
-      %thead
-        %tr
-          %th{:style => "width:40%"}
-          %th{:style => "width:60%"}
-      %tbody
-        %tr
-          %td Date of birth:
-          %td
-            = text_field(:post,:title, :size => 7, :id => 'datepicker')  
-        %tr
-          %td Date & time of admission
-          %td
-            = text_field(:post,:title, :size => 7, :id => 'datepicker')  
-        %tr
-          %td Gestational Age
-          %td
-            = text_field(:post, :title, :size => 30)
-        %tr
-          %td Birth Weight
-          %td
-            = text_field(:post, :title, :size => 30)
-        %tr
-          %td Sex
-          %td
-            = select('post', "gender", Gender.all.collect{|g| [g.name, g.gender_id]}, {:include_blank => "--select--"}, :style => "width:150px;")
-        %tr
-          %td GA
-          %td
-            .grid_4
-              = radio_button("post", "category", "rails")
-              = "AGA"
-            .grid_4
-              = radio_button("post", "category", "rails")
-              = "SGA"
-            .grid_4
-              = radio_button("post", "category", "rails")
-              = "LGA"
-        %tr
-          %td Mode of Delivery
-          %td
-            = select('post', "gender", Gender.all.collect{|g| [g.name, g.gender_id]}, {:include_blank => "--select--"}, :style => "width:150px;")
-        %tr
-          %td Rupture of Membranes (hours)
-          %td
-            .grid_4
-              = radio_button("post", "category", "rails")
-              = "< 24"
-            .grid_4
-              = radio_button("post", "category", "rails")
-              = " 24 - 48"
-            .grid_4
-              = radio_button("post", "category", "rails")
-              = "> 48"
-        %tr
-          %td Resuscitation
-          %td
-            = text_field(:post, :title, :size => 35)
+              = @mother_history.try(:age)
+            .grid_12
+              &nbsp;
+          %p
+            .grid_6
+              %strong Pre-pregnancy weight
+            .grid_6
+              = @mother_history.try(:pre_pregnancy_weight)
+            .grid_12
+              &nbsp;
+          %p
+            .grid_6
+              %strong Height
+            .grid_6
+              = @mother_history.try(:height)
+            .grid_12
+              &nbsp;
+          %p
+            .grid_6
+              %strong Toxemia
+            .grid_6
+              = @mother_history.try(:toxemia)
+            .grid_12
+              &nbsp;
+          %p
+            .grid_6
+              %strong Daibetes
+            .grid_6
+              = @mother_history.try(:diabetes)
+            .grid_12
+              &nbsp;
+          %p  
+            .grid_6
+              %strong Antenatal Steroids 
+            .grid_6
+              = @mother_history.try(:is_antenatal_steroids)
+            .grid_12
+              &nbsp;
+        .grid_6
+          %h2
+            %span Patient's history
+          &nbsp;
+          %p
+            .grid_6
+              %strong Gestational Age
+            .grid_6
+              = @patient_history.try(:gestational_age)
+            .grid_12
+              &nbsp;
+          %p
+            .grid_6
+              %strong GA
+            .grid_6
+              = @patient_history.try(:ga)
+            .grid_12
+              &nbsp;
+          %p
+            .grid_6
+              %strong Mode of delivery
+            .grid_6
+              = @patient_history.try(:mode_of_delivery)
+            .grid_12
+              &nbsp;
+          %p
+            .grid_6
+              %strong Rupture of Membranes 
+            .grid_6
+              = @patient_history.try(:rupture_of_membranes)
+            .grid_12
+              &nbsp;
+          %p
+            .grid_12
+              %strong Resuscitation:Apgar scores
+            .grid_12
+              &nbsp;
+            .grid_6
+              %strong 
+                1 min. - 
+            .grid_6
+              = @patient_history.try(:apgar_score_1)
+            .grid_12
+              &nbsp;
+          %p
+            .grid_6
+              %strong 
+                5 min. -
+            .grid_6
+              = @patient_history.try(:apgar_score_5)
+            .grid_12
+              &nbsp;
+          %p
+            .grid_6
+              %strong 
+                20 min. -
+            .grid_6
+              = @patient_history.try(:apgar_score_20)
+            .grid_12
+              &nbsp;

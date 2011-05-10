@@ -1,3 +1,3 @@
 class Diagnosis < ActiveRecord::Base
-  belongs_to :investingation
+  belongs_to :investigation
 end

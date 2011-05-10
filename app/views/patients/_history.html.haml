@@ -1,0 +1,205 @@
+= javascript_include_tag "jquery.ui.datepicker", "application"
+= form_for(@patient, :url => patient_history_path(@patient)) do |f|
+  #header
+    .container_12
+      .grid_6
+        .module
+          %h2
+            %span Mother's history
+        %table#myTable.tablesorter
+          %thead
+            %tr
+              %th{:style => "width:27%"}
+              %th{:style => "width:75%"}
+          %tbody
+            = f.fields_for :mother_history do |m|
+              %tr
+                %td
+                %td
+                  .grid_6
+                    = m.radio_button :is_anc, true, :class => 'anc'
+                    ANC
+                  .grid_6
+                    = m.radio_button :is_anc, false, :class => 'anc'
+                    Non ANC
+              %tr
+                %td Past Obstetric History
+                %td
+                  .grid_4
+                    =  check_box_tag "patient[mother_history_attributes][post_obstetric_history][]", "G" 
+                    G
+                  .grid_4
+                    =  check_box_tag "patient[mother_history_attributes][post_obstetric_history][]", "P" 
+                    P
+                  .grid_4
+                    =  check_box_tag "patient[mother_history_attributes][post_obstetric_history][]", "A" 
+                    A
+                  .grid_4
+              %tr
+                %td Maternal USG
+                %td
+                  = m.text_field :maternal_usg
+              %tr
+                %td Age:
+                %td
+                  .grid_4
+                    = m.radio_button :age, "< 18", :class => 'age'
+                    = "< 18"
+                  .grid_4
+                    = m.radio_button :age, "18 - 35", :class => 'age'
+                    = "18 - 35"
+                  .grid_4
+                    = m.radio_button :age, "> 35", :class => 'age'
+                    = "> 35"
+              %tr
+                %td Pre-pregnancy wt.
+                %td
+                  .grid_6
+                    = m.radio_button :pre_pregnancy_weight, "<= 40kg", :class => 'weight'
+                    = "<= 40kg"
+                  .grid_6
+                    = m.radio_button :pre_pregnancy_weight, "> 40kg", :class => 'weight'
+                    = "> 40kg"
+              %tr
+                %td Height:
+                %td
+                  .grid_6
+                    = m.radio_button :height, "<= 145 cm", :class => 'height'
+                    = "<= 145 cm"
+                  .grid_6
+                    = m.radio_button :height, "> 145 cm", :class => 'height'
+                    = "> 145 cm"
+              %tr   
+                %td Toxemia:
+                %td
+                  .grid_4
+                    = m.radio_button :toxemia, "mild", :class => 'toxemia'
+                    mild
+                  .grid_4
+                    = m.radio_button :toxemia, "moderate", :class => 'toxemia'
+                    moderate
+                  .grid_4
+                    = m.radio_button :toxemia, "severe", :class => 'toxemia'
+                    severe 
+              %tr
+                %td Diabetes
+                %td
+                  .grid_4
+                    = m.radio_button :diabetes, "gestational", :class => 'diabetes'
+                    Gestational
+                  .grid_4
+                    = m.radio_button :diabetes, "iddm", :class => 'diabetes'
+                    IDDM
+                  .grid_4
+                    = m.radio_button :diabetes, "niddm", :class => 'diabetes'
+                    NIDDM
+              %tr
+                %td Medical Problems:
+                %td
+                  = text_field(:medical, :problems, :size => 35)
+              %tr
+                %td
+                %td
+                  .grid_4
+                    = check_box_tag :drugs, "" 
+                    Drugs
+                  .grid_4
+                    = check_box_tag :smoking, ""
+                    Smoking
+                  .grid_4
+                    = check_box_tag :alcoholism, ""
+                    Alcholism
+              %tr
+                %td Antenatal Steroids
+                %td
+                  .grid_6
+                    = m.radio_button :is_antenatal_steroids, true, :class => 'steroids'
+                    Yes
+                  .grid_6
+                    = m.radio_button :is_antenatal_steroids, false, :class => 'steroids'
+                    No
+      .grid_6   
+        .module 
+          %h2
+            %span Birth history
+        %table#myTable.tablesorter
+          %thead
+            %tr
+              %th{:style => "width:40%"}
+              %th{:style => "width:60%"}
+          %tbody
+            %tr
+              %td Date & time of admission
+              %td
+                = f.fields_for :admission do |adm|
+                  = adm.text_field :admitted_on,:class => 'datepicker'
+            = f.fields_for :patient_history do |p|
+              %tr 
+                %td Gestational Age
+                %td
+                  = p.text_field :gestational_age
+              %tr
+                %td GA
+                %td
+                  .grid_4
+                    = p.radio_button :ga, "AGA", :class => 'g_age'
+                    = "AGA"
+                  .grid_4
+                    = p.radio_button :ga, "SGA", :class => 'g_age'
+                    = "SGA"
+                  .grid_4
+                    = p.radio_button :ga, "LGA", :class => 'g_age'
+                    = "LGA"
+              %tr
+                %td Mode of Delivery
+                %td
+                  = select('post', "gender", Gender.all.collect{|g| [g.name, g.gender_id]}, {:include_blank => "--select--"}, :style => "width:292px;")
+              %tr
+                %td Rupture of Membranes (hours)
+                %td
+                  .grid_4
+                    = p.radio_button :rupture_of_membranes, "< 24", :class => 'rupture'
+                    = "< 24"
+                  .grid_4
+                    = p.radio_button :rupture_of_membranes, "24 - 48", :class => 'rupture'
+                    = " 24 - 48"
+                  .grid_4
+                    = p.radio_button :rupture_of_membranes, "> 48", :class => 'rupture'
+                    = "> 48"
+              %tr   
+                %td Resuscitation: Apgar scores:
+                %td
+                  %table
+                    %thead
+                      %tr
+                        %th{:style => "width:30%"}
+                        %th
+                        %th
+                    %tbody
+                      %tr
+                        %td
+                        %td
+                          1 min:
+                        %td
+                          = p.text_field :apgar_score_1, :size => 13
+                      %tr
+                        %td
+                        %td
+                          5 min:
+                        %td
+                          = p.text_field :apgar_score_5, :size => 13
+                      %tr
+                        %td
+                        %td
+                          20 min:
+                        %td
+                          = p.text_field :apgar_score_20, :size => 13
+      .module
+        .grid_5
+          &nbsp;
+        .grid_5
+          .grid_5
+            = f.submit "Create"
+            = f.submit "Next"
+          .grid_3
+            = button_to "Cancel", patients_path
