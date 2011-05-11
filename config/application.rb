@@ -45,7 +45,7 @@ module Kimaya
 end
 ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
   if html_tag =~ /<label/
-    %(<span class=\"field_with_errors\">#{html_tag}</span>).html_safe
+    %(<span class=\"field_with_errors_label\">#{html_tag}</span>).html_safe
   else
    err_msg = instance.error_message.kind_of?(Array) ? instance.error_message.first : instance.error_message
     %(<span class=\"field_with_errors\">#{html_tag}</span><span class='notification-input ni-error'>#{err_msg}</span>).html_safe
