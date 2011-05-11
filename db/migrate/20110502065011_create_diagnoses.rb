@@ -6,8 +6,7 @@ class CreateDiagnoses < ActiveRecord::Migration
       t.string  :hypoglycemia_episode
       t.boolean :hyperglycemia
       t.string  :hyperglycemia_episode
-      t.boolean :spesis
-      t.string  :sepsis_details
+      t.string  :sepsis
       t.boolean :exhange
       t.boolean :thrombocytopenia
       t.string  :dol

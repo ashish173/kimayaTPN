@@ -1,13 +1,9 @@
-#header
-  .container_12
-    .grid_12
-      .module
-        #form-header
-          #logo
-            %ul{:id=> 'navi'}
-              %li
-                %h3
-                  User Profile
-        .module-body
-          #user
-            =render :partial => 'form'
+#frmPop
+  .grid_12
+    .module#no_background
+      %h3
+        %span  User Profile
+    .module-body
+      #user
+        =render :partial => 'form'
+    %div{:style => "clear:both;"}

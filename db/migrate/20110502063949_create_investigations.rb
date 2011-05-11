@@ -3,8 +3,6 @@ class CreateInvestigations < ActiveRecord::Migration
     create_table :investigations do |t|
       t.references :patient
       t.date :investigated_on
-      t.date :blood_sugar_monitor_on
-      t.string :blood_sugar_monitor_details
       t.timestamps
     end
   end

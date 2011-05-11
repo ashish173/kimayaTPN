@@ -1,6 +1,6 @@
 = javascript_include_tag "jquery.ui.datepicker", "application"
 = form_for(@patient, :url => patient_history_path(@patient)) do |f|
-  #header
+  %div{:id => 'error'}
     .container_12
       .grid_6
         .module
@@ -26,14 +26,14 @@
                 %td Past Obstetric History
                 %td
                   .grid_4
-                    =  check_box_tag "patient[mother_history_attributes][post_obstetric_history][]", "G" 
                     G
+                    = 'G'#m.text_field :g 
                   .grid_4
-                    =  check_box_tag "patient[mother_history_attributes][post_obstetric_history][]", "P" 
                     P
+                    = 'P'#m.text_field :p 
                   .grid_4
-                    =  check_box_tag "patient[mother_history_attributes][post_obstetric_history][]", "A" 
                     A
+                    = 'A'#m.text_field :a 
                   .grid_4
               %tr
                 %td Maternal USG
@@ -153,7 +153,7 @@
               %tr
                 %td Mode of Delivery
                 %td
-                  = select('post', "gender", Gender.all.collect{|g| [g.name, g.gender_id]}, {:include_blank => "--select--"}, :style => "width:292px;")
+                  = select('post', "gender", Modes_of_delivery,{}, :style => "width:292px;")
               %tr
                 %td Rupture of Membranes (hours)
                 %td

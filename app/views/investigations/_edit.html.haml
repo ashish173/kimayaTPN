@@ -1,4 +1,13 @@
 = javascript_include_tag "jquery.ui.datepicker", "application"
+.container_12
+  .grid_6
+    &nbsp;
+    %strong Select date
+    = text_field :day, '',:class => 'datepicker', :size => 7
+  .grid_6
+    %br
+    %br
+.container_12
 = form_for(@investigation, :url => patient_investigation_path(@patient,@investigation)) do |f|
   #header
     .container_12
@@ -68,7 +77,7 @@
                     .grid_6
                       Episodes:
                     .grid_6
-                      = d.text_field :hypoglycemia_episode, :size => 10
+                      = d.text_field :hypoglycemia_episode, :size => 5
                 %tr
                   %td
                     Hyperglycemia:
@@ -82,18 +91,12 @@
                     .grid_6
                       Episodes:
                     .grid_6
-                      = d.text_field :hyperglycemia_episode, :size => 10
+                      = d.text_field :hyperglycemia_episode, :size => 5
                 %tr
                   %td
                     Sepsis: 
                   %td
-                    = d.radio_button :spesis, false, :class => 'sepsis'
-                    = "No"
-                  %td
-                    = d.radio_button :spesis, true, :class => 'sepsis'
-                    = "Yes"
-                  %td
-                    = d.select :sepsis_details,["asf","asfd"],{:include_blank => "--select--"}, :style => "width:220px;"
+                    = d.text_field :spesis, :size => 5
                 %tr
                   %td
                     Exhange 
@@ -117,7 +120,7 @@
                     .grid_6
                       Dol:
                     .grid_6
-                      = d.text_field :dol, :size => 10
+                      = d.text_field :dol, :size => 5
                 %tr
                   %td
                     Intra Ventricular Haemorrhaae 
@@ -131,7 +134,7 @@
                     .grid_6
                       Grade:
                     .grid_6
-                      = d.text_field :grade, :size => 10
+                      = d.text_field :grade, :size => 5
       .grid_6
         .grid_12
           .module
@@ -152,7 +155,7 @@
                   %td
                     = ba.text_field :serum_urea, :size => 10
                   %td
-                    Urine Area
+                    Urinrry Urea
                   %td
                     = ba.text_field :urine_area, :size => 10
                 %tr

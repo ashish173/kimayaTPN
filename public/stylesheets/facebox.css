@@ -29,21 +29,6 @@
 #facebox .content .profile {
   width: 500px;
 }
-#facebox .content .new_tpn {
-  width: 900px;
-}
-
-#facebox .content .new_patient, #facebox .content .edit_user, #facebox .content .new_user,#facebox .content .edit_patient{
-  width: 700px;
-}
-#facebox .content .new_patient, #facebox .content .edit_user, #facebox .content .new_tpn{
-  display:table;
-  padding: 10px;
-  background: #fff;
-  -webkit-border-radius:4px;
-  -moz-border-radius:4px;
-  border-radius:4px;
-}
 
 #facebox .content > p:first-child{
   margin-top:0;

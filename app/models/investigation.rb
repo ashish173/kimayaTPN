@@ -7,7 +7,7 @@ class Investigation < ActiveRecord::Base
   has_one :tpn_additive
   has_one :enteral_diagnosis
   has_one :anthropometric_measurement
-
+  has_many :blood_sugar_monitors
 
   accepts_nested_attributes_for :blood_analysis
   accepts_nested_attributes_for :diagnosis
@@ -16,6 +16,7 @@ class Investigation < ActiveRecord::Base
   accepts_nested_attributes_for :tpn_additive
   accepts_nested_attributes_for :enteral_diagnosis
   accepts_nested_attributes_for :anthropometric_measurement
+  accepts_nested_attributes_for :blood_sugar_monitors
   
   scope :day, lambda { |date| {:conditions => ["investigated_on = ?", date]} }
   scope :today, day(Date.today)

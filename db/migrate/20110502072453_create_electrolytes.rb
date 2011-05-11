@@ -5,9 +5,6 @@ class CreateElectrolytes < ActiveRecord::Migration
       t.string :sodium
       t.string :potassium
       t.string :calcium
-      t.string :urea
-      t.string :triglycerides
-      t.string :creatinin
       t.timestamps
     end
   end

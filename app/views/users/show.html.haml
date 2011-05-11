@@ -1,55 +1,53 @@
-%div{:class => "profile"}
-#header
-  .container_12
-    .grid_12
-      .module
-        #form-header
-          #logo
-            %ul{:id=> 'navi'}
-              %li
-                %h4
-                  Profile
-        .module-body
-          %table
-            %tr
-              %td
-                %strong
-                  Name : 
-              %td
-                #{@user.name}
-            %tr
-              %td
-                %strong
-                  Address :
-              %td
-                #{@user.address}
-            %tr
-              %td
-                %strong
-                  City :
-              %td
-                #{@user.city}
-            %tr
-              %td
-                %strong
-                  Pincode :
-              %td
-                #{@user.pincode}
-            %tr
-              %td
-                %strong
-                  Residence Telephone :
-              %td
-                #{@user.residence_telephone}
-            %tr
-              %td
-                %strong
-                  Emergency Telephone:
-              %td
-                #{@user.emergency_telephone}
-            %tr
-              %td
-                %strong
-                  Mobile Number :
-              %td
-                #{@user.mobile_number}
+#frmPop
+  .grid_12
+    .module#no_background
+      #form-header
+        #logo
+          %ul{:id=> 'navi'}
+            %li
+              %h4
+                Profile
+    .module-body
+      %table
+        %tr
+          %td
+            %strong
+              Name : 
+          %td
+            #{@user.name}
+        %tr
+          %td
+            %strong
+              Address :
+          %td
+            #{@user.address}
+        %tr
+          %td
+            %strong
+              City :
+          %td
+            #{@user.city}
+        %tr
+          %td
+            %strong
+              Pincode :
+          %td
+            #{@user.pincode}
+        %tr
+          %td
+            %strong
+              Residence Telephone :
+          %td
+            #{@user.residence_telephone}
+        %tr
+          %td
+            %strong
+              Emergency Telephone:
+          %td
+            #{@user.emergency_telephone}
+        %tr
+          %td
+            %strong
+              Mobile Number :
+          %td
+            #{@user.mobile_number}

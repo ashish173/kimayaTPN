@@ -3,7 +3,9 @@ class CreateMotherHistories < ActiveRecord::Migration
     create_table :mother_histories do |t|
       t.references :patient
       t.boolean :is_anc
-      t.string :post_obstetric_history
+      t.float :g
+      t.float :p
+      t.float :a
       t.string :maternal_usg
       t.string :age
       t.string :pre_pregnancy_weight

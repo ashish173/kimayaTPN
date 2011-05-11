@@ -1,33 +1,31 @@
-= #Form to edit user profile
-
 = form_for(@user, :url => user_path(@user.id), :remote => true) do |f|
-  #header
-    .container_12
-      .grid_6
-        %p
-          = f.label "user_name *"
-          = f.text_field :name
-        %p
-          = f.label "address *"
-          = f.text_field :address
-        %p
-          = f.label :emergency_telephone
-          = f.text_field :emergency_telephone
-        %p
-          = f.label :mobile_number
-          = f.text_field :mobile_number
-      .grid_6
-        %p
-          = f.label :city
-          = f.text_field :city
-        %p
-          = f.label :pincode
-          = f.text_field :pincode
-        %p  
-          = f.label "residence_telephone *"
-          = f.text_field :residence_telephone
-        %p
-          = f.label :additional_detail
-          = f.text_area :additional_detail, :rows => 3, :cols => 39
-      = f.submit "Update"
-      = button_to_function "Cancel", "$.facebox.close()"
+  .div{:style => "width:300px;float:left;"}
+    %p
+      = f.label "user_name *"
+      = f.text_field :name
+    %p
+      = f.label "address *"
+      = f.text_field :address
+    %p
+      = f.label :emergency_telephone
+      = f.text_field :emergency_telephone
+    %p
+      = f.label :mobile_number
+      = f.text_field :mobile_number
+    %br
+    = f.submit "Update", :class => "submit-green"
+    = button_to_function "Cancel", "$.facebox.close()", :class => "submit-gray"
+  .div{:style => "width:300px;float:left;"}
+    %p
+      = f.label :city
+      = f.text_field :city
+    %p
+      = f.label :pincode
+      = f.text_field :pincode
+    %p  
+      = f.label "residence_telephone *"
+      = f.text_field :residence_telephone
+    %p
+      = f.label :additional_detail
+      = f.text_area :additional_detail, :rows => 3, :cols => 39
+  .div{:style => "width:600px;"}
