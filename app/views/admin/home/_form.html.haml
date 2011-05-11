@@ -1,34 +1,34 @@
 = form_for(@user, :url => user_registration_path(:for => params[:for]), :remote => true) do |f|
-  .div{:style => "width:300px;float:left;"}
+  .div{:style => "width:400px;float:left;"}
     %p
       = f.label :email, "Email *"
-      = f.text_field :email, :class => "input-long"
+      = f.text_field :email
     %p
       = f.label :name, "Name *"
-      = f.text_field :name, :class => "input-long"
+      = f.text_field :name
     %p
       = f.label :address
-      = f.text_field :address, :class => "input-long"
+      = f.text_field :address
     %p
       = f.label :mobile_number
-      = f.text_field :mobile_number, :class => "input-long"
+      = f.text_field :mobile_number
     %br
     %br
     = f.submit "Invite", :class => "submit-green"
     = button_to_function "Cancel", "$.facebox.close();", :class => "submit-gray"
-  .div{:style => "width:300px;float:left;"}
+  .div{:style => "width:400px;float:left;"}
     %p
       = f.label :city
-      = f.text_field :city, :class => "input-long"
+      = f.text_field :city
     %p
       = f.label :pincode
-      = f.text_field :pincode, :class => "input-long"
+      = f.text_field :pincode
     %p
       = f.label :residence_telephone, "Residence Telephone *"
-      = f.text_field :residence_telephone, :class => "input-long"
+      = f.text_field :residence_telephone
     %p
       = f.label :emergency_telephone
-      = f.text_field :emergency_telephone, :class => "input-long"
+      = f.text_field :emergency_telephone
     %p
       = f.label :additional_detail
       = f.text_area :additional_detail, :rows => 3, :cols => 40, :class => "input-long"

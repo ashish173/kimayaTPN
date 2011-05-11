@@ -782,6 +782,13 @@ a.dashboard-module span {
     background: none !important;
 }
 
-.field_with_errors input {
-  border-color:red;
+.field_with_errors {
+    border :1px solid red;
+    display:inline-block;
+}
+
+input[type="text"], input[type="password"], input[type="email"], select {
+    border: 1px solid #CCC;
+    margin: 0px;
+    padding: 5px;
 }
