@@ -20,7 +20,8 @@ class InvestigationsController < ApplicationController
 
   def create
     @patient = Patient.find(params[:patient_id])
-    @investigation = Investigation.patient(@patient.id).today.empty? ? Investigation.new : Investigation.patient(@patient.id).today.last
+    @investigation = Investigation.new
+    @investigation.blood_sugar_monitors.build if @investigation.blood_sugar_monitors.nil?
     @investigation.attributes = params[:investigation]
     @investigation.build_tpn_additive if @investigation.tpn_additive.nil?
     @investigation.build_enteral_diagnosis if @investigation.enteral_diagnosis.nil?
@@ -39,7 +40,7 @@ class InvestigationsController < ApplicationController
 
   def edit
     @patient = Patient.find(params[:patient_id])
-    @investigation = Investigation.today.patient(@patient).last
+    @investigation = Investigation.find(params[:id])
   end
 
   def update

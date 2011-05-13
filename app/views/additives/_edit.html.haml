@@ -1,21 +1,20 @@
 = form_for(@additive, :url => additive_path(@additive), :method => :put, :remote => true) do |f|
-  #header
-    .container_12
-      %p
-        %h5  Additive Name 
-        = @additive.name
-      %p
-        %h5  Market Name
-        = @additive.market_name
-      %p
-        %h5
-          = f.label :market_name
-        = f.text_field :market_name
-      %p
-        %h5
-          = f.label "constant #{@additive.unit}"
-        = f.text_field :constant 
-      %p
-      %br
-        = f.submit "Update"
-        = button_to_function "Cancel", "$.facebox.close()"
+  .container_12
+    %p
+      %h5  Additive Name 
+      = @additive.name
+    %p
+      %h5  Market Name
+      = @additive.market_name
+    %p
+      %h5
+        = f.label :market_name
+      = f.text_field :market_name
+    %p
+      %h5
+        = f.label "constant #{@additive.unit}"
+      = f.text_field :constant 
+    %p
+    %br
+      = f.submit "Update"
+      = button_to_function "Cancel", "$.facebox.close()"

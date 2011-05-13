@@ -3,7 +3,9 @@
   %div{:id => 'error'}
   .module
     %h2
-      %span Investigations
+      %span Patient History
+    .message
+      All Fields are compasary
     .module-body
       .container_12
         .grid_6
@@ -24,19 +26,19 @@
                   .input5
                     Past Obstetric History
                   .input5
-                    G
+                    G : 
                     = m.text_field :g , :size => 2
                   .input5
-                    P
+                    P :
                     = m.text_field :p , :size => 2
                   .input5
-                    A
+                    A :
                     = m.text_field :a , :size => 2
                 .input0
                   .input5
                     Maternal USG
                   .input5
-                    = m.text_field :maternal_usg, :size => 25
+                    = m.text_field :maternal_usg
                 .input0
                   .input5
                     Age
@@ -95,7 +97,7 @@
                   .input5
                     Medical Problems
                   .input5
-                    = text_field(:medical, :problems, :size => 25)
+                    = text_field(:medical, :problems)
                 .input0
                   .input5
                   .input5

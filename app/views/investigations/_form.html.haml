@@ -1,169 +1,167 @@
 = javascript_include_tag "jquery.ui.datepicker", "application"
 = form_for(@investigation, :url => patient_investigations_path(@patient.id)) do |f|
   = f.hidden_field :patient_id, :value => @patient.id
-  #header
-    .module
-      %h2
-        %span Investigations
-      .module-body
-        %p
-          %strong Select date 
-          = f.text_field :investigated_on, :value => Date.today,:class => 'datepicker', :size => 7
-        .container_12
-          .grid_6
-            .grid_12
-              .module
-                %h2
-                  %span Arterial Blood Gas Analysis
-                .module-body
-                  = f.fields_for :blood_analysis do |b|
-                    .input
-                      .input_left
-                        %p
-                          %span{:style => "width:100px;"} pH
-                          = b.text_field :ph, :size => 6
-                        %p
-                          PCO2
-                          = b.text_field :pco2, :size => 6
-                        %p
-                          PaO2
-                          = b.text_field :pao2, :size => 6
-                      .input_right
-                        %p
-                          HCO3
-                          = b.text_field :hco3, :size => 6
-                        %p
-                          ABE
-                          = b.text_field :abe, :size => 6
-                        %p
-                          SO2
-                          = b.text_field :so2, :size => 6
-            .grid_12
-              .module   
-                %h2
-                  %span Diagnosis
-                .module-body
-                  = f.fields_for :diagnosis do |d|
-                    .input0
-                      .input1
-                        Hypoglycaemia: 
-                      .input2
-                        = d.radio_button :hypoglycemia, false, :class => 'hyperglycemia'
-                        = "No"
-                      .input2
-                        = d.radio_button :hypoglycemia, true, :class => 'hyperglycemia'
-                        = "Yes"
-                      .input4
-                        Episodes:
-                        = d.text_field :hypoglycemia_episode, :size => 3
-                    .input0
-                      .input1
-                        Hyperglycemia:
-                      .input2
-                        = d.radio_button :hyperglycemia, false,  :class => 'hyperglycemia'
-                        = "No"
-                      .input2
-                        = d.radio_button :hyperglycemia, true, :class => 'hyperglycemia'
-                        = "Yes"
-                      .input4
-                        Episodes:
-                        = d.text_field :hyperglycemia_episode, :size => 3 
-                    .input0
-                      .input1
-                        Sepsis: 
-                      .input2
-                        = d.text_field :sepsis, :size => 5
-                      .input2
-                      .input4
-                    .input0
-                      .input1
-                        Exhange 
-                      .input2
-                        = d.radio_button :exhange, false, :class => 'exhange'
-                        = "No"
-                      .input2
-                        = d.radio_button :exhange, true, :class => 'exhange'
-                        = "Yes"
-                      .input4
-                    .input0
-                      .input1
-                        Thrombocytopenia
-                      .input2
-                        = d.radio_button :thrombocytopenia, false, :class => 'thrombocytopenia'
-                        = "No"
-                      .input2
-                        = d.radio_button :thrombocytopenia, true, :class => 'thrombocytopenia'
-                        = "Yes"
-                      .input4
-                        Dol:
-                        = d.text_field :dol, :size => 3
-                    .input0
-                      .input1
-                        Intra Ventricular Haemorrhage
-                      .input2
-                        = d.radio_button :haemorrhage, false, :class => 'haemorrhage'
-                        = "No"
-                      .input2
-                        = d.radio_button :haemorrhage, true, :class => 'haemorrhage'
-                        = "Yes"
-                      .input4
-                        Grade:
-                        = d.text_field :grade, :size => 3
+  .module
+    %h2
+      %span Investigations
+    .module-body
+      %p
+        %strong Select date 
+        = f.text_field :investigated_on, :value => Date.today,:class => 'datepicker', :size => 7
+      .container_12
+        .grid_6
+          .grid_12
+            .module
+              %h2
+                %span Arterial Blood Gas Analysis
+              .module-body
+                = f.fields_for :blood_analysis do |b|
+                  .input
+                    .input_left
+                      %p
+                        %span{:style => "width:100px;"} pH
+                        = b.text_field :ph, :size => 6
+                      %p
+                        PCO2
+                        = b.text_field :pco2, :size => 6
+                      %p
+                        PaO2
+                        = b.text_field :pao2, :size => 6
+                    .input_right
+                      %p
+                        HCO3
+                        = b.text_field :hco3, :size => 6
+                      %p
+                        ABE
+                        = b.text_field :abe, :size => 6
+                      %p
+                        SO2
+                        = b.text_field :so2, :size => 6
+          .grid_12
+            .module   
+              %h2
+                %span Diagnosis
+              .module-body
+                = f.fields_for :diagnosis do |d|
+                  .input0
+                    .input1
+                      Hypoglycaemia: 
+                    .input2
+                      = d.radio_button :hypoglycemia, false, :class => 'hyperglycemia'
+                      = "No"
+                    .input2
+                      = d.radio_button :hypoglycemia, true, :class => 'hyperglycemia'
+                      = "Yes"
+                    .input4
+                      Episodes:
+                      = d.text_field :hypoglycemia_episode, :size => 3
+                  .input0
+                    .input1
+                      Hyperglycemia:
+                    .input2
+                      = d.radio_button :hyperglycemia, false,  :class => 'hyperglycemia'
+                      = "No"
+                    .input2
+                      = d.radio_button :hyperglycemia, true, :class => 'hyperglycemia'
+                      = "Yes"
+                    .input4
+                      Episodes:
+                      = d.text_field :hyperglycemia_episode, :size => 3 
+                  .input0
+                    .input1
+                      Sepsis: 
+                    .input2
+                      = d.text_field :sepsis, :size => 5
+                    .input2
+                    .input4
+                  .input0
+                    .input1
+                      Exhange 
+                    .input2
+                      = d.radio_button :exhange, false, :class => 'exhange'
+                      = "No"
+                    .input2
+                      = d.radio_button :exhange, true, :class => 'exhange'
+                      = "Yes"
+                    .input4
+                  .input0
+                    .input1
+                      Thrombocytopenia
+                    .input2
+                      = d.radio_button :thrombocytopenia, false, :class => 'thrombocytopenia'
+                      = "No"
+                    .input2
+                      = d.radio_button :thrombocytopenia, true, :class => 'thrombocytopenia'
+                      = "Yes"
+                    .input4
+                      Dol:
+                      = d.text_field :dol, :size => 3
+                  .input0
+                    .input1
+                      Intra Ventricular Haemorrhage
+                    .input2
+                      = d.radio_button :haemorrhage, false, :class => 'haemorrhage'
+                      = "No"
+                    .input2
+                      = d.radio_button :haemorrhage, true, :class => 'haemorrhage'
+                      = "Yes"
+                    .input4
+                      Grade:
+                      = d.text_field :grade, :size => 3
 
-          .grid_6
-            .grid_12
-              .module
-                %h2
-                  %span Biochemistry Assessment
-                .module-body
-                  = f.fields_for :biochemistry_assessment do |ba|
-                    .input
-                      .input_left
-                        %p
-                          Serum Urea
-                          = ba.text_field :serum_urea, :size => 6
-                        %p
-                          Serum Creatinine
-                          = ba.text_field :serum_creatinine, :size => 6
-                        %p
-                          Triglycerides
-                          = ba.text_field :triglycerides, :size => 6
-                      .input_right
-                        %p
-                          Urinary Urea
-                          = ba.text_field :urine_area, :size => 6
-                        %p
-                          Bilirubin
-                          = ba.text_field :bilirubin, :size => 6
-            .grid_12
-              .module
-                %h2
-                  %span Electrolytes
-                .module-body
-                  = f.fields_for :electrolyte do |e|
-                    .input
-                      .input_left
-                        %p
-                          Sodium
-                          = e.text_field :sodium, :size => 8
-                        %p
-                          Potassium
-                          = e.text_field :potassium, :size => 8
-                      .input_right
-                        %p
-                          Calcium
-                          = e.text_field :calcium, :size => 8
-            .grid_12
-              .module
-                %h2
-                  %span Blood Sugar Monitoring
-                .module-body
-                  = f.fields_for :blood_sugar_monitors do |bs|
-                    = bs.text_field :blood_sugar_monitored_on, :class => 'datepicker', :size => 7 
-                    = bs.text_field :details, :size => 7
-        .buttons
-          .grid_4
-            = f.submit "Create", :class => "submit-green"
-            = f.submit "Next", :class => "submit-green"
-            = link_to "Cancel", patients_path, :class => "submit-gray"
-        
+        .grid_6
+          .grid_12
+            .module
+              %h2
+                %span Biochemistry Assessment
+              .module-body
+                = f.fields_for :biochemistry_assessment do |ba|
+                  .input
+                    .input_left
+                      %p
+                        Serum Urea
+                        = ba.text_field :serum_urea, :size => 6
+                      %p
+                        Serum Creatinine
+                        = ba.text_field :serum_creatinine, :size => 6
+                      %p
+                        Triglycerides
+                        = ba.text_field :triglycerides, :size => 6
+                    .input_right
+                      %p
+                        Urinary Urea
+                        = ba.text_field :urine_area, :size => 6
+                      %p
+                        Bilirubin
+                        = ba.text_field :bilirubin, :size => 6
+          .grid_12
+            .module
+              %h2
+                %span Electrolytes
+              .module-body
+                = f.fields_for :electrolyte do |e|
+                  .input
+                    .input_left
+                      %p
+                        Sodium
+                        = e.text_field :sodium, :size => 8
+                      %p
+                        Potassium
+                        = e.text_field :potassium, :size => 8
+                    .input_right
+                      %p
+                        Calcium
+                        = e.text_field :calcium, :size => 8
+          .grid_12
+            .module
+              %h2
+                %span Blood Sugar Monitoring
+              .module-body
+                = f.fields_for :blood_sugar_monitors do |bs|
+                  = bs.text_field :blood_sugar_monitored_on, :class => 'datepicker', :size => 7 
+                  = bs.text_field :details, :size => 7
+      .buttons
+        .grid_4
+          = f.submit "Create", :class => "submit-green"
+          = f.submit "Next", :class => "submit-green"
+          = link_to "Cancel", patients_path, :class => "submit-gray"
