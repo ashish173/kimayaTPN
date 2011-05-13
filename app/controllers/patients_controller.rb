@@ -81,6 +81,7 @@ class PatientsController < ApplicationController
         end
       end
     else
+      @patient.save!
       render :action => 'info'
     end
   end

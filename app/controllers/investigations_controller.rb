@@ -9,7 +9,6 @@ class InvestigationsController < ApplicationController
   def new
     @patient = Patient.find(params[:patient_id])
     @investigation = Investigation.new
-    #@investigation = Investigation.patient(@patient.id).today.empty? ? Investigation.new : Investigation.patient(@patient.id).today.last
     @investigation.build_tpn_additive if @investigation.tpn_additive.nil?
     @investigation.build_enteral_diagnosis if @investigation.enteral_diagnosis.nil?
     @investigation.build_anthropometric_measurement if @investigation.anthropometric_measurement.nil?
@@ -41,9 +40,6 @@ class InvestigationsController < ApplicationController
   def edit
     @patient = Patient.find(params[:patient_id])
     @investigation = Investigation.today.patient(@patient).last
-    if @investigation == nil
-      redirect_to new_patient_investigation_path(@patient)
-    end
   end
 
   def update

@@ -22,6 +22,11 @@
             .grid_12
               = yield :user
             %div{:style => "clear: both;"}
+        -if content_for(:submenu)
+          #subnav
+            .container_12
+              .grid_12
+                = yield :submenu
           %div{:style => "clear: both;"}
     .container_12
       = yield

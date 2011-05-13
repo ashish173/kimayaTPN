@@ -43,9 +43,6 @@ class AdditiveInvestigationsController < ApplicationController
     @investigation.build_electrolyte if @investigation.electrolyte.nil?
     @additives = @patient.daily_tpn_additives.last(7)
     @additives.pop
-    if @investigation == nil
-      redirect_to new_patient_additive_investigation_path(@patient)
-    end
   end
 
   def update

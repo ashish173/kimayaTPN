@@ -1,53 +1,43 @@
 #frmPop
   .grid_12
     .module#no_background
-      #form-header
-        #logo
-          %ul{:id=> 'navi'}
-            %li
-              %h4
-                Profile
+      %h3
+        %span Profile 
     .module-body
-      %table
-        %tr
-          %td
-            %strong
-              Name : 
-          %td
-            #{@user.name}
-        %tr
-          %td
-            %strong
-              Address :
-          %td
-            #{@user.address}
-        %tr
-          %td
-            %strong
-              City :
-          %td
-            #{@user.city}
-        %tr
-          %td
-            %strong
-              Pincode :
-          %td
-            #{@user.pincode}
-        %tr
-          %td
-            %strong
-              Residence Telephone :
-          %td
-            #{@user.residence_telephone}
-        %tr
-          %td
-            %strong
-              Emergency Telephone:
-          %td
-            #{@user.emergency_telephone}
-        %tr
-          %td
-            %strong
-              Mobile Number :
-          %td
-            #{@user.mobile_number}
+      .div{:style => "width:200px;float:left;"}
+        %p
+          %strong
+            Name : 
+        %p
+          %strong
+            Address :
+        %p
+          %strong
+            City :
+        %p
+          %strong
+            Pincode :
+        %p
+          %strong
+            Residence Telephone :
+        %p
+          %strong
+            Emergency Telephone:
+        %p
+          %strong
+            Mobile Number :
+      .div{:style => "width:200px;float:left;"}
+        %p
+          #{@user.name}
+        %p
+          #{@user.address}
+        %p
+          #{@user.city}
+        %p
+          #{@user.pincode}
+        %p
+          #{@user.residence_telephone}
+        %p
+          #{@user.emergency_telephone}
+        %p
+          #{@user.mobile_number}

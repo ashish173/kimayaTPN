@@ -1,10 +1,10 @@
-#subnav
-  .container_12
-    .grid_12
-      %ul
-        %li 
-          = link_to "Daily Investigation" , "#"
-        %li 
-          = link_to "TPN additives", new_patient_additive_investigation_path(@patient)
-.container_12
-  = render :partial => 'form'
+= content_for :submenu do
+  %ul
+    %li 
+      = link_to "Daily Investigation" , "#"
+    %li 
+      = link_to "TPN additives", new_patient_additive_investigation_path(@patient)
+#frmPop
+  .grid_12
+    = render :partial => 'form'
+  %div{:style => "clear:both;"}
