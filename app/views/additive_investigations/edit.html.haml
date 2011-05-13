@@ -1,10 +1,14 @@
-#subnav
-  .container_12
-    .grid_12
-      %ul
-        %li 
-          = link_to "Daily Investigation" , edit_patient_investigation_path(@patient,@investigation)
-        %li 
-          = link_to "TPN additives", "#"
-.container_12
-  = render :partial => 'edit'
+= content_for :submenu do
+  %ul
+    %li 
+      = link_to "Daily Investigation" , edit_patient_investigation_path(@patient,@investigation)
+    %li 
+      = link_to "TPN additives", "#"
+#frmPop
+  .grid_12
+    .module
+      %h2
+        %span Investigations
+      .module-body
+        = render :partial => 'edit'
+      %div{:style => "clear:both;"}

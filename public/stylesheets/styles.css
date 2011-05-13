@@ -823,7 +823,13 @@ a.dashboard-module span {
     display:inline-block;
 }
 
-.input_left, .input_days, .input_day1, .input_day, .input0,.input1, .input2, .input4, .input5
+.message{
+  color: red;
+  margin-top: 50px;
+  margin-left:30px;
+}
+
+.input_left, .input_day1, .input_day, .input0,.input1, .input2, .input4, .input5, .input6
 {
   float: left;
 }
@@ -841,9 +847,11 @@ a.dashboard-module span {
 
 .input_days, .avg
 {
-  width: 70%;
+  float: right;
+  width: 65%;
   margin-bottom: 4px;
-  margin-top: 9px;
+  margin-left: 4px;
+  margin-top: 5px;
 }
 
 .input_day1{
@@ -853,12 +861,17 @@ a.dashboard-module span {
 
 .input_day
 {
-  width: 12%;
+  width: 15%;
+}
+
+.input6{
+  width: 100%;
+  margin: 2px;
 }
 
 .input0{
   width: 100%;
-  margin: 6px;
+  margin: 5px;
 }
 
 .input1{
@@ -879,6 +892,7 @@ a.dashboard-module span {
 {
   width: 50%;
 }
+
 
 .input4 input[type="text"],
 .input input[type="text"] {

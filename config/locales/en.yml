@@ -28,3 +28,4 @@ en:
     
       #investigation
         blood_sugar_monitor_on_blank: "Please enter date"
+        investigation_exists: "Please select another day" 

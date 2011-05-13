@@ -20,22 +20,21 @@
   }
 
 = form_for(@additive, :url => additives_path, :remote => true) do |f|
-  #header
-    .container_12
-      .grid_6
-        %p
-          %h5
-            = f.label :additive_name
-          = f.select :name, TpnMarketAdditive.all.uniq_by(&:name).collect{|g| [g.name, g.name]}, {:include_blank => "--Select--"}, :style => "width:300px;"
-        %p
-          %h5
-            = f.label :market_name
-          = f.text_field :market_name, :size => 31
-        %p
-          %h5
-            = f.label :%, :id => "unit"
-          = f.text_field :constant, :size => 31
-        %p
-          = f.hidden_field :unit
-        = f.submit "Create"
-        = button_to_function "Cancel", "$.facebox.close()"
+  .container_12
+    .grid_6
+      %p
+        %h5
+          = f.label :additive_name
+        = f.select :name, TpnMarketAdditive.all.uniq_by(&:name).collect{|g| [g.name, g.name]}, {:include_blank => "--Select--"}, :style => "width:300px;"
+      %p
+        %h5
+          = f.label :market_name
+        = f.text_field :market_name, :size => 31
+      %p
+        %h5
+          = f.label :%, :id => "unit"
+        = f.text_field :constant, :size => 31
+      %p
+        = f.hidden_field :unit
+      = f.submit "Create"
+      = button_to_function "Cancel", "$.facebox.close()"

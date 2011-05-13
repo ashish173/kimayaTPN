@@ -9,23 +9,17 @@ class AdditiveInvestigationsController < ApplicationController
   def new
     @patient = Patient.find(params[:patient_id].to_i)
     @investigation = Investigation.new
-    @additives = @patient.daily_tpn_additives.last(7)
-    @additives.pop
-    @investigation.build_tpn_additive if @investigation.tpn_additive.nil?
-    @investigation.build_enteral_diagnosis if @investigation.enteral_diagnosis.nil?
-    @investigation.build_anthropometric_measurement if @investigation.anthropometric_measurement.nil?
-    @investigation.build_blood_analysis if @investigation.blood_analysis.nil?
-    @investigation.build_diagnosis if @investigation.diagnosis.nil?
-    @investigation.build_biochemistry_assessment if @investigation.biochemistry_assessment.nil?
-    @investigation.build_electrolyte if @investigation.electrolyte.nil?
+    @additives = @patient.daily_tpn_additives.last(5)
+    @investigation.build_tpn_additive
+    @investigation.build_enteral_diagnosis
+    @investigation.build_anthropometric_measurement 
   end
 
   def create
-    @patient = params[:investigation][:patient_id]
+    @patient =  Patient.find(params[:investigation][:patient_id])
     @investigation = Investigation.new
     @investigation.attributes = params[:investigation]
-    @additives = @investigation.patient.daily_tpn_additives.last(7)
-    @additives.pop
+    @additives = @patient.daily_tpn_additives.last(5)
     if @investigation.save
       flash[:notice] = "Additive created successfully" 
       redirect_to(patients_path)
@@ -37,18 +31,18 @@ class AdditiveInvestigationsController < ApplicationController
   def edit
     @patient = Patient.find(params[:patient_id])
     @investigation = Investigation.find(params[:id])
-    @investigation.build_blood_analysis if @investigation.blood_analysis.nil?
-    @investigation.build_diagnosis if @investigation.diagnosis.nil?
-    @investigation.build_biochemistry_assessment if @investigation.biochemistry_assessment.nil?
-    @investigation.build_electrolyte if @investigation.electrolyte.nil?
-    @additives = @patient.daily_tpn_additives.last(7)
+    @investigation.build_tpn_additive if @investigation.tpn_additive.nil?
+    @investigation.build_enteral_diagnosis if @investigation.enteral_diagnosis.nil?
+    @investigation.build_anthropometric_measurement if @investigation.anthropometric_measurement.nil?
+    @additives = @investigation.patient.daily_tpn_additives.last(5)
     @additives.pop
   end
 
   def update
+    @patient = Patient.find(params[:patient_id])
     @investigation = Investigation.find(params[:id])
     @investigation.attributes = params[:investigation]
-    @additives = @investigation.patient.daily_tpn_additives.last(7)
+    @additives = @investigation.patient.daily_tpn_additives.last(5)
     @additives.pop
     if @investigation.save
       flash[:notice] = "Additive changed successfully" 

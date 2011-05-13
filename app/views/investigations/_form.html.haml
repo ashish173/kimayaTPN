@@ -71,7 +71,7 @@
                     .input1
                       Sepsis: 
                     .input2
-                      = d.text_field :sepsis, :size => 40
+                      = d.text_field :sepsis
                   .input0
                     .input1
                       Exhange 
@@ -157,9 +157,13 @@
               .module-body
                 = f.fields_for :blood_sugar_monitors do |bs|
                   #monitors
-                    = bs.text_field :blood_sugar_monitored_on, :class => 'datetimepicker', :size => 7 
-                    = bs.text_field :details, :size => 7
-                    /= link_to_function "Add more", "", :class => "submit-green"
+                    .input0
+                      .input4
+                        Time
+                        = bs.text_field :blood_sugar_monitored_on, :class => 'datetimepicker', :size => 7 
+                      .input5
+                        = bs.text_field :details, :size => 7
+                      /= link_to_function "Add more", "", :class => "submit-green"
 
       .buttons
         .grid_4
@@ -167,11 +171,6 @@
           = f.submit "Next", :class => "submit-green"
           = link_to "Cancel", patients_path, :class => "submit-gray"
       
-- unless @investigation.errors.empty?
-  :javascript
-    $(function() {
-     clearFormErrors();
-    });
 :javascript
   $(function() {
     $('.datetimepicker').timepicker({});

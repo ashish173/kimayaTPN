@@ -9,23 +9,17 @@ class InvestigationsController < ApplicationController
   def new
     @patient = Patient.find(params[:patient_id])
     @investigation = Investigation.new
-    @investigation.build_tpn_additive
-    @investigation.build_enteral_diagnosis
-    @investigation.build_anthropometric_measurement
     @investigation.build_blood_analysis
     @investigation.build_diagnosis 
     @investigation.build_biochemistry_assessment 
     @investigation.build_electrolyte
-    3.times{@investigation.blood_sugar_monitors.build}
+    2.times{@investigation.blood_sugar_monitors.build}
   end
 
   def create
     @patient = Patient.find(params[:patient_id])
-    @investigation = Investigation.patient(@patient.id).today.empty? ? Investigation.new : Investigation.patient(@patient.id).today.last
+    @investigation = Investigation.new
     @investigation.attributes = params[:investigation]
-    @investigation.build_tpn_additive if @investigation.tpn_additive.nil?
-    @investigation.build_enteral_diagnosis if @investigation.enteral_diagnosis.nil?
-    @investigation.build_anthropometric_measurement if @investigation.anthropometric_measurement.nil?
     if @investigation.save
       flash[:notice] = "Investigation created successfully" 
       if params[:commit] == 'Create'
@@ -40,7 +34,11 @@ class InvestigationsController < ApplicationController
 
   def edit
     @patient = Patient.find(params[:patient_id])
-    @investigation = Investigation.today.patient(@patient).last
+    @investigation = Investigation.find(params[:id])
+    @investigation.build_blood_analysis if @investigation.blood_analysis.nil?
+    @investigation.build_diagnosis if @investigation.diagnosis.nil?
+    @investigation.build_biochemistry_assessment if @investigation.biochemistry_assessment.nil?
+    @investigation.build_electrolyte if @investigation.electrolyte.nil? 
   end
 
   def update

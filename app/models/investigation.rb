@@ -20,7 +20,7 @@ class Investigation < ActiveRecord::Base
 
 
   validates :investigated_on, :presence => true
-  
+  validates_uniqueness_of :investigated_on, :scope => [:patient_id],:message => :investigation_exists
   scope :day, lambda { |date| {:conditions => ["investigated_on = ?", date]} }
   scope :today, day(Date.today)
   scope :patient, lambda { |id| {:conditions => ["patient_id = ?", id]} }

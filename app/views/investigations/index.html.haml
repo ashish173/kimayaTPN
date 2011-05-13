@@ -32,12 +32,12 @@
                   %td
                     Date
                   %td
-                    = inv.blood_sugar_monitor_on
+                    = #inv.blood_sugar_monitor_on
                 %tr
                   %td
                     Details
                   %td
-                    = inv.blood_sugar_monitor_details
+                    = #inv.blood_sugar_monitor_details
           %tr
             %td{:style => "width:20px"}
               %br
@@ -124,14 +124,9 @@
                     = inv.diagnosis.hyperglycemia
                 %tr
                   %td
-                    Spesis
+                    Sepsis
                   %td
-                    = inv.diagnosis.spesis
-                %tr
-                  %td
-                    Sepsis Details
-                  %td
-                    = inv.diagnosis.sepsis_details
+                    = inv.diagnosis.sepsis
                 %tr
                   %td
                     Exhange
@@ -172,7 +167,6 @@
                   %th
                   %th{:style => "width:20px"}
                 %tbody
-                %tr
                   %td
                     Serum 
                     Urea
@@ -230,18 +224,3 @@
                     Potassium
                   %td
                     = inv.electrolyte.potassium
-                %tr
-                  %td
-                    Urea
-                  %td
-                    = inv.electrolyte.urea
-                %tr
-                  %td
-                    Triglycerides
-                  %td
-                    = inv.electrolyte.triglycerides
-                %tr
-                  %td
-                    Creatinin
-                  %td
-                    = inv.electrolyte.creatinin
