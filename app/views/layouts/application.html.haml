@@ -33,4 +33,13 @@
             \&copy; 2010.
             %a{:href => "http://www.joshsoftware.com", :title => "Josh Software Pvt Ltd."} Kimaya TPN
       %div{:style => "clear:both;"}
-    / End #footer
+        / End #footer
+    - if flash[:notice]
+      :javascript
+        $(function() {
+          setTimeout(function() {
+            $('.notification').hide();
+          }, 3000);
+        });
+
+
