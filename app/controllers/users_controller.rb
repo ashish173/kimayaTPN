@@ -25,9 +25,9 @@ class UsersController < ApplicationController
       if @user.save
         flash[:notice] = "Successfully updated profile"
         if is_super_admin? 
-          format.html { redirect_to(users_path) }
+          format.html { redirect_to(users_path(:for => @user))}
           format.js {
-            render :js => "window.location='#{users_path}'"
+            render :js => "window.location='#{users_path(:for => @user)}'"
           }
         else
           format.html { redirect_to(user_path) }

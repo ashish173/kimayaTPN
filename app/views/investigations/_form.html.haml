@@ -1,14 +1,14 @@
-= javascript_include_tag "jquery.ui.datepicker", "application"
+= javascript_include_tag "jquery.ui.datepicker", "jquery-ui-timepicker-addon", "application"
 = form_for(@investigation, :url => patient_investigations_path(@patient.id)) do |f|
   = f.hidden_field :patient_id, :value => @patient.id
   .module
     %h2
       %span Investigations
     .module-body
-      %p
-        %strong Select date 
-        = f.text_field :investigated_on, :value => Date.today,:class => 'datepicker', :size => 7
       .container_12
+        .grid_12.header_date
+          %span Date of Investingation 
+          = f.text_field :investigated_on, :class => 'datepicker', :size => 20
         .grid_6
           .grid_12
             .module
@@ -71,9 +71,7 @@
                     .input1
                       Sepsis: 
                     .input2
-                      = d.text_field :sepsis, :size => 5
-                    .input2
-                    .input4
+                      = d.text_field :sepsis
                   .input0
                     .input1
                       Exhange 
@@ -94,7 +92,7 @@
                       = d.radio_button :thrombocytopenia, true, :class => 'thrombocytopenia'
                       = "Yes"
                     .input4
-                      Dol:
+                      DOL:
                       = d.text_field :dol, :size => 3
                   .input0
                     .input1
@@ -158,10 +156,23 @@
                 %span Blood Sugar Monitoring
               .module-body
                 = f.fields_for :blood_sugar_monitors do |bs|
-                  = bs.text_field :blood_sugar_monitored_on, :class => 'datepicker', :size => 7 
-                  = bs.text_field :details, :size => 7
+                  #monitors
+                    .input0
+                      .input4
+                        Time
+                        = bs.text_field :blood_sugar_monitored_on, :class => 'datetimepicker', :size => 7 
+                      .input5
+                        = bs.text_field :details, :size => 7
+                      /= link_to_function "Add more", "", :class => "submit-green"
+
       .buttons
         .grid_4
           = f.submit "Create", :class => "submit-green"
           = f.submit "Next", :class => "submit-green"
           = link_to "Cancel", patients_path, :class => "submit-gray"
+      
+:javascript
+  $(function() {
+    $('.datetimepicker').timepicker({});
+  });
+

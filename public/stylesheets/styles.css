@@ -582,6 +582,21 @@ a.submit-gray {
     text-decoration:none;
 	}
 
+a.submit-green { 
+	background: url(/images/submit-green-bg.gif) top left repeat-x; 
+	border: 0; 
+	border-top: 1px solid #6bd091; 
+	border-left: 1px solid #6bd091; 
+	border-right: 1px solid #349c5c; 
+	border-bottom: 1px solid #349c5c; 
+	color: #ffffff; 
+	font-size: 14px; 
+	padding: 2px 12px; 
+	margin: 0px 10px 0 20px;
+	cursor: pointer;
+    text-decoration:none;
+	}
+
 .buttons {
     width:100%;
     float:left;
@@ -814,7 +829,7 @@ a.dashboard-module span {
   margin-left:30px;
 }
 
-.input_left, .input_day1, .input_day, .input0,.input1, .input2, .input4, .input5
+.input_left, .input_day1, .input_day, .input0,.input1, .input2, .input4, .input5, .input6
 {
   float: left;
 }
@@ -849,9 +864,14 @@ a.dashboard-module span {
   width: 15%;
 }
 
+.input6{
+  width: 100%;
+  margin: 2px;
+}
+
 .input0{
   width: 100%;
-  margin: 6px;
+  margin: 5px;
 }
 
 .input1{
@@ -886,4 +906,24 @@ input[type="text"], input[type="password"], input[type="email"], select {
     border: 1px solid #CCC;
     margin: 0px;
     padding: 3px;
+}
+
+.header_date {
+   margin-bottom: 10px;
+   padding-left: 10px;
+}
+
+.header_date span {
+    font-weight:bold;
+}
+
+/* Datetime picker style */
+.ui-timepicker-div .ui-widget-header{ margin-bottom: 8px; }
+.ui-timepicker-div dl{ text-align: left; }
+.ui-timepicker-div dl dt{ height: 25px; }
+.ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+
+#monitors {
+  margin:5px 0 0 5px;
 }

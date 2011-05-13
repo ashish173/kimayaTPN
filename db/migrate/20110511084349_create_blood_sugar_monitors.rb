@@ -2,7 +2,7 @@ class CreateBloodSugarMonitors < ActiveRecord::Migration
   def self.up
     create_table :blood_sugar_monitors do |t|
       t.references :investigation
-      t.datetime :blood_sugar_monitored_on
+      t.time :blood_sugar_monitored_on
       t.string :details
       t.timestamps
     end

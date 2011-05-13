@@ -157,8 +157,14 @@
                 %span Blood Sugar Monitoring
               .module-body
                 = f.fields_for :blood_sugar_monitors do |bs|
-                  = bs.text_field :blood_sugar_monitored_on, :class => 'datepicker', :size => 7 
-                  = bs.text_field :details, :size => 7
+                  #monitors
+                    .input0
+                      .input4
+                        Time
+                        = bs.text_field :blood_sugar_monitored_on, :class => 'datetimepicker', :size => 7 
+                      .input5
+                        = bs.text_field :details, :size => 7
+                      /= link_to_function "Add more", "", :class => "submit-green"
       .buttons
         .grid_4
           = f.submit "Update", :class => "submit-green"

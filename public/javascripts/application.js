@@ -3,3 +3,7 @@
 $(function(){
         $(".datepicker").datepicker();
         });
+
+function clearFormErrors() {
+    $('.notification-input').remove();
+}

@@ -12,7 +12,7 @@
         .module-body
           = f.fields_for :tpn_additive do |inv|
             - total = @additives.length==0 ? 1 : @additives.length
-            .input0
+            .input6
               .input_day1
                 %br
                 %strong  Date
@@ -33,7 +33,7 @@
                   .avg
                     %strong
                       AVG 
-            .input0
+            .input6
               .input_day1
                 %p Day of Life
               .input_days
@@ -48,7 +48,7 @@
                 .input_day
                   .avg
                     = sum/total 
-            .input0
+            .input6
               .input_day1
                 %p Day of TPN
               .input_days
@@ -63,7 +63,7 @@
                 .input_day
                   .avg
                     = sum/total 
-            .input0
+            .input6
               .input_day1
                 %p Fluid Intake(ml/kg)
               .input_days
@@ -78,7 +78,7 @@
                 .input_day
                   .avg
                     = sum/total 
-            .input0
+            .input6
               .input_day1
                 %p Enteral Feeds(ml/day)
               .input_days
@@ -93,7 +93,7 @@
                 .input_day
                   .avg
                     = sum/total 
-            .input0
+            .input6
               .input_day1
                 %p TPN volume
               .input_days
@@ -108,7 +108,7 @@
                 .input_day
                   .avg
                     = sum/total 
-            .input0
+            .input6
               .input_day1
                 %p Amino Acids(g/kg)
               .input_days
@@ -123,7 +123,7 @@
                 .input_day
                   .avg
                     = sum/total 
-            .input0
+            .input6
               .input_day1
                 %p Lipids(g/kg)
               .input_days
@@ -138,7 +138,7 @@
                 .input_day
                   .avg
                     = sum/total 
-            .input0
+            .input6
               .input_day1
                 %p TPN Calories(Cal/kg) 
               .input_days
@@ -153,7 +153,7 @@
                 .input_day
                   .avg
                     = sum/total 
-            .input0
+            .input6
               .input_day1
                 %p DIR
               .input_days
@@ -168,7 +168,7 @@
                 .input_day
                   .avg
                     = sum/total 
-            .input0
+            .input6
               .input_day1
                 %p NER
               .input_days
