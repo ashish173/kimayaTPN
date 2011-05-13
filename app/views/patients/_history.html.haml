@@ -13,11 +13,11 @@
             .module-body
               = f.fields_for :mother_history do |m|
                 .input0
-                  .input1
-                  .input1
+                  .input5
+                  .input5
                     = m.radio_button :is_anc, true, :class => 'anc'
                     ANC
-                  .input1
+                  .input5
                     = m.radio_button :is_anc, false, :class => 'anc'
                     Non ANC
                 .input0
@@ -35,9 +35,7 @@
                 .input0
                   .input5
                     Maternal USG
-                  .input2
-                  .input2
-                  .input4  
+                  .input5
                     = m.text_field :maternal_usg, :size => 25
                 .input0
                   .input5
@@ -52,21 +50,21 @@
                     = m.radio_button :age, "> 35", :class => 'age'
                     = "> 35"
                 .input0
-                  .input1
+                  .input5
                     Pre-pregnancy wt.
-                  .input1
+                  .input5
                     = m.radio_button :pre_pregnancy_weight, "<= 40kg", :class => 'weight'
                     = "<= 40kg"
-                  .input1
+                  .input5
                     = m.radio_button :pre_pregnancy_weight, "> 40kg", :class => 'weight'
                     = "> 40kg"
                 .input0
-                  .input1
+                  .input5
                     Height
-                  .input1
+                  .input5
                     = m.radio_button :height, "<= 145 cm", :class => 'height'
                     = "<= 145 cm"
-                  .input1
+                  .input5
                     = m.radio_button :height, "> 145 cm", :class => 'height'
                     = "> 145 cm"
                 .input0
@@ -96,9 +94,7 @@
                 .input0
                   .input5
                     Medical Problems
-                  .input2
-                  .input2
-                  .input4
+                  .input5
                     = text_field(:medical, :problems, :size => 25)
                 .input0
                   .input5
@@ -112,12 +108,12 @@
                     = check_box_tag :alcoholism, ""
                     Alcholism
                 .input0
-                  .input1
+                  .input5
                     Antenatal Steroids
-                  .input1
+                  .input5
                     = m.radio_button :is_antenatal_steroids, true, :class => 'steroids'
                     Yes
-                  .input1
+                  .input5
                     = m.radio_button :is_antenatal_steroids, false, :class => 'steroids'
                     No
         .grid_6 
