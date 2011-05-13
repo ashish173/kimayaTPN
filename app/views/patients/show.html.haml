@@ -1,212 +1,153 @@
-#header
-  .container_12
-    .grid_1
-      &nbsp;
-    .grid_10
+#frmPop
+  .grid_12
+    .module
+      %h2
+        %span Patient's profile
+      .module-body
+        .div{:style => "width:400px;float:left;"}
+          %p
+            %strong
+              Name
+            %br
+              = @patient.name
+          %p  
+            %strong
+              Gender
+            %br
+              = Gender.find(@patient.gender_id).name
+          %p
+            %strong
+              Address
+            %br
+              = @patient.address
+          %p  
+            %strong
+              State
+            %br
+              = @patient.state
+          %p
+            %strong
+              City
+            %br
+              = @patient.city
+          %p
+            %strong
+              Pincode
+            %br
+              = @patient.pincode
+        .div{:style => "width:400px;float:left;"}
+          %p
+            %strong
+              Date of birth
+            %br
+              = @patient.date_of_birth
+          %p
+            %strong
+              Birth Weight
+            %br
+              = @patient.birth_weight
+          %p
+            %strong
+              Mobile Number
+            %br
+              =   @patient.pincode
+          %p
+            %strong
+              Residence Telephone
+            %br
+              = @patient.residence_telephone
+          %p
+            %strong
+              Emergency Telephone
+            %br
+              = @patient.pincode
+          %p
+            %strong
+              Additional Detail
+          %br
+            = @patient.additional_detail
+#frmPop
+  .grid_12
+    .grid_6
       .module
         %h2
-          %span Patient's profile
-      .grid_6
-        %p
-          %strong
-            Name
-          %br
-          = @patient.name
-      .grid_6
-        %p
-          %strong
-            Date of birth
-          %br
-          = @patient.date_of_birth
-      .grid_6
-        %p  
-          %strong
-            Gender
-          %br
-          = Gender.find(@patient.gender_id).name
-      .grid_6
-        %p
-          %strong
-            Birth Weight
-          %br
-          = @patient.birth_weight
-      .grid_6
-        %p
-          %strong
-            Address
-          %br
-          = @patient.address
-      .grid_6
-        %p
-          %strong
-            City
-          %br
-          = @patient.city
-      .grid_6
-        %p
-          %strong
-            Pincode
-          %br
-          = @patient.pincode
-      .grid_6
-        %p  
-          %strong
-            State
-          %br
-          = @patient.state
-      .grid_6
-        %p
-          %strong
-            Residence Telephone
-          %br
-          = @patient.residence_telephone
-      .grid_6
-        %p
-          %strong
-            Emergency Telephone
-          %br
-          = @patient.pincode
-      .grid_6
-        %p
-          %strong
-            Mobile Number
-          %br
-          = @patient.pincode
-      .grid_6
-        %p
-          %strong
-            Additional Detail
-          %br
-          = @patient.additional_detail
-      .grid_6
-        &nbsp;
-      .grid_6
-        &nbsp;
-      .module
-        .grid_6
-          %h2
-            %span Mother's history
-          &nbsp;
-          %p
-            .grid_6
+          %span Patient's history
+        .module-body
+          .div{:style => "width:250px;float:left;"}
+            %p
               %strong ANC
-            .grid_6
-              = @mother_history.try(:is_anc)
-            .grid_12
-              &nbsp;
-          %p
-            .grid_6
+            %p
               %strong Post Obstetric History
-            .grid_6
-              = @mother_history.try(:post_obstetric_history)
-            .grid_12
-              &nbsp;
-          %p
-            .grid_6
+            %p  
               %strong Maternal USG
-            .grid_6
-              = @mother_history.try(:maternal_usg)
-            .grid_12
-              &nbsp;
-          %p
-            .grid_6
+            %p
               %strong Age
-            .grid_6
-              = @mother_history.try(:age)
-            .grid_12
-              &nbsp;
-          %p
-            .grid_6
+            %p  
               %strong Pre-pregnancy weight
-            .grid_6
-              = @mother_history.try(:pre_pregnancy_weight)
-            .grid_12
-              &nbsp;
-          %p
-            .grid_6
+            %p
               %strong Height
-            .grid_6
-              = @mother_history.try(:height)
-            .grid_12
-              &nbsp;
-          %p
-            .grid_6
+            %p
               %strong Toxemia
-            .grid_6
-              = @mother_history.try(:toxemia)
-            .grid_12
-              &nbsp;
-          %p
-            .grid_6
+            %p  
               %strong Daibetes
-            .grid_6
-              = @mother_history.try(:diabetes)
-            .grid_12
-              &nbsp;
-          %p  
-            .grid_6
+            %p    
               %strong Antenatal Steroids 
-            .grid_6
+          .div{:style => "width:150px;float:left;"}
+            %p
+              = @mother_history.try(:is_anc)
+            %p
+              = @mother_history.try(:post_obstetric_history)
+            %p
+              = @mother_history.try(:maternal_usg)
+            %p
+              = @mother_history.try(:age)
+            %p
+              = @mother_history.try(:pre_pregnancy_weight)
+            %p
+              = @mother_history.try(:height)
+            %p
+              = @mother_history.try(:toxemia)
+            %p
+              = @mother_history.try(:diabetes)
+            %p
               = @mother_history.try(:is_antenatal_steroids)
-            .grid_12
-              &nbsp;
-        .grid_6
-          %h2
-            %span Patient's history
-          &nbsp;
-          %p
-            .grid_6
+    .grid_6
+      .module
+        %h2
+          %span Mother's history
+        .module-body
+          .div{:style => "width:250px;float:left;"}
+            %p
               %strong Gestational Age
-            .grid_6
-              = @patient_history.try(:gestational_age)
-            .grid_12
-              &nbsp;
-          %p
-            .grid_6
+            %p
               %strong GA
-            .grid_6
-              = @patient_history.try(:ga)
-            .grid_12
-              &nbsp;
-          %p
-            .grid_6
+            %p  
               %strong Mode of delivery
-            .grid_6
-              = @patient_history.try(:mode_of_delivery)
-            .grid_12
-              &nbsp;
-          %p
-            .grid_6
+            %p
               %strong Rupture of Membranes 
-            .grid_6
-              = @patient_history.try(:rupture_of_membranes)
-            .grid_12
-              &nbsp;
-          %p
-            .grid_12
+            %p  
               %strong Resuscitation:Apgar scores
-            .grid_12
-              &nbsp;
-            .grid_6
               %strong 
                 1 min. - 
-            .grid_6
-              = @patient_history.try(:apgar_score_1)
-            .grid_12
-              &nbsp;
-          %p
-            .grid_6
+            %p
               %strong 
                 5 min. -
-            .grid_6
-              = @patient_history.try(:apgar_score_5)
-            .grid_12
-              &nbsp;
-          %p
-            .grid_6
+            %p  
               %strong 
                 20 min. -
-            .grid_6
+          .div{:style => "width:150px;float:left;"}
+            %p
+              = @patient_history.try(:gestational_age)
+            %p
+              = @patient_history.try(:ga)
+            %p
+              = @patient_history.try(:mode_of_delivery)
+            %p
+              = @patient_history.try(:rupture_of_membranes)
+            %p
+              = @patient_history.try(:apgar_score_1)
+            %p
+              = @patient_history.try(:apgar_score_5)
+            %p
               = @patient_history.try(:apgar_score_20)
-            .grid_12
-              &nbsp;
+        %div{:style => "clear:both;"}

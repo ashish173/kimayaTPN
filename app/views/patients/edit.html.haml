@@ -1,14 +1,14 @@
-#subnav
-  .container_12
-    .grid_12
-      %ul
-        %li 
-          = link_to "Basic Information" , "#"
-        %li 
-          = link_to "Patient history", patient_info_path(@patient)
-.container_12
-  .module
-    %h2
-      %span Patient
-  .module-body
-    = render :partial => 'edit.html.haml'
+= content_for :submenu do
+  %ul
+    %li 
+      = link_to "Basic Information" , "#"
+    %li 
+      = link_to "Patient history", patient_info_path(@patient)
+#frmPop
+  .grid_12
+    .module
+      %h2
+        %span Patient
+      .module-body
+        = render :partial => 'edit.html.haml'
+      %div{:style => "clear:both;"}

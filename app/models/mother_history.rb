@@ -2,7 +2,7 @@ class MotherHistory < ActiveRecord::Base
   belongs_to :patient
   has_many :medical_histories, :dependent => :destroy
   accepts_nested_attributes_for :medical_histories
-  validates :patient, :is_anc, :post_obstetric_history, :maternal_usg, :age, :pre_pregnancy_weight, :height, :toxemia, :diabetes, :is_antenatal_steroids, :presence => true
+  validates :patient, :is_anc, :g , :p , :a, :maternal_usg, :age, :pre_pregnancy_weight, :height, :toxemia, :diabetes, :is_antenatal_steroids, :presence => true
 
   serialize :post_obstetric_history
 
