@@ -9,13 +9,14 @@ class InvestigationsController < ApplicationController
   def new
     @patient = Patient.find(params[:patient_id])
     @investigation = Investigation.new
-    @investigation.build_tpn_additive if @investigation.tpn_additive.nil?
-    @investigation.build_enteral_diagnosis if @investigation.enteral_diagnosis.nil?
-    @investigation.build_anthropometric_measurement if @investigation.anthropometric_measurement.nil?
-    @investigation.build_blood_analysis if @investigation.blood_analysis.nil?
-    @investigation.build_diagnosis if @investigation.diagnosis.nil?
-    @investigation.build_biochemistry_assessment if @investigation.biochemistry_assessment.nil?
-    @investigation.build_electrolyte if @investigation.electrolyte.nil?
+    @investigation.build_tpn_additive
+    @investigation.build_enteral_diagnosis
+    @investigation.build_anthropometric_measurement
+    @investigation.build_blood_analysis
+    @investigation.build_diagnosis 
+    @investigation.build_biochemistry_assessment 
+    @investigation.build_electrolyte
+    @investigation.blood_sugar_monitors.build
   end
 
   def create

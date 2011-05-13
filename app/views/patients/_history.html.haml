@@ -187,3 +187,10 @@
             = f.submit "Next", :class => "submit-gray"
           .grid_3
             = button_to "Cancel", patients_path, :class => "submit-gray"
+- unless @patient.errors.empty?
+  :javascript
+    $(function() {
+     clearFormErrors();
+    });
+
+
