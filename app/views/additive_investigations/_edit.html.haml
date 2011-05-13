@@ -221,8 +221,8 @@
                         = inv.radio_button :enteral_nutrition, "EBM + MCT + HMF", :class => 'ebm'
                         EBM + MCT + HMF
                   %h4
-                    Enteral Calories
-                    = inv.text_field :enteral_calories, :size => 7
+                    Total Enteral Calories
+                    = inv.text_field :total_enteral_calories, :size => 7
           .grid_6
             .module
               %h2
@@ -262,11 +262,7 @@
                       %p
                         = am.text_field :length,:size => 7
                         cm.
-  .module
-    .grid_5
-      &nbsp;
-    .grid_5
-      .grid_2
-        = f.submit "Update", :class => "submit-green"
-      .grid_2
-        = button_to "Cancel", {:action => 'index', :controller => 'patients'}, :class => "submit-gray"
+        .buttons
+          .grid_4
+            = f.submit "Update", :class => "submit-green"
+            = link_to "Cancel", {:action => 'index', :controller => 'patients'}, :class => "submit-gray"

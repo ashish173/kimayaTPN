@@ -159,11 +159,9 @@
                   = f.fields_for :blood_sugar_monitors do |bs|
                     = bs.text_field :blood_sugar_monitored_on, :class => 'datepicker', :size => 7 
                     = bs.text_field :details, :size => 7
-      .grid_5
-        &nbsp;
-      .grid_5
-        .grid_2
-          = f.submit "Update", :class => "submit-green"
-        .grid_2
-          = button_to "Cancel", patients_path, :class => "submit-gray"
+        .buttons
+          .grid_4
+            = f.submit "Update", :class => "submit-green"
+            = f.submit "Next", :class => "submit-green"
+            = link_to "Cancel", patients_path, :class => "submit-gray"
         

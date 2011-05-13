@@ -1,15 +1,14 @@
 = javascript_include_tag "jquery.ui.datepicker", "application"
-%strong Select date
-= text_field :day, '',:class => 'datepicker', :size => 7
-
 = form_for(@investigation, :url => patient_additive_investigations_path(@patient)) do |f|
   = f.hidden_field :patient_id, :value => @patient.id
-  = f.hidden_field :investigated_on, :value => Date.today
   #header
     .module
       %h2
         %span Investigations
       .module-body
+        %p
+          %strong Select date 
+          = f.text_field :investigated_on, :value => Date.today,:class => 'datepicker', :size => 7
         .container_12
           .grid_6
             .module
@@ -225,8 +224,8 @@
                         = inv.radio_button :enteral_nutrition, "EBM + MCT + HMF", :class => 'ebm'
                         EBM + MCT + HMF
                   %h4
-                    Enteral Calories
-                    = inv.text_field :enteral_calories, :size => 7
+                    Total Enteral Calories
+                    = inv.text_field :total_enteral_calories, :size => 7
           .grid_6
             .module
               %h2
@@ -266,11 +265,7 @@
                       %p
                         = am.text_field :length,:size => 7
                         cm.
-  .module
-    .grid_5
-      &nbsp;
-    .grid_5
-      .grid_2
-        = f.submit "Create", :class => "submit-green"
-      .grid_2
-        = button_to "Cancel", {:action => 'index', :controller => 'patients'}, :class => "submit-gray"
+        .buttons
+          .grid_4
+            = f.submit "Create", :class => "submit-green"
+            = link_to "Cancel", {:action => 'index', :controller => 'patients'}, :class => "submit-gray"

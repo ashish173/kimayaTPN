@@ -1,14 +1,14 @@
 = javascript_include_tag "jquery.ui.datepicker", "application"
-%strong Select date
-= text_field :day, '',:class => 'datepicker', :size => 7
 = form_for(@investigation, :url => patient_investigations_path(@patient.id)) do |f|
   = f.hidden_field :patient_id, :value => @patient.id
-  = f.hidden_field :investigated_on, :value => Date.today
   #header
     .module
       %h2
         %span Investigations
       .module-body
+        %p
+          %strong Select date 
+          = f.text_field :investigated_on, :value => Date.today,:class => 'datepicker', :size => 7
         .container_12
           .grid_6
             .grid_12
@@ -161,11 +161,9 @@
                   = f.fields_for :blood_sugar_monitors do |bs|
                     = bs.text_field :blood_sugar_monitored_on, :class => 'datepicker', :size => 7 
                     = bs.text_field :details, :size => 7
-      .grid_5
-        &nbsp;
-      .grid_5
-        .grid_2
-          = f.submit "Create", :class => "submit-green"
-        .grid_2
-          = button_to "Cancel", patients_path, :class => "submit-gray"
+        .buttons
+          .grid_4
+            = f.submit "Create", :class => "submit-green"
+            = f.submit "Next", :class => "submit-green"
+            = link_to "Cancel", patients_path, :class => "submit-gray"
         

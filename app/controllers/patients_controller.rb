@@ -69,6 +69,7 @@ class PatientsController < ApplicationController
     @patient = Patient.find(params[:patient_id])
     @investigation = Investigation.patient(@patient.id).today.last
     @patient.attributes = params[:patient]
+    @patient.save!
     if @patient.save
       flash[:notice] = "History is successfully saved" 
       if params[:commit] == "Create"
