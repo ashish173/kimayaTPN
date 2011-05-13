@@ -40,7 +40,7 @@ class PatientsController < ApplicationController
       if params[:commit] == "Create"
         redirect_to(patients_path)
       else
-        redirect_to(patient_info_path(@patient))
+        redirect_to(patient_info_path(@patient,:for => 'new'))
       end
     else
       render :action  => 'new'

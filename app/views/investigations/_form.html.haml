@@ -158,8 +158,9 @@
                 %h2
                   %span Blood Sugar Monitoring
                 .module-body
-                  = f.text_field :blood_sugar_monitor_on, :class => 'datepicker', :size => 7 
-                  = f.text_field :blood_sugar_monitor_details, :size => 7
+                  = f.fields_for :blood_sugar_monitors do |bs|
+                    = bs.text_field :blood_sugar_monitored_on, :class => 'datepicker', :size => 7 
+                    = bs.text_field :details, :size => 7
       .grid_5
         &nbsp;
       .grid_5
