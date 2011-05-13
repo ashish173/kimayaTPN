@@ -1,7 +1,6 @@
 = javascript_include_tag "jquery.ui.datepicker", "application"
 
 = form_for(@patient, :url => patients_path) do |f|
-  
   .div{:style => "width:50%;float:left;"}
     %p
       = f.label "registration_number *"
@@ -21,13 +20,6 @@
     %p
       = f.label :additional_detail
       = f.text_area :additional_detail, :rows => 3, :cols => 39
-    %br
-    %br
-      .grid_6
-        = f.submit "Create", :class => "submit-green"
-        = f.submit "Next", :class => "submit-gray"
-      .grid_3
-        = button_to "Cancel", patients_path, :class => "submit-gray"
   .div{:style => "width:50%;float:left;"}
     %p
       = f.label "address *"
@@ -50,3 +42,8 @@
     %p
       = f.label :mobile_number
       = f.text_field :mobile_number
+  .buttons
+    .grid_4
+      = f.submit "Create", :class => "submit-green"
+      = f.submit "Next", :class => "submit-green"
+      = link_to "Cancel", patients_path, :class => "submit-gray"

@@ -567,7 +567,25 @@ input.submit-gray-hover {
 	background-image: url(/images/submit-gray-bg-hover.gif); 
 	}
 
+a.submit-gray { 
+	background: url(/images/submit-gray-bg.gif) top left repeat-x; 
+	border: 0; 
+	border-top: 1px solid #cccccc; 
+	border-left: 1px solid #cccccc; 
+	border-right: 1px solid #888888; 
+	border-bottom: 1px solid #888888; 
+	color: #ffffff; 
+	font-size: 14px; 
+	padding: 2px 12px; 
+	margin: 0px 10px 0 0;
+	cursor: pointer;
+    text-decoration:none;
+	}
 
+.buttons {
+    width:100%;
+    float:left;
+}
 
 
 /* -------------------- Text input and select input notifications -------------------- */
