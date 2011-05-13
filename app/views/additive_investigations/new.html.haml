@@ -1,6 +1,10 @@
 = content_for :submenu do
   %ul
     %li 
+      = link_to "Basic Information" , "#"
+    %li 
+      = link_to "Patient history", "#"
+    %li 
       =  link_to "Daily Investigation" ,  new_patient_investigation_path(@patient)
     %li 
       = link_to "TPN additives", "#"

@@ -17,6 +17,9 @@ class Investigation < ActiveRecord::Base
   accepts_nested_attributes_for :enteral_diagnosis
   accepts_nested_attributes_for :anthropometric_measurement
   accepts_nested_attributes_for :blood_sugar_monitors
+
+
+  validates :investigated_on, :presence => true
   
   scope :day, lambda { |date| {:conditions => ["investigated_on = ?", date]} }
   scope :today, day(Date.today)

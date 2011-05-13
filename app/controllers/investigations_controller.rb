@@ -16,7 +16,7 @@ class InvestigationsController < ApplicationController
     @investigation.build_diagnosis 
     @investigation.build_biochemistry_assessment 
     @investigation.build_electrolyte
-    @investigation.blood_sugar_monitors.build
+    3.times{@investigation.blood_sugar_monitors.build}
   end
 
   def create
@@ -44,11 +44,16 @@ class InvestigationsController < ApplicationController
   end
 
   def update
+    @patient = Patient.find(params[:patient_id])
     @investigation = Investigation.find(params[:id])
     @investigation.attributes = params[:investigation]
     if @investigation.save
       flash[:notice] = "Investigation changed successfully" 
-      redirect_to(patients_path)
+      if params[:commit] == 'Create'
+        redirect_to(patients_path)
+      else
+        redirect_to(edit_patient_additive_investigation_path(@patient,@investigation))
+      end
     else
       render :action => 'edit'
     end

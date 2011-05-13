@@ -903,10 +903,6 @@ input[type="text"], input[type="password"], input[type="email"], select {
     font-weight:bold;
 }
 
-.header_date input {
-    margin-left: 20px;
-}
-
 /* Datetime picker style */
 .ui-timepicker-div .ui-widget-header{ margin-bottom: 8px; }
 .ui-timepicker-div dl{ text-align: left; }
@@ -914,3 +910,6 @@ input[type="text"], input[type="password"], input[type="email"], select {
 .ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
 .ui-timepicker-div td { font-size: 90%; }
 
+#monitors {
+  margin:5px 0 0 5px;
+}

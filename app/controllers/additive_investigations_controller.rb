@@ -36,7 +36,7 @@ class AdditiveInvestigationsController < ApplicationController
 
   def edit
     @patient = Patient.find(params[:patient_id])
-    @investigation = Investigation.today.patient(@patient).last
+    @investigation = Investigation.find(params[:id])
     @investigation.build_blood_analysis if @investigation.blood_analysis.nil?
     @investigation.build_diagnosis if @investigation.diagnosis.nil?
     @investigation.build_biochemistry_assessment if @investigation.biochemistry_assessment.nil?
