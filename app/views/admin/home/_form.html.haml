@@ -1,5 +1,5 @@
 = form_for(@user, :url => user_registration_path(:for => params[:for]), :remote => true) do |f|
-  .div{:style => "width:400px;float:left;"}
+  .div{:style => "width:50%;float:left;"}
     %p
       = f.label :email, "Email *"
       = f.text_field :email
@@ -16,7 +16,7 @@
     %br
     = f.submit "Invite", :class => "submit-green"
     = button_to_function "Cancel", "$.facebox.close();", :class => "submit-gray"
-  .div{:style => "width:400px;float:left;"}
+  .div{:style => "width:50%;float:left;"}
     %p
       = f.label :city
       = f.text_field :city

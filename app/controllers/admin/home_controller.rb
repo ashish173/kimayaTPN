@@ -10,9 +10,9 @@ class Admin::HomeController < Devise::RegistrationsController
     respond_to do |format|
       if @user.save
         flash[:notice] = "User is Successfully created" 
-        format.html {redirect_to(users_path)}
+        format.html {redirect_to(users_path(:for => params[:for]))}
         format.js {
-          render :js => "window.location='#{users_path}'"
+          render :js => "window.location='#{users_path(:for => params[:for])}'"
         }
       else
         format.js {render :partial => 'new'}
@@ -29,6 +29,10 @@ class Admin::HomeController < Devise::RegistrationsController
       
       if success
         flash[:notice] = 'Password is successfully changed.'
+        user = User.find(params[:id])
+        if current_user == nil
+          sign_in user
+        end
         redirect_to my_home_path 
       else
         flash[:notice] = "Password doesn't matched"

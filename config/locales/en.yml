@@ -14,7 +14,7 @@ en:
         birth_weight_invalid: "Please enter valid birth wieght"
         address_blank: "Please enter the address"
         gender_id_blank: "Please select the gender"
-        phone_number_invalid: "Please enter valid telephone number"
+        phone_number_blank: "Please enter telephone number"
         mobile_number_invalid: "Please enter valid mobile number"
       
       #additives

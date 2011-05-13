@@ -10,9 +10,7 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :message => :user_name_blank
   validates_presence_of :email, :message => :email_blank
   validates :roles_mask, :presence => true
-  validates_format_of :residence_telephone,:with =>  /^\d{3}-\d{8}$/, :message => :phone_number_invalid
-  validates_format_of :emergency_telephone, :with =>  /^\d{3}-\d{8}$/, :message => :phone_number_invalid, :allow_blank => true
-  validates_format_of :mobile_number,:with =>  /^\d{10}$/, :message => :mobile_number_invalid, :allow_blank => true
+  validates_presence_of :residence_telephone, :message => :phone_number_blank
   # Setup accessible (or protected) attributes for your model
   attr_accessible :password, :email, :name, :address, :city, :pincode, :residence_telephone, :emergency_telephone, :mobile_number, :additional_detail, :roles_mask
 

@@ -42,6 +42,6 @@
                   %img{:alt => "edit", :height => "16", :src => "/images/pencil.gif", :width => "16"}/
                 %a{:href => user_path(user.id), :rel => :facebox}
                   %img{:alt => "show", :height => "16", :src => "/images/bin.gif", :width => "16"}/
-                = link_to(image_tag("/images/cross-small.gif",:height => "16", :width => "16"), user_path(user.id), :method => 'delete')
+                = link_to(image_tag("/images/cross-small.gif",:height => "16", :width => "16"), user_path(user.id, :for => params[:for]), :method => 'delete')
               - counter = counter+1
     .pagination
