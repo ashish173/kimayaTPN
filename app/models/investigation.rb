@@ -1,4 +1,6 @@
 class Investigation < ActiveRecord::Base
+
+  self.per_page = 10
   belongs_to :patient
   has_one :blood_analysis
   has_one :diagnosis
@@ -25,4 +27,8 @@ class Investigation < ActiveRecord::Base
   scope :today, day(Date.today)
   scope :patient, lambda { |id| {:conditions => ["patient_id = ?", id]} }
   scope :from_date, lambda { |date| {:conditions => ["investigated_on >= ?", date]} }
+  scope :for_user, lambda {|user|
+    joins("join admissions on admissions.patient_id = investigations.patient_id").
+    where("admissions.user_id =?", user.id)
+  }
 end

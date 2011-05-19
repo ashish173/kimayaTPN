@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def index
    @selected_menu = params[:for].to_i
-   @users = @selected_menu == DOCTOR ? User.doctors : User.nutritionists
+   @users = @selected_menu == DOCTOR ? User.doctors : (@selected_menu == PATIENT ? Patient.all : User.nutritionists)
   end
 
   def show
@@ -25,9 +25,9 @@ class UsersController < ApplicationController
       if @user.save
         flash[:notice] = "Successfully updated profile"
         if is_super_admin? 
-          format.html { redirect_to(users_path(:for => @user))}
+          format.html { redirect_to(users_path(:for => @user.roles_mask))}
           format.js {
-            render :js => "window.location='#{users_path(:for => @user)}'"
+            render :js => "window.location='#{users_path(:for => @user.roles_mask)}'"
           }
         else
           format.html { redirect_to(user_path) }

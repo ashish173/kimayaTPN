@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  def set_layout
+    if current_user.role?(ADMIN) or current_user.role?(SUPER_ADMIN)
+      render :layout => 'admin'
+    end
+  end
+
   def is_super_admin?(user = nil)
     user = current_user if user.nil?
     user.role?(SUPER_ADMIN)

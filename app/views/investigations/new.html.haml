@@ -1,13 +1,16 @@
 = content_for :submenu do
   %ul
     %li 
-      = link_to "Basic Information", "#"
+      = link_to "Basic Information" , edit_patient_path(@patient)
     %li 
-      = link_to "Patient history", "#"
+      = link_to "Patient history", patient_info_path(@patient)
     %li 
       = link_to "Daily Investigation" , "#"
-    %li 
-      = link_to "TPN additives", new_patient_additive_investigation_path(@patient)
+.grid_12
+  = render :partial => 'search'
+.grid_12
+  %h4 Patient - #{@patient.name}
+  %h4 Date - #{@investigation.investigated_on}
 #frmPop
   .grid_12
     = render :partial => 'form'

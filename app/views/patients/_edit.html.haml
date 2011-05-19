@@ -8,7 +8,7 @@
   }) 
 
 = form_for(@patient, :url => patient_path) do |f|
-  .div{:style => "width:400px;float:left;"}
+  .div{:style => "width:50%;float:left;"}
     %p
       = f.label "registration_number *"
       = f.text_field :registration_number
@@ -27,7 +27,7 @@
     %p
       = f.label :additional_detail
       = f.text_area :additional_detail, :rows => 3, :cols => 39
-  .div{:style => "width:400px;float:left;"}
+  .div{:style => "width:50%;float:left;"}
     %p
       = f.label "address *"
       = f.text_field :address
@@ -50,7 +50,5 @@
       = f.label :mobile_number
       = f.text_field :mobile_number
   .buttons
-    .grid_4
-      = f.submit "Update", :class => "submit-green"
-      = f.submit "Next", :class => "submit-gray", :class => 'submit-green'
-      = link_to "Cancel", patients_path, :class => "submit-gray"
+    = f.submit "Next", :class => "submit-gray", :class => 'submit-green'
+    = link_to "Cancel", patients_path, :class => "submit-gray"

@@ -1,14 +1,13 @@
 = javascript_include_tag "jquery.ui.datepicker", "jquery-ui-timepicker-addon", "application"
 = form_for(@investigation, :url => patient_investigations_path(@patient.id)) do |f|
   = f.hidden_field :patient_id, :value => @patient.id
-  .module
-    %h2
-      %span Investigations
-    .module-body
+  = f.hidden_field :investigated_on, :value => @investigation.investigated_on
+
+  #accordion
+    %div
+      %h4 Investigation
+    %div{:display => 'none'}
       .container_12
-        .grid_12.header_date
-          %span Date of Investingation 
-          = f.text_field :investigated_on, :class => 'datepicker', :size => 20
         .grid_6
           .grid_12
             .module
@@ -72,41 +71,41 @@
                       Sepsis: 
                     .input2
                       = d.text_field :sepsis
-                  .input0
-                    .input1
-                      Exhange 
-                    .input2
-                      = d.radio_button :exhange, false, :class => 'exhange'
-                      = "No"
-                    .input2
-                      = d.radio_button :exhange, true, :class => 'exhange'
-                      = "Yes"
-                    .input4
-                  .input0
-                    .input1
-                      Thrombocytopenia
-                    .input2
-                      = d.radio_button :thrombocytopenia, false, :class => 'thrombocytopenia'
-                      = "No"
-                    .input2
-                      = d.radio_button :thrombocytopenia, true, :class => 'thrombocytopenia'
-                      = "Yes"
-                    .input4
-                      DOL:
-                      = d.text_field :dol, :size => 3
-                  .input0
-                    .input1
-                      Intra Ventricular Haemorrhage
-                    .input2
-                      = d.radio_button :haemorrhage, false, :class => 'haemorrhage'
-                      = "No"
-                    .input2
-                      = d.radio_button :haemorrhage, true, :class => 'haemorrhage'
-                      = "Yes"
-                    .input4
-                      Grade:
-                      = d.text_field :grade, :size => 3
-
+                    .input0
+                      .input1
+                        Exhange 
+                      .input2
+                        = d.radio_button :exhange, false, :class => 'exhange'
+                        = "No"
+                      .input2
+                        = d.radio_button :exhange, true, :class => 'exhange'
+                        = "Yes"
+                      .input4
+                    .input0
+                      .input1
+                        Thrombocytopenia
+                      .input2
+                        = d.radio_button :thrombocytopenia, false, :class => 'thrombocytopenia'
+                        = "No"  
+                      .input2
+                        = d.radio_button :thrombocytopenia, true, :class => 'thrombocytopenia'
+                        = "Yes"
+                      .input4
+                        DOL:
+                        = d.text_field :dol, :size => 3
+                    .input0
+                      .input1
+                        Intra Ventricular Haemorrhage
+                      .input2
+                        = d.radio_button :haemorrhage, false, :class => 'haemorrhage'
+                        = "No"
+                      .input2
+                        = d.radio_button :haemorrhage, true, :class => 'haemorrhage'
+                        = "Yes"
+                      .input4
+                        Grade:
+                        = d.text_field :grade, :size => 3
+  
         .grid_6
           .grid_12
             .module
@@ -163,16 +162,279 @@
                         = bs.text_field :blood_sugar_monitored_on, :class => 'datetimepicker', :size => 7 
                       .input5
                         = bs.text_field :details, :size => 7
-                      /= link_to_function "Add more", "", :class => "submit-green"
-
-      .buttons
-        .grid_4
-          = f.submit "Create", :class => "submit-green"
-          = f.submit "Next", :class => "submit-green"
-          = link_to "Cancel", patients_path, :class => "submit-gray"
+                        /= link_to_function "Add more", "", :class => "submit-green"
+    %div
+      %h4 TPN additives
+    %div
+      .container_12
+        .grid_6
+          .module
+            %h2
+              %span TPN Additives
+            .module-body
+              = f.fields_for :tpn_additive do |inv|
+                - total = @additives.length==0 ? 1 : @additives.length
+                .input6
+                  .input_day1
+                    %br
+                    %strong  Date
+                  .input_days
+                    - @additives.each do |obj|
+                      .input_day
+                        %p
+                          %strong
+                            = obj.investigation.investigated_on.strftime("%d")
+                            %br
+                            = obj.investigation.investigated_on.strftime("%b")
+                    .input_day
+                      %strong
+                        =@investigation.investigated_on.strftime('%d')
+                        %br
+                        =@investigation.investigated_on.strftime('%b')
+                    .input_day
+                      .avg
+                        %strong
+                          AVG 
+                .input6
+                  .input_day1
+                    %p Day of Life
+                  .input_days
+                    - sum = 0
+                    - @additives.each do |obj|
+                      .input_day
+                        %p
+                          = obj.day_of_life
+                          - sum += obj.day_of_life if obj.day_of_life.present?
+                    .input_day
+                      = inv.text_field :day_of_life, :size => 2
+                    .input_day
+                      .avg
+                        = number_with_precision(sum/total)
+                .input6
+                  .input_day1
+                    %p Day of TPN
+                  .input_days
+                    - sum = 0
+                    - @additives.each do |obj|
+                      .input_day
+                        %p
+                          = obj.day_of_tpn
+                          - sum += obj.day_of_tpn if obj.day_of_tpn.present?
+                    .input_day
+                      = inv.text_field :day_of_tpn, :size => 2
+                    .input_day
+                      .avg
+                        = number_with_precision(sum/total)
+                .input6
+                  .input_day1
+                    %p Fluid Intake(ml/kg)
+                  .input_days
+                    - sum = 0
+                    - @additives.each do |obj|
+                      .input_day
+                        %p
+                          = obj.fluid_intake
+                          - sum += obj.fluid_intake if obj.fluid_intake.present?
+                    .input_day
+                      = inv.text_field :fluid_intake, :size => 2
+                    .input_day
+                      .avg
+                        = number_with_precision(sum/total)
+                .input6
+                  .input_day1
+                    %p Enteral Feeds(ml/day)
+                  .input_days
+                    - sum = 0
+                    - @additives.each do |obj|
+                      .input_day
+                        %p
+                          = obj.enteral_feeds
+                          - sum += obj.enteral_feeds if obj.enteral_feeds.present?
+                    .input_day
+                      = inv.text_field :enteral_feeds, :size => 2
+                    .input_day
+                      .avg
+                        = number_with_precision(sum/total)
+                .input6
+                  .input_day1
+                    %p TPN volume
+                  .input_days
+                    - sum = 0
+                    - @additives.each do |obj|
+                      .input_day
+                        %p
+                          = obj.tpn_volume
+                          - sum += obj.tpn_volume if obj.tpn_volume.present?
+                    .input_day
+                      = inv.text_field :tpn_volume, :size => 2
+                    .input_day
+                      .avg
+                        = number_with_precision(sum/total)
+                .input6
+                  .input_day1
+                    %p Amino Acids(g/kg)
+                  .input_days
+                    - sum = 0
+                    - @additives.each do |obj|
+                      .input_day
+                        %p
+                          = obj.amino_acids
+                          - sum += obj.amino_acids if obj.amino_acids.present?
+                    .input_day
+                      = inv.text_field :amino_acids, :size => 2
+                    .input_day
+                      .avg
+                        = number_with_precision(sum/total)
+                .input6
+                  .input_day1
+                    %p Lipids(g/kg)
+                  .input_days
+                    - sum = 0
+                    - @additives.each do |obj|
+                      .input_day
+                        %p
+                          = obj.lipids
+                          - sum += obj.lipids if obj.lipids.present?
+                    .input_day
+                      = inv.text_field :lipids, :size => 2
+                    .input_day
+                      .avg
+                        = number_with_precision(sum/total)
+                .input6
+                  .input_day1
+                    %p TPN Calories(Cal/kg) 
+                  .input_days
+                    - sum = 0
+                    - @additives.each do |obj|
+                      .input_day
+                        %p
+                          = obj.tpn_calories
+                          - sum += obj.tpn_calories if obj.tpn_calories.present?
+                    .input_day
+                      = inv.text_field :tpn_calories, :size => 2
+                    .input_day
+                      .avg
+                        = number_with_precision(sum/total)
+                .input6
+                  .input_day1
+                    %p DIR
+                  .input_days
+                    - sum = 0
+                    - @additives.each do |obj|
+                      .input_day
+                        %p
+                          = obj.dir
+                          - sum += obj.dir if obj.dir.present?
+                    .input_day
+                      = inv.text_field :dir, :size => 2
+                    .input_day
+                      .avg
+                        = number_with_precision(sum/total)
+                .input6
+                  .input_day1
+                    %p NER
+                  .input_days
+                    - sum = 0
+                    - @additives.each do |obj|
+                      .input_day
+                        %p
+                          = obj.ner
+                          - sum += obj.ner if obj.ner.present?
+                    .input_day
+                      = inv.text_field :ner, :size => 2
+                    .input_day
+                      .avg
+                        = number_with_precision(sum/total)
+        .grid_6
+          .module
+            %h2
+              %span Enteral Nutrition
+            .module-body
+              = f.fields_for :enteral_diagnosis do |inv|
+                .input0
+                  .input5
+                    EBM 
+                  .input5
+                    = inv.text_field :ebm, :size => 7
+                .input0
+                  .input5
+                    Formula Feeds
+                  .input5
+                    = inv.text_field :formula_feeds, :size => 7
+                .input0
+                .module
+                  %h2
+                    %span EBM
+                  .module-body
+                    .input
+                      .input_left
+                        = inv.radio_button :enteral_nutrition, "EBM only", :class => 'ebm'
+                        EBM only
+                      .input_right
+                        = inv.radio_button :enteral_nutrition, "EBM + HMF", :class => 'ebm'
+                        EBM + HMF
+                      .input_left
+                        = inv.radio_button :enteral_nutrition, "EBM + MCT", :class => 'ebm'
+                        EBM + MCT
+                      .input_right
+                        = inv.radio_button :enteral_nutrition, "EBM + MCT + HMF", :class => 'ebm'
+                        EBM + MCT + HMF
+                %h4
+                  Total Enteral Calories
+                  = inv.text_field :total_enteral_calories, :size => 7
+        .grid_6
+          .module
+            %h2
+              %span Anthropometric Measurments 
+            .module-body
+              = f.fields_for :anthropometric_measurement do |am|
+                .input0
+                  .input2
+                    %p
+                      Weight
+                  .input1
+                    %p
+                      = am.text_field :weight_measured_date,:class => 'datepicker', :size => 7
+                  .input1
+                    %p
+                      = am.text_field :weight,:size => 7
+                      Kg.
+                .input0
+                  .input2
+                    %p
+                      Head Circ
+                  .input1
+                    %p
+                      = am.text_field :head_circ_measured_date, :class => 'datepicker', :size => 7
+                  .input1
+                    %p
+                      = am.text_field :head_circ,:size => 7
+                      cm.
+                .input0
+                  .input2
+                    %p
+                      Length
+                  .input1
+                    %p
+                      = am.text_field :length_measured_date, :class => 'datepicker', :size => 7
+                  .input1
+                    %p
+                      = am.text_field :length,:size => 7
+                      cm.
+  %p
+    .buttons
+      .grid_4
+        = f.submit "Create", :class => "submit-green"
+        = link_to "Cancel", patients_path, :class => "submit-gray", :width => 8
       
 :javascript
   $(function() {
     $('.datetimepicker').timepicker({});
+  });
+  $(function() {
+    $( "#accordion" ).accordion({
+      collapsible: true
+    });
+    $( "#accordion" ).accordion("activate",-1);
   });
 
