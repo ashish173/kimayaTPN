@@ -3,11 +3,9 @@
     %li 
       = link_to "Basic Information", "#"
     %li 
-      = link_to "Patient history", "#"
+      = link_to "Patient history", "#", :id => 'ph'
     %li 
-      = link_to "Daily Investigation", "#"
-    %li 
-      = link_to "TPN additives", "#"
+      = link_to "Daily Investigation", "#", :id => 'di'
 #frmPop
   .grid_12
     .module
@@ -16,3 +14,17 @@
       .module-body
         = render :partial => 'form'
       %div{:style => "clear:both;"}
+        
+:javascript
+  
+  function register(){
+      alert("Please first register the patient");
+      return false;
+  }
+
+  $("#ph").click( function () {
+    register();
+    });
+  $("#di").click( function () {
+    register();
+    });

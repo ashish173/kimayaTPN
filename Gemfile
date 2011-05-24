@@ -5,14 +5,22 @@ gem 'rails', '3.0.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+gem 'mysql2', '< 0.3'
 gem 'haml'
 gem 'will_paginate', '3.0.pre2'
 gem 'devise', '1.1.8'
- 
+gem 'rails3-jquery-autocomplete'
+
+gem "rspec-rails"
+#gem 'webrat'
+gem "autotest"
+gem "autotest-rails"
+gem "factory_girl"
+#gem 'capybara'
+
 group :development, :test do
     gem 'hpricot'
-    gem 'ruby_parser'
+#    gem 'ruby_parser'
     gem 'haml-rails'
     gem 'web-app-theme'
     gem 'mongrel'

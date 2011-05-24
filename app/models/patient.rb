@@ -18,4 +18,10 @@ class Patient < ActiveRecord::Base
  accepts_nested_attributes_for :mother_history
  accepts_nested_attributes_for :patient_history
  accepts_nested_attributes_for :admission
+
+ scope :for_user, lambda {|user|
+   joins("join admissions on admissions.patient_id = patients.id").
+     where("admissions.user_id =?", user.id)
+ }
+
 end

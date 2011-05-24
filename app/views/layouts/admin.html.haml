@@ -5,5 +5,7 @@
         = link_to "Doctors", users_path(:for => DOCTOR) 
       %li{:id => if_current(@selected_menu == NUTRITIONIST)}
         = link_to "Nutritionists", users_path(:for => NUTRITIONIST) 
+      %li{:id => if_current(@selected_menu == PATIENT)}
+        = link_to "Patients", users_path(:for => PATIENT) 
 
 = render :file => 'layouts/application'

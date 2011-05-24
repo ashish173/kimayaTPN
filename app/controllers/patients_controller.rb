@@ -1,9 +1,14 @@
 class PatientsController < ApplicationController
   layout 'user'
+  before_filter :set_layout
 
   #list all existing patient
   def index
-    @patient = current_user.user_patients
+    if current_user.role?(ADMIN) or current_user.role?(SUPER_ADMIN)
+      @patient = Patient.all
+    else
+      @patient = current_user.user_patients
+    end
   end
 
   #create new patient
@@ -12,19 +17,15 @@ class PatientsController < ApplicationController
   end
 
   def edit
-    @patient = Patient.find(params[:id])
-    @investigation = Investigation.today.patient(@patient.id)
+    @patient = Patient.find(params[:id].to_i)
+    @investigation = Investigation.today.patient(@patient.id).last
   end
 
   def update
     @patient = Patient.find(params[:id]) 
     @patient.attributes = params[:patient]
     if @patient.save
-      if params[:commit] == "Update"
-        redirect_to(patients_path)
-      else
         redirect_to(patient_info_path(@patient))
-      end
     else
       render :action => 'edit' 
     end
@@ -37,11 +38,7 @@ class PatientsController < ApplicationController
       flash[:notice] = "Patient is Successfully created" 
       @admission = Admission.create(:patient_id => @patient.id, :user_id => current_user.id , :admitted_on => Date.today)
       @patient.save
-      if params[:commit] == "Create"
-        redirect_to(patients_path)
-      else
         redirect_to(patient_info_path(@patient,:for => 'new'))
-      end
     else
       render :action  => 'new'
     end
@@ -67,27 +64,18 @@ class PatientsController < ApplicationController
 
   def history
     @patient = Patient.find(params[:patient_id])
-    @investigation = Investigation.patient(@patient.id).today.last
+    @investigation = Investigation.patient(@patient.id).today.last #returns an array
     @patient.attributes = params[:patient]
     if @patient.save
       flash[:notice] = "History is successfully saved" 
-      if params[:commit] == "Create"
-        redirect_to(patients_path)
-      else
+        #Today's investigation
         if @investigation == nil
           redirect_to(new_patient_investigation_path(@patient))
         else
           redirect_to(edit_patient_investigation_path(@patient,@investigation))
         end
-      end
     else
       render :action => 'info'
     end
   end
-
-  def investigate
-    @patient = Patient.find(params[:patient_id]) 
-    redirect_to(new_patient_investigation_path(@patient))
-  end
-
 end

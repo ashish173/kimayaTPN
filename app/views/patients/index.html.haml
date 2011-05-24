@@ -21,8 +21,6 @@
           %th{:style => "width:10%"} Gender ID
           %th{:style => "width:10%"} Phone Number 
           %th{:style => "width:5%"} Profile
-          %th{:style => "width:5%"} Investigations
-          %th{:style => "width:5%"} Additives
       %tbody
         - counter = 1
         - @patient.each do |patient|
@@ -45,10 +43,4 @@
               %a{:href => patient_path(patient.id)}
                 %img{:alt => "show", :height => "16", :src => "/images/bin.gif", :width => "16"}/
               = link_to(image_tag("/images/cross-small.gif",:height => "16", :width => "16"), patient_path(patient.id), :method => 'delete')
-            %td
-              %a{:href => patient_investigations_path(patient)}
-                %img{:alt => "show", :height => "16", :src => "/images/bin.gif", :width => "16"}/
-            %td
-              %a{:href => patient_additive_investigations_path(patient)}
-                %img{:alt => "show", :height => "16", :src => "/images/bin.gif", :width => "16"}/
           - counter = counter+1

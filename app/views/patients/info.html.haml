@@ -3,12 +3,12 @@
     %li 
       = link_to "Basic Information" , edit_patient_path(@patient)
     %li 
-      = link_to "Patient history", "#"
-    - if params[:for].present?
-      %li 
-        = link_to "Daily Investigation", "#"
-      %li 
-        = link_to "TPN additives", "#"
+      = link_to "Patient history", patient_info_path(@patient)
+    %li 
+      - if @investigation.nil?
+        = link_to "Daily Investigation", new_patient_investigation_path(@patient, :for_day => Date.today)
+      - else
+        = link_to "Daily Investigation", edit_patient_investigation_path(@patient, @investigation)
 #frmPop
   .grid_12
     = render :partial => 'history'
