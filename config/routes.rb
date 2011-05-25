@@ -6,10 +6,9 @@ Kimaya::Application.routes.draw do |map|
   
   resources :users
   resources :additives
-
+  resources :reports
   resources :patients do
     get 'info'
-    #get 'investigate'
     put 'history'
     resources :investigations, :on => :collection
     resources :additive_investigations, :on => :collection

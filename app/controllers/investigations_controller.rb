@@ -1,6 +1,6 @@
 class InvestigationsController < ApplicationController
 
-  layout 'user'
+  layout 'admin'
 
   def build
       @investigation = Investigation.new
@@ -55,8 +55,26 @@ class InvestigationsController < ApplicationController
     @additives = TpnAdditive.to_date(@investigation.investigated_on).for_patient(@patient).last(4)
   end
 
+  def update
+    @patient = Patient.find(params[:patient_id])
+    @investigation = Investigation.find(params[:id])
+    @investigation.attributes = params[:investigation]
+    @additives = TpnAdditive.to_date(@investigation.investigated_on).for_patient(@patient).last(4)
+    if @investigation.save
+      flash[:notice] = "Investigation changed successfully" 
+      redirect_to(investigations_search_path)
+    else
+      render :action => 'edit'
+    end
+  end
+
   def search
-    @investigations = Investigation.for_user(current_user).order("investigated_on").last(20).paginate(:page => params[:page], :per_page =>10)
+    @selected_menu = "investigation"
+    if current_user.role?(ADMIN) or current_user.role?(SUPER_ADMIN)
+      @investigations = Investigation.order("investigated_on").last(20).paginate(:page => params[:page], :per_page =>10)
+    else
+      @investigations = Investigation.for_user(current_user).order("investigated_on").last(20).paginate(:page => params[:page], :per_page =>10)
+    end
     @patients = Patient.for_user(current_user).to_json
   end
 
@@ -70,17 +88,12 @@ class InvestigationsController < ApplicationController
     end
   end
 
-  def update
-    @patient = Patient.find(params[:patient_id])
-    @investigation = Investigation.find(params[:id])
-    @investigation.attributes = params[:investigation]
-    @additives = TpnAdditive.to_date(@investigation.investigated_on).for_patient(@patient).last(4)
-    if @investigation.save
-      flash[:notice] = "Investigation changed successfully" 
-        redirect_to(investigations_search_path)
-    else
-      render :action => 'edit'
-    end
+  def for_days
+    
+  end
+
+  def report
+
   end
 
   def autocomplete_patient_name
@@ -90,5 +103,5 @@ class InvestigationsController < ApplicationController
     end
     render :json => json_for_autocomplete(items, :name,nil)
   end
-  
+
 end

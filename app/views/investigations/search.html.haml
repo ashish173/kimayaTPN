@@ -1,0 +1,20 @@
+= render :partial => 'search'
+.container_12
+  .grid_12
+    .module
+      %h2
+        %span Investigations
+      .module-body
+        %dl
+          %dt{:style => 'background-color:#EEEEEE;'}
+            %strong Date 
+          %dd{:style => 'background-color:#EEEEEE;'} 
+            %strong Patient name 
+          - @investigations.each do |inv|
+            %dt
+              = link_to inv.investigated_on.strftime("%d %b %Y"), edit_patient_investigation_path(inv.patient_id,inv)
+              = link_to :patient, new_patient_tpn_path(inv.patient), :rel => 'facebox'
+            %dd 
+              = inv.patient.name
+        = will_paginate @investigations
+        = page_entries_info @investigations

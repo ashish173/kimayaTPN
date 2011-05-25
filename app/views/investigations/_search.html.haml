@@ -1,0 +1,24 @@
+= form_tag(investigations_found_path, :id => 'select_patient') do |f|
+  .input4
+    %strong Date
+    = text_field :info,:date,:class => 'datepicker', :size => 20
+  .input4
+    %strong Patient
+    = autocomplete_field_tag :patient,'', investigations_autocomplete_patient_name_path, :id_element => '#selected_patient_id', :size => 20
+    = hidden_field_tag :selected_patient_id
+  = submit_tag 'Show', :class => 'submit-green'
+#subnav
+
+:javascript
+
+  $("#select_patient").submit( function () {
+    if($('#info_date').val() == ""){
+      alert("Please select a date");
+      return false;
+    }
+    if($('#info_patient').val()==""){
+      alert('Please select a patient');
+      return false;
+    }
+    return true;
+  });

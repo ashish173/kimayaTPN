@@ -1,9 +1,9 @@
 class PatientsController < ApplicationController
-  layout 'user'
-  before_filter :set_layout
+  layout 'admin'
 
   #list all existing patient
   def index
+    @selected_menu = PATIENT
     if current_user.role?(ADMIN) or current_user.role?(SUPER_ADMIN)
       @patient = Patient.all
     else
@@ -18,6 +18,9 @@ class PatientsController < ApplicationController
 
   def edit
     @patient = Patient.find(params[:id].to_i)
+    logger.info  "----------------------------------------"
+    logger.info params
+    logger.info @patient
     @investigation = Investigation.today.patient(@patient.id).last
   end
 
@@ -56,7 +59,7 @@ class PatientsController < ApplicationController
   end
 
   def info
-    @patient = Patient.find(params[:patient_id]) 
+      @patient = Patient.find(params[:patient_id])
     @patient.build_mother_history if @patient.mother_history.nil?
     @patient.build_admission if @patient.admission.nil?
     @patient.build_patient_history if @patient.patient_history.nil?

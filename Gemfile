@@ -10,6 +10,7 @@ gem 'haml'
 gem 'will_paginate', '3.0.pre2'
 gem 'devise', '1.1.8'
 gem 'rails3-jquery-autocomplete'
+gem 'rake', '0.8.7'
 
 gem "rspec-rails"
 #gem 'webrat'

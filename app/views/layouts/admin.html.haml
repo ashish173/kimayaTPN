@@ -1,11 +1,19 @@
 - content_for :menu do
   #logo
     %ul#nav
-      %li{:id => if_current(@selected_menu == DOCTOR)}
-        = link_to "Doctors", users_path(:for => DOCTOR) 
-      %li{:id => if_current(@selected_menu == NUTRITIONIST)}
-        = link_to "Nutritionists", users_path(:for => NUTRITIONIST) 
-      %li{:id => if_current(@selected_menu == PATIENT)}
-        = link_to "Patients", users_path(:for => PATIENT) 
+      - if current_user.role?(ADMIN) or current_user.role?(SUPER_ADMIN)
+        %li{:id => if_current(@selected_menu == DOCTOR)}
+          = link_to "Doctors", users_path(:for => DOCTOR) 
+        %li{:id => if_current(@selected_menu == NUTRITIONIST)}
+          = link_to "Nutritionists", users_path(:for => NUTRITIONIST) 
+        %li{:id => if_current(@selected_menu == PATIENT)}
+          = link_to "Patients", users_path(:for => PATIENT) 
+      - else
+        %li{:id => if_current(@selected_menu == PATIENT)}
+          = link_to "Patients", patients_path 
+        %li{:id => if_current(@selected_menu == "investigation")}
+          = link_to "Daily Investigations", investigations_search_path
+      %li{:id => if_current(@selected_menu == 'report')}
+        = link_to "Report", reports_path
 
 = render :file => 'layouts/application'

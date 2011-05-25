@@ -23,10 +23,17 @@ class Investigation < ActiveRecord::Base
 
   validates :investigated_on, :presence => true
   validates_uniqueness_of :investigated_on, :scope => [:patient_id],:message => :investigation_exists
+  
   scope :day, lambda { |date| {:conditions => ["investigated_on = ?", date]} }
+  
   scope :today, day(Date.today)
+  
   scope :patient, lambda { |id| {:conditions => ["patient_id = ?", id]} }
+  
   scope :from_date, lambda { |date| {:conditions => ["investigated_on >= ?", date]} }
+  
+  scope :to_date, lambda { |date| {:conditions => ["investigated_on <= ?", date]} }
+
   scope :for_user, lambda {|user|
     joins("join admissions on admissions.patient_id = investigations.patient_id").
     where("admissions.user_id =?", user.id)

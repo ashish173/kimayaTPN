@@ -1,0 +1,134 @@
+= render :partial => 'index'
+
+-if params[:report][:investigation] == 'last_day'
+  .module
+    %h2
+      %span 
+        Report
+    .module-table-body
+      .div{:style => "width:15%;float:left"}
+        %table#myTable.tablesorter
+          %thead
+          %tbody
+            %tr
+              %th Name
+            %tr
+              %th Date
+            %tr
+              %th REG NO
+            %tr
+              %th Weight
+            %tr
+              %th GA
+            %tr
+              %th Fluid
+            %tr
+              %th Amino Acid
+            %tr
+              %th Lipids
+            %tr
+              %th Sodium
+            %tr
+              %th Potassium
+            %tr
+              %th Calcium
+            %tr
+              %th Triglycerides
+            %tr
+              %th Urea
+            %tr
+              %th Creatinine
+            %tr
+              %th BSL
+            %tr
+              %th CNR
+      .div{:style => "width:85%;float:left"}
+        - if @investigations.empty?
+          %strong No investigation for #{Date.today-1}
+        - else
+          - @investigations.each do |inv|
+            .div{:style => "width:10%;float:left"}
+              %table#myTable.tablesorter
+                %thead
+                %tbody
+                  %tr
+                    %th
+                      = inv.patient.name 
+                  %tr
+                    %th
+                      = inv.investigated_on
+                  %tr
+                    %th
+                      = inv.patient.registration_number
+                  %tr
+                    %th
+                      = inv.patient.birth_weight
+                  %tr
+                    %th
+                      = inv.patient.patient_history ? inv.patient.patient_history.ga : "-"
+                  %tr
+                    %th
+                      = (!inv.tpn_additive.nil? and inv.tpn_additive.fluid_intake.present?) ? inv.tpn_additive.fluid_intake : "- " 
+                  %tr
+                    %th
+                      = (!inv.tpn_additive.nil? and inv.tpn_additive.amino_acids.present?) ? inv.tpn_additive.amino_acids : "-" 
+                  %tr
+                    %th
+                      = (!inv.tpn_additive.nil? and inv.tpn_additive.lipids.present?) ? inv.tpn_additive.lipids : " -"
+                  %tr
+                    %th
+                      = (!inv.electrolyte.nil? and inv.electrolyte.sodium.present?) ? inv.electrolyte.sodium : " -"
+                  %tr
+                    %th
+                      = (!inv.electrolyte.nil? and inv.electrolyte.potassium.present?) ? inv.electrolyte.potassium : "- "
+                  %tr
+                    %th
+                      = (!inv.electrolyte.nil? and  inv.electrolyte.calcium.present?) ? inv.electrolyte.calcium : " -"
+                  %tr
+                    %th
+                      = (!inv.biochemistry_assessment.nil? and inv.biochemistry_assessment.triglycerides.present?) ? inv.biochemistry_assessment.triglycerides : " -"
+                  %tr
+                    %th
+                      =  (!inv.biochemistry_assessment.nil? and inv.biochemistry_assessment.urine_area.present?) ? inv.biochemistry_assessment.urine_area : " -"
+                  %tr
+                    %th
+                      =  (!inv.biochemistry_assessment.nil? and inv.biochemistry_assessment.serum_creatinine.present?) ? inv.biochemistry_assessment.serum_creatinine : " -"
+                  %tr
+                    %th
+                      = "Remained"#inv.patient.name 
+                  %tr
+                    %th
+                      = "Remained"#inv.patient.name 
+
+        = will_paginate @investigations
+        = page_entries_info @investigations
+
+-if params[:report][:investigation] == 'summary'
+  .module
+    %h2
+      %span 
+        Report
+    .module-table-body
+      %table#myTable.tablesorter
+        %thead
+          %tr
+            %th{:style => "width:5%"} No
+            %th{:style => "width:10%"} Name 
+            %th{:style => "width:10%"} Birth Wt. 
+            %th{:style => "width:15%"} Registration number
+            %th{:style => "width:10%"} Gender ID
+            %th{:style => "width:10%"} Phone Number 
+            %th{:style => "width:5%"} Profile
+        %tbody
+          - counter = 1
+          - 3.times do |patient|
+            %tr
+              %td.align-center 
+                =  counter
+              %td
+              %td
+              %td
+              %td
+              %td
+              %td
+            - counter = counter+1

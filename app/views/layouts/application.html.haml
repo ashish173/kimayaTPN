@@ -16,12 +16,12 @@
               = yield :menu
             %div{:style => "clear: both;"}
         %div{:style => "clear: both;"}
-      - if content_for?(:user)
-        #header-main
-          .container_12
-            .grid_12
-              = yield :user
-            %div{:style => "clear: both;"}
+        - if false#content_for?(:user)
+          #header-main
+            .container_12
+              .grid_12
+                = yield :user
+              %div{:style => "clear: both;"}
         -if content_for(:submenu)
           #subnav
             .container_12
