@@ -78,7 +78,7 @@ class InvestigationsController < ApplicationController
     @patients = Patient.for_user(current_user).to_json
   end
 
-  def results 
+  def results
     @patient = Patient.find(params[:selected_patient_id])
     @investigation = Investigation.day(params[:info][:date].to_date).patient(@patient).last
     if @investigation.nil?
