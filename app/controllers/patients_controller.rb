@@ -18,9 +18,6 @@ class PatientsController < ApplicationController
 
   def edit
     @patient = Patient.find(params[:id].to_i)
-    logger.info  "----------------------------------------"
-    logger.info params
-    logger.info @patient
     @investigation = Investigation.today.patient(@patient.id).last
   end
 
