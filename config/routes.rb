@@ -10,13 +10,16 @@ Kimaya::Application.routes.draw do |map|
   resources :patients do
     get 'info'
     put 'history'
-    resources :investigations, :on => :collection
+    resources :investigations, :except => [:new] do
+      get 'new', :path_prefix => '/patients/:patient_id/investigations/:invetigation_id/new'
+    end
+
     resources :additive_investigations, :on => :collection
     resources :tpns, :on => :collection
   end
   
   match 'investigations/search' => 'investigations#search', :via => :get 
-  match 'investigations/found' => 'investigations#found', :via => :post
+  match 'investigations/results' => 'investigations#results', :via => :post
   match 'investigations/autocomplete_patient_name' => 'investigations#autocomplete_patient_name', :via => :get
   # The priority is based upon order of creation:
   # first created -> highest priority.

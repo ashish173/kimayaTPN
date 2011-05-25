@@ -2,7 +2,7 @@ class InvestigationsController < ApplicationController
 
   layout 'admin'
 
-  def build
+  def build_resources
       @investigation = Investigation.new
       @investigation.build_blood_analysis
       @investigation.build_diagnosis 
@@ -23,11 +23,11 @@ class InvestigationsController < ApplicationController
   def new
     @patient = Patient.find(params[:patient_id])
     if params[:for_day].present?
-      build();
+      build_resources
       @investigation.investigated_on = params[:for_day]
       @additives = TpnAdditive.to_date(@investigation.investigated_on).for_patient(@patient).last(4)
     elsif Investigation.today.patient(@patient).empty?
-      build();
+      build_resources
       @investigation.investigated_on = Date.today
       @additives = TpnAdditive.to_date(@investigation.investigated_on).for_patient(@patient).last(4)
     else
@@ -78,11 +78,11 @@ class InvestigationsController < ApplicationController
     @patients = Patient.for_user(current_user).to_json
   end
 
-  def found
+  def results 
     @patient = Patient.find(params[:selected_patient_id])
     @investigation = Investigation.day(params[:info][:date].to_date).patient(@patient).last
     if @investigation.nil?
-      redirect_to new_patient_investigation_path(@patient,:for_day => params[:info][:date])  
+      redirect_to new_patient_investigation_path(@patient)  
     else
       redirect_to edit_patient_investigation_path(@patient,@investigation)
     end
