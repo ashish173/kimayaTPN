@@ -82,7 +82,7 @@ class InvestigationsController < ApplicationController
     @patient = Patient.find(params[:selected_patient_id])
     @investigation = Investigation.day(params[:info][:date].to_date).patient(@patient).last
     if @investigation.nil?
-      redirect_to new_patient_investigation_path(@patient)  
+      redirect_to new_patient_investigation_path(@patient, :for_day => params[:info][:date])  
     else
       redirect_to edit_patient_investigation_path(@patient,@investigation)
     end

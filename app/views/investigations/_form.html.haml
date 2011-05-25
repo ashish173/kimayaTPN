@@ -4,12 +4,11 @@
   = f.hidden_field :investigated_on, :value => @investigation.investigated_on
 
   #accordion
+    %h4 
+      Investigation
     %div
-      %h4 Investigation
-    %div{:display => 'none'}
       = render :partial => 'investigation', :locals => {:f => f}
-    %div
-      %h4 TPN additives
+    %h4 TPN additives
     %div
       = render :partial => 'additives', :locals => {:f => f}
   %p
@@ -24,8 +23,8 @@
   });
   $(function() {
     $( "#accordion" ).accordion({
-      collapsible: true
+      collapsible: true,
+      active: -1
     });
-    $( "#accordion" ).accordion("activate",-1);
   });
 

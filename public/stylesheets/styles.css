@@ -928,3 +928,14 @@ input[type="text"], input[type="password"], input[type="email"], select {
 #monitors {
   margin:5px 0 0 5px;
 }
+
+#accordion h4.ui-accordion-header{
+  height:30px;
+  padding-top:10px;
+  margin-top:10px;
+  background:#3C9CDD;
+  color:white;
+  font-size:14px;
+  font-weight:bold;
+  padding-left:10px;
+}

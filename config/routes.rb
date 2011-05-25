@@ -10,9 +10,9 @@ Kimaya::Application.routes.draw do |map|
   resources :patients do
     get 'info'
     put 'history'
-    resources :investigations, :except => [:new] do
-      get 'new', :path_prefix => '/patients/:patient_id/investigations/:invetigation_id/new'
-    end
+    resources :investigations, :on => :collection #:except => [:new] do
+ #     get 'new', :path_prefix => '/patients/:patient_id/investigations/:invetigation_id/new'
+ #   end
 
     resources :additive_investigations, :on => :collection
     resources :tpns, :on => :collection
