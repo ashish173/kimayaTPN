@@ -6,13 +6,15 @@
       = link_to "Patient history", patient_info_path(@patient)
     %li 
       = link_to "Daily Investigation" , "#"
-#subnav
-  .grid_12
-    = render :partial => 'search'
 .grid_12
-  %h4 Patient - #{@patient.name}
-  %h4 Date - #{@investigation.investigated_on}
-#frmPop
-  .grid_12
-    = render :partial => 'edit'
-  %div{:style => "clear:both;"}
+  = render :partial => 'search'
+.grid_12
+  .module
+    %h2
+      %span
+        #{@patient.name}  -  #{@investigation.investigated_on}
+    .module-body
+      #frmPop
+        .grid_12
+          = render :partial => 'edit'
+        %div{:style => "clear:both;"}
