@@ -88,14 +88,6 @@ class InvestigationsController < ApplicationController
     end
   end
 
-  def for_days
-    
-  end
-
-  def report
-
-  end
-
   def autocomplete_patient_name
     term = params[:term] 
     if term && !term.empty?

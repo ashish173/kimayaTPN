@@ -4,6 +4,7 @@ class ReportsController < ApplicationController
   def index
     @report = Report.new
     @report.attributes = params[:report]
+    @fields = ['Name','Date',' REG NO','Weight','GA','Fluid','Amino Acid','Lipids','Sodium','Potassium','Calcium','Triglycerides','Urea','Creatinine','BSL','CNR']
     if @report.valid?
       @selected_menu = 'report'
       @investigations = [].paginate(:page => params[:page], :per_page => 10)
