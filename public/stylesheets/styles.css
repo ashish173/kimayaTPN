@@ -362,6 +362,14 @@ div.module table th {
 	color: #444444;
 	padding: 5px;
 	text-align: left;
+	border-right: 1px solid #d9d9d9;
+	border-bottom: 1px solid #d9d9d9;
+	}
+div.module #report table th {
+	background-color: #eeeeee;
+	color: #444444;
+	padding: 5px;
+	text-align: left;
         overflow: hidden;
         height: 17px;
         display: block;
