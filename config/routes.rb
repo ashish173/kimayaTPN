@@ -16,7 +16,7 @@ Kimaya::Application.routes.draw do |map|
   end
   
   match 'investigations/search' => 'investigations#search', :via => :get 
-  match 'investigations/found' => 'investigations#found', :via => :post
+  match 'investigations/results' => 'investigations#results', :via => :post
   match 'investigations/autocomplete_patient_name' => 'investigations#autocomplete_patient_name', :via => :get
   # The priority is based upon order of creation:
   # first created -> highest priority.
