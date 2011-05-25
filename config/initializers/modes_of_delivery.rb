@@ -5,3 +5,5 @@ INDUCED = 1
 FORCEPS = 2
 VACUUM = 3
 CAESAREAN = 4
+
+MEDICAL_PROBLEMS = ["Drugs", "Smoking", "Alcholism"]

@@ -7,7 +7,7 @@ class Patient < ActiveRecord::Base
  validates_numericality_of :birth_weight, :message => :birth_weight_invalid
  validates_presence_of :address, :message => :address_blank
  validates_presence_of :gender_id, :message => :gender_id_blank
- validates_presence_of :emergency_telephone, :message => :phone_number_blank
+ #validates_presence_of :emergency_telephone, :message => :phone_number_blank
 
  has_one :mother_history, :dependent => :destroy
  has_one :patient_history, :dependent => :destroy
