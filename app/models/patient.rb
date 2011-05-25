@@ -1,6 +1,5 @@
 class Patient < ActiveRecord::Base
   self.per_page =10
-end
  validates_uniqueness_of :registration_number, :message => :registration_number_not_unique
  validates_presence_of :registration_number, :message => :registration_number_blank
  validates_presence_of :name, :message => :patient_name_blank
