@@ -181,7 +181,7 @@
     .module
       %h2
         %span Enteral Nutrition
-      .module-body
+      .module-body{:style => "height:50%"}
         = f.fields_for :enteral_diagnosis do |inv|
           .input0
             .input5
@@ -211,14 +211,15 @@
                 .input_right
                   = inv.radio_button :enteral_nutrition, "EBM + MCT + HMF", :class => 'ebm'
                   EBM + MCT + HMF
-          %h4
-            Total Enteral Calories
-            = inv.text_field :total_enteral_calories, :size => 7
+          .input0
+            %h4
+              Total Enteral Calories
+              = inv.text_field :total_enteral_calories, :size => 7
   .grid_6
     .module
       %h2
         %span Anthropometric Measurments 
-      .module-body
+      .module-body{:style => "height:140px"}
         = f.fields_for :anthropometric_measurement do |am|
           .input0
             .input2

@@ -10,7 +10,7 @@
       %span 
         Report
     .module-table-body
-      .div{:style => "width:15%;float:left"}
+      #report{:style => "width:15%;float:left"}
         %table#myTable.tablesorter
           %thead
           %tbody
@@ -47,7 +47,7 @@
               %th BSL
             %tr
               %th CNR
-      .div{:style => "width:85%;float:left"}
+      #report{:style => "width:85%;float:left"}
         - if @investigations.empty?
           %strong No investigation for #{Date.today-1}
         - else
