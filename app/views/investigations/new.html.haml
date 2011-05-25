@@ -9,9 +9,12 @@
 .grid_12
   = render :partial => 'search'
 .grid_12
-  %h4 Patient - #{@patient.name}
-  %h4 Date - #{@investigation.investigated_on}
-#frmPop
-  .grid_12
-    = render :partial => 'form'
-  %div{:style => "clear:both;"}
+  .module
+    %h2
+      %span
+        #{@patient.name}  -  #{@investigation.investigated_on}
+    .module-body
+      #frmPop
+        .grid_12
+          = render :partial => 'form'
+        %div{:style => "clear:both;"}
