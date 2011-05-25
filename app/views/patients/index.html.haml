@@ -23,7 +23,7 @@
           %th{:style => "width:5%"} Profile
       %tbody
         - counter = 1
-        - @patient.each do |patient|
+        - @patients.each do |patient|
           %tr
             %td.align-center 
               =  counter
@@ -44,4 +44,10 @@
                 %img{:alt => "show", :height => "16", :src => "/images/bin.gif", :width => "16"}/
               = link_to(image_tag("/images/cross-small.gif",:height => "16", :width => "16"), patient_path(patient.id), :method => 'delete')
           - counter = counter+1
+    .pagination
+      .current
+        .numbers
+          %span
+            = will_paginate @patients
+            = page_entries_info @patients
 
