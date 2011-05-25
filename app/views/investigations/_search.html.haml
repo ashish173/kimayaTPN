@@ -1,13 +1,19 @@
 = form_tag(investigations_results_path, :id => 'select_patient') do |f|
-  .input4
-    %strong Date
-    = text_field :info,:date,:class => 'datepicker', :size => 20
-  .input4
-    %strong Patient
-    = autocomplete_field_tag :patient,'', investigations_autocomplete_patient_name_path, :id_element => '#selected_patient_id', :size => 20
-    = hidden_field_tag :selected_patient_id
-  = submit_tag 'Show', :class => 'submit-green'
-
+  .module
+    %h2
+      %span
+        Investigation for
+    .module-body
+      .fieldset
+        .input1
+          %strong Date
+          = text_field :info,:date,:class => 'datepicker', :size => 20
+        .input1
+          %strong Patient
+          = autocomplete_field_tag :patient,'', investigations_autocomplete_patient_name_path, :id_element => '#selected_patient_id', :size => 20
+          = hidden_field_tag :selected_patient_id
+        .input2
+          = submit_tag 'Show', :class => 'submit-green'
 :javascript
 
   $("#select_patient").submit( function () {

@@ -1,35 +1,33 @@
 = form_for(@report, reports_path, :html => {:method => :get}) do |f|
-  .input0
-    .input5
-      %p
-        %strong Report for
-      %p
-        = f.radio_button :investigation, "last_day"
-        %strong Last day of investigation
-      %p
-        = f.radio_button :investigation, "summary"
-        %strong Summary
-    .input4{:id => 'summary'}
-      %p
-        %strong Start Date
-        = f.text_field :start_date,:class => 'datepicker', :size => 20
-      %p
-        %strong End Date
-        = f.text_field :end_date,:class => 'datepicker', :size => 20
-      %p
-        %strong Patient
-        = f.autocomplete_field :patient, investigations_autocomplete_patient_name_path, :id_element => '#selected_patient_id', :size => 20
-        = hidden_field_tag :selected_patient_id
-    .input2
-    .input2
-      %br
-      %br
-      = f.submit 'Show', :class => 'submit-green'
-  %br
-  %br
-  %br
-  %br
-  #subnav
+  .module
+    %h2
+      %span
+        Report for
+    .module-body
+      .fieldset
+        .input5
+          %br
+          %p
+            = f.radio_button :investigation, "last_day"
+            %strong Last day of investigation
+          %p
+            = f.radio_button :investigation, "summary"
+            %strong Summary
+        .input4{:id => 'summary'}
+          %p
+            %strong Start Date
+            = f.text_field :start_date,:class => 'datepicker', :size => 20
+          %p
+            %strong End Date
+            = f.text_field :end_date,:class => 'datepicker', :size => 20
+          %p
+            %strong Patient
+            = f.autocomplete_field :patient, investigations_autocomplete_patient_name_path, :id_element => '#selected_patient_id', :size => 20
+            = hidden_field_tag :selected_patient_id
+        .input2
+          %br
+          %br
+          = f.submit 'Show', :class => 'submit-green'
 
 :javascript
   $("#summary").hide();
