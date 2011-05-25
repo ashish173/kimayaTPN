@@ -1,11 +1,10 @@
-.grid_12
-  = raw display_message
-  .bottom-spacing
-    .float-right
-      %a.button{:href => new_patient_path}
-        %span
-          Add patient 
-          = image_tag('/images/plus-small.gif', :height => "9", :width => "12")
+= raw display_message
+.bottom-spacing
+  .float-right
+    %a.button{:href => new_patient_path}
+      %span
+        Add patient 
+        = image_tag('/images/plus-small.gif', :height => "9", :width => "12")
 .module
   %h2
     %span 
