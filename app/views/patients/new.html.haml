@@ -3,9 +3,9 @@
     %li 
       = link_to "Basic Information", "#"
     %li 
-      = link_to "Patient history", "#", :id => 'ph'
+      = link_to "Patient history", "#errMsg", :rel => :facebox
     %li 
-      = link_to "Daily Investigation", "#", :id => 'di'
+      = link_to "Daily Investigation", "#errMsg", :rel => :facebox
 #frmPop
   .grid_12
     .module
@@ -14,17 +14,6 @@
       .module-body
         = render :partial => 'form'
       %div{:style => "clear:both;"}
-        
-:javascript
-  
-  function register(){
-      alert("Please first register the patient");
-      return false;
-  }
+#errMsg
+  %p{:class => 'errMsg'} Please register the patient first.
 
-  $("#ph").click( function () {
-    register();
-    });
-  $("#di").click( function () {
-    register();
-    });

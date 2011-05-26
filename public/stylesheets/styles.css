@@ -950,3 +950,9 @@ input[type="text"], input[type="password"], input[type="email"], select {
   font-weight:bold;
   padding-left:10px;
 }
+
+.errMsg {
+    width:400px;
+    height:20px;
+    padding:10px;
+}
