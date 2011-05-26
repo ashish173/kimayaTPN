@@ -16,6 +16,7 @@
           %th{:style => "width:5%"} No
           %th{:style => "width:15%"} Registration number
           %th{:style => "width:10%"} Name 
+          %th{:style => "width:10%"} Admitted on 
           %th{:style => "width:10%"} Birth Wt. 
           %th{:style => "width:10%"} Gender
           %th{:style => "width:10%"} Phone Number 
@@ -30,6 +31,8 @@
               =  patient.registration_number
             %td
               =  patient.name
+            %td
+              =  patient.admission.admitted_on.strftime("%m-%d-%Y")
             %td
               =  patient.birth_weight
             %td
