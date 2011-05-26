@@ -11,18 +11,19 @@ class Patient < ActiveRecord::Base
 
  has_one :mother_history, :dependent => :destroy
  has_one :patient_history, :dependent => :destroy
- has_many :investigations
+ has_many :investigations, :dependent => :destroy
  has_many :daily_tpn_additives, :through => :investigations, :source => :tpn_additive
 
- has_one :admission
+ has_one :admission, :dependent => :destroy
 
- accepts_nested_attributes_for :mother_history
- accepts_nested_attributes_for :patient_history
- accepts_nested_attributes_for :admission
+ accepts_nested_attributes_for :mother_history, :allow_destroy => true
+ accepts_nested_attributes_for :patient_history, :allow_destroy => true
+ accepts_nested_attributes_for :admission, :allow_destroy => true
 
  scope :for_user, lambda {|user|
    joins("join admissions on admissions.patient_id = patients.id").
      where("admissions.user_id =?", user.id)
  }
 
+ scope :ordered, joins(:admission).order("admissions.admitted_on DESC")
 end

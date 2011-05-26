@@ -10,6 +10,7 @@ class Report < ActiveRecord::Base
   column :patient, :integer
   validates :start_date, :end_date, :patient, :presence => true, :if => :is_investigation_type? 
   attr_accessor :report_for, :investigation
+  
   def is_investigation_type?
     self.investigation == 'summary'
   end

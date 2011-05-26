@@ -1,3 +1,4 @@
+= javascript_include_tag "jquery.ui.datepicker", "jquery-ui-timepicker-addon", "application"
 = content_for :submenu do
   %ul
     %li 
@@ -16,5 +17,13 @@
     .module-body
       #frmPop
         .grid_12
-          = render :partial => 'form'
+          = form_for(@investigation, :url => patient_investigations_path(@patient.id)) do |f|
+            = f.hidden_field :patient_id, :value => @patient.id
+            = f.hidden_field :investigated_on, :value => @investigation.investigated_on
+            = render :partial => 'form', :locals => {:f => f}
+            %p        
+              .buttons
+                .grid_4
+                  = f.submit "Create", :class => "submit-green"
+                  = link_to "Cancel", patients_path, :class => "submit-gray", :width => 8
         %div{:style => "clear:both;"}

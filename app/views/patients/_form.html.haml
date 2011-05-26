@@ -1,6 +1,5 @@
-= javascript_include_tag "jquery.ui.datepicker", "application"
 
-= form_for(@patient, :url => patients_path) do |f|
+= form_for(@patient) do |f|
   .div{:style => "width:50%;float:left;"}
     %p
       = f.label "registration_number *"
@@ -10,7 +9,7 @@
       = f.text_field :name
     %p
       = f.label "gender_id *"
-      = f.select :gender_id,  Gender.all.collect{|g| [g.name, g.gender_id]}, {:include_blank => "--select--"}, :style => "width:293px;"
+      = f.select :gender_id,  Gender.all.collect{|g| [g.name, g.gender_id]}, {:include_blank => "--select--"}, :style => "width:300px;"
     %p
       = f.label "date_of_birth *"
       = f.text_field :date_of_birth, :class=> "datepicker"

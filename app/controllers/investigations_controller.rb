@@ -22,6 +22,7 @@ class InvestigationsController < ApplicationController
 
   def new
     @patient = Patient.find(params[:patient_id])
+    @is_search = true if params[:display]
     if params[:for_day].present?
       build_resources
       @investigation.investigated_on = params[:for_day]
@@ -53,6 +54,8 @@ class InvestigationsController < ApplicationController
     @patient = Patient.find(params[:patient_id])
     @investigation = Investigation.find(params[:id])
     @additives = TpnAdditive.to_date(@investigation.investigated_on).for_patient(@patient).last(4)
+    @additives.pop
+    @is_search = true if params[:display]
   end
 
   def update
@@ -76,22 +79,23 @@ class InvestigationsController < ApplicationController
       @investigations = Investigation.for_user(current_user).order("investigated_on").last(20).paginate(:page => params[:page], :per_page =>10)
     end
     @patients = Patient.for_user(current_user).to_json
+    @is_search = true 
   end
 
   def results
     @patient = Patient.find(params[:selected_patient_id])
     @investigation = Investigation.day(params[:info][:date].to_date).patient(@patient).last
     if @investigation.nil?
-      redirect_to new_patient_investigation_path(@patient, :for_day => params[:info][:date])  
+      redirect_to investigation_new_path(@patient, params[:info][:date].to_date, :display => 'search')  
     else
-      redirect_to edit_patient_investigation_path(@patient,@investigation)
+      redirect_to edit_patient_investigation_path(@patient,@investigation, :display => 'search')
     end
   end
 
   def autocomplete_patient_name
     term = params[:term] 
     if term && !term.empty?
-      items = Patient.for_user(User.find(2)).where(["LOWER(name) LIKE ?", "%#{term}%"])
+      items = Patient.for_user(current_user).where(["LOWER(name) LIKE ?", "%#{term}%"])
     end
     render :json => json_for_autocomplete(items, :name,nil)
   end

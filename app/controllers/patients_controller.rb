@@ -5,9 +5,9 @@ class PatientsController < ApplicationController
   def index
     @selected_menu = PATIENT
     if current_user.role?(ADMIN) or current_user.role?(SUPER_ADMIN)
-      @patients = Patient.all.paginate(:page => params[:page], :per_page =>10)
+      @patients = Patient.ordered.paginate(:page => params[:page], :per_page =>10)
     else
-      @patients = current_user.user_patients.paginate(:page => params[:page], :per_page =>10)
+      @patients = current_user.user_patients.ordered.paginate(:page => params[:page], :per_page =>10)
     end
   end
 
@@ -70,7 +70,7 @@ class PatientsController < ApplicationController
       flash[:notice] = "History is successfully saved" 
         #Today's investigation
         if @investigation == nil
-          redirect_to(new_patient_investigation_path(@patient))
+          redirect_to(investigation_new_path(@patient, Date.today.strftime("%d-%m-%Y")))
         else
           redirect_to(edit_patient_investigation_path(@patient,@investigation))
         end

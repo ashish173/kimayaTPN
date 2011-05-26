@@ -1,4 +1,4 @@
-= form_for(@report, reports_path, :html => {:method => :get}) do |f|
+= form_for(@report, reports_path) do |f|
   .module
     %h2
       %span
@@ -6,23 +6,33 @@
     .module-body
       .fieldset
         %p
-          = f.radio_button :investigation, "last_day"
-          %strong Last day of investigation
-          = f.radio_button :investigation, "summary"
-          %strong Summary
-          = f.submit 'Show', :class => 'submit-green'
+          .input1
+            = f.radio_button :investigation, "last_day"
+            %strong Last day of investigation
+          .input5
+            = f.radio_button :investigation, "summary"
+            %strong Summary
+          .input1
+            = f.submit 'Show', :class => 'submit-green'
         %p
           .div{:id => 'summary'}  
-            %strong Start Date
-            = f.text_field :start_date,:class => 'datepicker', :size => 20
-            %strong End Date
-            = f.text_field :end_date,:class => 'datepicker', :size => 20
-            %strong Patient
-            = f.autocomplete_field :patient, investigations_autocomplete_patient_name_path, :id_element => '#selected_patient_id', :size => 20
-            = hidden_field_tag :selected_patient_id
+            .input1
+              %strong Start Date
+              = f.text_field :start_date,:class => 'datepicker', :size => 20
+            .input1
+              %strong End Date
+              = f.text_field :end_date,:class => 'datepicker', :size => 20
+            .input1
+              %strong Patient
+              = f.autocomplete_field :patient, investigations_autocomplete_patient_name_path, :id_element => '#selected_patient_id', :size => 20
+              = hidden_field_tag :selected_patient_id
 
 :javascript
   $("#summary").hide();
+  if( $("input[name='report[investigation]']:checked").val() == 'summary')
+  {
+    $("#summary").show();
+  }
   $("#report_investigation_last_day").click(function(){
     $("#summary").hide();
   });

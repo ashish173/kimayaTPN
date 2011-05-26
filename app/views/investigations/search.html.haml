@@ -14,7 +14,6 @@
             - @investigations.each do |inv|
               %dt
                 = link_to inv.investigated_on.strftime("%d %b %Y"), edit_patient_investigation_path(inv.patient_id,inv)
-                = link_to :patient, new_patient_tpn_path(inv.patient), :rel => 'facebox'
               %dd 
                 = inv.patient.name
           .pagination

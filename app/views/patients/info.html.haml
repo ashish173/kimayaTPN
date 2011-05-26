@@ -6,7 +6,7 @@
       = link_to "Patient history", patient_info_path(@patient)
     %li 
       - if @investigation.nil?
-        = link_to "Daily Investigation", new_patient_investigation_path(@patient, :for_day => Date.today)
+        = link_to "Daily Investigation", investigation_new_path(@patient.id, Date.today.strftime("%m-%d-%Y"))
       - else
         = link_to "Daily Investigation", edit_patient_investigation_path(@patient, @investigation)
 #frmPop
