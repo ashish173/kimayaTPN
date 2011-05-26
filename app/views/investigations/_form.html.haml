@@ -1,22 +1,12 @@
-= javascript_include_tag "jquery.ui.datepicker", "jquery-ui-timepicker-addon", "application"
-= form_for(@investigation, :url => patient_investigations_path(@patient.id)) do |f|
-  = f.hidden_field :patient_id, :value => @patient.id
-  = f.hidden_field :investigated_on, :value => @investigation.investigated_on
-
-  #accordion
-    %h4 
-      Investigation
-    %div
-      = render :partial => 'investigation', :locals => {:f => f}
-    %h4 TPN additives
-    %div
-      = render :partial => 'additives', :locals => {:f => f}
-  %p
-    .buttons
-      .grid_4
-        = f.submit "Create", :class => "submit-green"
-        = link_to "Cancel", patients_path, :class => "submit-gray", :width => 8
-      
+#accordion
+  %h4 
+    Investigation
+  %div
+    = render :partial => 'investigation', :locals => {:f => f}
+  %h4 TPN additives
+  %div
+    = render :partial => 'additives', :locals => {:f => f}
+    
 :javascript
   $(function() {
     $('.datetimepicker').timepicker({});

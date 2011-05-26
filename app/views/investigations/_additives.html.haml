@@ -184,15 +184,12 @@
       .module-body{:style => "height:50%"}
         = f.fields_for :enteral_diagnosis do |inv|
           .input0
-            .input5
+            .input_left
+              = inv.check_box :ebm
               EBM 
-            .input5
-              = inv.text_field :ebm, :size => 7
-          .input0
-            .input5
+            .input_right
+              = inv.check_box :formula_feeds
               Formula Feeds
-            .input5
-              = inv.text_field :formula_feeds, :size => 7
           .input0
           .module
             %h2

@@ -14,34 +14,34 @@
       %thead
         %tr
           %th{:style => "width:5%"} No
+          %th{:style => "width:15%"} Registration number
           %th{:style => "width:10%"} Name 
           %th{:style => "width:10%"} Birth Wt. 
-          %th{:style => "width:15%"} Registration number
-          %th{:style => "width:10%"} Gender ID
+          %th{:style => "width:10%"} Gender
           %th{:style => "width:10%"} Phone Number 
           %th{:style => "width:5%"} Profile
       %tbody
         - counter = 1
         - @patients.each do |patient|
           %tr
-            %td.align-center 
+            %td
               =  counter
+            %td
+              =  patient.registration_number
             %td
               =  patient.name
             %td
               =  patient.birth_weight
             %td
-              =  patient.registration_number
-            %td
-              =  patient.gender_id
+              =  Gender.find(patient.gender_id).name
             %td
               =  patient.emergency_telephone
             %td
-              %a{:href => edit_patient_path(patient.id)}
+              %a{:href => edit_patient_path(patient.id), :title => 'Edit'}
                 %img{:alt => "edit", :height => "16", :src => "/images/pencil.gif", :width => "16"}/
-              %a{:href => patient_path(patient.id)}
+              %a{:href => patient_path(patient.id), :title => 'Show'}
                 %img{:alt => "show", :height => "16", :src => "/images/bin.gif", :width => "16"}/
-              = link_to(image_tag("/images/cross-small.gif",:height => "16", :width => "16"), patient_path(patient.id), :method => 'delete')
+              = link_to(image_tag("/images/cross-small.gif",:height => "16", :width => "16"), patient_path(patient.id), :method => 'delete', :title => 'Delete', :confirm => 'Are you sure?')
           - counter = counter+1
     .pagination
       .current
@@ -49,4 +49,3 @@
           %span
             = will_paginate @patients
             = page_entries_info @patients
-

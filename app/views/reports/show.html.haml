@@ -40,8 +40,6 @@
               %th Creatinine
             %tr
               %th BSL
-            %tr
-              %th CNR
       .div{:style => "width:85%;float:left"}
         - if @investigations.empty?
           %strong No investigation for #{Date.today-1}
@@ -93,9 +91,6 @@
                   %tr
                     %th
                       =  (!inv.biochemistry_assessment.nil? and inv.biochemistry_assessment.serum_creatinine.present?) ? inv.biochemistry_assessment.serum_creatinine : " -"
-                  %tr
-                    %th
-                      = "Remained"#inv.patient.name 
                   %tr
                     %th
                       = "Remained"#inv.patient.name 

@@ -2,9 +2,12 @@ class ReportsController < ApplicationController
   layout 'admin'
 
   def index
-    @report = Report.new
-    @report.attributes = params[:report]
-    @fields = ['Name','Date',' REG NO','Weight','GA','Fluid','Amino Acid','Lipids','Sodium','Potassium','Calcium','Triglycerides','Urea','Creatinine','BSL','CNR']
+    @report =  Report.new
+    @investigations = [].paginate(:page => params[:page], :per_page => 10)
+  end
+
+  def create
+    @report =  Report.new(params[:report])
     if @report.valid?
       @selected_menu = 'report'
       @investigations = [].paginate(:page => params[:page], :per_page => 10)
@@ -21,9 +24,9 @@ class ReportsController < ApplicationController
         @patient = Patient.find(params[:selected_patient_id])
         @investigations = @patient.investigations.from_date(@from_date).to_date(@to_date).paginate(:page => params[:page], :per_page => 10)
       end
-      @report.investigation = nil
       render :action => 'index'
     else
+      @investigations = [].paginate(:page => params[:page], :per_page => 10)
       render :action => 'index'
     end
   end

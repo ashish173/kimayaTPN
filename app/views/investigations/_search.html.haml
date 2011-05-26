@@ -1,19 +1,20 @@
-= form_tag(investigations_results_path, :id => 'select_patient') do |f|
-  .module
-    %h2
-      %span
-        Investigation for
-    .module-body
-      .fieldset
-        .input1
-          %strong Date
-          = text_field :info,:date,:class => 'datepicker', :size => 20
-        .input1
-          %strong Patient
-          = autocomplete_field_tag :patient,'', investigations_autocomplete_patient_name_path, :id_element => '#selected_patient_id', :size => 20
-          = hidden_field_tag :selected_patient_id
-        .input2
-          = submit_tag 'Show', :class => 'submit-green'
+-if @is_search 
+  = form_tag(investigations_results_path, :id => 'select_patient') do |f|
+    .module
+      %h2
+        %span
+          Investigation for
+      .module-body
+        .fieldset
+          .input1
+            %strong Date
+            = text_field :info,:date,:class => 'datepicker', :size => 20
+          .input1
+            %strong Patient
+            = autocomplete_field_tag :patient,'', investigations_autocomplete_patient_name_path, :id_element => '#selected_patient_id', :size => 20
+            = hidden_field_tag :selected_patient_id
+          .input2
+            = submit_tag 'Show', :class => 'submit-green'
 :javascript
 
   $("#select_patient").submit( function () {
@@ -21,7 +22,7 @@
       alert("Please select a date");
       return false;
     }
-    if($('#info_patient').val()==""){
+    if($('#patient').val()==""){
       alert('Please select a patient');
       return false;
     }
