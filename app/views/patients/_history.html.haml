@@ -96,18 +96,18 @@
                   .input5
                     Medical Problems
                   .input5
-                    = text_field(:medical, :problems)
+                    = m.text_field :medical_history 
                 .input0
                   .input5
                   .input5
-                    = check_box_tag :drugs, "" 
-                    Drugs
+                    = check_box_tag "patient[mother_history_attributes][other_medical_problems][]", MEDICAL_PROBLEMS[0], @patient.mother_history.other_medical_problems.include?(MEDICAL_PROBLEMS[0]) 
+                    = MEDICAL_PROBLEMS[0] 
                   .input5
-                    = check_box_tag :smoking, ""
-                    Smoking
+                    = check_box_tag "patient[mother_history_attributes][other_medical_problems][]", MEDICAL_PROBLEMS[1], @patient.mother_history.other_medical_problems.include?(MEDICAL_PROBLEMS[1]) 
+                    = MEDICAL_PROBLEMS[1] 
                   .input5
-                    = check_box_tag :alcoholism, ""
-                    Alcholism
+                    = check_box_tag "patient[mother_history_attributes][other_medical_problems][]", MEDICAL_PROBLEMS[2], @patient.mother_history.other_medical_problems.include?(MEDICAL_PROBLEMS[2]) 
+                    = MEDICAL_PROBLEMS[2] 
                 .input0
                   .input5
                     Antenatal Steroids

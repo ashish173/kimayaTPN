@@ -56,7 +56,7 @@ class PatientsController < ApplicationController
   end
 
   def info
-      @patient = Patient.find(params[:patient_id])
+    @patient = Patient.find(params[:patient_id])
     @patient.build_mother_history if @patient.mother_history.nil?
     @patient.build_admission if @patient.admission.nil?
     @patient.build_patient_history if @patient.patient_history.nil?
@@ -75,6 +75,7 @@ class PatientsController < ApplicationController
           redirect_to(edit_patient_investigation_path(@patient,@investigation))
         end
     else
+      p @patient.errors
       render :action => 'info'
     end
   end
