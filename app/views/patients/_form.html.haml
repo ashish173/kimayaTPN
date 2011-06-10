@@ -9,10 +9,10 @@
       = f.text_field :name
     %p
       = f.label "gender_id *"
-      = f.select :gender_id,  Gender.all.collect{|g| [g.name, g.gender_id]}, {:include_blank => "--select--"}, :style => "width:300px;"
+      = f.select :gender_id,  Gender.all.collect{|g| [g.name, g.id]}, {:include_blank => "--select--"}, :style => "width:300px;"
     %p
       = f.label "date_of_birth *"
-      = f.text_field :date_of_birth, :class=> "datepicker"
+      = f.text_field :date_of_birth,:value => @patient.try(:date_of_birth).try(:strftime,'%d-%m-%Y'), :class=> "datepicker"
     %p
       = f.label "birth_weight(kg) *"
       = f.text_field :birth_weight

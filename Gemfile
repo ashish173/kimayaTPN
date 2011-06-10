@@ -26,7 +26,7 @@ group :development, :test do
     gem 'web-app-theme'
     gem 'mongrel'
 end
-
+gem "date_validator"
 gem 'cancan'
 # Use unicorn as the web server
 # gem 'unicorn'

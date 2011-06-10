@@ -5,7 +5,12 @@ class UsersController < ApplicationController
 
   def index
    @selected_menu = params[:for].to_i
-   @users = @selected_menu == DOCTOR ? User.doctors : (@selected_menu == PATIENT ? Patient.all : User.nutritionists)
+   if @selected_menu == DOCTOR || @selected_menu == NUTRITIONIST
+     @users = @selected_menu == DOCTOR ? User.doctors : User.nutritionists
+     @users = @users.paginate(:page => params[:page], :per_page =>10)
+   else
+     @patients = Patient.all.paginate(:page => params[:page], :per_page =>10) 
+   end
   end
 
   def show
@@ -47,4 +52,5 @@ class UsersController < ApplicationController
       format.html{redirect_to users_path(:for => params[:for])}
     end
   end
+
 end 

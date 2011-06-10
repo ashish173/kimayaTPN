@@ -4,6 +4,7 @@ class Patient < ActiveRecord::Base
  validates_presence_of :registration_number, :message => :registration_number_blank
  validates_presence_of :name, :message => :patient_name_blank
  validates_presence_of :date_of_birth, :message => :date_of_birth_blank
+ validates :date_of_birth, :date => { :before_or_equal_to => Date.today }
  validates_numericality_of :birth_weight, :message => :birth_weight_invalid
  validates_presence_of :address, :message => :address_blank
  validates_presence_of :gender_id, :message => :gender_id_blank
@@ -26,4 +27,6 @@ class Patient < ActiveRecord::Base
  }
 
  scope :ordered, joins(:admission).order("admissions.admitted_on DESC")
+
+ scope :search, lambda{|keyword| where("registration_number like ? or name like ?", "#{keyword}%", "%#{keyword}%")}
 end

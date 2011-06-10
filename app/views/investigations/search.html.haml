@@ -7,15 +7,20 @@
           %span Investigations
         .module-body
           %dl
-            %dt{:style => 'background-color:#EEEEEE;'}
+            %dt{:style => 'background-color:#EEEEEE; width:30%;'}
               %strong Date 
-            %dd{:style => 'background-color:#EEEEEE;'} 
-              %strong Patient name 
+            %dt{:style => 'background-color:#EEEEEE; width:33%;'} 
+              %strong Patient name
+            %dt{:style => 'background-color:#EEEEEE; width:33%'}
+              %strong Today's investigation
             - @investigations.each do |inv|
-              %dt
+              %dd{:style => 'background-color:#EEEEEE; width:30%;'}
                 = link_to inv.investigated_on.strftime("%d %b %Y"), edit_patient_investigation_path(inv.patient_id,inv)
-              %dd 
+              %dd{:style => 'background-color:#EEEEEE; width:33%;'}
                 = inv.patient.name
+              %dd{:style => 'background-color:#EEEEEE; width:33%;'}
+                = link_to "Add", investigation_new_path(inv.patient_id, Date.today)
+                 
           .pagination
             .current
               .numbers

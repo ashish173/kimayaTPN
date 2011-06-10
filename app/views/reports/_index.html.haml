@@ -24,7 +24,7 @@
               = f.text_field :end_date,:class => 'datepicker', :size => 20
             .input1
               %strong Patient
-              = f.autocomplete_field :patient, investigations_autocomplete_patient_name_path, :id_element => '#selected_patient_id', :size => 20
+              = f.autocomplete_field :patient, investigations_autocomplete_patient_name_path, :id_element => '#selected_patient_id', :size => 20, :value => ''
               = hidden_field_tag :selected_patient_id
 
 :javascript
@@ -38,4 +38,17 @@
   });
   $("#report_investigation_summary").click(function(){
     $("#summary").show();
+  });  
+  
+  $("#new_report").submit( function () {
+    if( $("input[name='report[investigation]']:checked").val() == 'summary'){
+      if($('#selected_patient_id').val()==""){
+        alert('Patient does not exist .');
+          return false;
+     }
+     return true;
+    }
   });
+
+                  
+

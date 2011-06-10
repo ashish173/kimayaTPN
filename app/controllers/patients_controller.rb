@@ -11,6 +11,7 @@ class PatientsController < ApplicationController
     end
   end
 
+
   #create new patient
   def new
     @patient = Patient.new
@@ -75,8 +76,11 @@ class PatientsController < ApplicationController
           redirect_to(edit_patient_investigation_path(@patient,@investigation))
         end
     else
-      p @patient.errors
       render :action => 'info'
     end
+  end
+  def search
+    @patients = Patient.search(params[:keyword]).paginate(:page => params[:page], :per_page =>10)
+    render :partial => 'search'
   end
 end

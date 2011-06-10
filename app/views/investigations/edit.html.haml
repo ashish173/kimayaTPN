@@ -13,7 +13,7 @@
   .module
     %h2
       %span
-        #{@patient.name}  -  #{@investigation.investigated_on}
+        #{@patient.name}  -  #{@investigation.investigated_on.strftime("%d-%m-%Y")}
     .module-body
       #frmPop
         .grid_12

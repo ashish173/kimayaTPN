@@ -4,12 +4,15 @@ Kimaya::Application.routes.draw do |map|
     match 'reset_password' => 'admin/home#reset_password'
   end
   
-  resources :users
+  resources :users 
   resources :additives
   resources :reports
   resources :patients do
     get 'info'
     put 'history'
+    collection do
+      post 'search'
+    end
     resources :investigations, :except => [:new] do
       get 'new', :path_prefix => '/patients/:patient_id/investigations/:invetigation_id/new'
     end

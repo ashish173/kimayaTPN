@@ -4,7 +4,7 @@
     %h2
       %span Patient History
     .message
-      All Fields are compasary
+      All Fields are compulsary
     .module-body
       .container_12
         .grid_6
@@ -128,7 +128,7 @@
                     Date & time of admission
                   .input1
                     = f.fields_for :admission do |adm|
-                      = adm.text_field :admitted_on,:class => 'datepicker'
+                      = adm.text_field :admitted_on,:value => @patient.try(:date_of_birth).try(:strftime,'%d-%m-%Y'),:class => 'datepicker'
                 .input0
                   .input5
                     Gestational Age

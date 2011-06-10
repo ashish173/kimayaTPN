@@ -1,9 +1,12 @@
 #accordion
   %h4 
     Investigation
+    %span{:style => "float: right; width: auto; margin-right: 10px;", :id => "investigation"} Collapse
   %div
     = render :partial => 'investigation', :locals => {:f => f}
-  %h4 TPN additives
+  %h4 
+    TPN additives
+    %span{:style => "float: right; width: auto; margin-right: 10px;", :id => "additives"} Expand
   %div
     = render :partial => 'additives', :locals => {:f => f}
     
@@ -11,10 +14,15 @@
   $(function() {
     $('.datetimepicker').timepicker({});
   });
+
   $(function() {
     $( "#accordion" ).accordion({
       collapsible: true,
-      active: -1
-    });
-  });
-
+      active: 0, 
+      change: function(event, ui) {
+      ui.newHeader.children().last().html("Collapse");
+      ui.oldHeader.children().last().html("Expand");
+      }
+    }); 
+   });
+  
