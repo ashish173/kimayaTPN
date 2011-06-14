@@ -24,7 +24,7 @@ group :development, :test do
 #    gem 'ruby_parser'
     gem 'haml-rails'
     gem 'web-app-theme'
-    gem 'mongrel'
+#    gem 'mongrel'
 end
 gem "date_validator"
 gem 'cancan'
