@@ -128,7 +128,8 @@
                     Date & time of admission
                   .input1
                     = f.fields_for :admission do |adm|
-                      = adm.text_field :admitted_on,:value => @patient.try(:date_of_birth).try(:strftime,'%d-%m-%Y'),:class => 'datepicker'
+                      = adm.text_field :admitted_on,:value => @patient.admission.try(:admitted_on).try(:strftime,'%d-%m-%Y'),:class => 'datepicker'
+                      =@patient.admission.errors.on(:admitted_on)
                 .input0
                   .input5
                     Gestational Age

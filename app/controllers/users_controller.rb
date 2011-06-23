@@ -7,9 +7,9 @@ class UsersController < ApplicationController
    @selected_menu = params[:for].to_i
    if @selected_menu == DOCTOR || @selected_menu == NUTRITIONIST
      @users = @selected_menu == DOCTOR ? User.doctors : User.nutritionists
-     @users = @users.paginate(:page => params[:page], :per_page =>10)
+     @users = @users.order("name").paginate(:page => params[:page], :per_page =>10)
    else
-     @patients = Patient.all.paginate(:page => params[:page], :per_page =>10) 
+     @patients = Patient.ordered.paginate(:page => params[:page], :per_page => 10)
    end
   end
 

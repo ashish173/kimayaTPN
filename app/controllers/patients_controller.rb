@@ -80,7 +80,11 @@ class PatientsController < ApplicationController
     end
   end
   def search
-    @patients = Patient.search(params[:keyword]).paginate(:page => params[:page], :per_page =>10)
+    if current_user.roles_mask == 2  #doctor can search only through his patients
+      @patients = current_user.user_patients.search(params[:keyword]).ordered.paginate(:page => params[:page], :per_page =>10)
+    else
+      @patients = Patient.search(params[:keyword]).ordered.paginate(:page => params[:page], :per_page =>10)
+    end
     render :partial => 'search'
   end
-end
+end  

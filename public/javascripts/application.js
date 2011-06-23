@@ -6,4 +6,5 @@ $(function(){
 
 function clearFormErrors() {
     $('.notification-input').remove();
+
 }

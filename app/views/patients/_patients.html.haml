@@ -8,7 +8,7 @@
       %th{:style => "width:10%"} Birth Wt. 
       %th{:style => "width:10%"} Gender
       %th{:style => "width:10%"} Phone Number 
-      %th{:style => "width:5%"} Profile
+      %th{:style => "width:7%"} Profile
   %tbody
     - counter = 1
     - @patients.each do |patient|
@@ -33,6 +33,8 @@
           %a{:href => patient_path(patient.id), :title => 'Show'}
             %img{:alt => "show", :height => "16", :src => "/images/bin.gif", :width => "16"}/
           = link_to(image_tag("/images/cross-small.gif",:height => "16", :width => "16"), patient_path(patient.id), :method => 'delete', :title => 'Delete', :confirm => 'Are you sure?')
+          - if patient.investigations.exists?
+            %img{:alt => "", :height => "16", :src => "/images/tick-circle.gif", :width => "16"}/
       - counter = counter+1
 .pagination
   .current
