@@ -12,15 +12,18 @@ user = User.create!(:name => "admin", :email => "kimaya@joshsoftware.com", :role
 user.confirm!
 user.save
 
+user = User.create!(:name => "Dr. Joshi", :email => "doctor1@joshsoftware.com", :roles_mask => 2, :password => "josh123", :residence_telephone => "020-23434244")
+user.confirm!
+user.save
 
 Gender.destroy_all
-Gender.create(:gender_id => 1, :name => 'Unknown')
-Gender.create(:gender_id => 2, :name => 'Single Male')
-Gender.create(:gender_id => 3, :name => 'Single Female')
-Gender.create(:gender_id => 4, :name => 'Male Twins')
-Gender.create(:gender_id => 5, :name => 'Female Twins')
-Gender.create(:gender_id => 6, :name => 'Male Triplets')
-Gender.create(:gender_id => 7, :name => 'Female Triplets')
+Gender.create(:name => 'Unknown')
+Gender.create(:name => 'Single Male')
+Gender.create(:name => 'Single Female')
+Gender.create(:name => 'Male Twins')
+Gender.create(:name => 'Female Twins')
+Gender.create(:name => 'Male Triplets')
+Gender.create(:name => 'Female Triplets')
 
 
 
