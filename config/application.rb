@@ -51,4 +51,5 @@ ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
     %(<span class=\"field_with_errors\">#{html_tag}</span><span class='notification-input ni-error'>#{err_msg}</span>).html_safe
   end
 end
-Date::DATE_FORMATS[:format] = '%Y/%m/%d'
+
+#Date::DATE_FORMATS[:format] = '%m/%d/%Y'
