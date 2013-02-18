@@ -1,0 +1,31 @@
+#frmPop
+  %h3
+    %span Hospital Profile
+  .div{:style => "width:50%;float:left;"}
+    %p
+      %strong
+        Name:
+    %p
+      %strong
+        Doctors Count:
+    %p
+      %strong
+        Nutritionist Count:
+    %p
+      %strong
+        Patients Count:
+  .div{:style => "width:50%;float:left;"}
+    %p
+      %strong
+        #{@hospital.name}
+    %p
+      %strong
+        #{@hospital.doctors_count}
+    %p
+      %strong
+        #{@hospital.nutritionists_count}
+    %p
+      %strong
+        #{@hospital.patients_count}
+
+
