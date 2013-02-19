@@ -1,0 +1,19 @@
+%h2 
+  Additives Concentration
+%table
+  %thead
+    %th
+      Available Dose
+    %th
+      Concentration
+    %th
+      Unit
+  %tbody   
+  - @tpn_market_additives.each do |additive|
+    %tr
+      %td
+        = additive.market_name
+      %td
+        = additive.constant
+      %td
+        = additive.unit
