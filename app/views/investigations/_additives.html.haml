@@ -1,9 +1,9 @@
 .container_12
-  .grid_6
-    .module
+  .gr_6
+    .mmodule
       %h2
         %span TPN Additives
-      .module-body
+      .mmodule-body
         = f.fields_for :tpn_additive do |inv|
           - total = @additives.length==0 ? 1 : @additives.length
           .input6
@@ -38,7 +38,7 @@
                     = obj.day_of_life
                     - sum += obj.day_of_life if obj.day_of_life.present?
               .input_day
-                = inv.text_field :day_of_life, :size => 2
+                = inv.text_field :day_of_life, :size => 2, :class => "input_box"
               .input_day
                 .avg
                   = number_with_precision(sum/total)
@@ -53,7 +53,7 @@
                     = obj.day_of_tpn
                     - sum += obj.day_of_tpn if obj.day_of_tpn.present?
               .input_day
-                = inv.text_field :day_of_tpn, :size => 2
+                = inv.text_field :day_of_tpn, :size => 2, :class => "input_box"
               .input_day
                 .avg
                   = number_with_precision(sum/total)
@@ -68,7 +68,7 @@
                     = obj.fluid_intake
                     - sum += obj.fluid_intake if obj.fluid_intake.present?
               .input_day
-                = inv.text_field :fluid_intake, :size => 2
+                = inv.text_field :fluid_intake, :size => 2, :class => "input_box"
               .input_day
                 .avg
                   = number_with_precision(sum/total)
@@ -98,7 +98,7 @@
                     = obj.tpn_volume
                     - sum += obj.tpn_volume if obj.tpn_volume.present?
               .input_day
-                = inv.text_field :tpn_volume, :size => 2
+                = inv.text_field :tpn_volume, :size => 2, :class => "input_box"
               .input_day
                 .avg
                   = number_with_precision(sum/total)
@@ -113,7 +113,7 @@
                     = obj.amino_acids
                     - sum += obj.amino_acids if obj.amino_acids.present?
               .input_day
-                = inv.text_field :amino_acids, :size => 2
+                = inv.text_field :amino_acids, :size => 2, :class => "input_box"
               .input_day
                 .avg
                   = number_with_precision(sum/total)
@@ -128,7 +128,7 @@
                     = obj.lipids
                     - sum += obj.lipids if obj.lipids.present?
               .input_day
-                = inv.text_field :lipids, :size => 2
+                = inv.text_field :lipids, :size => 2, :class => "input_box"
               .input_day
                 .avg
                   = number_with_precision(sum/total)
@@ -143,7 +143,7 @@
                     = obj.tpn_calories
                     - sum += obj.tpn_calories if obj.tpn_calories.present?
               .input_day
-                = inv.text_field :tpn_calories, :size => 2
+                = inv.text_field :tpn_calories, :size => 2, :class => "input_box"
               .input_day
                 .avg
                   = number_with_precision(sum/total)
@@ -158,7 +158,7 @@
                     = obj.dir
                     - sum += obj.dir if obj.dir.present?
               .input_day
-                = inv.text_field :dir, :size => 2
+                = inv.text_field :dir, :size => 2, :class => "input_box"
               .input_day
                 .avg
                   = number_with_precision(sum/total)
@@ -173,15 +173,15 @@
                     = obj.ner
                     - sum += obj.ner if obj.ner.present?
               .input_day
-                = inv.text_field :ner, :size => 2
+                = inv.text_field :ner, :size => 2, :class => "input_box"
               .input_day
                 .avg
                   = number_with_precision(sum/total)
-  .grid_6
-    .module
+  .gr_6
+    .mmodule
       %h2
         %span Enteral Nutrition
-      .module-body{:style => "height:50%"}
+      .mmodule-body{:style => "height:50%"}
         = f.fields_for :enteral_diagnosis do |inv|
           .input0
             .input_left
@@ -211,12 +211,12 @@
           .input0
             %h4
               Total Enteral Calories
-              = inv.text_field :total_enteral_calories, :size => 7
-  .grid_6
-    .module
+              = inv.text_field :total_enteral_calories, :size => 7, :class => "input_box"
+  .gr_6
+    .mmodule
       %h2
         %span Anthropometric Measurments 
-      .module-body{:style => "height:140px"}
+      .mmodule-body{:style => "height:140px"}
         = f.fields_for :anthropometric_measurement do |am|
           .input0
             .input2
@@ -227,8 +227,8 @@
                 = am.text_field :weight_measured_date,:class => 'datepicker', :size => 7
             .input1
               %p
-                = am.text_field :weight,:size => 7
-                Kg.
+                = am.text_field :weight,:size => 7, :class => "input_box"
+            Kg.
           .input0
             .input2
               %p
@@ -238,8 +238,8 @@
                 = am.text_field :head_circ_measured_date, :class => 'datepicker', :size => 7
             .input1
               %p
-                = am.text_field :head_circ,:size => 7
-                cm.
+                = am.text_field :head_circ,:size => 7, :class => "input_box"
+            cm.
           .input0
             .input2
               %p
@@ -249,5 +249,5 @@
                 = am.text_field :length_measured_date, :class => 'datepicker', :size => 7
             .input1
               %p
-                = am.text_field :length,:size => 7
-                cm.
+                = am.text_field :length,:size => 7, :class => "input_box"
+            cm.

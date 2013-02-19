@@ -1,18 +1,20 @@
 #accordion
   %h4 
-    Investigation
-    %span{:style => "float: right; width: auto; margin-right: 10px;", :id => "investigation"} Collapse
+    -#  Investigation
+    -#%span{:style => "float: right; width: auto; margin-right: 10px;", :id => "investigation"} Collapse 
   %div
     = render :partial => 'investigation', :locals => {:f => f}
   %h4 
-    TPN additives
-    %span{:style => "float: right; width: auto; margin-right: 10px;", :id => "additives"} Expand
+    -#TPN additives
+    -#%span{:style => "float: right; width: auto; margin-right: 10px;", :id => "additives"} Expand
   %div
     = render :partial => 'additives', :locals => {:f => f}
     
 :javascript
   $(function() {
-    $('.datetimepicker').timepicker({});
+    $('.datetimepicker').datetimepicker({
+          pickDate: false
+              });
   });
 
   $(function() {

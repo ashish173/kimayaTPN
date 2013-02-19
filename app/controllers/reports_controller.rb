@@ -4,13 +4,14 @@ class ReportsController < ApplicationController
   def index
     @report =  Report.new
     @investigations = [].paginate(:page => params[:page], :per_page => 10)
+    @patients = Patient.all.map(&:name)
   end
 
   def create
     @report =  Report.new(params[:report])
     if @report.valid?
       @selected_menu = 'report'
-      @investigations = [].paginate(:page => params[:page], :per_page => 10)
+      @investigations = Investigation.paginate(:page => params[:page], :per_page => 10)
       if params[:report] 
         @report_type = params[:report][:investigation]
       else
@@ -21,12 +22,12 @@ class ReportsController < ApplicationController
       elsif @report_type == 'summary'
         @from_date = params[:report][:start_date].to_date
         @to_date = params[:report][:end_date].to_date
-        @patient = Patient.find(params[:selected_patient_id])
+        @patient = Patient.find_by_name(params[:report][:patient])
         @investigations = @patient.investigations.from_date(@from_date).to_date(@to_date).paginate(:page => params[:page], :per_page => 10)
       end
       render :action => 'index'
     else
-      @investigations = [].paginate(:page => params[:page], :per_page => 10)
+      @investigations = Investigation.paginate(:page => params[:page], :per_page => 10)
       render :action => 'index'
     end
   end

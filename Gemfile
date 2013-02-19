@@ -1,33 +1,37 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2', '< 0.3'
-gem 'haml'
-gem 'will_paginate', '3.0.pre2'
-gem 'devise', '1.1.8'
-gem 'rails3-jquery-autocomplete'
-gem 'rake', '0.8.7'
-
-gem "rspec-rails"
-#gem 'webrat'
-gem "autotest"
-gem "autotest-rails"
-gem "factory_girl"
-#gem 'capybara'
+group :assets do
+  gem 'sass-rails', '~> 3.2'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
+end
 
 group :development, :test do
-    gem 'hpricot'
-#    gem 'ruby_parser'
-    gem 'haml-rails'
-    gem 'web-app-theme'
-#    gem 'mongrel'
+  gem 'hpricot'
+  gem "rspec-rails"
+  gem "factory_girl"
 end
-gem "date_validator"
+
+#gem "date_validator" not supported for rails 3.2.11
 gem 'cancan'
+gem 'validates_timeliness', '~> 3.0'
+gem 'bootstrap-sass', '~> 2.2.2.0'
+gem 'mysql2', '~> 0.3.0'
+gem 'haml', '3.1.4'
+gem 'haml-rails'
+gem 'will_paginate'
+gem 'devise', '2.1.2'
+gem 'jquery-rails'
+gem 'rails3-jquery-autocomplete'
+gem 'rake', '0.8.7'
+gem 'jquery-datatables-rails'
+gem 'bootstrap-datepicker-rails'
+gem 'simple_form'
 # Use unicorn as the web server
 # gem 'unicorn'
 

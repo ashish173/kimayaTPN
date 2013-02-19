@@ -1,22 +1,12 @@
-.grid_6
-  .module
-    %h2
-      %span Sign In
-    .module-body
-      .flash
-        - flash.each do |type, message|
-          %span{:class => "notification n-error"}
-            = message
-      = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:id => "frmAdmin"}) do |f|
-        %p
-          %label Email 
-          = f.text_field :email, :class => "input-medium"
-        %p
-          %label Password
-          = f.password_field :password, :class => "input-medium"
-        %p
-          = render :partial => "devise/shared/links"
-        %fieldset
-          = f.submit "Sign in", :class => "submit-green"
-  %div{:style => "clear:both;"}
-
+= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:id => "frmAdmin", :class => "form-signin"}) do |f|
+  %h2.form-signin-heading
+    Sign In
+  .flash
+    - flash.each do |type, message|
+      %span{:class => "notification n-error"}
+        = message
+  %input{:type => "text", :class => "input-block-level", :id => "user_email", :name => "user[email]", :placeholder => "Email Address"} 
+    %input{:type => "password", :class => "input-block-level", :id => "user_password", :name => "user[password]", :placeholder => "Password"} 
+  %h4 
+    = render :partial => "devise/shared/links"
+  = f.submit "Sign in", :class => "btn btn-large btn-primary"

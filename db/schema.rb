@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130215075911) do
+ActiveRecord::Schema.define(:version => 20130219063328) do
 
   create_table "admissions", :force => true do |t|
     t.integer  "patient_id"
@@ -218,7 +218,6 @@ ActiveRecord::Schema.define(:version => 20130215075911) do
     t.float    "current_weight"
     t.integer  "day_of_tpn"
     t.float    "dextrose_conc"
-    t.datetime "tpn_date"
     t.string   "administration"
     t.float    "total_fluid_intake"
     t.float    "feed_volume"
@@ -241,6 +240,8 @@ ActiveRecord::Schema.define(:version => 20130215075911) do
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
     t.integer  "hospital_id"
+    t.integer  "user_id"
+    t.date     "tpn_date"
   end
 
   create_table "users", :force => true do |t|

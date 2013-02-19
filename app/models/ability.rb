@@ -8,6 +8,9 @@ class Ability
        else
          can :read, :all
        end
+       if user.roles_mask = Role.index("Admin")
+         can :manage, :users
+       end
     #
     # The first argument to `can` is the action you are giving the user permission to do.
     # If you pass :manage it will apply to every action. Other common actions here are

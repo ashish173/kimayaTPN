@@ -1,6 +1,8 @@
 class Admission < ActiveRecord::Base
   belongs_to :patient
   belongs_to :user
+  belongs_to :hospital
+
   validates :admitted_on, :presence => true  
   validate do |admission|
     return unless errors.empty?

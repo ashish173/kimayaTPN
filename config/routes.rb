@@ -1,4 +1,5 @@
-Kimaya::Application.routes.draw do |map| 
+Kimaya::Application.routes.draw do 
+
 
   devise_for :users, :controllers => {:registrations => "admin/home", :sessions => "sessions", :confirmations => "confirmations"} do 
     match 'reset_password' => 'admin/home#reset_password'
@@ -7,6 +8,7 @@ Kimaya::Application.routes.draw do |map|
   resources :users 
   resources :additives
   resources :reports
+  resources :hospitals
   resources :patients do
     get 'info'
     put 'history'
@@ -17,9 +19,10 @@ Kimaya::Application.routes.draw do |map|
       get 'new', :path_prefix => '/patients/:patient_id/investigations/:invetigation_id/new'
     end
 
-    resources :tpns, :on => :collection
+ #   resources :tpns, :on => :collection
   end
-  
+  resources :tpns
+  resources :tpn_market_additives
   match 'investigations/search' => 'investigations#search', :via => :get 
   match 'investigations/results' => 'investigations#results', :via => :post
   match 'investigations/autocomplete_patient_name' => 'investigations#autocomplete_patient_name', :via => :get

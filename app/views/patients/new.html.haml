@@ -1,11 +1,7 @@
 = content_for :submenu do
-  %ul
-    %li 
-      = link_to "Basic Information", "#"
-    %li 
-      = link_to "Patient history", "#errMsg", :rel => :facebox
-    %li 
-      = link_to "Daily Investigation", "#errMsg", :rel => :facebox
+  = link_to "Basic Information", "#", :class => "btn btn-primary"
+  = link_to "Patient history", "#errMsg", :rel => :facebox, :class => "btn btn-primary"
+  = link_to "Daily Investigation", "#errMsg", :rel => :facebox, :class => "btn btn-primary"
 #frmPop
   .grid_12
     .module
@@ -17,3 +13,7 @@
 #errMsg
   %p{:class => 'errMsg'} Please register the patient first.
 
+:javascript
+  $(function(){
+  $('.datepicker').datepicker();
+  });

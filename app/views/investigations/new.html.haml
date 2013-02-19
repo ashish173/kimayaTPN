@@ -1,12 +1,8 @@
 = javascript_include_tag "jquery.ui.datepicker", "jquery-ui-timepicker-addon", "application"
 = content_for :submenu do
-  %ul
-    %li 
-      = link_to "Basic Information" , edit_patient_path(@patient)
-    %li 
-      = link_to "Patient history", patient_info_path(@patient)
-    %li 
-      = link_to "Daily Investigation" , "#"
+  = link_to "Basic Information" , edit_patient_path(@patient), :class => "btn btn-primary"
+  = link_to "Patient history", patient_info_path(@patient), :class => "btn btn-primary"
+  = link_to "Daily Investigation" , "#", :class => "btn btn-primary"
 .grid_12
   = render :partial => 'search'
 .grid_12
@@ -24,6 +20,6 @@
             %p        
               .buttons
                 .grid_4
-                  = f.submit "Create", :class => "submit-green"
-                  = link_to "Cancel", patients_path, :class => "submit-gray", :width => 8
+                  = f.submit "Create", :class => "btn btn-primary"
+                  = link_to "Cancel", patients_path, :class => "btn btn-primary", :width => 8
         %div{:style => "clear:both;"}

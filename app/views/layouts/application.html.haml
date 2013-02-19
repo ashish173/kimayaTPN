@@ -2,42 +2,37 @@
 %html
   %head
     %title Kimaya TPN
-    = stylesheet_link_tag "reset", "grid", "styles", "tablesorter", "jquery.wysiwyg", "theme-blue"
-    = stylesheet_link_tag  "jquery.ui.accordion", "facebox", "jquery-ui-1.8.4.custom","jquery.ui.dialog"
-    = javascript_include_tag "jquery-1.5.1","jquery.ui.datepicker", "autocomplete-rails", "jquery-ui-1.8.11.custom",  "jquery-ui-min", "rails", "facebox", "application"
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
     = csrf_meta_tag
   %body
-    #header
-      = render :partial => "/layouts/shared/tabs"
-      - if content_for?(:menu)
-        #header-main
-          .container_12
-            .grid_12
+    %header.navbar.navbar-inverse.navbar-fixed-top
+      .nav.navbar-inner{:style => "float:none" }
+        .container
+          %a{ :href => "/", :class => "brand" }
+            Kimaya TPN
+          - if content_for?(:menu)
+            .nav-collapse.collapse
               = yield :menu
-            %div{:style => "clear: both;"}
-        %div{:style => "clear: both;"}
-        - if false#content_for?(:user)
-          #header-main
-            .container_12
-              .grid_12
-                = yield :user
-              %div{:style => "clear: both;"}
-        -if content_for(:submenu)
-          #subnav
-            .container_12
-              .grid_12
-                = yield :submenu
-          %div{:style => "clear: both;"}
-    .container_12
+            .navbar-form.pull-right
+              = render :partial => "/layouts/shared/tabs"
+    - if false#content_for?(:user)
+      #header-main
+        .container_12
+          .span12
+            = yield :user
+    -if content_for(:submenu)
+      #subnav
+        .container
+          .navbar
+            = yield :submenu
+    .container
       = yield
-      %div{:style => "clear: both;"}
-    #footer
-      .container_12
-        .grid_12
-          %p
-            \&copy; 2010.
-            %a{:href => "http://www.joshsoftware.com", :title => "Josh Software Pvt Ltd."} Kimaya TPN
-      %div{:style => "clear:both;"}
+    %footer{ :style => "margin-top:90px;" }
+      %p
+      \&copy; 2010.
+      %a{:href => "http://www.joshsoftware.com", :title => "Josh Software Pvt Ltd."} 
+        Kimaya TPN
         / End #footer
     - if flash[:notice]
       :javascript

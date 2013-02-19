@@ -8,7 +8,7 @@
     .module-body
       .container_12
         .grid_6
-          .module
+          .module{:style => "width:50%;float:left;"}
             %h2
               %span Mother's history
             .module-body
@@ -26,13 +26,13 @@
                     Past Obstetric History
                   .input5
                     G : 
-                    = m.text_field :g , :size => 2
+                    = m.text_field :g , :size => 2, :style => "width:20px !important;"
                   .input5
                     P :
-                    = m.text_field :p , :size => 2
+                    = m.text_field :p , :size => 2, :style => "width:20px !important;"
                   .input5
                     A :
-                    = m.text_field :a , :size => 2
+                    = m.text_field :a , :size => 2, :style => "width:20px !important;"
                 .input0
                   .input5
                     Maternal USG
@@ -118,7 +118,7 @@
                     = m.radio_button :is_antenatal_steroids, false, :class => 'steroids'
                     No
         .grid_6 
-          .module
+          .module{:style => "width:50%;float:left;"}
             %h2
               %span Birth history
             .module-body{:style => "height:425px"}
@@ -129,7 +129,7 @@
                   .input1
                     = f.fields_for :admission do |adm|
                       = adm.text_field :admitted_on,:value => @patient.admission.try(:admitted_on).try(:strftime,'%d-%m-%Y'),:class => 'datepicker'
-                      =@patient.admission.errors.on(:admitted_on)
+                      =@patient.admission.errors.get(:admitted_on)
                 .input0
                   .input5
                     Gestational Age
@@ -180,9 +180,9 @@
                   .input_right
                     20 min:
                     = p.text_field :apgar_score_20, :size => 13
-      .buttons
-        = f.submit "Next", :class => "submit-green"
-        = link_to "Cancel", patients_path, :class => "submit-gray"
+      .buttons{:style => "padding-top:500px;"}
+        = f.submit "Next", :class => "btn btn-primary"
+        = link_to "Cancel", patients_path, :class => "btn btn-primary"
 - unless @patient.errors.empty?
   :javascript
     $(function() {

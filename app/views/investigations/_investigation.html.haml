@@ -1,37 +1,37 @@
 .container_12
-  .grid_6
-    .grid_12
-      .module
+  .gr_6
+    .gr_12
+      .mmodule
         %h2
           %span Arterial Blood Gas Analysis
-        .module-body
+        .mmodule-body
           = f.fields_for :blood_analysis do |b|
             .input
               .input_left
-                %p
+                %p{:style => "margin-bottom:15px;" }
                   %span{:style => "width:100px;"} pH
-                  = b.text_field :ph, :size => 6
-                %p
+                  = b.text_field :ph, :size => 6, :class => "input_box"
+                %p{:style => "margin-bottom:15px;" }
                   PCO2
-                  = b.text_field :pco2, :size => 6
-                %p
+                  = b.text_field :pco2, :size => 6, :class => "input_box"
+                %p{:style => "margin-bottom:15px;" }
                   PaO2
-                  = b.text_field :pao2, :size => 6
+                  = b.text_field :pao2, :size => 6, :class => "input_box"
               .input_right
-                %p
+                %p{:style => "margin-bottom:15px;" }
                   HCO3
-                  = b.text_field :hco3, :size => 6
-                %p
+                  = b.text_field :hco3, :size => 6, :class => "input_box"
+                %p{:style => "margin-bottom:15px;" }
                   ABE
-                  = b.text_field :abe, :size => 6
-                %p
+                  = b.text_field :abe, :size => 6, :class => "input_box"
+                %p{:style => "margin-bottom:15px;" }
                   SO2
-                  = b.text_field :so2, :size => 6
-    .grid_12
-      .module   
+                  = b.text_field :so2, :size => 6, :class => "input_box"
+    .gr_12
+      .mmodule   
         %h2
           %span Diagnosis
-        .module-body{:style => "height:240px"}
+        .mmodule-body{:style => "height:240px"}
           = f.fields_for :diagnosis do |d|
             .input0
               .input1
@@ -44,7 +44,7 @@
                 = "Yes"
               .input4
                 Episodes:
-                = d.text_field :hypoglycemia_episode, :size => 3
+                = d.text_field :hypoglycemia_episode, :size => 3, :class => "input_box"
             .input0
               .input1
                 Hyperglycemia:
@@ -56,12 +56,12 @@
                 = "Yes"
               .input4
                 Episodes:
-                = d.text_field :hyperglycemia_episode, :size => 3 
+                = d.text_field :hyperglycemia_episode, :size => 3, :class => "input_box"
             .input0
               .input1
                 Sepsis: 
               .input2
-                = d.text_field :sepsis
+                = d.text_field :sepsis, :class => "input_box"
               .input0
                 .input1
                   Exhange 
@@ -83,7 +83,7 @@
                   = "Yes"
                 .input4
                   DOL:
-                  = d.text_field :dol, :size => 3
+                  = d.text_field :dol, :size => 3, :class => "input_box"
               .input0
                 .input1
                   Intra Ventricular Haemorrhage
@@ -95,62 +95,65 @@
                   = "Yes"
                 .input4
                   Grade:
-                  = d.text_field :grade, :size => 3
+                  = d.text_field :grade, :size => 3, :class => "input_box"
   
-  .grid_6
-    .grid_12
-      .module
+  .gr_6
+    .gr_12
+      .mmodule
         %h2
           %span Biochemistry Assessment
-        .module-body
+        .mmodule-body
           = f.fields_for :biochemistry_assessment do |ba|
             .input
               .input_left
                 %p
                   Serum Urea
-                  = ba.text_field :serum_urea, :size => 6
+                  = ba.text_field :serum_urea, :size => 6, :class => "input_box"
                 %p
                   Serum Creatinine
-                  = ba.text_field :serum_creatinine, :size => 6
+                  = ba.text_field :serum_creatinine, :size => 6, :class => "input_box"
                 %p
                   Triglycerides
-                  = ba.text_field :triglycerides, :size => 6
+                  = ba.text_field :triglycerides, :size => 6, :class => "input_box"
               .input_right
                 %p
                   Urinary Urea
-                  = ba.text_field :urine_area, :size => 6
+                  = ba.text_field :urine_area, :size => 6, :class => "input_box"
                 %p
                   Bilirubin
-                  = ba.text_field :bilirubin, :size => 6
-    .grid_12
-      .module
+                  = ba.text_field :bilirubin, :size => 6, :class => "input_box"
+    .gr_12
+      .mmodule
         %h2
           %span Electrolytes
-        .module-body
+        .mmodule-body
           = f.fields_for :electrolyte do |e|
             .input
               .input_left
                 %p
                   Sodium
-                  = e.text_field :sodium, :size => 8
+                  = e.text_field :sodium, :size => 8, :class => "input_box"
                 %p
                   Potassium
-                  = e.text_field :potassium, :size => 8
+                  = e.text_field :potassium, :size => 8, :class => "input_box"
               .input_right
                 %p
                   Calcium
-                  = e.text_field :calcium, :size => 8
-    .grid_12
-      .module
+                  = e.text_field :calcium, :size => 8, :class => "input_box"
+    .gr_12
+      .mmodule
         %h2
           %span Blood Sugar Monitoring
-        .module-body
+        .mmodule-body
           = f.fields_for :blood_sugar_monitors do |bs|
             #monitors
               .input0
                 .input4
                   Time
-                  = bs.text_field :blood_sugar_monitored_on, :class => 'datetimepicker', :size => 7 
+                  .datetimepicker.input-append
+                    = bs.text_field :blood_sugar_monitored_on, "data-format" => "hh:mm:ss" , :size => 7
+                    %span.add-on
+                      %i{"date-time-icon" =>"icon-time", "date-date-icon" => "icon-calendar", :class => "icon-time"}
                 .input5
-                  = bs.text_field :details, :size => 7
+                  = bs.text_field :details, :size => 7, :class => "input_box"
                   /= link_to_function "Add more", "", :class => "submit-green"

@@ -1,4 +1,4 @@
-= form_for(@report, reports_path) do |f|
+= form_for @report do |f|
   .module
     %h2
       %span
@@ -18,13 +18,13 @@
           .div{:id => 'summary'}  
             .input1
               %strong Start Date
-              = f.text_field :start_date,:class => 'datepicker', :size => 20
+              = f.text_field :start_date,:class => 'datepicker_start_date',"data-date-format" => "yyyy-mm-dd", :size => 20
             .input1
               %strong End Date
-              = f.text_field :end_date,:class => 'datepicker', :size => 20
+              = f.text_field :end_date,:class => 'datepicker_end_date', "data-date-format" => "yyyy-mm-dd", :size => 20
             .input1
               %strong Patient
-              = f.autocomplete_field :patient, investigations_autocomplete_patient_name_path, :id_element => '#selected_patient_id', :size => 20, :value => ''
+              = f.text_field :patient, :class => "span3", :style => "margin: 0 auto;", "data-provide" => "typeahead", "data-items" => "8", data:{source: @patients } , :autocomplete => "off"
               = hidden_field_tag :selected_patient_id
 
 :javascript
@@ -40,9 +40,12 @@
     $("#summary").show();
   });  
   
+  $('.datepicker_start_date').datepicker();
+  $('.datepicker_end_date').datepicker();
+  
   $("#new_report").submit( function () {
     if( $("input[name='report[investigation]']:checked").val() == 'summary'){
-      if($('#selected_patient_id').val()==""){
+      if($('#report_patient').val()==""){
         alert('Patient does not exist .');
           return false;
      }

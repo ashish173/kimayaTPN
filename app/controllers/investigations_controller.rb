@@ -78,12 +78,12 @@ class InvestigationsController < ApplicationController
     else
       @investigations = Investigation.for_user(current_user).order("investigated_on DESC").last(20).paginate(:page => params[:page], :per_page =>10)
     end
-    @patients = Patient.for_user(current_user).to_json
+    @patients = Patient.for_user(current_user).map(&:name)
     @is_search = true 
   end
 
   def results
-    @patient = Patient.find(params[:selected_patient_id])
+    @patient = Patient.find_by_name(params[:info][:patient])
     @investigation = Investigation.day(params[:info][:date].to_date).patient(@patient).last
     if @investigation.nil?
       redirect_to investigation_new_path(@patient, params[:info][:date].to_date, :display => 'search')  

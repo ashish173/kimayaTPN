@@ -7,6 +7,7 @@ class Admin::HomeController < Devise::RegistrationsController
 
   def create
     @user = User.new(params[:user])
+    @user.hospital_id = current_user.hospital_id
     respond_to do |format|
       if @user.save
         flash[:notice] = "User is Successfully created" 

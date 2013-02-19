@@ -1,14 +1,10 @@
 = content_for :submenu do
-  %ul
-    %li 
-      = link_to "Basic Information" , "#"
-    %li 
-      = link_to "Patient history", patient_info_path(@patient)
-    %li 
-      - if @investigation.nil?
-        = link_to "Daily Investigation", investigation_new_path(@patient, Date.today.strftime("%d-%m-%Y"))
-      - else
-        = link_to "Daily Investigation", edit_patient_investigation_path(@patient, @investigation)
+  = link_to "Basic Information" , "#", :class => "btn btn-primary"
+  = link_to "Patient history", patient_info_path(@patient), :class => "btn btn-primary"
+  - if @investigation.nil?
+    = link_to "Daily Investigation", patient_investigation_new_path(@patient, Date.today.strftime("%d-%m-%Y")), :class => "btn btn-primary"
+  - else
+    = link_to "Daily Investigation", edit_patient_investigation_path(@patient, @investigation), :class => "btn btn-primary"
 #frmPop
   .grid_12
     .module

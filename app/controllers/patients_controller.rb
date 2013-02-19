@@ -35,10 +35,11 @@ class PatientsController < ApplicationController
 
   def create
     @patient = Patient.new(params[:patient])
+    @patient.hospital_id = current_user.hospital_id
     if @patient.save
       flash[:notice] = "Patient is Successfully created" 
       @admission = Admission.create(:patient_id => @patient.id, :user_id => current_user.id , :admitted_on => Date.today)
-      @patient.save
+      @admission.save
         redirect_to(patient_info_path(@patient,:for => 'new'))
     else
       render :action  => 'new'
@@ -71,7 +72,7 @@ class PatientsController < ApplicationController
       flash[:notice] = "History is successfully saved" 
         #Today's investigation
         if @investigation == nil
-          redirect_to(investigation_new_path(@patient, Date.today.strftime("%d-%m-%Y")))
+          redirect_to(patient_investigation_new_path(@patient, Date.today.strftime("%d-%m-%Y")))
         else
           redirect_to(edit_patient_investigation_path(@patient,@investigation))
         end

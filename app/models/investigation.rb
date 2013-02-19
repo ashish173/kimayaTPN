@@ -2,6 +2,7 @@ class Investigation < ActiveRecord::Base
 
   self.per_page = 10
   belongs_to :patient
+  belongs_to :hospital
   has_one :blood_analysis, :dependent => :destroy
   has_one :diagnosis, :dependent => :destroy
   has_one :biochemistry_assessment, :dependent => :destroy
@@ -22,7 +23,7 @@ class Investigation < ActiveRecord::Base
 
 
   validates :investigated_on, :presence => true
-  validates_uniqueness_of :investigated_on, :scope => [:patient_id],:message => :investigation_exists
+  validates :investigated_on, :uniqueness => { :scope => :patient_id }
   
   scope :day, lambda { |date| {:conditions => ["investigated_on = ?", date]} }
   

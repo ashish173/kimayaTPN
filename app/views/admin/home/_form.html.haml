@@ -1,5 +1,7 @@
 = form_for(@user, :url => user_registration_path(:for => params[:for]), :remote => true) do |f|
-  .div{:style => "width:50%;float:left;"}
+  .div{:style => "width:50%;float:left;"} 
+    - @user.errors.full_messages.each do |msg|
+      %p= msg
     %p
       = f.label :email, "Email *"
       = f.text_field :email
@@ -12,10 +14,8 @@
     %p
       = f.label :mobile_number
       = f.text_field :mobile_number
-    %br
-    %br
-    = f.submit "Invite", :class => "submit-green"
-    = button_to_function "Cancel", "$.facebox.close();", :class => "submit-gray"
+    %br/
+    %br/
   .div{:style => "width:50%;float:left;"}
     %p
       = f.label :city
@@ -34,3 +34,6 @@
       = f.text_area :additional_detail, :rows => 3, :cols => 40, :class => "input-long"
       = f.hidden_field :roles_mask, :value => params[:for]
   .div{:style => "width:600px;"}
+    = f.submit "Invite", :class => "btn btn-primary"
+    = button_to_function "Cancel", "$.facebox.close();", :class => "btn btn-primary"
+

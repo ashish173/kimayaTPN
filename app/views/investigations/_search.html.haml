@@ -8,10 +8,11 @@
         .fieldset
           .input1
             %strong Date
-            = text_field :info,:date,:class => 'datepicker', :size => 20
+            = text_field :info,:date,:class => 'datepicker', "data-date-format" => "yyyy-mm-dd",:size => 20
           .input1
             %strong Patient
-            = autocomplete_field_tag :patient,'', investigations_autocomplete_patient_name_path, :id_element => '#selected_patient_id', :size => 20
+            = text_field :info,:patient, :class => "span3", :style => "margin: 0 auto;", "data-provide" => "typeahead", "data-items" => "8", data:{source: @patients } , :autocomplete => "off"
+
             = hidden_field_tag :selected_patient_id
           .input2
             = submit_tag 'Show', :class => 'submit-green'
@@ -22,9 +23,10 @@
       alert("Please select a date");
       return false;
     }
-    if($('#selected_patient_id').val()==""){
+    if($('#info_patient').val()==""){
       alert('Patient does not exist.');
       return false;
     }
     return true;
   });
+  $('.datepicker').datepicker();

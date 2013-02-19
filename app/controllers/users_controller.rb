@@ -1,16 +1,15 @@
 class UsersController < ApplicationController
-  
+
   layout 'admin'
   before_filter :is_super_admin?
 
   def index
-   @selected_menu = params[:for].to_i
-   if @selected_menu == DOCTOR || @selected_menu == NUTRITIONIST
-     @users = @selected_menu == DOCTOR ? User.doctors : User.nutritionists
-     @users = @users.order("name").paginate(:page => params[:page], :per_page =>10)
-   else
-     @patients = Patient.ordered.paginate(:page => params[:page], :per_page => 10)
-   end
+    @selected_menu = params[:for].to_i
+    if @selected_menu == DOCTOR || @selected_menu == NUTRITIONIST
+      @users = @selected_menu == DOCTOR ? User.doctors : User.nutritionists
+    else
+      @patients = Patient.all
+    end
   end
 
   def show
@@ -35,9 +34,9 @@ class UsersController < ApplicationController
             render :js => "window.location='#{users_path(:for => @user.roles_mask)}'"
           }
         else
-          format.html { redirect_to(user_path) }
+          format.html { redirect_to(users_path) }
           format.js {
-            render :js => "window.location='#{user_path}'"
+            render :js => "window.location.pathname='#{users_path}'"
           }
         end
       else

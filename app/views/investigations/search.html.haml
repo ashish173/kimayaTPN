@@ -19,7 +19,7 @@
               %dd{:style => 'background-color:#EEEEEE; width:33%;'}
                 = inv.patient.name
               %dd{:style => 'background-color:#EEEEEE; width:33%;'}
-                = link_to "Add", investigation_new_path(inv.patient_id, Date.today)
+                = link_to "Add", patient_investigation_new_path(inv.patient_id, Date.today)
                  
           .pagination
             .current

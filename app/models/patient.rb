@@ -1,32 +1,35 @@
 class Patient < ActiveRecord::Base
   self.per_page =10
- validates_uniqueness_of :registration_number, :message => :registration_number_not_unique
- validates_presence_of :registration_number, :message => :registration_number_blank
- validates_presence_of :name, :message => :patient_name_blank
- validates_presence_of :date_of_birth, :message => :date_of_birth_blank
- validates :date_of_birth, :date => { :before_or_equal_to => Date.today }
- validates_numericality_of :birth_weight, :message => :birth_weight_invalid
- validates_presence_of :address, :message => :address_blank
- validates_presence_of :gender_id, :message => :gender_id_blank
- #validates_presence_of :emergency_telephone, :message => :phone_number_blank
+  validates :registration_number, :uniqueness => true
+  validates :registration_number, :name, :date_of_birth, :address, :gender_id, :presence => true
+  validates_date :date_of_birth, :on_or_before => lambda { Date.today }, :message => "date of birth invalid"
+  validates :birth_weight, :numericality => true
+  validate :patient_count_within_limit, :on => :create
 
- has_one :mother_history, :dependent => :destroy
- has_one :patient_history, :dependent => :destroy
- has_many :investigations, :dependent => :destroy
- has_many :daily_tpn_additives, :through => :investigations, :source => :tpn_additive
+  has_one :mother_history, :dependent => :destroy
+  has_one :patient_history, :dependent => :destroy
+  has_many :investigations, :dependent => :destroy
+  has_many :daily_tpn_additives, :through => :investigations, :source => :tpn_additive
+  has_many :tpns
+  has_one :admission, :dependent => :destroy
+  belongs_to :hospital
 
- has_one :admission, :dependent => :destroy
+  accepts_nested_attributes_for :mother_history, :allow_destroy => true
+  accepts_nested_attributes_for :patient_history, :allow_destroy => true
+  accepts_nested_attributes_for :admission, :allow_destroy => true
 
- accepts_nested_attributes_for :mother_history, :allow_destroy => true
- accepts_nested_attributes_for :patient_history, :allow_destroy => true
- accepts_nested_attributes_for :admission, :allow_destroy => true
+  scope :for_user, lambda {|user|
+    joins("join admissions on admissions.patient_id = patients.id").
+      where("admissions.user_id =?", user.id)
+  }
 
- scope :for_user, lambda {|user|
-   joins("join admissions on admissions.patient_id = patients.id").
-     where("admissions.user_id =?", user.id)
- }
+  scope :ordered, joins(:admission).order("admissions.admitted_on DESC")
 
- scope :ordered, joins(:admission).order("admissions.admitted_on DESC")
-
- scope :search, lambda{|keyword| where("registration_number like ? or name like ?", "#{keyword}%", "%#{keyword}%")}
+  scope :search, lambda{|keyword| where("registration_number like ? or name like ?", "#{keyword}%", "%#{keyword}%")}
+  
+  def patient_count_within_limit
+    if self.hospital.patients.size > self.hospital.patients_count
+      errors.add(:base, "Exceeded no of Patients")
+    end
+  end
 end

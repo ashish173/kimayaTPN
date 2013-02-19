@@ -1,14 +1,14 @@
-%table#myTable.tablesorter
+%table#myTable.table
   %thead
     %tr
-      %th{:style => "width:5%"} No
-      %th{:style => "width:15%"} Registration number
-      %th{:style => "width:10%"} Name 
-      %th{:style => "width:10%"} Admitted on 
-      %th{:style => "width:10%"} Birth Wt. 
-      %th{:style => "width:10%"} Gender
-      %th{:style => "width:10%"} Phone Number 
-      %th{:style => "width:7%"} Profile
+      %th No
+      %th Registration number
+      %th Name 
+      %th Admitted on 
+      %th Birth Wt. 
+      %th Gender
+      %th Phone Number 
+      %th Profile
   %tbody
     - counter = 1
     - @patients.each do |patient|
@@ -29,16 +29,10 @@
           =  patient.emergency_telephone
         %td
           %a{:href => edit_patient_path(patient.id), :title => 'Edit'}
-            %img{:alt => "edit", :height => "16", :src => "/images/pencil.gif", :width => "16"}/
+            %img{:alt => "edit", :height => "16", :src => "/assets/pencil.gif", :width => "16"}/
           %a{:href => patient_path(patient.id), :title => 'Show'}
-            %img{:alt => "show", :height => "16", :src => "/images/bin.gif", :width => "16"}/
-          = link_to(image_tag("/images/cross-small.gif",:height => "16", :width => "16"), patient_path(patient.id), :method => 'delete', :title => 'Delete', :confirm => 'Are you sure?')
+            %img{:alt => "show", :height => "16", :src => "/assets/bin.gif", :width => "16"}/
+          = link_to(image_tag("/assets/cross-small.gif",:height => "16", :width => "16"), patient_path(patient.id), :method => 'delete', :title => 'Delete', :confirm => 'Are you sure?')
           - if patient.investigations.exists?
-            %img{:alt => "", :height => "16", :src => "/images/tick-circle.gif", :width => "16"}/
+            %img{:alt => "", :height => "16", :src => "/assets/tick-circle.gif", :width => "16"}/
       - counter = counter+1
-.pagination
-  .current
-    .numbers
-      %span
-        = will_paginate @patients
-        = page_entries_info @patients
