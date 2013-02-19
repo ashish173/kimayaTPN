@@ -1,0 +1,18 @@
+defaults: &defaults
+  username:
+  password: 
+  host: 
+  adapter: mysql2
+  encoding: utf8
+
+development:
+  database: kimaya_development
+  <<: *defaults
+
+test:
+  database: kimaya_test
+  <<: *defaults
+
+production:
+  database: kimaya_production
+  <<: *defaults
