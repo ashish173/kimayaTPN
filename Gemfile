@@ -32,6 +32,8 @@ gem 'rake', '0.8.7'
 gem 'jquery-datatables-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'simple_form'
+gem 'kimaya', git: 'git://github.com/joshsoftware/kimaya.git'
+gem 'rails_admin'
 # Use unicorn as the web server
 # gem 'unicorn'
 
