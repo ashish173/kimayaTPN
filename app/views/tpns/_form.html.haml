@@ -38,52 +38,158 @@
       = f.input :amino_acid,  input_html: {style:'width:50px;'}, :wrapper_html => {:class => "span4" }
       %input{ :id => "amino_acid_previous", :style => "float:left;width:40px;margin-right:20px;", :disabled => true}
       %label{:style => "float:left; margin-right:58px;"} gm/kg  
-      %a.button{:id => "amino", :class => "btn btn-primary", :style => "float:left;width:14px;height:20px;", :href => '#amino-model', 'data-toggle' => 'modal'}
+      %a.button{:id => "amino", :class => "btn btn-primary", :style => "float:left;width:14px;height:20px;", 'data-target' => '#amino-modal', 'data-toggle' => 'modal'}
       %input{ :id => "amino_acid_additive_id", :style => "float:left;width:40px;margin-left:30px", :disabled => true}
       %label{:style => "float:left;margin-left:30px;"} %  
       = f.input :sodium_chloride, input_html: {style:'width:50px;'}, :wrapper_html => {:class => "span4" }
       %input{ :id => "sodium_chloride_previous", :style => "float:left;width:40px;margin-right:20px;", :disabled => true}
       %label{:style => "float:left; margin-right:50px;"} meq/kg  
-      %a.button{:id => "sodium", :class => "btn btn-primary", :style => "float:left;width:14px;height:20px;", :rel => :facebox}
+      %a.button{:id => "sodium", :class => "btn btn-primary", :style => "float:left;width:14px;height:20px;", 'data-target' => '#sodium-modal', 'data-toggle' => 'modal'}
       %input{ :id => "sodium_chloride_additive_id", :style => "float:left;width:40px;margin-left:30px", :disabled => true}
       %label{:style => "float:left;margin-left:10px;"} meq/ml 
       = f.input :potassium_chloride, input_html: {style:'width:50px;'}, :wrapper_html => {:class => "span4"}
       %input{ :id => "potassium_chloride_previous", :style => "float:left;width:40px;margin-right:20px;", :disabled => true}
       %label{:style => "float:left; margin-right:50px;"} meq/kg  
-      %a.button{:id => "potassium", :class => "btn btn-primary", :style => "float:left;width:14px;height:20px;", :rel => :facebox}
+      %a.button{:id => "potassium", :class => "btn btn-primary", :style => "float:left;width:14px;height:20px;",  'data-target' => '#potassium-modal', 'data-toggle' => 'modal'}
       %input{ :id => "potassium_chloride_additive_id", :style => "float:left;width:40px;margin-left:30px", :disabled => true}
       %label{:style => "float:left;margin-left:10px;"} meq/ml 
       = f.input :calcium, input_html: {style:'width:50px;'}, :wrapper_html => {:class => "span4" }
       %input{ :id => "calcium_previous", :style => "float:left;width:40px;margin-right:20px;", :disabled => true}
       %label{:style => "float:left; margin-right:50px;"} meq/kg  
-      %a.button{:id => "calcium", :class => "btn btn-primary", :style => "float:left;width:14px;height:20px;", :rel => :facebox}
+      %a.button{:id => "calcium", :class => "btn btn-primary", :style => "float:left;width:14px;height:20px;",  'data-target' => '#calcium-modal', 'data-toggle' => 'modal'}
       %input{ :id => "calcium_additive_id", :style => "float:left;width:40px;margin-left:30px", :disabled => true}
       %label{:style => "float:left;margin-left:10px;"} meq/ml 
       = f.input :magnesium, input_html: {style:'width:50px;'}, :wrapper_html => {:class => "span4" }
       %input{ :id => "magnesium_previous", :style => "float:left;width:40px;margin-right:20px;", :disabled => true}
       %label{:style => "float:left; margin-right:50px;"} meq/kg  
-      %a.button{:id => "magnesium", :class => "btn btn-primary", :style => "float:left;width:14px;height:20px;", :rel => :facebox}
+      %a.button{:id => "magnesium", :class => "btn btn-primary", :style => "float:left;width:14px;height:20px;",  'data-target' => '#magnesium-modal', 'data-toggle' => 'modal'}
       %input{ :id => "magnesium_additive_id", :style => "float:left;width:40px;margin-left:30px", :disabled => true}
       %label{:style => "float:left;margin-left:10px;"} meq/ml 
       = f.input :administration, collection: ['Peripheral Line', 'Central Line'], as: :radio_buttons, :wrapper_html => {:class => "span6" }
   = f.button :submit, :Class => "btn btn-primary"
-%div#amino-model{:class => "model hide face in"}
-  %h2
-    Additives Concentration
-  %table
-    %thead
-      %th
-        Available Dose
-      %th
-        Concentration
-      %th
-        Unit
-      %tbody 
-      - TpnMarketAdditive.amino_acid.each do |additive|
-        %tr
-          %td
-            = additive.market_name
-          %td
-            = additive.constant
-          %td
-            = additive.unit
+#amino-modal{:class => "modal hide fade"}
+  .modal-header
+    %button{type: 'button', class: 'close', data:{dismiss: "modal"}} x
+    %h2
+      Additives Concentration
+  .modal-body
+    %table#aminoTable.table
+      %thead
+        %th
+          Available Dose
+        %th
+          Concentration
+        %th
+          Unit
+        %tbody 
+        - TpnMarketAdditive.amino_acid.each do |additive|
+          %tr
+            %td
+              = additive.market_name
+            %td
+              = additive.constant
+            %td
+              = additive.unit
+  .modal-footer
+    %button{class: 'btn btn-primary', data:{dismiss: "modal"}, "aria-hidden" => true } Close    
+#sodium-modal{:class => "modal hide fade"}
+  .modal-header
+    %button{type: 'button', class: 'close', data:{dismiss: "modal"}} x
+    %h2
+      Additives Concentration
+  .modal-body
+    %table#sodiumTable.table
+      %thead
+        %th
+          Available Dose
+        %th
+          Concentration
+        %th
+          Unit
+        %tbody 
+        - TpnMarketAdditive.sodium_chloride.each do |additive|
+          %tr
+            %td
+              = additive.market_name
+            %td
+              = additive.constant
+            %td
+              = additive.unit
+  .modal-footer
+    %button{class: 'btn btn-primary', data:{dismiss: "modal"}, "aria-hidden" => true } Close    
+#potassium-modal{:class => "modal hide fade"}
+  .modal-header
+    %button{type: 'button', class: 'close', data:{dismiss: "modal"}} x
+    %h2
+      Additives Concentration
+  .modal-body
+    %table#potassiumTable.table
+      %thead
+        %th
+          Available Dose
+        %th
+          Concentration
+        %th
+          Unit
+        %tbody 
+        - TpnMarketAdditive.potassium_chloride.each do |additive|
+          %tr
+            %td
+              = additive.market_name
+            %td
+              = additive.constant
+            %td
+              = additive.unit
+  .modal-footer
+    %button{class: 'btn btn-primary', data:{dismiss: "modal"}, "aria-hidden" => true } Close    
+#calcium-modal{:class => "modal hide fade"}
+  .modal-header
+    %button{type: 'button', class: 'close', data:{dismiss: "modal"}} x
+    %h2
+      Additives Concentration
+  .modal-body
+    %table#calciumTable.table
+      %thead
+        %th
+          Available Dose
+        %th
+          Concentration
+        %th
+          Unit
+        %tbody 
+        - TpnMarketAdditive.calcium.each do |additive|
+          %tr
+            %td
+              = additive.market_name
+            %td
+              = additive.constant
+            %td
+              = additive.unit
+  .modal-footer
+    %button{class: 'btn btn-primary', data:{dismiss: "modal"}, "aria-hidden" => true } Close    
+#magnesium-modal{:class => "modal hide fade"}
+  .modal-header
+    %button{type: 'button', class: 'close', data:{dismiss: "modal"}} x
+    %h2
+      Additives Concentration
+  .modal-body
+    %table#magnesiumTable.table
+      %thead
+        %th
+          Available Dose
+        %th
+          Concentration
+        %th
+          Unit
+        %tbody 
+        - TpnMarketAdditive.magnesium.each do |additive|
+          %tr
+            %td
+              = additive.market_name
+            %td
+              = additive.constant
+            %td
+              = additive.unit
+  .modal-footer
+    %button{class: 'btn btn-primary', data:{dismiss: "modal"}, "aria-hidden" => true } Close    
+
