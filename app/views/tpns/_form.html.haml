@@ -39,7 +39,7 @@
       %input{ :id => "amino_acid_previous", :style => "float:left;width:40px;margin-right:20px;", :disabled => true}
       %label{:style => "float:left; margin-right:58px;"} gm/kg  
       %a.button{:id => "amino", :class => "btn btn-primary", :style => "float:left;width:14px;height:20px;", 'data-target' => '#amino-modal', 'data-toggle' => 'modal'}
-      %input{ :id => "amino_acid_additive_id", :style => "float:left;width:40px;margin-left:30px", :disabled => true}
+      %input{ :id => "amino_acid_additive_id", :name => "tpn[amino_acid_additive_id]" :style => "float:left;width:40px;margin-left:30px", :disabled => true}
       %label{:style => "float:left;margin-left:30px;"} %  
       = f.input :sodium_chloride, input_html: {style:'width:50px;'}, :wrapper_html => {:class => "span4" }
       %input{ :id => "sodium_chloride_previous", :style => "float:left;width:40px;margin-right:20px;", :disabled => true}

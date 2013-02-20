@@ -40,6 +40,18 @@ class User < ActiveRecord::Base
   def role?(role)
     self.roles_mask == role
   end
+  
+  def super_admin?
+    self.role?(SUPER_ADMIN)
+  end
+
+  def admin?
+    self.role?(ADMIN)
+  end
+
+  def doctor?
+    self.role?(DOCTOR)
+  end
   before_validation(:on => :create) do
     self.password = SecureRandom.base64(6) if self.password.nil?
   end

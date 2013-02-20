@@ -40,12 +40,12 @@ class Tpn < ActiveRecord::Base
   validates :current_weight, :numericality => { :greater_than => 0 }
   validates :losses, :fat_volume, :fat_concentration, :numericality => true 
   scope :doctors, lambda { |current_user|
-    if current_user.role?(SUPER_ADMIN)
-      return User.where(:roles_mask => "2")
-    elsif current_user.role?(ADMIN)
-      return current_user.hospital.users.where(:roles_mask => "2")
-    elsif current_user.role?(DOCTOR)
-      return [] << current_user.name
+    if current_user.super_admin?
+      return User.doctors
+    elsif current_user.role.admin?
+      return current_user.hospital.users.doctors
+    elsif current_user.role.doctor?
+      return [current_user.name]
     end
   }
 end
