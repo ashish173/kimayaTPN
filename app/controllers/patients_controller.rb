@@ -4,7 +4,7 @@ class PatientsController < ApplicationController
   #list all existing patient
   def index
     @selected_menu = PATIENT
-    if current_user.role?(ADMIN) or current_user.role?(SUPER_ADMIN)
+    if current_user.role?(ADMIN)
       @patients = Patient.ordered.paginate(:page => params[:page], :per_page =>10)
     else
       @patients = current_user.user_patients.ordered.paginate(:page => params[:page], :per_page =>10)

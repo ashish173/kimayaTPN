@@ -24,7 +24,7 @@ gem 'bootstrap-sass', '~> 2.2.2.0'
 gem 'mysql2', '~> 0.3.0'
 gem 'haml', '3.1.4'
 gem 'haml-rails'
-gem 'will_paginate'
+gem 'will_paginate', ">=3.0.pre2"
 gem 'devise', '2.1.2'
 gem 'jquery-rails'
 gem 'rails3-jquery-autocomplete'

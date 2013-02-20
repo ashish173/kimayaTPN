@@ -8,13 +8,8 @@
 
 # create admin user
 
-user = User.create!(:name => "admin", :email => "kimaya@joshsoftware.com", :roles_mask => SUPER_ADMIN, :password => "admin123", :residence_telephone => "020-23434244")
-user.confirm!
-user.save
-
-user = User.create!(:name => "Dr. Joshi", :email => "doctor1@joshsoftware.com", :roles_mask => 2, :password => "josh123", :residence_telephone => "020-23434244")
-user.confirm!
-user.save
+Admin.destroy_all
+user = Admin.create!(:name => "admin", :email => "kimaya@joshsoftware.com", :password => "admin123")
 
 Gender.destroy_all
 Gender.create(:name => 'Unknown')

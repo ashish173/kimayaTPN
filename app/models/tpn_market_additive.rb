@@ -1,6 +1,6 @@
 class TpnMarketAdditive < ActiveRecord::Base
   has_many :tpn
-  validates :name, :market_name, :message, :presence => true
+  validates :name, :market_name, :constant, :unit,:presence => true
   validates :constant, :numericality => true
 
   scope :by_name, lambda{|name| {:conditions => "name = '#{name}'"}}

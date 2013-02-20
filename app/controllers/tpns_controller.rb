@@ -4,11 +4,7 @@ class TpnsController < ApplicationController
   def new 
     @tpn = Tpn.new 
     @doctors = User.doctors(current_user)
-    if current_user.role?(SUPER_ADMIN)
-      @patients = Patient.all
-    else
-      @patients = current_user.user_patients
-    end
+    @patients = current_user.user_patients
   end
 
   def create

@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-
   layout 'admin'
-  before_filter :is_super_admin?
 
   def index
     @selected_menu = params[:for].to_i
@@ -28,17 +26,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         flash[:notice] = "Successfully updated profile"
-        if is_super_admin? 
-          format.html { redirect_to(users_path(:for => @user.roles_mask))}
-          format.js {
-            render :js => "window.location='#{users_path(:for => @user.roles_mask)}'"
-          }
-        else
-          format.html { redirect_to(users_path) }
-          format.js {
-            render :js => "window.location.pathname='#{users_path}'"
-          }
-        end
+        format.html { redirect_to(users_path) }
+        format.js {
+          render :js => "window.location.pathname='#{users_path}'"
+        }
       else
         format.js {render :partial => 'edit'}
       end
