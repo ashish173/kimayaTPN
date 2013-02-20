@@ -1,5 +1,5 @@
 defaults: &defaults
-  username:
+  username: root
   password: 
   host: 
   adapter: mysql2
