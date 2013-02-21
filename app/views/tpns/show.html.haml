@@ -1,0 +1,34 @@
+%h2 
+  Nutri Summary Sheet
+%table.table.table-bordered
+  %tr
+    %th
+      Fluid Volumes
+    %th
+    %th
+      Nutrients Volumes
+    %th
+    %th
+      Nutrients Intake
+  %tr
+    %td
+      Total Fluid
+    %td
+      #{ @result.total_fluid_intake}
+    %td
+      Dextrose
+    %td
+      #{ @result.remaining_dextrose_vol}
+    %td
+      Dextrose 10%
+    %td
+      #{ @result.dextrose_10}
+  %tr
+    %td
+      TPN Volumne
+    %td
+      #{@result.tpn_vol}
+    %td
+    %td
+    %td
+

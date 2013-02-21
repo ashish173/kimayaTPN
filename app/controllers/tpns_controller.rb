@@ -13,9 +13,11 @@ class TpnsController < ApplicationController
 
   def create
     @tpn = Tpn.new(params[:tpn])
+    @result = Kimaya::TPNCalc.new
+    @result = @tpn.build_tpn
     respond_to do |format|
       if @tpn.save
-        format.html { redirect_to(patients_path) }
+        format.html { render :action => 'show' }
         format.js {
           render :js => "window.location='#{patients_path}'"
         }
@@ -23,5 +25,9 @@ class TpnsController < ApplicationController
         format.js {render :partial => 'new'}
       end
     end
+  end
+
+  def show
+
   end
 end

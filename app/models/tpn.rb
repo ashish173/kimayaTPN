@@ -38,7 +38,7 @@ class Tpn < ActiveRecord::Base
   validates :total_fluid_intake, :numericality => { :greater_than_or_equal_to => 40, :less_than_or_equal_to => 250 }
   validates :day_of_tpn, :numericality => { :only_integer => true, :greater_than => 0 }
   validates :current_weight, :numericality => { :greater_than => 0 }
-  validates :losses, :fat_volume, :fat_concentration, :numericality => true 
+  validates :fat_volume, :fat_concentration, :numericality => true 
   scope :doctors, lambda { |current_user|
     if current_user.super_admin?
       return User.doctors
@@ -48,4 +48,11 @@ class Tpn < ActiveRecord::Base
       return [current_user.name]
     end
   }
+  
+  def build_tpn
+    params = { current_weight: self.current_weight.to_f, percent_dextrose_conc: self.dextrose_conc.to_f / 100, total_fluid_intake: self.total_fluid_intake.to_f, fat_intake: self.fat_volume.to_f,  lipid_conc: self.fat_concentration.to_f, overfill_factor: self.factor.to_f, amino_acid_intake: self.amino_acid.to_f, amino_acid_conc: self.amino_acid_additive_id.to_f / 100, sodium_chloride_intake: self.sodium_chloride.to_f, sodium_chloride_conc: self.sodium_chloride_additive_id.to_f, potassium_chloride_intake: self.potassium_chloride.to_f, potassium_chloride_conc: self.potassium_chloride_additive_id.to_f, magnesium_intake: self.magnesium.to_f, magnesium_conc: self.magnesium_additive_id.to_f, calcium_intake: self.calcium.to_f, calcium_conc: calcium_additive_id.to_f }
+  tpn = Kimaya::TPNCalc.new(params)
+  tpn.calculate_tpn
+  tpn
+  end
 end

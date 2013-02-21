@@ -1,11 +1,11 @@
-= simple_form_for @tpn , :html => { :class => "form-horizontal"} do |f|
+= simple_form_for @tpn , :html => { :class => "form-horizontal"}, :wrapper => :tpn do |f|
   %h3{:style => "text-align:center"}
     TPN Information
   .form-inputs.row
     = f.input :day_of_tpn, :wrapper_html => { :class => 'span2'}, input_html: {style:'width:50px;'}
     = f.association :user, collection: @doctors, include_blank: false, :wrapper_html => { :class => "span3" }, label: 'Doctor'
     = f.association :patient, collection: @patients, prompt: "choose", :wrapper_html => {:class => "span3"}
-  %div{:style => "width:38%;float:left;" }
+  %div{:style => "width:40%;float:left;" }
     %h3{:style => "margin-left:60px;"}
       Daily Fluid Volume Intake
     .form-inputs.row
@@ -13,58 +13,58 @@
         = f.input_field :tpn_date, as: :string, class: 'datepicker'
         %span.add-on>
           %i.icon-calendar
-      = f.input :current_weight, input_html: {style:'width:50px;'}, :wrapper_html => { :class => "span3"}
-      %input{:id => "previous_current_weight", :style => "float:left;width:40px;", :disabled => true}
-      %label{:style => "float:left;margin-left:10px;"} Kg
-      = f.input :dextrose_conc, input_html: {style:'width:50px;'}, :wrapper_html => { :class => "span3"}
-      %input{:id => "previous_dextrose_conc", :style => "float:left;width:40px;", :disabled => true}
-      %label{:style => "float:left;margin-left:10px;"} %
-      = f.input :total_fluid_intake, label: 'Fluid Intake', input_html: {style:'width:50px;'}, :wrapper_html => { :class => "span3"}
-      %input{:id => "previous_total_fluid_intake", :style => "float:left;width:40px;", :disabled => true}
-      %label{:style => "float:left;margin-left:10px;"} ml/kg/day
-      = f.input :fat_volume, label: 'Fat Required', input_html: {style:'width:50px;'}, :wrapper_html => { :class => "span3"}
-      %input{:id => "previous_fat_volume", :style => "float:left;width:40px;", :disabled => true}
-      %label{:style => "float:left;margin-left:10px;"} gm/kg/day
-      = f.input :fat_concentration, label: 'Lipid Concentration', input_html: {style:'width:50px;'}, :wrapper_html => { :class => "span3"}
-      %input{:id => "previous_fat_concentration", :style => "float:left;width:40px;", :disabled => true}
-      %label{:style => "float:left;margin-left:10px;"} %
-      = f.input :factor, label: 'Overfill Factor', input_html: {style:'width:50px;'}, :wrapper_html => { :class => "span3"}
-      %input{:id => "previous_factor", :style => "float:left;width:40px;", :disabled => true}
-      %label{:style => "float:left;margin-left:10px;"} Kg
+      = f.input :current_weight
+      %input.input_custom{:id => "previous_current_weight", :disabled => true}
+      %label.label_custom Kg
+      = f.input :dextrose_conc
+      %input.input_custom{:id => "previous_dextrose_conc", :disabled => true}
+      %label.label_custom %
+      = f.input :total_fluid_intake, label: 'Fluid Intake'
+      %input.input_custom{:id => "previous_total_fluid_intake", :disabled => true}
+      %label.label_custom ml/kg/day
+      = f.input :fat_volume, label: 'Fat Required'
+      %input.input_custom{:id => "previous_fat_volume", :disabled => true}
+      %label.label_custom gm/kg/day
+      = f.input :fat_concentration, label: 'Lipid Concentration'
+      %input.input_custom{:id => "previous_fat_concentration", :disabled => true}
+      %label.label_custom %
+      = f.input :factor, label: 'Overfill Factor'
+      %input.input_custom{:id => "previous_factor", :disabled => true}
+      %label.label_custom Kg
   %div{:style => "width:60%;float:left;"}
     %h3{ :style => "margin-left:60px;" }
       Additive Nutrients
     .form-inputs.row
-      = f.input :amino_acid,  input_html: {style:'width:50px;'}, :wrapper_html => {:class => "span4" }
-      %input{ :id => "amino_acid_previous", :style => "float:left;width:40px;margin-right:20px;", :disabled => true}
-      %label{:style => "float:left; margin-right:58px;"} gm/kg  
-      %a.button{:id => "amino", :class => "btn btn-primary", :style => "float:left;width:14px;height:20px;", 'data-target' => '#amino-modal', 'data-toggle' => 'modal'}
-      %input{ :id => "amino_acid_additive_id", :name => "tpn[amino_acid_additive_id]" :style => "float:left;width:40px;margin-left:30px", :disabled => true}
-      %label{:style => "float:left;margin-left:30px;"} %  
-      = f.input :sodium_chloride, input_html: {style:'width:50px;'}, :wrapper_html => {:class => "span4" }
-      %input{ :id => "sodium_chloride_previous", :style => "float:left;width:40px;margin-right:20px;", :disabled => true}
-      %label{:style => "float:left; margin-right:50px;"} meq/kg  
-      %a.button{:id => "sodium", :class => "btn btn-primary", :style => "float:left;width:14px;height:20px;", 'data-target' => '#sodium-modal', 'data-toggle' => 'modal'}
-      %input{ :id => "sodium_chloride_additive_id", :style => "float:left;width:40px;margin-left:30px", :disabled => true}
-      %label{:style => "float:left;margin-left:10px;"} meq/ml 
-      = f.input :potassium_chloride, input_html: {style:'width:50px;'}, :wrapper_html => {:class => "span4"}
-      %input{ :id => "potassium_chloride_previous", :style => "float:left;width:40px;margin-right:20px;", :disabled => true}
-      %label{:style => "float:left; margin-right:50px;"} meq/kg  
-      %a.button{:id => "potassium", :class => "btn btn-primary", :style => "float:left;width:14px;height:20px;",  'data-target' => '#potassium-modal', 'data-toggle' => 'modal'}
-      %input{ :id => "potassium_chloride_additive_id", :style => "float:left;width:40px;margin-left:30px", :disabled => true}
-      %label{:style => "float:left;margin-left:10px;"} meq/ml 
-      = f.input :calcium, input_html: {style:'width:50px;'}, :wrapper_html => {:class => "span4" }
-      %input{ :id => "calcium_previous", :style => "float:left;width:40px;margin-right:20px;", :disabled => true}
-      %label{:style => "float:left; margin-right:50px;"} meq/kg  
-      %a.button{:id => "calcium", :class => "btn btn-primary", :style => "float:left;width:14px;height:20px;",  'data-target' => '#calcium-modal', 'data-toggle' => 'modal'}
-      %input{ :id => "calcium_additive_id", :style => "float:left;width:40px;margin-left:30px", :disabled => true}
-      %label{:style => "float:left;margin-left:10px;"} meq/ml 
-      = f.input :magnesium, input_html: {style:'width:50px;'}, :wrapper_html => {:class => "span4" }
-      %input{ :id => "magnesium_previous", :style => "float:left;width:40px;margin-right:20px;", :disabled => true}
-      %label{:style => "float:left; margin-right:50px;"} meq/kg  
-      %a.button{:id => "magnesium", :class => "btn btn-primary", :style => "float:left;width:14px;height:20px;",  'data-target' => '#magnesium-modal', 'data-toggle' => 'modal'}
-      %input{ :id => "magnesium_additive_id", :style => "float:left;width:40px;margin-left:30px", :disabled => true}
-      %label{:style => "float:left;margin-left:10px;"} meq/ml 
+      = f.input :amino_acid
+      %input.input_custom1{ :id => "amino_acid_previous", :disabled => true}
+      %label.label_custom1{:style => "padding-left:8px;"} gm/kg  
+      %a.button{:id => "amino", :class => "button_custom btn btn-primary", 'data-target' => '#amino-modal', 'data-toggle' => 'modal'}
+      = f.input :amino_acid_additive_id, :wrapper => false, :label => false, input_html: {class: 'input_custom1', readonly: true}
+      %label.label_custom1 %  
+      = f.input :sodium_chloride
+      %input.input_custom1{ :id => "sodium_chloride_previous", :disabled => true}
+      %label.label_custom1 meq/kg  
+      %a.button{:id => "sodium", :class => "button_custom btn btn-primary", 'data-target' => '#sodium-modal', 'data-toggle' => 'modal'}
+      = f.input :sodium_chloride_additive_id, :wrapper => false, :label => false, input_html: {class: 'input_custom1', readonly: true}
+      %label.label_custom1 meq/ml 
+      = f.input :potassium_chloride
+      %input.input_custom1{ :id => "potassium_chloride_previous", :disabled => true}
+      %label.label_custom1 meq/kg  
+      %a.button{:id => "potassium", :class => "button_custom btn btn-primary",  'data-target' => '#potassium-modal', 'data-toggle' => 'modal'}
+      = f.input :potassium_chloride_additive_id, :wrapper => false, :label => false, input_html: {class: 'input_custom1', readonly: true}
+      %label.label_custom1 meq/ml 
+      = f.input :calcium
+      %input.input_custom1{ :id => "calcium_previous", :disabled => true}
+      %label.label_custom1 meq/kg  
+      %a.button{:id => "calcium", :class => "button_custom btn btn-primary",  'data-target' => '#calcium-modal', 'data-toggle' => 'modal'}
+      = f.input :calcium_additive_id, :wrapper => false, :label => false, input_html: {class: 'input_custom1', readonly: true}
+      %label.label_custom1 meq/ml 
+      = f.input :magnesium
+      %input.input_custom1{ :id => "magnesium_previous", :disabled => true}
+      %label.label_custom1 meq/kg  
+      %a.button{:id => "magnesium", :class => "button_custom btn btn-primary",  'data-target' => '#magnesium-modal', 'data-toggle' => 'modal'}
+      = f.input :magnesium_additive_id, :wrapper => false, :label => false, input_html: {class: 'input_custom1', readonly: true}
+      %label.label_custom1 meq/ml 
       = f.input :administration, collection: ['Peripheral Line', 'Central Line'], as: :radio_buttons, :wrapper_html => {:class => "span6" }
   = f.button :submit, :Class => "btn btn-primary"
 #amino-modal{:class => "modal hide fade"}

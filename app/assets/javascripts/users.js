@@ -12,7 +12,7 @@ jQuery(document).ready( function(){
       $('#aminoTable tr.row_selected').removeClass('row_selected');
       $(this).addClass('row_selected');
       var value = $('#aminoTable tr.row_selected td:nth-child(2)').text().trim();
-      $('#amino_acid_additive_id').val(value);
+      $('#tpn_amino_acid_additive_id').val(value);
     }
   });
   $('#sodiumTable tbody tr').click( function (e) {
@@ -23,7 +23,7 @@ jQuery(document).ready( function(){
       $('#sodiumTable tr.row_selected').removeClass('row_selected');
       $(this).addClass('row_selected');
       var value = $('#sodiumTable tr.row_selected td:nth-child(2)').text().trim();
-      $('#sodium_chloride_additive_id').val(value);
+      $('#tpn_sodium_chloride_additive_id').val(value);
     }
   });
   $('#potassiumTable tbody tr').click( function (e) {
@@ -34,7 +34,7 @@ jQuery(document).ready( function(){
       $('#potassiumTable tr.row_selected').removeClass('row_selected');
       $(this).addClass('row_selected');
       var value = $('#potassiumTable tr.row_selected td:nth-child(2)').text().trim();
-      $('#potassium_chloride_additive_id').val(value);
+      $('#tpn_potassium_chloride_additive_id').val(value);
     }
   });
   $('#magnesiumTable tbody tr').click( function (e) {
@@ -45,7 +45,7 @@ jQuery(document).ready( function(){
       $('#magnesiumTable tr.row_selected').removeClass('row_selected');
       $(this).addClass('row_selected');
       var value = $('#magnesiumTable tr.row_selected td:nth-child(2)').text().trim();
-      $('#magnesium_additive_id').val(value);
+      $('#tpn_magnesium_additive_id').val(value);
     }
   });
   $('#calciumTable tbody tr').click( function (e) {
@@ -56,7 +56,7 @@ jQuery(document).ready( function(){
       $('#calciumTable tr.row_selected').removeClass('row_selected');
       $(this).addClass('row_selected');
       var value = $('#calciumTable tr.row_selected td:nth-child(2)').text().trim();
-      $('#calcium_additive_id').val(value);
+      $('#tpn_calcium_additive_id').val(value);
     }
   });
 
