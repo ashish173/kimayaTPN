@@ -1,0 +1,112 @@
+%h2 
+  Nutri Summary Sheet
+%table.table.table-bordered
+  %tr
+    %th
+      Fluid Volumes
+    %th
+    %th
+      Nutrients Volumes
+    %th
+    %th
+      Nutrients Intake
+  %tr
+    %td
+      Total Fluid
+    %td
+      #{ @result.total_fluid_intake} ml/kg/day
+    %td
+      Dextrose
+    %td
+      #{ @result.remaining_dextrose_vol} ml
+    %td
+      Dextrose 10%
+    %td
+      #{ @result.dextrose_10} ml
+  %tr
+    %td
+      TPN Volumne
+    %td
+      #{@result.tpn_vol} ml
+    %td
+      Conc. %  
+    %td
+      #{@result.achieved_dextrose_conc} %
+    %td
+      Dextrose 50%
+    %td
+      #{@result.dextrose_50} ml
+  %tr
+    %td
+      Hyperalimentation Volume
+    %td
+      #{@result.hav_vol} ml
+    %td
+      Fat
+    %td
+      #{@result.fat_vol} ml
+    %td
+      Fat
+    %td
+      #{@result.fat_intake} gm/kg
+    %tr
+      %td
+      %td
+      %td
+        CNR
+      %td
+        #{@result.cnr_rate}
+      %td
+        Amino Acid
+      %td
+        #{@result.amino_acid_intake} gm/kg
+    %tr
+      %td
+      %td
+      %td
+        DIR
+      %td
+        #{@result.dir_rate} mg/kg/min
+      %td
+        Sodium
+      %td
+        #{@result.sodium_chloride_intake} meq/kg
+    %tr
+      %td
+      %td
+      %td
+      %td
+      %td
+        Potassium
+      %td
+        #{@result.potassium_chloride_intake} meq/kg
+    %tr
+      %td
+      %td
+      %td
+      %td
+      %td
+        Calcium
+      %td
+        #{@result.calcium_intake} meq/kg
+    %tr
+      %td
+      %td
+      %td
+      %td
+      %td
+        Magnesium
+      %td
+        #{@result.magnesium_intake} meq/kg
+    %tr
+      %td
+      %td
+      %td
+      %td
+      %td
+        Multivitamins
+      %td
+        #{@result.mvi} ml/kg
+
+
+

@@ -98,6 +98,13 @@
 .inputx input{
   width: 52px;
 }
+.inputy input{
+  width: 52px;
+  float: right;
+}
+.inputy label{
+  width: 168px !important;
+}
 .span_custom{
   width:340px;
 }
@@ -109,13 +116,21 @@
   float:left;
   margin-left:10px;
 }
+.label_custom1{
+  float:left; 
+}
+.label_custom2{
+  float: left;
+  width: 70px;
+}
+.label_custom3{
+  float: left;
+  margin-left:20px;
+}
 .input_custom1{
   float:left;
   width:40px;
   margin-right:20px;
-}
-.label_custom1{
-  float:left; 
 }
 .button_custom{
   float:left;

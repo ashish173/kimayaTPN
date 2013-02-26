@@ -1,34 +1,6 @@
-%h2 
-  Nutri Summary Sheet
-%table.table.table-bordered
-  %tr
-    %th
-      Fluid Volumes
-    %th
-    %th
-      Nutrients Volumes
-    %th
-    %th
-      Nutrients Intake
-  %tr
-    %td
-      Total Fluid
-    %td
-      #{ @result.total_fluid_intake}
-    %td
-      Dextrose
-    %td
-      #{ @result.remaining_dextrose_vol}
-    %td
-      Dextrose 10%
-    %td
-      #{ @result.dextrose_10}
-  %tr
-    %td
-      TPN Volumne
-    %td
-      #{@result.tpn_vol}
-    %td
-    %td
-    %td
-
+%div.span{ :style => "margin-left:0px;margin-top:100px;" }
+  = render :partial => 'sidemenu'
+%div.span8
+  = render :partial => 'show'
+  %button{ :class => "btn btn-primary", :href => '#new-tpn_infusion', 'data-toggle' => 'modal'} Other infusions / Eternal feeds
+  = render :partial => 'new_tpn_infusion'

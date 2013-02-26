@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130219063328) do
+ActiveRecord::Schema.define(:version => 20130221054624) do
 
   create_table "admissions", :force => true do |t|
     t.integer  "patient_id"
@@ -200,6 +200,16 @@ ActiveRecord::Schema.define(:version => 20130219063328) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "hospital_id"
+  end
+
+  create_table "tpn_infusions", :force => true do |t|
+    t.float    "feed_volume_over_24_hour"
+    t.float    "arterial_line_infusion"
+    t.float    "inotrope_infusion"
+    t.float    "other_infusion"
+    t.integer  "tpn_id"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "tpn_market_additives", :force => true do |t|

@@ -1,0 +1,36 @@
+#new-tpn_infusion{ :class => "modal hide fade"}
+  %div{ :style => "margin:50px;" }
+    %button{type: 'button', class: 'close', data:{dismiss: "modal"}} x
+    %head
+      %h3{:style => "text-align:center;"}
+        Nutri Summary Sheet
+    %div{ :style => "margin-bottom:20px;" }
+      %label{ :style => "width:180px;float:left;"} Initial TPN infusion
+      %label.label_custom2 #{ @result.tpn_vol }
+      %label.label_custom2 @
+      %label.label_custom2{:id => 'initial_tpn'} #{ (@result.tpn_vol / 24).round(2) }    
+      %label (ml/hr)
+    = simple_form_for @tpn_infusion, :html => { :class => "form-horizontal"},:wrapper => :tpn_infusion, :remote => true do |f|
+      = f.input :feed_volume_over_24_hour, input_html: { value: '0.00', min: '0.00', step:'0.10' }
+      %label.label_custom3 (ml/hr)
+      = f.input :arterial_line_infusion, input_html: { value: '0.00', min: '0.00', step:'0.10' }
+      %label.label_custom3 (ml/hr)
+      = f.input :inotrope_infusion, input_html: { value: '0.00', min: '0.00', step:'0.10' }
+      %label.label_custom3 (ml/hr)
+      = f.input :other_infusion, input_html: { value: '0.00', min: '0.00', step:'0.10' }
+      %label.label_custom3 (ml/hr)
+      = f.hidden_field :tpn_id, :value => @tpn.id
+      %label{ :style => "width:300px;float:left;"} Final TPN orders at initiation
+      %label.label_custom2{:id => "final_tpn_order"} #{ (@result.tpn_vol / 24).round(2) }   
+      %label.label_custom3 (ml/hr)
+      
+      = f.button :submit, value: 'Save', class: "btn btn-primary", style: "margin-left:160px;margin-top:20px;" 
+      %button{type: 'button', class: 'btn btn-primary', style: "margin-top:20px;", data:{dismiss: "modal"}} Close
+:javascript
+  $('#tpn_infusion_feed_volume_over_24_hour').change(function(){ calc_final_tpn() });
+  $('#tpn_infusion_arterial_line_infusion').change(function(){ calc_final_tpn()});
+  $('#tpn_infusion_inotrope_infusion').change(function(){ calc_final_tpn() });
+  $('#tpn_infusion_other_infusion').change(function(){ calc_final_tpn() });
+  function calc_final_tpn(){
+  $('#final_tpn_order').text((parseFloat($('#initial_tpn').text()) - parseFloat($('#tpn_infusion_feed_volume_over_24_hour').val()) -  parseFloat($('#tpn_infusion_arterial_line_infusion').val()) - parseFloat($('#tpn_infusion_inotrope_infusion').val()) - parseFloat($('#tpn_infusion_other_infusion').val())).toFixed(2));
+  }

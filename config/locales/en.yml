@@ -28,4 +28,7 @@ en:
     
       #investigation
         blood_sugar_monitor_on_blank: "Please enter date"
-        investigation_exists: "Please select another day" 
+        investigation_exists: "Please select another day"
+
+      #tpn
+        current_weight_invalid: "Please enter valid number"

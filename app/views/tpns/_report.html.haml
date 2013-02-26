@@ -1,0 +1,223 @@
+%h3{:style => "text-align:center;"}
+  TPN Nutrition Plan
+%table.table.table-striped
+  %tr
+    %td
+      Name
+    %td
+      = @patient.name 
+    %td
+      Date
+    %td
+      = @tpn.created_at.to_date 
+  %tr
+    %td
+      Reg No.
+    %td
+      = @patient.registration_number 
+    %td
+      TPN Day
+    %td
+      = @tpn.day_of_tpn 
+  %tr
+    %td
+      Current Weight
+    %td
+      = @tpn.current_weight 
+    %td
+      Date of Birth
+    %td
+      = @patient.date_of_birth 
+  %tr
+    %td
+      Doctor
+    %td
+      = @doctor.name 
+    %td
+    %td
+%h4
+  Fluids
+%table.table.table-striped
+  %tr
+    %td
+      Total Fluid( 100 ml/kg/day)
+    %td
+      = @result.total_fluid_intake_vol
+    %td
+      Feed volume over 24 hour
+    %td
+      = @tpn_infusion.feed_volume_over_24_hour
+  %tr
+    %td
+      Dextrose 10 %
+    %td
+      = @result.dextrose_10
+    %td
+      Arterial line infusion
+    %td
+      = @tpn_infusion.arterial_line_infusion
+  %tr
+    %td
+      Dextrose 50 %
+    %td
+      = @result.dextrose_50
+    %td
+      Inotrope Infusion
+    %td
+      = @tpn_infusion.inotrope_infusion
+  %tr
+    %td
+      Volume to be infused(HAV)
+    %td
+      = @result.hav_vol
+    %td
+      Other Infusion
+    %td
+      = @tpn_infusion.other_infusion
+  %tr
+    %td
+      Prepared Volume
+    %td
+      = @result.tpn_vol
+    %td
+      Final TPN orders at initiation
+    %td
+      = (@result.tpn_vol / 24 - @tpn_infusion.feed_volume_over_24_hour - @tpn_infusion.arterial_line_infusion - @tpn_infusion.inotrope_infusion - @tpn_infusion.inotrope_infusion - @tpn_infusion.other_infusion).round(2)
+  %tr
+    %td
+      Fat (10%) 0 gm/kg/day
+    %td
+      = @result.fat_vol
+%h4
+  Additive Nutrients
+%table.table.table-striped
+  %tr{:style => "font-weight:bold;"}
+    %td
+      Additive
+    %td
+      Intake
+    %td
+      Conc
+    %td
+      Dose
+    %td
+      Vol
+  %tr
+    %td
+      Amino Acid
+    %td
+      = @result.amino_acid_intake 
+    %td
+      #{ @result.amino_acid_conc * 100 } %
+    %td
+      - if @tpn.amino_acid_additive.present? 
+        = @tpn.amino_acid_additive.market_name 
+      - else
+        = "-"
+    %td
+      #{@result.amino_acid_vol } ml
+  %tr
+    %td
+      Sodium
+    %td
+      #{ @result.sodium_chloride_intake } meq/kg
+    %td
+      #{ @result.sodium_chloride_conc } meq/ml
+    %td
+      - if @tpn.sodium_chloride_additive.present? 
+        = @tpn.sodium_chloride_additive.market_name 
+      - else
+        = "-"
+    %td
+      #{ @result.sodium_chloride_vol } ml
+  %tr
+    %td
+      Potassium
+    %td
+      #{ @result.potassium_chloride_intake } meq/kg
+    %td
+      #{ @result.potassium_chloride_conc } meq/ml
+    %td
+      - if @tpn.potassium_chloride_additive.present? 
+        = @tpn.potassium_chloride_additive.market_name 
+      - else
+        = "-"
+    %td
+      #{ @result.potassium_chloride_vol } ml
+  %tr
+    %td
+      Magnesium
+    %td
+      #{ @result.magnesium_intake } meq/kg
+    %td
+      #{ @result.magnesium_conc } meq/ml
+    %td
+      - if @tpn.magnesium_additive.present? 
+        = @tpn.magnesium_additive.market_name 
+      - else
+        = "-"
+    %td
+      #{ @result.magnesium_vol } ml
+  %tr
+    %td
+      Calcium
+    %td
+      #{ @result.calcium_intake } meq/kg
+    %td
+      #{ @result.calcium_conc } meq/ml
+    %td
+      - if @tpn.calcium_additive.present? 
+        = @tpn.calcium_additive.market_name 
+      - else
+        = "-"
+    %td
+      #{ @result.calcium_vol } ml
+  %tr
+    %td
+      Multivitamins
+    %td
+      #{ @result.mvi } ml
+%h4
+  Administration
+%table.table.table-striped
+  %tr
+    %td
+      Dextrose Concentration
+    %td
+      #{ @result.achieved_dextrose_conc } %
+    %td
+      Dextrose Infusion Rate (DIR)
+    %td
+      #{ @result.dir_rate } mg/kg/min
+  %tr
+    %td
+      Calories (Non protein)
+    %td
+      #{ @result.non_protein } cal
+    %td
+      Fat
+    %td
+      #{ @result.fat_calories } cal
+  %tr
+    %td
+      CHO
+    %td
+      #{ @result.cho_calories } cal
+    %td
+      Total Protein
+    %td
+      #{ @result.total_protein } gm
+  %tr
+    %td
+      Calorie Nitrogen Ratio (CNR)
+    %td
+      = @result.cnr_rate
+%table{:style => "margin-right:150px;float:right;"}
+  %tr
+    %td
+      Doctor's Signature:
+  %tr
+    %td{:style => "height:10px"}
+  %tr
+    %td
+      Date:

@@ -32,41 +32,46 @@
       %input.input_custom{:id => "previous_factor", :disabled => true}
       %label.label_custom Kg
   %div{:style => "width:60%;float:left;"}
-    %h3{ :style => "margin-left:60px;" }
+    %h3{ :style => "margin-left:222px;" }
       Additive Nutrients
-    .form-inputs.row
+    .form-inputs.row{ :style => "margin-top:60px;"}
       = f.input :amino_acid
       %input.input_custom1{ :id => "amino_acid_previous", :disabled => true}
       %label.label_custom1{:style => "padding-left:8px;"} gm/kg  
       %a.button{:id => "amino", :class => "button_custom btn btn-primary", 'data-target' => '#amino-modal', 'data-toggle' => 'modal'}
-      = f.input :amino_acid_additive_id, :wrapper => false, :label => false, input_html: {class: 'input_custom1', readonly: true}
+      = f.input :amino_acid_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
+      %input{:id => :amino_acid_additive, :class => 'input_custom1',  :readonly => true}
       %label.label_custom1 %  
       = f.input :sodium_chloride
       %input.input_custom1{ :id => "sodium_chloride_previous", :disabled => true}
       %label.label_custom1 meq/kg  
       %a.button{:id => "sodium", :class => "button_custom btn btn-primary", 'data-target' => '#sodium-modal', 'data-toggle' => 'modal'}
-      = f.input :sodium_chloride_additive_id, :wrapper => false, :label => false, input_html: {class: 'input_custom1', readonly: true}
+      = f.input :sodium_chloride_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
+      %input{ :id => :sodium_chloride_additive, :class => 'input_custom1', :readonly => true}
       %label.label_custom1 meq/ml 
       = f.input :potassium_chloride
       %input.input_custom1{ :id => "potassium_chloride_previous", :disabled => true}
       %label.label_custom1 meq/kg  
       %a.button{:id => "potassium", :class => "button_custom btn btn-primary",  'data-target' => '#potassium-modal', 'data-toggle' => 'modal'}
-      = f.input :potassium_chloride_additive_id, :wrapper => false, :label => false, input_html: {class: 'input_custom1', readonly: true}
+      = f.input :potassium_chloride_additive_id,:as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
+      %input{ :id => :potassium_chloride_additive, :class => 'input_custom1', :readonly => true}
       %label.label_custom1 meq/ml 
       = f.input :calcium
       %input.input_custom1{ :id => "calcium_previous", :disabled => true}
       %label.label_custom1 meq/kg  
       %a.button{:id => "calcium", :class => "button_custom btn btn-primary",  'data-target' => '#calcium-modal', 'data-toggle' => 'modal'}
-      = f.input :calcium_additive_id, :wrapper => false, :label => false, input_html: {class: 'input_custom1', readonly: true}
+      = f.input :calcium_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
+      %input{ :id => :calcium_additive, :class => 'input_custom1', :readonly => true}
       %label.label_custom1 meq/ml 
       = f.input :magnesium
       %input.input_custom1{ :id => "magnesium_previous", :disabled => true}
       %label.label_custom1 meq/kg  
       %a.button{:id => "magnesium", :class => "button_custom btn btn-primary",  'data-target' => '#magnesium-modal', 'data-toggle' => 'modal'}
-      = f.input :magnesium_additive_id, :wrapper => false, :label => false, input_html: {class: 'input_custom1', readonly: true}
+      = f.input :magnesium_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
+      %input{ :id => :magnesium_additive, :class => 'input_custom1', :readonly => true}
       %label.label_custom1 meq/ml 
       = f.input :administration, collection: ['Peripheral Line', 'Central Line'], as: :radio_buttons, :wrapper_html => {:class => "span6" }
-  = f.button :submit, :Class => "btn btn-primary"
+  = f.button :submit, :Class => "btn btn-primary", :style => "margin-left:400px;"
 #amino-modal{:class => "modal hide fade"}
   .modal-header
     %button{type: 'button', class: 'close', data:{dismiss: "modal"}} x
@@ -75,6 +80,7 @@
   .modal-body
     %table#aminoTable.table
       %thead
+        %th{:style => "display:none;"}
         %th
           Available Dose
         %th
@@ -84,6 +90,8 @@
         %tbody 
         - TpnMarketAdditive.amino_acid.each do |additive|
           %tr
+            %td{:style => "display:none;"}
+              = additive.id
             %td
               = additive.market_name
             %td
@@ -100,6 +108,7 @@
   .modal-body
     %table#sodiumTable.table
       %thead
+        %th{:style => "display:none;"}
         %th
           Available Dose
         %th
@@ -109,6 +118,8 @@
         %tbody 
         - TpnMarketAdditive.sodium_chloride.each do |additive|
           %tr
+            %td{:style => "display:none;"}
+              = additive.id
             %td
               = additive.market_name
             %td
@@ -125,6 +136,7 @@
   .modal-body
     %table#potassiumTable.table
       %thead
+        %th{:style => "display:none;"}
         %th
           Available Dose
         %th
@@ -134,6 +146,8 @@
         %tbody 
         - TpnMarketAdditive.potassium_chloride.each do |additive|
           %tr
+            %td{:style => "display:none;"}
+              = additive.id
             %td
               = additive.market_name
             %td
@@ -150,6 +164,7 @@
   .modal-body
     %table#calciumTable.table
       %thead
+        %th{:style => "display:none;"}
         %th
           Available Dose
         %th
@@ -159,6 +174,8 @@
         %tbody 
         - TpnMarketAdditive.calcium.each do |additive|
           %tr
+            %td{:style => "display:none;"}
+              = additive.id
             %td
               = additive.market_name
             %td
@@ -175,6 +192,7 @@
   .modal-body
     %table#magnesiumTable.table
       %thead
+        %th{:style => "display:none;"}
         %th
           Available Dose
         %th
@@ -184,6 +202,8 @@
         %tbody 
         - TpnMarketAdditive.magnesium.each do |additive|
           %tr
+            %td{:style => "display:none;"}
+              = additive.id
             %td
               = additive.market_name
             %td

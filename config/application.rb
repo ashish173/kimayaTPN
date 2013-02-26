@@ -1,7 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-
+#require 'pdfkit'
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
@@ -43,6 +43,7 @@ module Kimaya
     config.assets.version = '1.0'
     config.assets.initialize_on_precompile = false
     #config.assets.precompile += ['active_admin.css', 'active_admin/print.css', 'active_admin.js']
+    #config.middleware.use PDFKit::Middleware, :print_media_type => true
   end
 end
 
