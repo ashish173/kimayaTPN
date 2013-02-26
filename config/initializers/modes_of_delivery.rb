@@ -1,4 +1,4 @@
-Modes_of_delivery = ["Spontaneous Vaginal", "Induced Vaginal", "Forceps", "Vacuum", "Caesarean"]
+MODES_OF_DELIVERY = ["Spontaneous Vaginal", "Induced Vaginal", "Forceps", "Vacuum", "Caesarean"]
 
 SPONTANEOUS = 0
 INDUCED = 1

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130220080358) do
+ActiveRecord::Schema.define(:version => 20130220115412) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -130,6 +130,12 @@ ActiveRecord::Schema.define(:version => 20130220080358) do
     t.integer  "patients_count"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "slug"
+  end
+
+  create_table "hospitals_users", :id => false, :force => true do |t|
+    t.integer "hospital_id"
+    t.integer "user_id"
   end
 
   create_table "investigations", :force => true do |t|
@@ -216,6 +222,12 @@ ActiveRecord::Schema.define(:version => 20130220080358) do
     t.integer  "hospital_id"
   end
 
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "tpn_additives", :force => true do |t|
     t.integer  "investigation_id"
     t.integer  "day_of_life"
@@ -284,15 +296,14 @@ ActiveRecord::Schema.define(:version => 20130220080358) do
     t.string   "emergency_telephone"
     t.string   "mobile_number"
     t.string   "additional_detail"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.integer  "roles_mask"
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
+    t.string   "email",                                :default => "", :null => false
+    t.string   "encrypted_password",                   :default => ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",                        :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -301,10 +312,18 @@ ActiveRecord::Schema.define(:version => 20130220080358) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "hospital_id"
+    t.string   "invitation_token",       :limit => 60
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit"
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
+    t.integer  "role_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token"
+  add_index "users", ["invited_by_id"], :name => "index_users_on_invited_by_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

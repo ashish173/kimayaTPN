@@ -1,19 +1,8 @@
-= content_for :submenu do
-  = link_to "Basic Information", "#", :class => "btn btn-primary"
-  = link_to "Patient history", "#errMsg", :rel => :facebox, :class => "btn btn-primary"
-  = link_to "Daily Investigation", "#errMsg", :rel => :facebox, :class => "btn btn-primary"
-#frmPop
-  .grid_12
-    .module
-      %h2
-        %span New Patient
-      .module-body
-        = render :partial => 'form'
-      %div{:style => "clear:both;"}
-#errMsg
-  %p{:class => 'errMsg'} Please register the patient first.
+= render partial: 'submenu'
+.span10
+  = render partial: 'form'
 
 :javascript
   $(function(){
-  $('.datepicker').datepicker();
+     $('#patient_date_of_birth').datepicker();
   });

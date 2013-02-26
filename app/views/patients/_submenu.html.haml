@@ -1,0 +1,23 @@
+= content_for :sidemenu do
+  .span2
+    .well{:style => "padding: 8px 0;"}
+      %ul.nav.nav-list
+        %li.nav-header  Patient
+        - if @patient.new_record?  
+          %li
+            = link_to "Basic Information", new_hospital_patient_path(current_hospital)
+          %li  
+            = link_to "Patient history", "#"
+          %li  
+            = link_to "Daily Investigation", "#"
+        - else
+          %li
+            = link_to "Basic Information" , edit_hospital_patient_path(current_hospital, @patient)
+          %li  
+            = link_to "Patient history", hospital_patient_history_path(current_hospital, @patient)
+          - if @investigation.nil?
+            %li  
+              = link_to "Daily Investigation", hospital_patient_investigation_new_path(current_hospital, @patient.id, Date.today.strftime("%d-%m-%Y"))
+          - else
+            %li
+              = link_to "Daily Investigation", edit_hospital_patient_investigation_path(current_hospital, @patient, @investigation)

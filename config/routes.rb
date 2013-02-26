@@ -3,31 +3,33 @@ Kimaya::Application.routes.draw do
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-  devise_for :users, :controllers => {:registrations => "admin/home", :sessions => "sessions", :confirmations => "confirmations"} do 
-    match 'reset_password' => 'admin/home#reset_password'
+  devise_for :users, :controllers => {:registrations => "admin/home", :sessions => "sessions", :confirmations => "confirmations", invitations: "users/invitations"} do 
+    match '/hospitals/:hospital_id/reset_password' => 'admin/home#reset_password', as: :reset_password
   end
-  
-  resources :users 
-  resources :additives
-  resources :reports
-  resources :hospitals
-  resources :patients do
-    get 'info'
-    put 'history'
-    collection do
-      post 'search'
-    end
-    resources :investigations, :except => [:new] do
-      get 'new', :path_prefix => '/patients/:patient_id/investigations/:invetigation_id/new'
-    end
 
- #   resources :tpns, :on => :collection
+  match 'hospitals/:hospital_id' => "home#index"
+  
+  resources :hospitals do
+    resources :home
+    resources :users, path: "/users/:type" 
+    resources :additives
+    resources :reports
+
+    resources :patients do
+      match 'history'
+      collection do
+        post 'search'
+      end
+      resources :investigations, :except => [:new] do
+        get 'new', :path_prefix => '/patients/:patient_id/investigations/:invetigation_id/new'
+      end
+    end
+    resources :tpns
+    resources :tpn_market_additives
+    match 'investigations/search' => 'investigations#search', :via => :get 
+    match 'investigations/results' => 'investigations#results', :via => :post
+    match 'investigations/autocomplete_patient_name' => 'investigations#autocomplete_patient_name', :via => :get
   end
-  resources :tpns
-  resources :tpn_market_additives
-  match 'investigations/search' => 'investigations#search', :via => :get 
-  match 'investigations/results' => 'investigations#results', :via => :post
-  match 'investigations/autocomplete_patient_name' => 'investigations#autocomplete_patient_name', :via => :get
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -77,7 +79,7 @@ Kimaya::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => "home#index"
+  root :to => "home#index"
 
   # See how all your routes lay out with "rake routes"
 

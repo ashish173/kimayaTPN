@@ -5,41 +5,33 @@
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tag
-  %body
-    %header.navbar.navbar-inverse.navbar-fixed-top
-      .nav.navbar-inner{:style => "float:none" }
+  %body.preview
+    .navbar.navbar-fixed-top
+      .navbar-inner
         .container
           %a{ :href => "/", :class => "brand" }
             Kimaya TPN
-          - if content_for?(:menu)
+          - if user_signed_in?
             .nav-collapse.collapse
-              = yield :menu
-            .navbar-form.pull-right
-              = render :partial => "/layouts/shared/tabs"
-    - if false#content_for?(:user)
-      #header-main
-        .container_12
-          .span12
-            = yield :user
+              = render 'header' 
+              %ul.nav.pull-right
+                %li
+                  = link_to "Logout", destroy_user_session_path
     -if content_for(:submenu)
       #subnav
         .container
           .navbar
             = yield :submenu
     .container
-      = yield
-    %footer{ :style => "margin-top:90px;" }
-      %p
-      \&copy; 2010.
-      %a{:href => "http://www.joshsoftware.com", :title => "Josh Software Pvt Ltd."} 
-        Kimaya TPN
-        / End #footer
-    - if flash[:notice]
-      :javascript
-        $(function() {
-          setTimeout(function() {
-            $('.notification').hide();
-          }, 3000);
-        });
+      .row
+        = yield :sidemenu if content_for(:sidemenu)
+        = yield
+      %br
+      %br
+      %footer{id: "footer"}
+        %p
+          \&copy; 2010.
+          %a{:href => "http://www.joshsoftware.com", :title => "Josh Software Pvt Ltd."} 
+            Kimaya TPN
 
 

@@ -1,12 +1,5 @@
-= raw display_message
-.bottom-spacing
-  .float-right
-    %a.button{:href => new_patient_path, :class => "btn btn-primary", :style => "float:right;"}
-      %span
-        Add patient 
-
-
-- form_tag(search_patients_path, :remote => true) do
+= render 'sidemenu'
+- form_tag(search_hospital_patients_path(current_hospital), :remote => true) do
   = text_field_tag 'keyword' 
   = submit_tag 'Search'
 
