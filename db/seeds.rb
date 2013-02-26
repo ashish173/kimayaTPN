@@ -35,7 +35,8 @@ TpnMarketAdditive.create(:name => 'Potassium Chloride', :market_name => 'Kesol',
 TpnMarketAdditive.create(:name => 'Calcium', :market_name => '10% Calcium Gluconate', :constant => 0.45, :unit => 'meq/ml', :max_value => CALCIUM[MAX], :min_value => CALCIUM[MIN])
 TpnMarketAdditive.create(:name => 'Magnesium', :market_name => '50% Magnesium Sulfate', :constant => 4, :unit => 'meq/ml', :max_value => MAGNESIUM[MAX], :min_value => MAGNESIUM[MIN])
 
-
+Role.delete_all
 Role.create(name: 'Admin')
 Role.create(name: 'Doctor')
 Role.create(name: 'Nutritionist')
+Role.create(name: 'Patient')
