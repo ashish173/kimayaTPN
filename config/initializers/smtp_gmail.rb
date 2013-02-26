@@ -1,3 +1,4 @@
+=begin
 ActionMailer::Base.smtp_settings = {
   :address => "smtp.sendgrid.net",
   :port => '587',
@@ -23,3 +24,4 @@ module ActionMailer
     end
   end
 end
+=end

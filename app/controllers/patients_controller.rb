@@ -1,18 +1,14 @@
 class PatientsController < ApplicationController
-  layout 'admin'
+  before_filter :set_menu
 
-  #list all existing patient
   def index
-    @selected_menu = PATIENT
-    if current_user.role?(ADMIN) or current_user.role?(SUPER_ADMIN)
+    if current_user.admin?
       @patients = Patient.ordered.paginate(:page => params[:page], :per_page =>10)
     else
       @patients = current_user.user_patients.ordered.paginate(:page => params[:page], :per_page =>10)
     end
   end
-
-
-  #create new patient
+  
   def new
     @patient = Patient.new
   end
@@ -26,7 +22,7 @@ class PatientsController < ApplicationController
     @patient = Patient.find(params[:id]) 
     @patient.attributes = params[:patient]
     if @patient.save
-        redirect_to(patient_info_path(@patient))
+        redirect_to hospital_patient_history_path(current_hospital, @patient)
     else
       render :action => 'edit' 
     end
@@ -35,12 +31,11 @@ class PatientsController < ApplicationController
 
   def create
     @patient = Patient.new(params[:patient])
-    @patient.hospital_id = current_user.hospital_id
+    @patient.hospital_id = current_hospital.id
     if @patient.save
       flash[:notice] = "Patient is Successfully created" 
-      @admission = Admission.create(:patient_id => @patient.id, :user_id => current_user.id , :admitted_on => Date.today)
-      @admission.save
-        redirect_to(patient_info_path(@patient,:for => 'new'))
+      Admission.create!(:patient_id => @patient.id, :user_id => current_user.id , :admitted_on => Date.today)
+      redirect_to hospital_patient_history_path(current_hospital, @patient)
     else
       render :action  => 'new'
     end
@@ -54,38 +49,39 @@ class PatientsController < ApplicationController
 
   def destroy
     Patient.find(params[:id]).destroy
-    redirect_to patients_path
-  end
-
-  def info
-    @patient = Patient.find(params[:patient_id])
-    @patient.build_mother_history if @patient.mother_history.nil?
-    @patient.build_admission if @patient.admission.nil?
-    @patient.build_patient_history if @patient.patient_history.nil?
+    redirect_to hospital_patients_path(current_hospital)
   end
 
   def history
     @patient = Patient.find(params[:patient_id])
-    @investigation = Investigation.patient(@patient.id).today.last #returns an array
-    @patient.attributes = params[:patient]
-    if @patient.save
-      flash[:notice] = "History is successfully saved" 
-        #Today's investigation
-        if @investigation == nil
-          redirect_to(patient_investigation_new_path(@patient, Date.today.strftime("%d-%m-%Y")))
-        else
-          redirect_to(edit_patient_investigation_path(@patient,@investigation))
-        end
+    @investigation = @patient.investigations.today.last #returns an array
+    if request.get?
+      @patient.build_mother_history if @patient.mother_history.nil?
+      @patient.build_admission if @patient.admission.nil?
+      @patient.build_patient_history if @patient.patient_history.nil?
     else
-      render :action => 'info'
+      @patient.attributes = params[:patient]
+      if @patient.save
+        flash[:notice] = "History is successfully saved" 
+        if @investigation == nil
+          redirect_to patient_investigation_new_path(@patient, Date.today.strftime("%d-%m-%Y"))
+        else
+          redirect_to edit_patient_investigation_path(@patient, @investigation)
+        end
+      end
     end
   end
+
   def search
-    if current_user.roles_mask == 2  #doctor can search only through his patients
+    if current_user.doctor?
       @patients = current_user.user_patients.search(params[:keyword]).ordered.paginate(:page => params[:page], :per_page =>10)
     else
       @patients = Patient.search(params[:keyword]).ordered.paginate(:page => params[:page], :per_page =>10)
     end
     render :partial => 'search'
+  end
+
+  def set_menu
+    @selected_menu = PATIENT
   end
 end  

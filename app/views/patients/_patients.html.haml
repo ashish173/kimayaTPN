@@ -16,9 +16,9 @@
         %td
           =  counter
         %td
-          =  patient.registration_number
+          =  link_to patient.registration_number, [current_hospital, patient]
         %td
-          =  patient.name
+          =  link_to patient.name, [current_hospital, patient]
         %td
           =  patient.admission.try(:admitted_on).try(:strftime,"%d-%m-%Y")
         %td
@@ -28,11 +28,11 @@
         %td
           =  patient.emergency_telephone
         %td
-          %a{:href => edit_patient_path(patient.id), :title => 'Edit'}
+          %a{:href => edit_hospital_patient_path(current_hospital, patient), :title => 'Edit'}
             %img{:alt => "edit", :height => "16", :src => "/assets/pencil.gif", :width => "16"}/
-          %a{:href => patient_path(patient.id), :title => 'Show'}
+          %a{:href => hospital_patient_path(current_hospital, patient), :title => 'Show'}
             %img{:alt => "show", :height => "16", :src => "/assets/bin.gif", :width => "16"}/
-          = link_to(image_tag("/assets/cross-small.gif",:height => "16", :width => "16"), patient_path(patient.id), :method => 'delete', :title => 'Delete', :confirm => 'Are you sure?')
+          = link_to(image_tag("/assets/cross-small.gif",:height => "16", :width => "16"), hospital_patient_path(current_hospital, patient), :method => 'delete', :title => 'Delete', :confirm => 'Are you sure?')
           - if patient.investigations.exists?
             %img{:alt => "", :height => "16", :src => "/assets/tick-circle.gif", :width => "16"}/
       - counter = counter+1

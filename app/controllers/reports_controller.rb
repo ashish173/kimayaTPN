@@ -1,6 +1,4 @@
 class ReportsController < ApplicationController
-  layout 'admin'
-
   def index
     @report =  Report.new
     @investigations = [].paginate(:page => params[:page], :per_page => 10)

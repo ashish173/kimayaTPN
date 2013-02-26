@@ -1,8 +1,8 @@
 class Patient < ActiveRecord::Base
   self.per_page =10
   validates :registration_number, :uniqueness => true
-  validates :registration_number, :name, :date_of_birth, :address, :gender_id, :presence => true
-  validates_date :date_of_birth, :on_or_before => lambda { Date.today }, :message => "date of birth invalid"
+  validates :registration_number, :name, :date_of_birth, :address, :gender_id, :birth_weight, :presence => true
+  #validates_date :date_of_birth, :on_or_before => lambda{ Date.today } 
   validates :birth_weight, :numericality => true
   validate :patient_count_within_limit, :on => :create
 
@@ -28,7 +28,7 @@ class Patient < ActiveRecord::Base
   scope :search, lambda{|keyword| where("registration_number like ? or name like ?", "#{keyword}%", "%#{keyword}%")}
   
   def patient_count_within_limit
-    if self.hospital.patients.size > self.hospital.patients_count
+    if self.hospital && self.hospital.patients.size > self.hospital.patients_count
       errors.add(:base, "Exceeded no of Patients")
     end
   end

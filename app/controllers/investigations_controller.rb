@@ -73,7 +73,7 @@ class InvestigationsController < ApplicationController
 
   def search
     @selected_menu = "investigation"
-    if current_user.role?(ADMIN) or current_user.role?(SUPER_ADMIN)
+    if current_user.admin?
       @investigations = Investigation.order("investigated_on DESC").last(20).paginate(:page => params[:page], :per_page =>10)
     else
       @investigations = Investigation.for_user(current_user).order("investigated_on DESC").last(20).paginate(:page => params[:page], :per_page =>10)

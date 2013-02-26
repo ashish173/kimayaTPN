@@ -1,8 +1,11 @@
 class TpnsController < ApplicationController
   layout 'admin'
   before_filter :load_doctors_and_patients, :only => [ :new, :create ]
+
   def new 
     @tpn = Tpn.new 
+    @doctors = User.doctors(current_user)
+    @patients = current_user.user_patients
   end
 
   def create

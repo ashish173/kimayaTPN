@@ -1,64 +1,38 @@
 .span10
-  = raw display_message
-  - if params[:for].to_i==PATIENT
-    .bottom-spacing
-      .float-right
-        %a.button{:href => new_patient_path, :class => "btn btn-primary", :style => "float:right;" }
-          %span
-            Add patient 
-      .float_left
-        - form_tag(search_patients_path, :remote => true) do
-          = text_field_tag 'keyword'
-          = submit_tag 'Search'
-    
-    .module 
-      %h2
-        %span 
-          Patients
-      .module-table-body{:id=>'patient_info'}
-        = render :partial => 'patients/patients'      
-  - else      
-    .bottom-spacing
-      .float-right
-        %a.button{:href => new_user_registration_path(:for => @selected_menu), :rel => :facebox, :class => "btn btn-primary", :style => "float:right;"}
-          %span
-            - if params[:for].to_i==NUTRITIONIST
-              Invite Nutritionist 
-            - else
-              Invite Doctor
-    .module
-      %h2
-        %span 
-          - if params[:for].to_i==NUTRITIONIST
-            Nutritionists
-          - else
-            Doctors
-      .module-table-body
-        %table#myTable.table
-          %thead
+  .module
+    %h2
+      %span 
+        - if params[:type].to_i==NUTRITIONIST
+          Nutritionists
+        - else
+          Doctors
+    .module-table-body
+      %table#myTable.table.table-bordered.table-striped.table-hover
+        %thead
+          %tr
+            %th{:style => "width:5%"} No
+            %th{:style => "width:20%"} Name 
+            %th{:style => "width:21%"} Email 
+            %th{:style => "width:21%"} Phone Number 
+            %th{:style => "width:21%"} Action 
+        %tbody
+          - counter = 1
+          - @users.each do |user|
             %tr
-              %th{:style => "width:5%"} No
-              %th{:style => "width:20%"} Name 
-              %th{:style => "width:21%"} Email 
-              %th{:style => "width:21%"} Phone Number 
-              %th{:style => "width:21%"} Action 
-          %tbody
-            - counter = 1
-            - @users.each do |user|
-              %tr
-                %td.align-center 
-                  = counter
-                %td 
-                  = user.name
-                %td
-                  = user.email
-                %td
-                  = user.mobile_number
-                %td
-                  %a{:href => edit_user_path(user.id), :rel => :facebox}
-                    %img{:alt => "edit", :height => "16", :src => "assets/pencil.gif", :width => "16"}/
-                  %a{:href => user_path(user.id), :rel => :facebox}
-                    %img{:alt => "show", :height => "16", :src => "assets/bin.gif", :width => "16"}/
-                  = link_to(image_tag("/assets/cross-small.gif",:height => "16", :width => "16"), user_path(user.id, :for => params[:for]), :method => 'delete')
-                - counter = counter+1
-      .pagination
+              %td.align-center 
+                = counter
+              %td 
+                = user.name
+              %td
+                = user.email
+              %td
+                = user.mobile_number
+              %td
+                = link_to edit_hospital_user_path(current_hospital, user.role_id, user) do
+                  = image_tag "pencil.gif", :alt => "edit", :height => "16", :width => "16"
+                = link_to hospital_user_path(current_hospital, user.role.id, user) do
+                  = image_tag "bin.gif", :alt => "show", :height => "16", :width => "16"
+                = link_to hospital_user_path(current_hospital, params[:type], user), :method => 'delete' do
+                  = image_tag("/assets/cross-small.gif",:height => "16", :width => "16")
+              - counter = counter+1
+    .pagination

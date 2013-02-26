@@ -27,8 +27,8 @@ module Kimaya
      config.time_zone = 'Mumbai'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    #config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    #config.i18n.default_locale = :en
 
     # JavaScript files you want as :defaults (application.js is always included).
     # Configure the default encoding used in templates for Ruby 1.9.
@@ -47,13 +47,4 @@ module Kimaya
   end
 end
 
-ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
-  if html_tag =~ /<label/
-    %(<span class=\"field_with_errors_label\">#{html_tag}</span>).html_safe
-  else
-   err_msg = instance.error_message.kind_of?(Array) ? instance.error_message.first : instance.error_message
-    %(<span class=\"field_with_errors\">#{html_tag}</span><span class='notification-input ni-error'>#{err_msg}</span>).html_safe
-  end
-end
-
-#Date::DATE_FORMATS[:format] = '%m/%d/%Y'
+Date::DATE_FORMATS[:format] = '%d/%m/%Y'

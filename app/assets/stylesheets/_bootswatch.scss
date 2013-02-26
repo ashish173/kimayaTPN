@@ -1,0 +1,656 @@
+// Spruce 2.2.2
+// Variables
+// --------------------------------------------------
+
+
+// Global values
+// --------------------------------------------------
+
+
+// Grays
+// -------------------------
+$black:                 #000;
+$grayDarker:            #222;
+$grayDark:              #333;
+$gray:                  #555;
+$grayLight:             #999;
+$grayLighter:           #eee;
+$white:                 #fff;
+
+
+// Accent colors
+// -------------------------
+$blue:                  #004E8B;
+$blueDark:              #013435;
+$green:                 #015B4E;
+$red:                   #D14432;
+$yellow:                #F0F1E1;
+$orange:                #F26522;
+$pink:                  #A15B66;
+$purple:                #7073CF;
+
+
+// Scaffolding
+// -------------------------
+$bodyBackground:        $white;
+$textColor:             $gray;
+
+
+// Links
+// -------------------------
+$linkColor:             lighten($green, 10%);
+$linkColorHover:        $linkColor;
+
+
+// Typography
+// -------------------------
+$sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serifFontFamily:       Georgia, "Times New Roman", Times, serif;
+$monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
+
+$baseFontSize:          15px;
+$baseFontFamily:        $serifFontFamily;
+$baseLineHeight:        21px;
+$altFontFamily:         $serifFontFamily;
+
+$headingsFontFamily:    'Crete Round', serif; // empty to use BS default, $baseFontFamily
+$headingsFontWeight:    normal;    // instead of browser default, bold
+$headingsColor:         $grayDark; // empty to use BS default, $textColor
+
+
+// Component sizing
+// -------------------------
+// Based on 14px font-size and 20px line-height
+
+$fontSizeLarge:         $baseFontSize * 1.25; // ~18px
+$fontSizeSmall:         $baseFontSize * 0.85; // ~12px
+$fontSizeMini:          $baseFontSize * 0.75; // ~11px
+
+$paddingLarge:          11px 19px; // 44px
+$paddingSmall:          2px 10px;  // 26px
+$paddingMini:           0px 6px;   // 22px
+
+$baseBorderRadius:      4px;
+$borderRadiusLarge:     6px;
+$borderRadiusSmall:     3px;
+
+
+// Tables
+// -------------------------
+$tableBackground:                   lighten(#ddd, 10%); // overall background-color
+$tableBackgroundAccent:             lighten(#ddd, 5%); // for striping
+$tableBackgroundHover:              #ddd; // for hover
+$tableBorder:                       $headingsColor; // table and cell border
+
+
+// Wells
+// -------------------------
+$wellBackground:                  #ddd;
+
+
+// Navbar
+// -------------------------
+$navbarCollapseWidth:             979px;
+$navbarCollapseDesktopWidth:      $navbarCollapseWidth + 1;
+
+$navbarHeight:                    55px;
+$navbarBackground:                $blueDark;
+$navbarBackgroundHighlight:       $navbarBackground;
+$navbarBorder:                    darken($navbarBackground, 5%);
+
+$navbarText:                      $grayLight;
+$navbarLinkColor:                 $white;
+$navbarLinkColorHover:            $white;
+$navbarLinkColorActive:           $white;
+$navbarLinkBackgroundHover:       #002425;
+$navbarLinkBackgroundActive:      $navbarLinkBackgroundHover;
+
+$navbarBrandColor:                $navbarLinkColor;
+
+// Inverted navbar
+$navbarInverseBackground:                $wellBackground;
+$navbarInverseBackgroundHighlight:       lighten($wellBackground, 5%);
+$navbarInverseBorder:                    darken($navbarInverseBackground, 5%);
+
+$navbarInverseText:                      $textColor;
+$navbarInverseLinkColor:                 $headingsColor;
+$navbarInverseLinkColorHover:            $navbarInverseLinkColor;
+$navbarInverseLinkColorActive:           $navbarInverseLinkColor;
+$navbarInverseLinkBackgroundHover:       darken($navbarInverseBackground, 7%);
+$navbarInverseLinkBackgroundActive:      $navbarInverseLinkBackgroundHover;
+
+$navbarInverseSearchBackground:          lighten($navbarInverseBackground, 25%);
+$navbarInverseSearchBackgroundFocus:     $white;
+$navbarInverseSearchBorder:              $navbarInverseBackground;
+$navbarInverseSearchPlaceholderColor:    $white;
+
+$navbarInverseBrandColor:                $navbarInverseLinkColor;
+
+// Buttons
+// -------------------------
+$btnBackground:                     $white;
+$btnBackgroundHighlight:            darken($white, 10%);
+$btnBorder:                         darken($white, 15%);
+
+$btnPrimaryBackground:              lighten($green, 5%);
+$btnPrimaryBackgroundHighlight:     $green;
+
+$btnInfoBackground:                 lighten(#2f96b4, 5%);
+$btnInfoBackgroundHighlight:        #2f96b4;
+
+$btnSuccessBackground:              lighten($blue, 10%);
+$btnSuccessBackgroundHighlight:     lighten($blue, 5%);
+
+$btnWarningBackground:              lighten($orange, 5%);
+$btnWarningBackgroundHighlight:     $orange;
+
+$btnDangerBackground:               lighten($red, 5%);
+$btnDangerBackgroundHighlight:      $red;
+
+$btnInverseBackground:              $gray;
+$btnInverseBackgroundHighlight:     darken($gray, 5%);
+
+
+// Forms
+// -------------------------
+$inputBackground:               $white;
+$inputBorder:                   #ccc;
+$inputBorderRadius:             $baseBorderRadius;
+$inputDisabledBackground:       $grayLighter;
+$formActionsBackground:         transparent;
+$inputHeight:                   $baseLineHeight + 10px; // base line-height + 8px vertical padding + 2px top/bottom border
+
+
+// Dropdowns
+// -------------------------
+$dropdownBackground:            #002425;
+$dropdownBorder:                transparent;
+$dropdownDividerTop:            transparent;
+$dropdownDividerBottom:         $black;
+
+$dropdownLinkColor:             $white;
+$dropdownLinkColorHover:        $white;
+$dropdownLinkColorActive:       $white;
+
+$dropdownLinkBackgroundActive:  $green;
+$dropdownLinkBackgroundHover:   $green;
+
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+$zindexDropdown:          1000;
+$zindexPopover:           1010;
+$zindexTooltip:           1030;
+$zindexFixedNavbar:       1030;
+$zindexModalBackdrop:     1040;
+$zindexModal:             1050;
+
+
+// Sprite icons path
+// -------------------------
+$iconSpritePath:          "../img/glyphicons-halflings.png";
+$iconWhiteSpritePath:     "../img/glyphicons-halflings-white.png";
+
+
+// Input placeholder text color
+// -------------------------
+$placeholderText:         #ccc;
+
+
+// Hr border color
+// -------------------------
+$hrBorder:                $linkColor;
+
+
+// Horizontal forms & lists
+// -------------------------
+$horizontalComponentOffset:       180px;
+
+
+// Pagination
+// -------------------------
+$paginationBackground:                darken($bodyBackground, 10%);
+$paginationBorder:                    transparent;
+$paginationActiveBackground:          #A2CDB5;
+
+
+// Hero unit
+// -------------------------
+$heroUnitBackground:              #ddd;
+$heroUnitHeadingColor:            $headingsColor;
+$heroUnitLeadColor:               inherit;
+
+
+// Form states and alerts
+// -------------------------
+$warningText:             $white;
+$warningBackground:       $orange;
+$warningBorder:           darken(adjust-hue($warningBackground, -10), 3%);
+
+$errorText:               $white;
+$errorBackground:         $red;
+$errorBorder:             darken(adjust-hue($errorBackground, -10), 3%);
+
+$successText:             $white;
+$successBackground:       #24C00B;
+$successBorder:           darken(adjust-hue($successBackground, -10), 5%);
+
+$infoText:                $white;
+$infoBackground:          #185AF9;
+$infoBorder:              darken(adjust-hue($infoBackground, -10), 7%);
+
+
+// Tooltips and popovers
+// -------------------------
+$tooltipColor:            #fff;
+$tooltipBackground:       #000;
+$tooltipArrowWidth:       5px;
+$tooltipArrowColor:       $tooltipBackground;
+
+$popoverBackground:       #fff;
+$popoverArrowWidth:       10px;
+$popoverArrowColor:       #fff;
+$popoverTitleBackground:  $green;
+
+// Special enhancement for popovers
+$popoverArrowOuterWidth:  $popoverArrowWidth + 1;
+$popoverArrowOuterColor:  rgba(0,0,0,.25);
+
+
+
+// GRID
+// --------------------------------------------------
+
+
+// Default 940px grid
+// -------------------------
+$gridColumns:             12;
+$gridColumnWidth:         60px;
+$gridGutterWidth:         20px;
+$gridRowWidth:            ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
+
+// 1200px min
+$gridColumnWidth1200:     70px;
+$gridGutterWidth1200:     30px;
+$gridRowWidth1200:        ($gridColumns * $gridColumnWidth1200) + ($gridGutterWidth1200 * ($gridColumns - 1));
+
+// 768px-979px
+$gridColumnWidth768:      42px;
+$gridGutterWidth768:      20px;
+$gridRowWidth768:         ($gridColumns * $gridColumnWidth768) + ($gridGutterWidth768 * ($gridColumns - 1));
+
+
+// Fluid grid
+// -------------------------
+$fluidGridColumnWidth:    percentage($gridColumnWidth/$gridRowWidth);
+$fluidGridGutterWidth:    percentage($gridGutterWidth/$gridRowWidth);
+
+// 1200px min
+$fluidGridColumnWidth1200:     percentage($gridColumnWidth1200/$gridRowWidth1200);
+$fluidGridGutterWidth1200:     percentage($gridGutterWidth1200/$gridRowWidth1200);
+
+// 768px-979px
+$fluidGridColumnWidth768:      percentage($gridColumnWidth768/$gridRowWidth768);
+$fluidGridGutterWidth768:      percentage($gridGutterWidth768/$gridRowWidth768);
+// Spruce 2.2.2
+// Bootswatch
+// -----------------------------------------------------
+
+
+// TYPOGRAPHY
+// --------------------------------------------------
+
+@import url("//fonts.googleapis.com/css?family=Crete+Round");
+
+section {
+  margin-top: 60px;
+  padding-top: 100px;
+}
+
+.tooltip-inner {
+  max-width: 500px;
+}
+
+.hero-unit {
+  background-color: #F3F3F3;
+  border: 1px solid #DDDDDD;
+  padding-bottom: 5px;
+  text-align: center;
+  h1, p {
+    margin-bottom: 15px;
+  }
+}
+
+#social {
+  display: inline-block;
+  margin-top: 45px;
+  text-align: center;
+}
+
+#gh-star {
+  margin-right: 10px;
+}
+
+.twitter-share-button {
+  margin-right: 15px;
+}
+
+.rss-button {
+  font-size: 11px;
+  font-weight: bold;
+  height: 14px;
+  line-height: 14px;
+  margin: 0 0 10px;
+  padding: 2px 5px 2px 4px;
+  width: 40px;
+}
+
+.index h3 {
+  font-size: 20px;
+  text-align: center;
+}
+
+#ticker {
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  margin-top: 40px;
+}
+
+.about {
+  margin-bottom: 40px;
+  margin-top: 40px;
+  > div {
+    margin-bottom: 20px;
+  }
+  h3 {
+    margin: 0;
+    text-align: left;
+  }
+  i {
+    font-size: 1.3em;
+    margin-right: 8px;
+  }
+}
+
+#gallery {
+  padding-top: 60px;
+}
+
+.thumbnail {
+  background-color: rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  img {
+    border-radius: 7px 7px 7px 7px;
+    width: 100%;
+  }
+  .caption {
+    color: inherit;
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  h3 {
+    margin-bottom: 0;
+    text-align: left;
+  }
+  .btn-toolbar {
+    margin-top: 15px;
+    text-align: right;
+  }
+}
+
+#more {
+  margin-bottom: 20px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.links {
+  margin-bottom: 20px;
+  > a {
+    margin-right: 10px;
+  }
+}
+
+.bsa {
+  float: right;
+  max-width: 400px;
+  padding: 0;
+}
+
+body .one {
+  .bsa_it_ad {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    color: inherit;
+    font-family: inherit;
+    margin-bottom: -10px;
+    padding: 25px 25px 15px;
+    .bsa_it_t, .bsa_it_d {
+      color: inherit;
+      font-size: inherit;
+    }
+  }
+  .bsa_it_p {
+    display: none;
+  }
+}
+
+#footer {
+  margin-bottom: 20px;
+  .links a {
+    margin-right: 10px;
+  }
+}
+
+.hero-unit {
+  margin: 0 0 20px;
+  padding: 20px 20px 0;
+  h1 {
+    font-size: 36px;
+  }
+  iframe {
+    margin-right: 0 !important;
+  }
+}
+
+#social {
+  margin-bottom: 20px;
+  margin-top: 0;
+  > span {
+    display: block;
+  }
+}
+
+#ticker {
+  margin-top: 0;
+}
+
+.about {
+  margin-top: 0;
+  h3 {
+    margin-top: 30px;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.modal {
+  position: fixed !important;
+  top: 25% !important;
+}
+
+.hero-unit {
+  margin-top: 0;
+  padding: 30px;
+}
+
+.about {
+  margin-top: 0;
+}
+
+section {
+  padding-top: 20px;
+}
+
+.bsa {
+  float: none;
+}
+
+.index .navbar {
+  margin-bottom: 0;
+}
+
+.hero-unit {
+  border-radius: 0 0 0 0;
+}
+
+section {
+  padding-top: 20px;
+}
+
+.thumbnail .btn {
+  font-size: 14px;
+  padding: 6px 10px;
+}
+
+.index {
+  padding-top: 40px;
+}
+
+.preview {
+  padding-top: 100px;
+}
+
+.subhead {
+  margin-bottom: 9px;
+  padding-bottom: 0;
+  h1 {
+    font-size: 54px;
+  }
+  > div:first-child {
+    min-height: 200px;
+  }
+}
+
+.subnav {
+  background-color: #EEEEEE;
+  background-image: -moz-linear-gradient(center top, whitesmoke 0%, #eeeeee 100%);
+  background-repeat: repeat-x;
+  border: 1px solid #E5E5E5;
+  border-radius: 4px 4px 4px 4px;
+  height: 36px;
+  margin-bottom: 60px;
+  width: 100%;
+  .nav {
+    margin-bottom: 0;
+    > {
+      li > a {
+        border-left: 1px solid #F5F5F5;
+        border-radius: 0 0 0 0;
+        border-right: 1px solid #E5E5E5;
+        margin: 0;
+        padding-bottom: 11px;
+        padding-top: 11px;
+      }
+      .active > a {
+        background-color: #E9E9E9;
+        border-left: 0 none;
+        border-right-color: #DDDDDD;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05) inset;
+        color: #777777;
+        padding-left: 13px;
+        &:hover {
+          background-color: #E9E9E9;
+          border-left: 0 none;
+          border-right-color: #DDDDDD;
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05) inset;
+          color: #777777;
+          padding-left: 13px;
+        }
+        .caret, &:hover .caret {
+          border-top-color: #777777;
+        }
+      }
+      li {
+        &:first-child > a {
+          border-left: 0 none;
+          border-radius: 4px 0 0 4px;
+          padding-left: 12px;
+          &:hover {
+            border-left: 0 none;
+            border-radius: 4px 0 0 4px;
+            padding-left: 12px;
+          }
+        }
+        &:last-child > a {
+          border-right: 0 none;
+        }
+      }
+    }
+  }
+  .dropdown-menu {
+    border-radius: 0 0 4px 4px;
+  }
+  background: none repeat scroll 0 0 #FFFFFF;
+  box-shadow: none;
+  height: auto;
+  position: static;
+  top: auto;
+  width: auto;
+  z-index: auto;
+  .nav > li {
+    float: none;
+    > a {
+      border: 0 none;
+    }
+    + li > a {
+      border-top: 1px solid #E5E5E5;
+    }
+    &:first-child > a {
+      border-radius: 4px 4px 0 0;
+      &:hover {
+        border-radius: 4px 4px 0 0;
+      }
+    }
+  }
+}
+
+.subnav-fixed {
+  border-color: #D5D5D5;
+  border-radius: 0 0 0 0;
+  border-width: 0 0 1px;
+  box-shadow: 0 1px 0 white inset, 0 1px 5px rgba(0, 0, 0, 0.1);
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 40px;
+  z-index: 1020;
+  .nav {
+    margin: 0 auto;
+    padding: 0 1px;
+    width: 938px;
+  }
+}
+
+.subnav .nav > li:first-child > a {
+  border-radius: 0 0 0 0;
+  &:hover {
+    border-radius: 0 0 0 0;
+  }
+}
+
+.subnav-fixed .nav {
+  width: 1168px;
+}
