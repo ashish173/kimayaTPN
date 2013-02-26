@@ -39,6 +39,7 @@ class Tpn < ActiveRecord::Base
   validates :day_of_tpn, :numericality => { :only_integer => true, :greater_than => 0 }
   validates :current_weight, :numericality => { :greater_than => 0 }
   validates :fat_volume, :fat_concentration, :numericality => true 
+  validates :patient, :presence => true
   has_one :tpn_infusion
   scope :doctors, lambda { |current_user|
     if current_user.super_admin?
