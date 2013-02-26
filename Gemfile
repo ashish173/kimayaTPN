@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'kimaya', git: 'git://github.com/joshsoftware/kimaya.git'
 gem 'rails_admin'
 gem 'friendly_id'
+gem 'pdfkit', '~> 0.5.3'
 # Use unicorn as the web server
 # gem 'unicorn'
 

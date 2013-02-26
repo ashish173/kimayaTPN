@@ -1,0 +1,22 @@
+@media print {
+  .span8{
+    width: auto;  
+  }
+  .table{
+    width: 100%;
+    margin-bottom: 20px;  
+  }
+  .table td{
+  padding: 8px;
+  }
+  .table th{
+    padding:0px;
+    margin:0px;
+  }
+  h3{
+    font-size:20px;
+  }
+  h2{
+    text-align:center;
+  }
+}

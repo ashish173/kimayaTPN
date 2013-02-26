@@ -14,6 +14,8 @@ class Tpn < ActiveRecord::Base
   validates :current_weight, :numericality => { :greater_than => 0 }
   validates :losses, :fat_volume, :fat_concentration, :numericality => true 
 
+  validates :fat_volume, :fat_concentration, :numericality => true 
+  has_one :tpn_infusion
   scope :doctors, lambda { |current_user|
     if current_user.admin?
       return current_user.hospital.users.doctors
@@ -21,4 +23,16 @@ class Tpn < ActiveRecord::Base
       return [current_user.name]
     end
   }
+
+  def build_tpn
+    amino_acid_concentration =  self.amino_acid_additive.present? ? self.amino_acid_additive.constant : 0
+    sodium_chloride_concentration = self.sodium_chloride_additive.present? ? self.sodium_chloride_additive.constant : 0
+    potassium_chloride_concentration = self.potassium_chloride_additive.present? ? self.potassium_chloride_additive.constant : 0
+    magnesium_concentration = self.magnesium_additive.present? ? self.magnesium_additive.constant : 0
+    calcium_concentration = self.calcium_additive.present? ? self.calcium_additive.constant : 0
+    params = { current_weight: self.current_weight.to_f, percent_dextrose_conc: self.dextrose_conc.to_f / 100, total_fluid_intake: self.total_fluid_intake.to_f, fat_intake: self.fat_volume.to_f,  lipid_conc: self.fat_concentration.to_f, overfill_factor: self.factor.to_f, amino_acid_intake: self.amino_acid.to_f, amino_acid_conc: amino_acid_concentration / 100, sodium_chloride_intake: self.sodium_chloride.to_f, sodium_chloride_conc: sodium_chloride_concentration, potassium_chloride_intake: self.potassium_chloride.to_f, potassium_chloride_conc: potassium_chloride_concentration, magnesium_intake: self.magnesium.to_f, magnesium_conc: magnesium_concentration, calcium_intake: self.calcium.to_f, calcium_conc: calcium_concentration }
+    tpn = Kimaya::TPNCalc.new(params)
+    tpn.calculate_tpn
+    tpn
+  end
 end

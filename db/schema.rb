@@ -245,6 +245,16 @@ ActiveRecord::Schema.define(:version => 20130220115412) do
     t.integer  "hospital_id"
   end
 
+  create_table "tpn_infusions", :force => true do |t|
+    t.float    "feed_volume_over_24_hour"
+    t.float    "arterial_line_infusion"
+    t.float    "inotrope_infusion"
+    t.float    "other_infusion"
+    t.integer  "tpn_id"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
   create_table "tpn_market_additives", :force => true do |t|
     t.string   "name"
     t.string   "market_name"
