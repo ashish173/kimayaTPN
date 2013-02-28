@@ -1,0 +1,13 @@
+%div.span{ :style => "margin-left:0px;margin-top:100px;" }
+  = render :partial => 'sidemenu'
+%div.span8
+  = render :partial => 'label'
+  = link_to "Download Label Pdf", { :controller => "tpns", :action => "label", format: :pdf, :print_type => "attachment"}, :class => "btn btn-primary"
+  %button{ id: "print_label" , :class => "btn btn-primary"} Print Report
+:javascript
+  $(document).ready(function() { 
+    $('#print_label').printPage({
+      url:"/hospitals/#{ current_hospital.slug }/tpns/label/#{ @tpn.id}.pdf",
+      attr: "href"
+    }); 
+  });

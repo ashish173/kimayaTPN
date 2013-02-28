@@ -1,7 +1,5 @@
 class InvestigationsController < ApplicationController
 
-  layout 'admin'
-
   def build_resources
       @investigation = Investigation.new
       @investigation.build_blood_analysis

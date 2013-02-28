@@ -101,6 +101,9 @@
 .inputx input{
   width: 52px;
 }
+.inputx select{
+    width:180px;
+}
 .inputy input{
   width: 52px;
   float: right;
@@ -130,10 +133,20 @@
   float: left;
   margin-left:20px;
 }
+.label_custom4{
+  float:left;
+  width: 150px;
+  margin-left:100px;
+  margin-bottom:45px;
+}
 .input_custom1{
   float:left;
   width:40px;
   margin-right:20px;
+}
+.input_custom2{
+  float:left;
+  width:100px;
 }
 .button_custom{
   float:left;
@@ -141,4 +154,7 @@
   height:20px;
   margin-right:32px;
   margin-left:46px;
+}
+.sign_bottom{
+    display:none;
 }

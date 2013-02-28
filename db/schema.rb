@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221054624) do
+ActiveRecord::Schema.define(:version => 20130226092608) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -277,7 +277,6 @@ ActiveRecord::Schema.define(:version => 20130221054624) do
     t.float    "fat_volume"
     t.float    "fat_concentration"
     t.float    "factor"
-    t.float    "losses"
     t.float    "amino_acid"
     t.float    "sodium_chloride"
     t.float    "potassium_chloride"

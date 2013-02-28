@@ -1,18 +1,17 @@
-= simple_form_for @tpn , :html => { :class => "form-horizontal"}, :wrapper => :tpn do |f|
+= simple_form_for [ current_hospital, @tpn ], :html => { :class => "form-horizontal"}, :wrapper => :tpn do |f|
   %h3{:style => "text-align:center"}
     TPN Information
   .form-inputs.row
-    = f.input :day_of_tpn, :wrapper_html => { :class => 'span2'}, input_html: {style:'width:50px;'}
+    = f.input :day_of_tpn, :wrapper_html => { :class => 'span3'}, input_html: {style:'width:50px;'}
     = f.association :user, collection: @doctors, include_blank: false, :wrapper_html => { :class => "span3" }, label: 'Doctor'
     = f.association :patient, collection: @patients, prompt: "choose", :wrapper_html => {:class => "span3"}
   %div{:style => "width:40%;float:left;" }
     %h3{:style => "margin-left:60px;"}
       Daily Fluid Volume Intake
     .form-inputs.row
-      = f.input :tpn_date, :wrapper => :append, data: {date_format: "yyyy-mm-dd"} do
-        = f.input_field :tpn_date, as: :string, class: 'datepicker'
-        %span.add-on>
-          %i.icon-calendar
+      %label.label_custom4 Previous TPN Date
+      %input.input_custom2{ :id => "previous_tpn_date", :class => "datepicker", "data-date-format" => "yyyy/mm/dd" }
+      = f.hidden_field :tpn_date, :value => "#{ Date.today }"
       = f.input :current_weight
       %input.input_custom{:id => "previous_current_weight", :disabled => true}
       %label.label_custom Kg
@@ -34,7 +33,7 @@
   %div{:style => "width:60%;float:left;"}
     %h3{ :style => "margin-left:222px;" }
       Additive Nutrients
-    .form-inputs.row{ :style => "margin-top:60px;"}
+    .form-inputs.row{ :style => "margin-top:60px;float:left;"}
       = f.input :amino_acid
       %input.input_custom1{ :id => "amino_acid_previous", :disabled => true}
       %label.label_custom1{:style => "padding-left:8px;"} gm/kg  
@@ -211,5 +210,7 @@
             %td
               = additive.unit
   .modal-footer
-    %button{class: 'btn btn-primary', data:{dismiss: "modal"}, "aria-hidden" => true } Close    
-
+    %button{class: 'btn btn-primary', data:{dismiss: "modal"}, "aria-hidden" => true } Close   
+:javascript
+  $('#previous_tpn_date').change(function(){ $.ajax({ url:"/hospitals/#{current_hospital.slug}/tpn/previous_tpn",data:{ patient_id: $('#tpn_patient_id').val(),date: $('#previous_tpn_date').val() }, beforeSend: function() {  } }); });
+  $('#tpn_patient_id').change(function(){ $('#previous_tpn_date').popover('hide'); $.ajax({ url:"/hospitals/#{current_hospital.slug}/tpn/previous_tpn_date", data:{ patient_id: $('#tpn_patient_id').val() }, complete: function(data) { eval(data.responseText);   } }); } );

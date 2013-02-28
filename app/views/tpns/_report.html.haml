@@ -43,51 +43,64 @@
       Total Fluid( 100 ml/kg/day)
     %td
       = @result.total_fluid_intake_vol
+      ml
     %td
       Feed volume over 24 hour
     %td
       = @tpn_infusion.feed_volume_over_24_hour
+      ml/hr
   %tr
     %td
       Dextrose 10 %
     %td
       = @result.dextrose_10
+      ml
     %td
       Arterial line infusion
     %td
       = @tpn_infusion.arterial_line_infusion
+      ml/hr
   %tr
     %td
       Dextrose 50 %
     %td
       = @result.dextrose_50
+      ml
     %td
       Inotrope Infusion
     %td
       = @tpn_infusion.inotrope_infusion
+      ml/hr
   %tr
     %td
       Volume to be infused(HAV)
     %td
       = @result.hav_vol
+      ml
     %td
       Other Infusion
     %td
       = @tpn_infusion.other_infusion
+      ml/hr
   %tr
     %td
       Prepared Volume
     %td
       = @result.tpn_vol
+      ml
     %td
       Final TPN orders at initiation
     %td
       = (@result.tpn_vol / 24 - @tpn_infusion.feed_volume_over_24_hour - @tpn_infusion.arterial_line_infusion - @tpn_infusion.inotrope_infusion - @tpn_infusion.inotrope_infusion - @tpn_infusion.other_infusion).round(2)
+      ml/hr
   %tr
     %td
       Fat (10%) 0 gm/kg/day
     %td
       = @result.fat_vol
+      ml
+    %td
+    %td
 %h4
   Additive Nutrients
 %table.table.table-striped
@@ -107,13 +120,16 @@
       Amino Acid
     %td
       = @result.amino_acid_intake 
-    %td
-      #{ @result.amino_acid_conc * 100 } %
-    %td
-      - if @tpn.amino_acid_additive.present? 
+    - if @tpn.amino_acid_additive.present?   
+      %td
+        #{ @result.amino_acid_conc * 100 } %
+      %td
         = @tpn.amino_acid_additive.market_name 
-      - else
-        = "-"
+    - else
+      %td
+        = TpnMarketAdditive.amino_acid.first.constant if TpnMarketAdditive.amino_acid.first.present?
+      %td
+        = TpnMarketAdditive.amino_acid.first.market_name if TpnMarketAdditive.amino_acid.first.present?
     %td
       #{@result.amino_acid_vol } ml
   %tr
@@ -121,13 +137,17 @@
       Sodium
     %td
       #{ @result.sodium_chloride_intake } meq/kg
-    %td
-      #{ @result.sodium_chloride_conc } meq/ml
-    %td
-      - if @tpn.sodium_chloride_additive.present? 
+    - if @tpn.sodium_chloride_additive.present? 
+      %td
+        #{ @result.sodium_chloride_conc } meq/ml
+      %td
         = @tpn.sodium_chloride_additive.market_name 
-      - else
-        = "-"
+    - else
+      %td
+        = TpnMarketAdditive.sodium_chloride.first.constant if TpnMarketAdditive.sodium_chloride.first.present?
+        meq/ml
+      %td
+        = TpnMarketAdditive.sodium_chloride.first.market_name if TpnMarketAdditive.sodium_chloride.first.present?
     %td
       #{ @result.sodium_chloride_vol } ml
   %tr
@@ -135,13 +155,17 @@
       Potassium
     %td
       #{ @result.potassium_chloride_intake } meq/kg
-    %td
-      #{ @result.potassium_chloride_conc } meq/ml
-    %td
-      - if @tpn.potassium_chloride_additive.present? 
+    - if @tpn.potassium_chloride_additive.present? 
+      %td
+        #{ @result.potassium_chloride_conc } meq/ml
+      %td
         = @tpn.potassium_chloride_additive.market_name 
-      - else
-        = "-"
+    - else
+      %td
+        = TpnMarketAdditive.potassium_chloride.first.constant if TpnMarketAdditive.potassium_chloride.first.present?
+        meq/ml
+      %td
+        = TpnMarketAdditive.potassium_chloride.first.market_name if TpnMarketAdditive.potassium_chloride.first.present?
     %td
       #{ @result.potassium_chloride_vol } ml
   %tr
@@ -149,13 +173,17 @@
       Magnesium
     %td
       #{ @result.magnesium_intake } meq/kg
-    %td
-      #{ @result.magnesium_conc } meq/ml
-    %td
-      - if @tpn.magnesium_additive.present? 
+    - if @tpn.magnesium_additive.present? 
+      %td
+        #{ @result.magnesium_conc } meq/ml
+      %td
         = @tpn.magnesium_additive.market_name 
-      - else
-        = "-"
+    - else
+      %td
+        = TpnMarketAdditive.magnesium.first.constant if TpnMarketAdditive.magnesium.first.present?
+        meq/ml
+      %td
+        = TpnMarketAdditive.magnesium.first.market_name if TpnMarketAdditive.magnesium.first.present?
     %td
       #{ @result.magnesium_vol } ml
   %tr
@@ -163,13 +191,16 @@
       Calcium
     %td
       #{ @result.calcium_intake } meq/kg
-    %td
-      #{ @result.calcium_conc } meq/ml
-    %td
-      - if @tpn.calcium_additive.present? 
+    - if @tpn.calcium_additive.present? 
+      %td
+        #{ @result.calcium_conc } meq/ml
+      %td
         = @tpn.calcium_additive.market_name 
-      - else
-        = "-"
+    - else
+      %td
+        = TpnMarketAdditive.calcium.first.constant if TpnMarketAdditive.calcium.first.present?
+      %td
+        = TpnMarketAdditive.calcium.first.market_name if TpnMarketAdditive.calcium.first.present?
     %td
       #{ @result.calcium_vol } ml
   %tr
@@ -177,6 +208,9 @@
       Multivitamins
     %td
       #{ @result.mvi } ml
+    %td
+    %td
+    %td
 %h4
   Administration
 %table.table.table-striped
@@ -195,9 +229,9 @@
     %td
       #{ @result.non_protein } cal
     %td
-      Fat
+      Calorie Nitrogen Ratio (CNR)
     %td
-      #{ @result.fat_calories } cal
+      = @result.cnr_rate
   %tr
     %td
       CHO
@@ -209,10 +243,12 @@
       #{ @result.total_protein } gm
   %tr
     %td
-      Calorie Nitrogen Ratio (CNR)
+      Fat
     %td
-      = @result.cnr_rate
-%table{:style => "margin-right:150px;float:right;"}
+      #{ @result.fat_calories } cal
+    %td
+    %td
+%table{ :class => "sign_bottom"}
   %tr
     %td
       Doctor's Signature:

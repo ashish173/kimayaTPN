@@ -31,6 +31,9 @@ Kimaya::Application.routes.draw do
     match 'investigations/results' => 'investigations#results', :via => :post
     match 'investigations/autocomplete_patient_name' => 'investigations#autocomplete_patient_name', :via => :get
     match 'tpns/report/:id' => 'tpns#report', :via => :get
+    match 'tpns/label/:id' => 'tpns#label', :via => :get
+    match 'tpn/previous_tpn' => 'tpns#previous_tpn'
+    match 'tpn/previous_tpn_date' => 'tpns#previous_tpn_date'
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.
