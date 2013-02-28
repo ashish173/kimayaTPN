@@ -10,7 +10,7 @@
       %label.label_custom2 @
       %label.label_custom2{:id => 'initial_tpn'} #{ (@result.tpn_vol / 24).round(2) }    
       %label (ml/hr)
-    = simple_form_for @tpn_infusion, :html => { :class => "form-horizontal"},:wrapper => :tpn_infusion, :remote => true do |f|
+    = simple_form_for [current_hospital,@tpn_infusion], :html => { :class => "form-horizontal"},:wrapper => :tpn_infusion, :remote => true do |f|
       = f.input :feed_volume_over_24_hour, input_html: { value: '0.00', min: '0.00', step:'0.10' }
       %label.label_custom3 (ml/hr)
       = f.input :arterial_line_infusion, input_html: { value: '0.00', min: '0.00', step:'0.10' }

@@ -1,13 +1,13 @@
 %div.span{ :style => "margin-left:0px;margin-top:100px;" }
-  = render :partial => 'tpns/sidemenu.html.haml'
+  = render :partial => 'sidemenu'
 %div.span8
-  = render :partial => 'tpns/report.html.haml'
+  = render :partial => 'report'
   = link_to "Download Report Pdf", { :controller => "tpns", :action => "report", format: :pdf, :print_type => "attachment"}, :class => "btn btn-primary"
   %button{ id: "print_report" , :class => "btn btn-primary"} Print Report
 :javascript
   $(document).ready(function() { 
     $('#print_report').printPage({
-      url:"/tpns/report/#{ @tpn.id}.pdf",
+      url:"/hospitals/#{ current_hospital.slug }/tpns/report/#{ @tpn.id}.pdf",
       attr: "href"
     }); 
   });

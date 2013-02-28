@@ -52,8 +52,8 @@ jQuery(document).ready( function(){
       $(this).addClass('row_selected');
       var value = $('#magnesiumTable tr.row_selected td:nth-child(3)').text().trim();
       var id = $('#magnesiumTable tr.row_selected td:nth-child(1)').text().trim();
-      $('#magnesium_additive_id').val(id);
-      $('#tpn_magnesium_additive').val(value);
+      $('#magnesium_additive').val(value);
+      $('#tpn_magnesium_additive_id').val(id);
     }
   });
   $('#calciumTable tbody tr').click( function (e) {
@@ -65,8 +65,8 @@ jQuery(document).ready( function(){
       $(this).addClass('row_selected');
       var value = $('#calciumTable tr.row_selected td:nth-child(3)').text().trim();
       var id = $('#calciumTable tr.row_selected td:nth-child(1)').text().trim();
-      $('#calcium_additive_id').val(id);
-      $('#tpn_calcium_additive').val(value);
+      $('#calcium_additive').val(value);
+      $('#tpn_calcium_additive_id').val(id);
     }
   });
 

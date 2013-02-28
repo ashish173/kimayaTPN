@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
   before_filter :current_hospital
 
   def current_hospital
+    return true if is_super_admin?
     return @current_hospital if @current_hospital.present?
+    
     if current_user
       if params[:hospital_id].present?
         @current_hospital = Hospital.find_by_slug params[:hospital_id]
@@ -30,6 +32,15 @@ class ApplicationController < ActionController::Base
     else
       root_path(current_hospital)
     end
+  end
+
+  def authenticate_user!(opts={})
+    return true if is_super_admin?
+    super
+  end
+
+  def is_super_admin?
+    request.url.include?('admin')
   end
 
 end

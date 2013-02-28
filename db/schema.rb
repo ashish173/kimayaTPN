@@ -277,7 +277,6 @@ ActiveRecord::Schema.define(:version => 20130227074755) do
     t.float    "fat_volume"
     t.float    "fat_concentration"
     t.float    "factor"
-    t.float    "losses"
     t.float    "amino_acid"
     t.float    "sodium_chloride"
     t.float    "potassium_chloride"
