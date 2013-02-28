@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130220115412) do
+ActiveRecord::Schema.define(:version => 20130227074755) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(:version => 20130220115412) do
 
   create_table "blood_sugar_monitors", :force => true do |t|
     t.integer  "investigation_id"
-    t.time     "blood_sugar_monitored_on"
+    t.datetime "blood_sugar_monitored_on"
     t.string   "details"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :current_hospital
 
   def current_hospital
+    return @current_hospital if @current_hospital.present?
     if current_user
       if params[:hospital_id].present?
         @current_hospital = Hospital.find_by_slug params[:hospital_id]

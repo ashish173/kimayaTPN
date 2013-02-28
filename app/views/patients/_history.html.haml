@@ -2,37 +2,60 @@
   %fieldset
     %legend Patient History
     .span5
-      %legend Mothers History
+      %h3 Mothers History
+      %hr
       = f.simple_fields_for :mother_history do |m|
-        = m.input :is_anc, as: :radio, collection: [['ANC', true], ['Non ANC', false]], label: false, item_wrapper_class: 'inline'
+        = m.input :is_anc, as: :radio_buttons, collection: [['ANC', true], ['Non ANC', false]], label: false, item_wrapper_class: 'inline'
         .span4
           .row
-            = m.label 'Past Obstetric History'
-            = m.input :g, input_html: {class: 'input-mini'}
-            = m.input :p, input_html: {class: 'input-mini'}
-            = m.input :a, input_html: {class: 'input-mini'}
+            = m.label :past_obstetric_history
+            = m.input :g, wrapper: 'prepend', label: false, wrapper_html: {class: 'pull-left bg_ele'}do 
+              %span.add-on
+                G
+              = m.input_field :g, class: 'input-micro-mini'
+            = m.input :p, wrapper: 'prepend', label: false, wrapper_html: {class: 'pull-left'} do
+              %span.add-on
+                P
+              = m.input_field :p, class: 'input-micro-mini'
+            = m.input :a, wrapper: 'prepend', label: false, wrapper_html: {class: 'pull-left'} do 
+              %span.add-on
+                A
+              = m.input_field :a, class: 'input-micro-mini'
+
         = m.input :maternal_usg, label: "Maternal USG"
-        = m.input :age, as: :radio, collection: ['< 18', '18 - 35', '> 35'], item_wrapper_class: 'inline'
-        = m.input :pre_pregnancy_weight, as: :radio, collection: ['<= 40kg', '> 40kg'], item_wrapper_class: 'inline'
-        = m.input :height, as: :radio, collection: ['<= 145 cm', '> 145 cm'], item_wrapper_class: 'inline'
-        = m.input :toxemia, as: :radio, collection: ['mild', 'moderate', 'severe'], item_wrapper_class: 'inline'
-        = m.input :diabetes, as: :radio, collection: ['Gestational', 'IDDM', 'NIDDM'], item_wrapper_class: 'inline'
+        = m.input :age, as: :radio_buttons, collection: ['< 18', '18 - 35', '> 35'], item_wrapper_class: 'inline'
+        = m.input :pre_pregnancy_weight, as: :radio_buttons, collection: ['<= 40kg', '> 40kg'], item_wrapper_class: 'inline'
+        = m.input :height, as: :radio_buttons, collection: ['<= 145 cm', '> 145 cm'], item_wrapper_class: 'inline'
+        = m.input :toxemia, as: :radio_buttons, collection: ['mild', 'moderate', 'severe'], item_wrapper_class: 'inline'
+        = m.input :diabetes, as: :radio_buttons, collection: ['Gestational', 'IDDM', 'NIDDM'], item_wrapper_class: 'inline'
         = m.input :medical_history
         = m.input :other_medical_problems, as: :check_boxes, collection: MEDICAL_PROBLEMS, item_wrapper_class: 'inline'
-        = m.input :is_antenatal_steroids, as: :radio, label: "Antenatal Steroids", item_wrapper_class: 'inline'
+        = m.input :is_antenatal_steroids, as: :radio_buttons, label: "Antenatal Steroids", item_wrapper_class: 'inline'
     .span4
-      %legend Birth History
+      %h3 Birth History
+      %hr
       = f.simple_fields_for :patient_history do |p|
         = p.simple_fields_for :admission do |adm|
           = adm.input :admitted_on, as: :string
         = p.input :gestational_age
-        = p.input :ga, as: :radio, collection: ['AGA', 'SGA', 'LGA'], item_wrapper_class: 'inline'
+        = p.input :ga, as: :radio_buttons, collection: ['AGA', 'SGA', 'LGA'], item_wrapper_class: 'inline'
         = p.input :mode_of_delivery, collection: MODES_OF_DELIVERY, item_wrapper_class: 'inline'
-        = p.input :rupture_of_membranes, as: :radio, collection: ['< 24', '24 - 48', '> 48'], label: 'Rupture of Membranes(hours)', item_wrapper_class: 'inline'
-        = p.label 'Resuscitation Apgar scores'
-        = p.input :apgar_score_1, label: '1 min' 
-        = p.input :apgar_score_5, label: '5 min' 
-        = p.input :apgar_score_20, label: '20 min' 
+        = p.input :rupture_of_membranes, as: :radio_buttons, collection: ['< 24', '24 - 48', '> 48'], label: 'Rupture of Membranes(hours)', item_wrapper_class: 'inline'
+        .span4
+          .row
+            = p.label :score, 'Resuscitation Apgar scores (minutes)', class: 'apgar_label'
+            = p.input :apgar_score_1, wrapper: 'prepend', label: false, wrapper_html: {class: 'pull-left bg_ele'} do
+              %span.add-on
+                1
+              = p.input_field :apgar_score_1, class: 'input-micro-mini'
+            = p.input :apgar_score_5, wrapper: 'prepend', label: false, wrapper_html: {class: 'pull-left'} do
+              %span.add-on
+                5
+              = p.input_field :apgar_score_5, class: 'input-micro-mini'
+            = p.input :apgar_score_1, wrapper: 'prepend', label: false, wrapper_html: {class: 'pull-left'} do
+              %span.add-on
+                20
+              = p.input_field :apgar_score_1, class: 'input-micro-mini'
   .form-actions    
     = f.submit "Next", :class => "btn btn-primary"
-    = link_to "Cancel", [current_hospital, @patient], :class => "btn btn-primary"
+    = link_to "Cancel", [current_hospital, @patient], :class => "btn"

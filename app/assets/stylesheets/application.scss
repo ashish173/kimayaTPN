@@ -2,6 +2,7 @@
  *= require_self
  *= require dataTables/jquery.dataTables.bootstrap
  *= require bootstrap-datepicker
+ *= require datetimepicker
 */
 @import "bootstrap";
 @import "bootstrap-responsive";
@@ -141,4 +142,57 @@
   height:20px;
   margin-right:32px;
   margin-left:46px;
+}
+
+.input-micro-mini{
+  width: 30px;
+}
+
+.control-group.pull-left .controls {
+  margin-left: 0px !important;
+}
+
+.control-group.pull-left.bg_ele .controls {
+  margin-left: 21px !important;
+}
+
+.apgar_label {
+  float: left;
+  width: 130px;
+}
+
+.stack3 {
+  margin-left: 18px;
+}
+
+.min-bottom {
+  margin-bottom: 0 !important;
+}
+
+#investigation .control-label, #additives .control-label {
+  width: 130px;
+}
+
+#additives .measurements .control-label {
+  width: 70px;
+}
+
+#investigation .controls, #additives .controls {
+   margin-left: 150px;
+} 
+
+#additives .measurements .controls {
+   margin-left: 100px;
+} 
+
+.left0 {
+  margin-left: 0;
+}
+
+.left4 {
+  margin-left: 80px;
+}
+
+#additives_table .controls {
+  margin-left: 0;
 }

@@ -1,7 +1,5 @@
 class InvestigationsController < ApplicationController
 
-  layout 'admin'
-
   def build_resources
       @investigation = Investigation.new
       @investigation.build_blood_analysis
@@ -13,6 +11,7 @@ class InvestigationsController < ApplicationController
       @investigation.build_enteral_diagnosis
       @investigation.build_anthropometric_measurement 
       @additives = @patient.daily_tpn_additives.last(4)
+      @investigation.patient = @patient
   end
 
   def index
@@ -39,13 +38,12 @@ class InvestigationsController < ApplicationController
 
   def create
     @patient = Patient.find(params[:patient_id])
-    @investigation = Investigation.new
-    @investigation.attributes = params[:investigation]
-    @additives = @patient.daily_tpn_additives.last(4)
+    @investigation = Investigation.new params[:investigation]
     if @investigation.save
       flash[:notice] = "Investigation created successfully" 
-      redirect_to(investigations_search_path)
+      redirect_to(hospital_investigations_search_path(current_hospital))
     else
+      @additives = @patient.daily_tpn_additives.last(4)
       render :action => 'new'
     end
   end

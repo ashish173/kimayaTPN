@@ -15,9 +15,9 @@
             = link_to "Basic Information" , edit_hospital_patient_path(current_hospital, @patient)
           %li  
             = link_to "Patient history", hospital_patient_history_path(current_hospital, @patient)
-          - if @investigation.nil?
+          - if !@investigation.present? || @investigation.new_record?
             %li  
-              = link_to "Daily Investigation", hospital_patient_investigation_new_path(current_hospital, @patient.id, Date.today.strftime("%d-%m-%Y"))
+              = link_to "Daily Investigation", new_hospital_patient_investigation_path(current_hospital, @patient.id)
           - else
             %li
               = link_to "Daily Investigation", edit_hospital_patient_investigation_path(current_hospital, @patient, @investigation)

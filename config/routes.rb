@@ -20,9 +20,7 @@ Kimaya::Application.routes.draw do
       collection do
         post 'search'
       end
-      resources :investigations, :except => [:new] do
-        get 'new', :path_prefix => '/patients/:patient_id/investigations/:invetigation_id/new'
-      end
+      resources :investigations 
     end
     resources :tpns
     resources :tpn_market_additives

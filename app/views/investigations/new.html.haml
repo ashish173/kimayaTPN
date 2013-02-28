@@ -1,25 +1,5 @@
-= javascript_include_tag "jquery.ui.datepicker", "jquery-ui-timepicker-addon", "application"
-= content_for :submenu do
-  = link_to "Basic Information" , edit_patient_path(@patient), :class => "btn btn-primary"
-  = link_to "Patient history", patient_info_path(@patient), :class => "btn btn-primary"
-  = link_to "Daily Investigation" , "#", :class => "btn btn-primary"
-.grid_12
+= render 'patients/submenu'
+.span10
   = render :partial => 'search'
-.grid_12
-  .module
-    %h2
-      %span
-        #{@patient.name}  -  #{@investigation.investigated_on.strftime("%d-%m-%Y")}
-    .module-body
-      #frmPop
-        .grid_12
-          = form_for(@investigation, :url => patient_investigations_path(@patient.id)) do |f|
-            = f.hidden_field :patient_id, :value => @patient.id
-            = f.hidden_field :investigated_on, :value => @investigation.investigated_on
-            = render :partial => 'form', :locals => {:f => f}
-            %p        
-              .buttons
-                .grid_4
-                  = f.submit "Create", :class => "btn btn-primary"
-                  = link_to "Cancel", patients_path, :class => "btn btn-primary", :width => 8
-        %div{:style => "clear:both;"}
+.span10
+  = render 'form'
