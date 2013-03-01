@@ -17,19 +17,32 @@
       = f.hidden_field :tpn_date, :value => "#{ Date.today }"
       = f.input :current_weight, :wrapper => :append do
         = f.input_field :current_weight, value: '0.00', min: '0.00', step:'0.10', :type => "number"
-        %span.add-on>
+        %span.add-on{:id => "current_weight_help", :"data-toggle" => "popover"}
+          %i.icon-info-sign
       %input.input_custom{ :id => "previous_current_weight", :disabled => true }
       %label.label_custom Kg
-      = f.input :dextrose_conc
+      = f.input :dextrose_conc, :wrapper => :append do
+        = f.input_field :current_weight, value: '0.00', min: '0.00', step:'0.10', :type => "number"
+        %span.add-on{ :id => "dextrose_conc_help", "data-toggle" => "popover" }
+          %i.icon-info-sign
       %input.input_custom{:id => "previous_dextrose_conc", :disabled => true}
       %label.label_custom %
-      = f.input :total_fluid_intake, label: 'Fluid Intake'
+      = f.input :total_fluid_intake, label: 'Fluid Intake', :wrapper => :append do
+        = f.input_field :total_fluid_intake, value: '0.00', min: '0.00', step:'0.10', :type => "number"
+        %span.add-on{ :id => "total_fluid_intake_help", "data-toggle" => "popover" }
+          %i.icon-info-sign
       %input.input_custom{:id => "previous_total_fluid_intake", :disabled => true}
       %label.label_custom ml/kg/day
-      = f.input :fat_volume, label: 'Fat Required'
+      = f.input :fat_volume, label: 'Fat Required', :wrapper => :append do
+        = f.input_field :fat_volume, value: '0.00', min: '0.00', step:'0.10', :type => "number"
+        %span.add-on{ :id => "fat_volume_help", "data-toggle" => "popover" }
+          %i.icon-info-sign
       %input.input_custom{:id => "previous_fat_volume", :disabled => true}
       %label.label_custom gm/kg/day
-      = f.input :fat_concentration, collection: [10,20], include_blank: false, label: 'Lipid Concentration', input_html:{ style: "width:62px;"}
+      = f.input :fat_concentration, as: :select, collection: [10,20], include_blank: false, label: 'Lipid Concentration', :wrapper => :append do
+         , :fat_concentration, :style => "width:62px;" 
+        %span.add-on{ :id => "fat_concentration_help", "data-toggle" => "popover" }
+          %i.icon-info-sign
       %input.input_custom{:id => "previous_fat_concentration", :disabled => true}
       %label.label_custom %
       = f.input :factor, label: 'Overfill Factor', :collection => ['1.0','1.1','1.2','1.3','1.4','1.5'], include_blank: false, input_html:{ style: "width:62px;"}
@@ -175,7 +188,6 @@
   $('#previous_tpn_date').change(function(){ $.ajax({ url:"/hospitals/#{current_hospital.slug}/tpn/previous_tpn",data:{ patient_id: $('#tpn_patient_id').val(),date: $('#previous_tpn_date').val() }, beforeSend: function() {  } }); });
   $('#tpn_patient_name').change(function(){ $('#previous_tpn_date').popover('hide'); $.ajax({ url:"/hospitals/#{current_hospital.slug}/tpn/previous_tpn_date", data:{ patient_id: $('#tpn_patient_id').val() }, complete: function(data) { eval(data.responseText);   } }); } );
   var getSource = function () {
-
   var patients = #{@patients};
   var users = $.map(patients,function(obj){return obj["patient"]})
    return $.map(users, function (user) {

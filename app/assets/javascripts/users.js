@@ -4,6 +4,7 @@ jQuery(document).ready( function(){
     "sDom": "<'row-fluid'<'span8'l><'span8'f>r>t<'row-fluid'<'span8'i><'span8'p>>",
   "sPaginationType": "bootstrap"
   });
+  $('#current_weight_help').popover({ placement:'right', content:'Enter The Current body weight of the infant in kg.If the current weight is less than the birth weight, then the birth weight will be taken for calculation.' });
   $('#amino').popover({html: true, placement:'left', content:$('#amino-modal').html()});
   $('#amino').click( function (e) { 
   $('#aminoTable tbody tr').click( function (e) {
