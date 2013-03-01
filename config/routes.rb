@@ -22,7 +22,9 @@ Kimaya::Application.routes.draw do
       end
       resources :investigations 
     end
-    resources :tpns
+    resources :tpns do
+      get :autocomplete_patient_name, :on => :collection
+    end
     resources :tpn_market_additives
     resources :tpn_infusions
     match 'investigations/search' => 'investigations#search', :via => :get 

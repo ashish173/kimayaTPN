@@ -1,10 +1,9 @@
 class TpnsController < ApplicationController
-  before_filter :load_doctors_and_patients, :only => [ :new, :create ]
+  before_filter :load_doctors_and_patients, :only => [ :index, :create ]
   before_filter :load_tpn, :only => [ :report, :label]
-  def new 
+
+  def index 
     @tpn = Tpn.new 
-    @doctors = User.doctors(current_user)
-    @patients = current_user.user_patients
   end
 
   def create
@@ -17,7 +16,7 @@ class TpnsController < ApplicationController
         @tpn_infusion.save
         format.html { render :action => 'show' }
       else
-        format.html { render 'new'}
+        format.html { render 'index'}
       end
     end
   end
@@ -77,18 +76,22 @@ class TpnsController < ApplicationController
       Tpn.select(:tpn_date).where(:patient_id => params[:patient_id]).each do |d| @dates  << d.tpn_date.to_s unless d.tpn_date.nil? end
       render :previous_tpn_date, :formats => [:js]
     else
-      render :nothing, true
+      render :nothing => true
     end
   end
 
 private
 
   def load_doctors_and_patients
-    @doctors = User.doctors(current_user)
     if current_user.role?(ADMIN)
-      @patients = Patient.all
+      @doctors = current_hospital.users.doctors
     else
-      @patients = current_user.user_patients
+      @doctors = [current_user]
+    end
+    if current_user.role?(ADMIN)
+      @patients = current_hospital.patients.select("patients.id,name").to_json
+    else
+      @patients = current_user.user_patients.select("patients.id,name").to_json
     end
   end
 

@@ -2,7 +2,6 @@
  *= require_self
  *= require dataTables/jquery.dataTables.bootstrap
  *= require bootstrap-datepicker
- *= require datetimepicker
 */
 @import "bootstrap";
 @import "bootstrap-responsive";
@@ -105,6 +104,10 @@
 .inputx select{
     width:180px;
 }
+.inputx label{
+    float:left;
+    width:150px;
+}
 .inputy input{
   width: 52px;
   float: right;
@@ -114,6 +117,9 @@
 }
 .span_custom{
   width:340px;
+}
+.span_custom1{
+  width: 570px !important;
 }
 .input_custom{
   width:40px;
@@ -140,6 +146,11 @@
   margin-left:100px;
   margin-bottom:45px;
 }
+.label_custom5{
+  margin-left:125px;
+  width:70px;
+  float:left;
+}
 .input_custom1{
   float:left;
   width:40px;
@@ -156,60 +167,6 @@
   margin-right:32px;
   margin-left:46px;
 }
-
-.input-micro-mini{
-  width: 30px;
-}
-
-.control-group.pull-left .controls {
-  margin-left: 0px !important;
-}
-
-.control-group.pull-left.bg_ele .controls {
-  margin-left: 21px !important;
-}
-
-.apgar_label {
-  float: left;
-  width: 130px;
-}
-
-.stack3 {
-  margin-left: 18px;
-}
-
-.min-bottom {
-  margin-bottom: 0 !important;
-}
-
-#investigation .control-label, #additives .control-label {
-  width: 130px;
-}
-
-#additives .measurements .control-label {
-  width: 70px;
-}
-
-#investigation .controls, #additives .controls {
-   margin-left: 150px;
-} 
-
-#additives .measurements .controls {
-   margin-left: 100px;
-} 
-
-.left0 {
-  margin-left: 0;
-}
-
-.left4 {
-  margin-left: 80px;
-}
-
-#additives_table .controls {
-  margin-left: 0;
-}
-
 .sign_bottom{
     display:none;
 }

@@ -13,7 +13,15 @@ class Tpn < ActiveRecord::Base
   validates :day_of_tpn, :numericality => { :only_integer => true, :greater_than => 0 }
   validates :current_weight, :numericality => { :greater_than => 0 }
   validates :fat_volume, :fat_concentration, :numericality => true 
+  validates :amino_acid, :numericality => { :greater_than_or_equal_to => 0.5, :less_than_or_equal_to => 3.5 }
+  validates :sodium_chloride, :calium, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 10 }
+  validates :potassium_chloride, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 8 }
+  validates :magnesium, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 2 }
   validates :patient, :presence => true
+  validates :fat_volume, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 4 }
+
+  validates_inclusion_of :fat_concentration, :in => [10,20], :allow_nil => false
+  validates_inclusion_of :factor, :in => [1.0,1.1,1.2,1.3,1.4,1.5], :allow_nil => false
   has_one :tpn_infusion
   scope :doctors, lambda { |current_user|
     if current_user.admin?

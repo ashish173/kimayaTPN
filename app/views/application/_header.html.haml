@@ -10,7 +10,7 @@
     %li{:class => if_current(@selected_menu == "investigation")}
       = link_to "Daily Investigations", hospital_investigations_search_path(current_hospital)
   %li
-    = link_to "TPN Calculation", new_hospital_tpn_path(current_hospital)
+    = link_to "TPN Calculation", hospital_tpns_path(current_hospital)
   %li{:class => if_current(@selected_menu == 'report')}
     = link_to "Report", hospital_reports_path(current_hospital)
 
