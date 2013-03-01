@@ -25,8 +25,7 @@ Kimaya::Application.routes.draw do
     resources :tpns
     resources :tpn_market_additives
     resources :tpn_infusions
-    match 'investigations/search' => 'investigations#search', :via => :get 
-    match 'investigations/results' => 'investigations#results', :via => :post
+    match 'investigations/search' => 'investigations#search'
     match 'investigations/autocomplete_patient_name' => 'investigations#autocomplete_patient_name', :via => :get
     match 'tpns/report/:id' => 'tpns#report', :via => :get
     match 'tpns/label/:id' => 'tpns#label', :via => :get

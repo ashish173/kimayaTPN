@@ -17,6 +17,7 @@
               %ul.nav.pull-right
                 %li
                   = link_to "Logout", destroy_user_session_path
+    = show_flash_messages if show_flash_messages.present?              
     -if content_for(:submenu)
       #subnav
         .container

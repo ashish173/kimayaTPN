@@ -1,8 +1,8 @@
 = simple_form_for [current_hospital, @patient, @investigation], html: { class: 'form-horizontal well' }  do |f|
   %fieldset
-    %legend #{@patient.name}  -  #{@investigation.investigated_on.strftime("%d-%m-%Y")}
+    %legend #{@patient.name}  -  #{@investigation.investigated_on.strftime("%d-%m-%Y %H:%M")}
     = f.input :patient_id, as: :hidden
-    = f.input :investigated_on, as: :hidden
+    = f.input :investigated_on, as: :string, input_html: {class: 'datetimepicker', readonly: :readonly}
     .accordion{id: 'accordion'}
       .accordion-group
         .accordion-heading

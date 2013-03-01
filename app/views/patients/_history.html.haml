@@ -34,9 +34,9 @@
     .span4
       %h3 Birth History
       %hr
+      = f.simple_fields_for :admission do |adm|
+        = adm.input :admitted_on, as: :string, input_html: {class: 'datepicker'}
       = f.simple_fields_for :patient_history do |p|
-        = p.simple_fields_for :admission do |adm|
-          = adm.input :admitted_on, as: :string
         = p.input :gestational_age
         = p.input :ga, as: :radio_buttons, collection: ['AGA', 'SGA', 'LGA'], item_wrapper_class: 'inline'
         = p.input :mode_of_delivery, collection: MODES_OF_DELIVERY, item_wrapper_class: 'inline'
@@ -55,7 +55,7 @@
             = p.input :apgar_score_1, wrapper: 'prepend', label: false, wrapper_html: {class: 'pull-left'} do
               %span.add-on
                 20
-              = p.input_field :apgar_score_1, class: 'input-micro-mini'
+              = p.input_field :apgar_score_20, class: 'input-micro-mini'
   .form-actions    
     = f.submit "Next", :class => "btn btn-primary"
     = link_to "Cancel", [current_hospital, @patient], :class => "btn"

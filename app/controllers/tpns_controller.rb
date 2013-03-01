@@ -1,6 +1,7 @@
 class TpnsController < ApplicationController
   before_filter :load_doctors_and_patients, :only => [ :new, :create ]
   before_filter :load_tpn, :only => [ :report, :label]
+  
   def new 
     @tpn = Tpn.new 
     @doctors = User.doctors(current_user)

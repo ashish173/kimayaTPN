@@ -28,11 +28,12 @@
         %td
           =  patient.emergency_telephone
         %td
-          %a{:href => edit_hospital_patient_path(current_hospital, patient), :title => 'Edit'}
-            %img{:alt => "edit", :height => "16", :src => "/assets/pencil.gif", :width => "16"}/
-          %a{:href => hospital_patient_path(current_hospital, patient), :title => 'Show'}
-            %img{:alt => "show", :height => "16", :src => "/assets/bin.gif", :width => "16"}/
-          = link_to(image_tag("/assets/cross-small.gif",:height => "16", :width => "16"), hospital_patient_path(current_hospital, patient), :method => 'delete', :title => 'Delete', :confirm => 'Are you sure?')
+          = link_to edit_hospital_patient_path(current_hospital, patient) do
+            %i.icon-edit
+          = link_to hospital_patient_path(current_hospital, patient) do  
+            %i.icon-list 
+          = link_to hospital_patient_path(current_hospital, patient), :method => 'delete', :title => 'Delete', :confirm => 'Are you sure?' do
+            %i.icon-remove
           - if patient.investigations.exists?
-            %img{:alt => "", :height => "16", :src => "/assets/tick-circle.gif", :width => "16"}/
+            %i.icon-ok
       - counter = counter+1
