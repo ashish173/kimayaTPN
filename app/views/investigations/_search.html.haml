@@ -1,5 +1,5 @@
 -if @is_search 
-  = form_tag(investigations_results_path, :id => 'select_patient') do |f|
+  = form_tag(hospital_investigations_results_path(current_hospital), :id => 'select_patient') do |f|
     .module
       %h2
         %span

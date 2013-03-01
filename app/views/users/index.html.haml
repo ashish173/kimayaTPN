@@ -29,10 +29,10 @@
                 = user.mobile_number
               %td
                 = link_to edit_hospital_user_path(current_hospital, user.role_id, user) do
-                  = image_tag "pencil.gif", :alt => "edit", :height => "16", :width => "16"
+                  %i.icon-edit
                 = link_to hospital_user_path(current_hospital, user.role.id, user) do
-                  = image_tag "bin.gif", :alt => "show", :height => "16", :width => "16"
+                  %i.icon-list
                 = link_to hospital_user_path(current_hospital, params[:type], user), :method => 'delete' do
-                  = image_tag("/assets/cross-small.gif",:height => "16", :width => "16")
+                  %i.icon-remove
               - counter = counter+1
     .pagination

@@ -2,37 +2,32 @@ class InvestigationsController < ApplicationController
 
   def build_resources
       @investigation = Investigation.new
-      @investigation.build_blood_analysis
-      @investigation.build_diagnosis 
-      @investigation.build_biochemistry_assessment 
-      @investigation.build_electrolyte
+      @investigation.methods.select{|b| 
+        b.to_s.starts_with?('build_') && !['build_patient', 'build_hospital'].include?(b.to_s)
+      }.each do |m|
+        @investigation.send(m)
+      end
       2.times{@investigation.blood_sugar_monitors.build}
-      @investigation.build_tpn_additive
-      @investigation.build_enteral_diagnosis
-      @investigation.build_anthropometric_measurement 
-      @additives = @patient.daily_tpn_additives.last(4)
+      @additives             = @patient.daily_tpn_additives.last(4)
       @investigation.patient = @patient
   end
 
   def index
-    @patient = Patient.find(params[:patient_id])
-    @investigations = @patient.investigations 
+    @patient        = Patient.find(params[:patient_id])
+    @investigations = @patient.investigations.ordered.paginate(:page => params[:page], :per_page =>10)
+    @investigation  = Investigation.today.patient(@patient).last
   end
 
   def new
     @patient = Patient.find(params[:patient_id])
-    @is_search = true if params[:display]
     if params[:for_day].present?
       build_resources
       @investigation.investigated_on = params[:for_day]
       @additives = TpnAdditive.to_date(@investigation.investigated_on).for_patient(@patient).last(4)
-    elsif Investigation.today.patient(@patient).empty?
-      build_resources
-      @investigation.investigated_on = Date.today
-      @additives = TpnAdditive.to_date(@investigation.investigated_on).for_patient(@patient).last(4)
     else
-      @investigation = Investigation.today.patient(@patient).last
-      redirect_to edit_patient_investigation_path(@patient,@investigation)
+      build_resources
+      @investigation.investigated_on = Time.now 
+      @additives = TpnAdditive.to_date(@investigation.investigated_on).for_patient(@patient).last(4)
     end
   end
 
@@ -40,11 +35,10 @@ class InvestigationsController < ApplicationController
     @patient = Patient.find(params[:patient_id])
     @investigation = Investigation.new params[:investigation]
     if @investigation.save
-      flash[:notice] = "Investigation created successfully" 
-      redirect_to(hospital_investigations_search_path(current_hospital))
+      redirect_to hospital_investigations_path(current_hospital), notice: "Investigation created successfully" 
     else
       @additives = @patient.daily_tpn_additives.last(4)
-      render :action => 'new'
+      render action: 'new'
     end
   end
 
@@ -52,20 +46,16 @@ class InvestigationsController < ApplicationController
     @patient = Patient.find(params[:patient_id])
     @investigation = Investigation.find(params[:id])
     @additives = TpnAdditive.to_date(@investigation.investigated_on).for_patient(@patient).last(4)
-    @additives.pop
-    @is_search = true if params[:display]
   end
 
   def update
     @patient = Patient.find(params[:patient_id])
     @investigation = Investigation.find(params[:id])
-    @investigation.attributes = params[:investigation]
-    @additives = TpnAdditive.to_date(@investigation.investigated_on).for_patient(@patient).last(4)
-    if @investigation.save
-      flash[:notice] = "Investigation changed successfully" 
-      redirect_to(investigations_search_path)
+    if @investigation.update_attributes(params[:investigation])
+      redirect_to hospital_investigations_path(current_hospital), notice: "Investigation changed successfully" 
     else
-      render :action => 'edit'
+      @additives = TpnAdditive.to_date(@investigation.investigated_on).for_patient(@patient).last(4)
+      render action: 'edit'
     end
   end
 

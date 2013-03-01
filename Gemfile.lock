@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/joshsoftware/kimaya.git
-  revision: a5fec36b76f4197f803f3c1976975a8c16eb1c70
+  revision: 2dc9602b5b8a1909ffb5ce530dffa4b4af636542
   specs:
-    kimaya (0.0.1)
+    kimaya (0.0.3)
       activemodel
       activesupport
       i18n
@@ -79,7 +79,7 @@ GEM
       railties (>= 3.1, < 4.1)
     hike (1.2.1)
     hpricot (0.8.6)
-    i18n (0.6.1)
+    i18n (0.6.4)
     journey (1.0.4)
     jquery-datatables-rails (1.11.2)
       jquery-rails
@@ -98,7 +98,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.21)
-    multi_json (1.6.0)
+    multi_json (1.6.1)
     mysql2 (0.3.11)
     nested_form (0.3.1)
     nokogiri (1.5.6)

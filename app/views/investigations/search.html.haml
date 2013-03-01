@@ -15,15 +15,15 @@
               %strong Today's investigation
             - @investigations.each do |inv|
               %dd{:style => 'background-color:#EEEEEE; width:30%;'}
-                = link_to inv.investigated_on.strftime("%d %b %Y"), edit_patient_investigation_path(inv.patient_id,inv)
+                = link_to inv.investigated_on.strftime("%d %b %Y"), edit_hospital_patient_investigation_path(current_hospital, inv.patient_id,inv)
               %dd{:style => 'background-color:#EEEEEE; width:33%;'}
                 = inv.patient.name
               %dd{:style => 'background-color:#EEEEEE; width:33%;'}
-                = link_to "Add", patient_investigation_new_path(inv.patient_id, Date.today)
+                = link_to "Add", new_hospital_patient_investigation_path(current_hospital, inv.patient_id)
                  
           .pagination
             .current
               .numbers
                 %span
                   = will_paginate @investigations
-                  = page_entries_info @investigations
+                  =# page_entries_info @investigations

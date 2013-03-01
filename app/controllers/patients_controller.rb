@@ -15,7 +15,6 @@ class PatientsController < ApplicationController
 
   def edit
     @patient = Patient.find(params[:id].to_i)
-    @investigation = Investigation.today.patient(@patient.id).last
   end
 
   def update
@@ -54,7 +53,6 @@ class PatientsController < ApplicationController
 
   def history
     @patient = Patient.find(params[:patient_id])
-    @investigation = @patient.investigations.today.last #returns an array
     if request.get?
       @patient.build_mother_history if @patient.mother_history.nil?
       @patient.build_admission if @patient.admission.nil?
@@ -63,10 +61,10 @@ class PatientsController < ApplicationController
       @patient.attributes = params[:patient]
       if @patient.save
         flash[:notice] = "History is successfully saved" 
-        if @investigation == nil
-          redirect_to patient_investigation_new_path(@patient, Date.today.strftime("%d-%m-%Y"))
+        if @investigation = Investigation.today.patient(@patient.id).empty?
+          redirect_to new_hospital_patient_investigation_path(current_hospital, @patient)
         else
-          redirect_to edit_patient_investigation_path(@patient, @investigation)
+          redirect_to hospital_patient_investigations_path(current_hospital, @patient)
         end
       end
     end
