@@ -108,6 +108,6 @@
         %h5 Blood Sugar Monitoring
         %hr
         = f.simple_fields_for :blood_sugar_monitors do |bs|
-          = bs.input :blood_sugar_monitored_on, input_html: {class: 'datetimepicker'}, as: :string
+          = bs.input :blood_sugar_monitored_on, as: :string, input_html: {class: 'datetimepicker', readonly: :readonly} 
           = bs.input :details
       

@@ -40,6 +40,6 @@ class Investigation < ActiveRecord::Base
     where("admissions.user_id =?", user.id)
   }
 
-  scope :ordered, order("created_at DESC")
+  scope :ordered, order("investigated_on DESC")
 
 end

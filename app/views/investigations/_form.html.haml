@@ -1,7 +1,6 @@
 = simple_form_for [current_hospital, @patient, @investigation], html: { class: 'form-horizontal well' }  do |f|
   %fieldset
-    %legend #{@patient.name}  -  #{@investigation.investigated_on.strftime("%d-%m-%Y %H:%M")}
-    = f.input :patient_id, as: :hidden
+    %legend #{@patient.name}  -  #{@investigation.investigated_on}
     = f.input :investigated_on, as: :string, input_html: {class: 'datetimepicker', readonly: :readonly}
     .accordion{id: 'accordion'}
       .accordion-group
@@ -17,11 +16,15 @@
       = link_to "Cancel", [current_hospital, @patient], :class => "btn"
     
 :javascript
+  var ind_dt1 = "#{@investigation.investigated_on.to_s}"
+  var ind_dt2 = "#{@investigation.blood_sugar_monitors.first.blood_sugar_monitored_on.to_s}"
+  var ind_dt3 = "#{@investigation.blood_sugar_monitors.last.blood_sugar_monitored_on.to_s}"
   $(function() {
     $('.datetimepicker').datetimepicker({
           format: "dd/mm/yyyy - hh:ii",
           autoclose: true,
-          todayBtn: true
+          todayBtn: true,
+          todayHighlight: true,
     });
     $('.datepicker').datepicker({
       autoclose: true,
@@ -29,5 +32,8 @@
       todayBtn: true
     });
     $(".collapse").collapse();
+    $('#investigation_investigated_on').val(ind_dt1);
+    $('#investigation_blood_sugar_monitors_attributes_0_blood_sugar_monitored_on').val(ind_dt2);
+    $('#investigation_blood_sugar_monitors_attributes_1_blood_sugar_monitored_on').val(ind_dt3);
   });
   

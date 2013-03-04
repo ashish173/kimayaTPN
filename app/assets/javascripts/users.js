@@ -1,7 +1,7 @@
 var oTable;
 jQuery(document).ready( function(){ 
   $('#myTable').dataTable({
-    "sDom": "<'row-fluid'<'span8'l><'span8'f>r>t<'row-fluid'<'span8'i><'span8'p>>",
+    "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
   "sPaginationType": "bootstrap"
   });
   $('#aminoTable tbody tr').click( function (e) {
