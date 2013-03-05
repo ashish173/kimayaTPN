@@ -5,7 +5,7 @@
     = f.input :day_of_tpn, :wrapper_html => { :class => 'span3'}, input_html: {style:'width:50px;'}
     = f.association :user, collection: @doctors, include_blank: false, :wrapper_html => { :class => "span3" }, label: 'Doctor'
     %label.label_custom5 Patient
-    %input{:id => "tpn_patient_name", :type => "text", style: "width:180px;" }    
+    %input{:id => "tpn_patient_name", :type => "text", style: "width:180px;", autocomplete: "off" }    
     = f.input :patient_id, :label => false, input_html: { style: "display:none"}
   %div{:style => "width:40%;float:left;" }
     %h3{:style => "margin-left:60px;"}

@@ -55,12 +55,11 @@ class Tpn < ActiveRecord::Base
       tpn.administration               = self.administration
     end
     p tpn.calculate_tpn
-    p tpn.errors
-    tpn
   end
 
   def init
     if new_record?
+      self.day_of_tpn        ||= 1
       self.current_weight    ||= 0.00
       self.dextrose_conc     ||= 10.00
       self.total_fluid_intake||= 0.00

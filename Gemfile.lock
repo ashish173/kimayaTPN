@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/joshsoftware/kimaya.git
-  revision: 13d8e9547a66213326a35921580d17a96ef0012c
+  revision: b57165ef40bff18b7d734c037e2e654837d95a8c
   specs:
-    kimaya (0.0.4)
+    kimaya (0.0.5)
       activemodel
       activesupport
       i18n
@@ -51,7 +51,7 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.5.0)
+    coffee-script-source (1.6.1)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)

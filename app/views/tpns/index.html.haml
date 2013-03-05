@@ -1,3 +1,5 @@
 = render :partial => "form"
 - if @errors.present?
   = render :partial => "errors"
+- if @warnings.present?
+  = render :partial => "warnings"

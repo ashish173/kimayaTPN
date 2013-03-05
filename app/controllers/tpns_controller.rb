@@ -12,11 +12,14 @@ class TpnsController < ApplicationController
     @result = @tpn.build_tpn
     respond_to do |format|
       if @tpn.valid?
-        if @result.errors.empty?
+        if ( @result.errors.empty? && @result.warnings.empty? ) || params[:warning].present?
           @tpn.save
-          @tpn_infusion = @tpn.build_tpn_infusion( feed_volume_over_24_hour: 0, arterial_line_infusion: 0, inotrope_infusion: 0, other_infusion: 0 )
+          @tpn_infusion = @tpn.build_tpn_infusion
           @tpn_infusion.save
           format.html { render :action => 'show' }
+        elsif @result.errors.empty?
+          @warnings = @result.warnings.collect! { |i| i.to_i }
+          format.html { render :action => 'index' }
         else
           @errors = @result.errors.collect! { |i| i.to_i }
           format.html { render :action => 'index' }
