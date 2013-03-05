@@ -47,4 +47,3 @@ module Kimaya
   end
 end
 
-Date::DATE_FORMATS[:format] = '%d/%m/%Y'

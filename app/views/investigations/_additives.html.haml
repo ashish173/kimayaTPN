@@ -91,19 +91,19 @@
         %hr
         = f.simple_fields_for :anthropometric_measurement do |inv|
           = inv.input :weight do
-            = inv.input :weight_measured_date, as: :string, label: false, wrapper_html: {class: 'pull-left min-bottom'}, input_html: {class: 'input-medium datepicker'}
+            = inv.input :weight_measured_date, as: :string, label: false, wrapper_html: {class: 'pull-left min-bottom'}, input_html: {class: 'input-medium datepicker', readonly: :readonly}
             = inv.input :weight, wrapper: 'append', label: false, wrapper_html: {class: 'pull-left bg_ele min-bottom'} do
               = inv.input_field :weight, class: 'input-micro-mini'
               %span.add-on
                 Kg 
           = inv.input :head_circ do
-            = inv.input :head_circ_measured_date, as: :string, label: false, wrapper_html: {class: 'pull-left min-bottom'}, input_html: {class: 'input-medium datepicker'}
+            = inv.input :head_circ_measured_date, as: :string, label: false, wrapper_html: {class: 'pull-left min-bottom'}, input_html: {class: 'input-medium datepicker', readonly: :readonly}
             = inv.input :head_circ, wrapper: 'append', label: false, wrapper_html: {class: 'pull-left bg_ele min-bottom'} do
               = inv.input_field :head_circ, class: 'input-micro-mini'
               %span.add-on
                 cm 
           = inv.input :length do
-            = inv.input :length_measured_date, as: :string, label: false, wrapper_html: {class: 'pull-left min-bottom'}, input_html: {class: 'input-medium datepicker'}
+            = inv.input :length_measured_date, as: :string, label: false, wrapper_html: {class: 'pull-left min-bottom'}, input_html: {class: 'input-medium datepicker', readonly: :readonly}
             = inv.input :length, wrapper: 'append', label: false, wrapper_html: {class: 'pull-left bg_ele min-bottom'} do
               = inv.input_field :length, class: 'input-micro-mini'
               %span.add-on
