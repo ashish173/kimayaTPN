@@ -1,0 +1,13 @@
+#error-modal{ :class => "modal hide fade" }
+  %div
+    %button{type: 'button', class: 'close', data:{dismiss: "modal"}} x
+    %head
+      %h3{:style => "text-align:center;"}
+        Errors
+    %div{:style => "margin:26px;"}
+      - @errors.each do |e|
+        = I18n.translate("errors.#{e}.message")
+    %div{:style => "text-align:center; margin:10px;"}
+      %a{ :class => "btn btn-primary", data:{dismiss:"modal" }} Close
+:javascript
+  $('#error-modal').modal('show');

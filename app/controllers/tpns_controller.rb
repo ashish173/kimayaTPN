@@ -11,12 +11,18 @@ class TpnsController < ApplicationController
     @result = Kimaya::TPNCalc.new
     @result = @tpn.build_tpn
     respond_to do |format|
-      if @tpn.save
-        @tpn_infusion = @tpn.build_tpn_infusion( feed_volume_over_24_hour: 0, arterial_line_infusion: 0, inotrope_infusion: 0, other_infusion: 0 )
-        @tpn_infusion.save
-        format.html { render :action => 'show' }
+      if @tpn.valid?
+        if @result.errors.empty?
+          @tpn.save
+          @tpn_infusion = @tpn.build_tpn_infusion( feed_volume_over_24_hour: 0, arterial_line_infusion: 0, inotrope_infusion: 0, other_infusion: 0 )
+          @tpn_infusion.save
+          format.html { render :action => 'show' }
+        else
+          @errors = @result.errors.collect! { |i| i.to_i }
+          format.html { render :action => 'index' }
+        end
       else
-        format.html { render 'index'}
+        format.html { render :action => 'index'}
       end
     end
   end
@@ -74,6 +80,7 @@ class TpnsController < ApplicationController
     if params[:patient_id].present?
       @dates = []
       Tpn.select(:tpn_date).where(:patient_id => params[:patient_id]).each do |d| @dates  << d.tpn_date.to_s unless d.tpn_date.nil? end
+      @tpn = Patient.find(params[:patient_id]).tpns.last
       render :previous_tpn_date, :formats => [:js]
     else
       render :nothing => true
@@ -103,4 +110,5 @@ private
     @doctor = @tpn.user
     @patient = @tpn.patient
   end
+
 end

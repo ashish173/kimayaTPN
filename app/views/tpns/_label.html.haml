@@ -1,13 +1,13 @@
 %h3{:style => "text-align:center;"}
 %table.table.table-striped
   %tr
-    %td
+    %td{:style => "font-weight:bold;"}
       Name
-    %td
+    %td{:style => "font-weight:bold;"}
       = @patient.name 
     %td
       Date
-    %td
+    %td{:style => "font-weight:bold;"}
       = @tpn.created_at.to_date 
   %tr
     %td
@@ -23,6 +23,16 @@
       Doctor
     %td
       = @doctor.name 
+    %td{:style => "font-weight:bold;"}
+      Dextrose Concentration
+    %td{:style => "font-weight:bold;"}
+      #{ @result.achieved_dextrose_conc } %
+  %tr
+    %td
+      Prepared Volume
+    %td{:style => "font-weight:bold;"}
+      = @result.tpn_vol
+      ml
     %td
     %td
 %h4
@@ -36,25 +46,23 @@
     %td
       Amino Acid
     %td
-      = @result.amino_acid_intake 
+      = @result.amino_acid_intake
+      gm/kg
   %tr
     %td
       Sodium
     %td
       #{ @result.sodium_chloride_intake } meq/kg
-      #{ @result.sodium_chloride_vol } ml
   %tr
     %td
       Potassium
     %td
       #{ @result.potassium_chloride_intake } meq/kg
-      #{ @result.potassium_chloride_vol } ml
   %tr
     %td
       Magnesium
     %td
       #{ @result.magnesium_intake } meq/kg
-      #{ @result.magnesium_vol } ml
   %tr
     %td
       Calcium
@@ -66,40 +74,33 @@
     %td
       #{ @result.mvi } ml
 %h4
-  Administration
+  Administration ( #{ @tpn.administration } )
 %table.table.table-striped
   %tr
     %td
-      Dextrose Concentration
+      TPN Volume
+    %td{:style => "font-weight:bold;"}
+      = @result.tpn_vol
+      ml
     %td
-      #{ @result.achieved_dextrose_conc } %
-    %td
-      Dextrose Infusion Rate (DIR)
-    %td
-      #{ @result.dir_rate } mg/kg/min
-  %tr
-    %td
-      Calories (Non protein)
-    %td
-      #{ @result.non_protein } cal
-    %td
-      Calorie Nitrogen Ratio (CNR)
-    %td
-      = @result.cnr_rate
-  %tr
-    %td
-      CHO
-    %td
-      #{ @result.cho_calories } cal
-    %td
-      Total Protein
-    %td
-      #{ @result.total_protein } gm
+      Infuse @
+    %td{:style => "font-weight:bold;"}
+      = (@result.tpn_vol / 24 - @tpn_infusion.feed_volume_over_24_hour - @tpn_infusion.arterial_line_infusion - @tpn_infusion.inotrope_infusion - @tpn_infusion.inotrope_infusion - @tpn_infusion.other_infusion).round(2)
+      ml/hr
   %tr
     %td
       Fat
+    %td{:style => "font-weight:bold;"}
+      #{ @result.fat_vol } ml
     %td
-      #{ @result.fat_calories } cal
+      Infuse @
+    %td{:style => "font-weight:bold;"}
+      #{ @result.fat_vol == 0 ? 0 : @result.fat_vol / 12 } ml/hr
+  %tr
+    %td
+      Dextrose Infusion Rate (DIR)
+    %td{:style => "font-weight:bold;"}
+      #{ @result.dir_rate } mg/kg/min
     %td
     %td
 %table{ :class => "sign_bottom"}

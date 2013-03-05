@@ -2,22 +2,22 @@
   TPN Nutrition Plan
 %table.table.table-striped
   %tr
-    %td
+    %td{:style => "font-weight:bold;"}
       Name
-    %td
+    %td{:style => "font-weight:bold;"}
       = @patient.name 
     %td
       Date
-    %td
+    %td{:style => "font-weight:bold;"}
       = @tpn.created_at.to_date 
   %tr
     %td
       Reg No.
     %td
       = @patient.registration_number 
-    %td
+    %td{:style => "font-weight:bold;"}
       TPN Day
-    %td
+    %td{:style => "font-weight:bold;"}
       = @tpn.day_of_tpn 
   %tr
     %td
@@ -74,7 +74,7 @@
   %tr
     %td
       Volume to be infused(HAV)
-    %td
+    %td{:style => "font-weight:bold;"}
       = @result.hav_vol
       ml
     %td
@@ -85,18 +85,18 @@
   %tr
     %td
       Prepared Volume
-    %td
+    %td{:style => "font-weight:bold;"}
       = @result.tpn_vol
       ml
-    %td
+    %td{:style => "font-weight:bold;"}
       Final TPN orders at initiation
-    %td
+    %td{:style => "font-weight:bold;"}
       = (@result.tpn_vol / 24 - @tpn_infusion.feed_volume_over_24_hour - @tpn_infusion.arterial_line_infusion - @tpn_infusion.inotrope_infusion - @tpn_infusion.inotrope_infusion - @tpn_infusion.other_infusion).round(2)
       ml/hr
   %tr
     %td
       Fat (10%) 0 gm/kg/day
-    %td
+    %td{:style => "font-weight:bold;"}
       = @result.fat_vol
       ml
     %td
@@ -212,25 +212,25 @@
     %td
     %td
 %h4
-  Administration
+  Administration ( #{ @tpn.administration } )
 %table.table.table-striped
   %tr
     %td
       Dextrose Concentration
-    %td
+    %td{:style => "font-weight:bold;"}
       #{ @result.achieved_dextrose_conc } %
     %td
       Dextrose Infusion Rate (DIR)
-    %td
+    %td{:style => "font-weight:bold;"}
       #{ @result.dir_rate } mg/kg/min
   %tr
     %td
       Calories (Non protein)
-    %td
+    %td{:style => "font-weight:bold;"}
       #{ @result.non_protein } cal
     %td
       Calorie Nitrogen Ratio (CNR)
-    %td
+    %td{:style => "font-weight:bold;"}
       = @result.cnr_rate
   %tr
     %td
@@ -239,7 +239,7 @@
       #{ @result.cho_calories } cal
     %td
       Total Protein
-    %td
+    %td{:style => "font-weight:bold;"}
       #{ @result.total_protein } gm
   %tr
     %td

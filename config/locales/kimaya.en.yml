@@ -1,18 +1,5 @@
 en:
-  activemodel:
-    errors:
-      models:
-        kimaya:
-          tpn_calc:
-            attributes:
-              day_of_tpn:
-                day_of_tpn_blank: "You have entered an invalid value for Day of TPN, please enter the correct value."
-              current_weight:
-                blank: "You have entered an invalid value for Current Weight, please enter the correct value."
-      messages:
-        dextrose_conc: 
-        message: "You have entered an invalid value for Dextrose Concentration, please enter the correct value."
-        comment: "invalidPercentDextroseConcentration"
+  errors:
     "1003":
       message: "You have entered an invalid value for Current Weight, please enter the correct value."
       comment: "invalidCurrentWeight"
@@ -95,7 +82,7 @@ en:
       message: "You have entered an invalid value for Magnesium / Current Weight / Overfill Factor, please enter the correct value(s)."
       comment: "invalidMagnesium"
     "1033":
-      message: "Fluid Intake is too less (%{fluid_intake}) or Sum of Additives is too high (%{additives} ml)"
+      message: "Fluid Intake is too less (%{fluid_intake} ml) or Sum of Additives is too high (%{additives} ml)"
       comment: 
     "1037":
       message: "CNR is Out of Range.The Recommended value is above 150. Do you want to continue?"

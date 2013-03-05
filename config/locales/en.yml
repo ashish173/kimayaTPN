@@ -56,6 +56,8 @@ en:
         investigation_exists: "Please select another day" 
 #tpn
         current_weight_invalid: "Please enter valid number"
+      day_of_tpn: 
+        message: "Please Enter Valid Day of Tpn"
   date:      
     formats: 
       default: "%d/%m/%Y"

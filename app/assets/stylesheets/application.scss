@@ -170,4 +170,10 @@
 .sign_bottom{
     display:none;
 }
+.datepicker table tr td.red{
+  background-color:#FF0000;
+}
+.datepicker table tr td.red:hover{
+  background-color:#A80000 !important ;
+}
 
