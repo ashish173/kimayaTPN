@@ -10,25 +10,21 @@ class ReportsController < ApplicationController
   def create
     @report =  Report.new(params[:report])
     @patients = current_hospital.patients 
+    @report_type = params[:report][:investigation]
     if @report.valid?
-      if params[:report] 
-        @report_type = params[:report][:investigation]
-      else
-        @report_type = ""
-      end
       if @report_type == 'last_day'
         @investigations = Investigation.day(Date.today - 1.day).paginate(:page => params[:page], :per_page =>10)
       elsif @report_type == 'summary'
         @from_date = params[:report][:start_date].to_date
         @to_date = params[:report][:end_date].to_date
         @patient = Patient.find(params[:report][:patient])
-        @investigations = @patient.investigations.between_date(@from_date, @to_date).paginate(:page => params[:page], :per_page => 10)
+        @investigations = @patient.investigations.between_date(@from_date, @to_date).ordered.paginate(:page => params[:page], :per_page => 10)
       end
-      render :action => 'index'
     else
-      @investigations = Investigation.paginate(:page => params[:page], :per_page => 10)
-      render :action => 'index'
+      @patient = Patient.find(params[:report][:patient])
+      @investigations = @patient.investigations.ordered.paginate(:page => params[:page], :per_page => 10)
     end
+    render :action => 'index'
   end
 
   def set_menu

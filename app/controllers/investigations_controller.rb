@@ -26,7 +26,7 @@ class InvestigationsController < ApplicationController
 
   def create
     @patient = Patient.find(params[:patient_id])
-    @investigation = Investigation.new params[:investigation], patient_id: @patient.id
+    @investigation = Investigation.new params[:investigation], patient_id: @patient.id, hospital_id: current_hospital.id
     if @investigation.save
       redirect_to hospital_patient_investigations_path(current_hospital, @patient), notice: "Investigation created successfully" 
     else
