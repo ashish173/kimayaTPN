@@ -2,6 +2,9 @@
   = render :partial => 'index'
 
 .span12.well
+  .pull-right
+    = link_to "#", id: 'print' do
+      %i.icon-print
   -if !@report_type.nil? and !@investigations.empty?
     - if @report_type == 'summary'
       %h3
