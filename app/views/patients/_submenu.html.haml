@@ -13,8 +13,8 @@
             = link_to "Basic Information" , edit_hospital_patient_path(current_hospital, @patient)
           %li  
             = link_to "History", hospital_patient_history_path(current_hospital, @patient)
-        %li.nav-header Daily Investigations
-        %li{class: @patient.new_record? && 'disabled' } 
-          = link_to 'Search', @patient.new_record? ? '#' : hospital_patient_investigations_path(current_hospital, @patient) 
-        %li
-          = link_to 'Add', new_hospital_patient_investigation_path(current_hospital, @patient)
+          %li.nav-header Daily Investigations
+          %li{class: @patient.new_record? && 'disabled' } 
+            = link_to 'Search', @patient.new_record? ? '#' : hospital_patient_investigations_path(current_hospital, @patient) 
+          %li
+            = link_to 'Add', new_hospital_patient_investigation_path(current_hospital, @patient)

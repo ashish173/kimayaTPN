@@ -1,153 +1,103 @@
-#frmPop
-  .span10{:style => "margin-left:50px;"}
-    .module
-      %h2
-        %span Patient's profile
-      .module-body
-        .div{:style => "width:400px;float:left;"}
-          %p
-            %strong
-              Name
-            %br
-              = @patient.name
-          %p  
-            %strong
-              Gender
-            %br
-              = Gender.find(@patient.gender_id).name
-          %p
-            %strong
-              Address
-            %br
-              = @patient.address
-          %p  
-            %strong
-              State
-            %br
-              = @patient.state
-          %p
-            %strong
-              City
-            %br
-              = @patient.city
-          %p
-            %strong
-              Pincode
-            %br
-              = @patient.pincode
-        .div{:style => "width:400px;float:left;"}
-          %p
-            %strong
-              Date of birth
-            %br
-              = @patient.date_of_birth
-          %p
-            %strong
-              Birth Weight
-            %br
-              = @patient.birth_weight
-          %p
-            %strong
-              Mobile Number
-            %br
-              =   @patient.pincode
-          %p
-            %strong
-              Residence Telephone
-            %br
-              = @patient.residence_telephone
-          %p
-            %strong
-              Emergency Telephone
-            %br
-              = @patient.pincode
-          %p
-            %strong
-              Additional Detail
+= render 'sidemenu'
+.module
+  .span10
+    %h2
+      %span 
+        = "#{@patient.name} Profile"
+    .span10
+      .span4.left0
+        %address
+          %strong Address
           %br
-            = @patient.additional_detail
-#frmPop
-  .span12
-    .span6
-      .module
-        %h2
-          %span Patient's history
-        .module-body
-          .div{:style => "width:250px;float:left;"}
-            %p
-              %strong ANC
-            %p
-              %strong Post Obstetric History
-            %p  
-              %strong Maternal USG
-            %p
-              %strong Age
-            %p  
-              %strong Pre-pregnancy weight
-            %p
-              %strong Height
-            %p
-              %strong Toxemia
-            %p  
-              %strong Daibetes
-            %p    
-              %strong Antenatal Steroids 
-          .div{:style => "width:150px;float:left;"}
-            %p
-              = @mother_history.try(:is_anc)
-            %p
-              = @mother_history.try(:post_obstetric_history)
-            %p
-              = @mother_history.try(:maternal_usg)
-            %p
-              = @mother_history.try(:age)
-            %p
-              = @mother_history.try(:pre_pregnancy_weight)
-            %p
-              = @mother_history.try(:height)
-            %p
-              = @mother_history.try(:toxemia)
-            %p
-              = @mother_history.try(:diabetes)
-            %p
-              = @mother_history.try(:is_antenatal_steroids)
-    .grid_6
-      .module
-        %h2
-          %span Mother's history
-        .module-body
-          .div{:style => "width:250px;float:left;"}
-            %p
-              %strong Gestational Age
-            %p
-              %strong GA
-            %p  
-              %strong Mode of delivery
-            %p
-              %strong Rupture of Membranes 
-            %p  
-              %strong Resuscitation:Apgar scores
-              %strong 
-                1 min. - 
-            %p
-              %strong 
-                5 min. -
-            %p  
-              %strong 
-                20 min. -
-          .div{:style => "width:150px;float:left;"}
-            %p
-              = @patient_history.try(:gestational_age)
-            %p
-              = @patient_history.try(:ga)
-            %p
-              = @patient_history.try(:mode_of_delivery)
-            %p
-              = @patient_history.try(:rupture_of_membranes)
-            %p
-              = @patient_history.try(:apgar_score_1)
-            %p
-              = @patient_history.try(:apgar_score_5)
-            %p
-              = @patient_history.try(:apgar_score_20)
-        %div{:style => "clear:both;"}
+          = @patient.address
+          %br
+          - if !@patient.state.blank? || !@patient.city.blank? || !@patient.pincode.blank?
+            = "#{@patient.state}, #{@patient.city} #{@patient.pincode}"
+            %br
+          - unless @patient.mobile_number.blank?  
+            %abbr{title: "Mobile"} M: 
+            = @patient.mobile_number
+            %br
+          - unless @patient.residence_telephone.blank?  
+            %abbr{title: "Residence Telephone"} R: 
+            = @patient.residence_telephone
+            %br
+          - unless @patient.emergency_telephone.blank?  
+            %abbr{title: "Emergency Telephone"} E: 
+            = @patient.emergency_telephone
+        %br
+        %strong Additional Details
+        = @patient.additional_detail
+      .span4.left4   
+        %strong Date of Birth: 
+        = @patient.date_of_birth
+        %br
+        %strong Gender: 
+        = @patient.gender.name
+        %br
+        %strong Birth Weight: 
+        = @patient.birth_weight
+
+    %hr 
+    .span10
+      .span4.left0
+        %h3 
+          %span Patient's History
+        %table.table.table-bordered.table-striped.table-hover
+          %tbody
+            %tr
+              %td ANC
+              %td= @mother_history.try(:is_anc) ? "Yes" : "No"
+            %tr
+              %td Post Obstetric History
+              %td= @mother_history.try(:post_obstetric_history)
+            %tr
+              %td Maternal USG
+              %td= @mother_history.try(:maternal_usg)
+            %tr
+              %td Age 
+              %td= @mother_history.try(:age)
+            %tr
+              %td Pre-pregnancy weight
+              %td= @mother_history.try(:pre_pregnancy_weight)
+            %tr
+              %td Height
+              %td= @mother_history.try(:height)
+            %tr
+              %td Toxemia
+              %td= @mother_history.try(:toxemia)
+            %tr
+              %td Daibetes
+              %td= @mother_history.try(:diabetes)
+            %tr
+              %td Antenatal Steroids 
+              %td= @mother_history.try(:is_antenatal_steroids) ? "Yes" : "No"
+      .span4.left4
+        %h3 
+          %span Mother's History
+        %table.table.table-bordered.table-striped.table-hover
+          %tbody
+            %tr
+              %td Gestational Age
+              %td= @patient_history.try(:gestational_age)
+            %tr
+              %td GA
+              %td=@patient_history.try(:ga)
+            %tr  
+              %td Mode of delivery
+              %td= @patient_history.try(:mode_of_delivery)
+            %tr
+              %td Rupture of Membranes 
+              %td= @patient_history.try(:rupture_of_membranes)
+            %tr  
+              %td Resuscitation:Apgar scores
+              %td
+            %tr
+              %td 1 min. 
+              %td= @patient_history.try(:apgar_score_1)
+            %tr
+              %td 5 min. 
+              %td= @patient_history.try(:apgar_score_5)
+            %tr
+              %td 20 min. 
+              %td= @patient_history.try(:apgar_score_20)

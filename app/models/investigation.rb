@@ -25,16 +25,14 @@ class Investigation < ActiveRecord::Base
   validates :investigated_on, :presence => true
   validates :investigated_on, :uniqueness => { :scope => :patient_id }
   
-  scope :day, lambda {|date| where(investigated_on: date) }
+  scope :day, lambda {|date| where("DATE(investigated_on) = ?", date) }
   
   scope :today, day(Date.today)
   
   scope :patient, lambda { |id| where(patient_id: id) }
   
-  scope :from_date, lambda { |date| where("investigated_on >= ?", date) }
+  scope :between_date, lambda { |sdate, edate| where("DATE(investigated_on) between ? and ?", sdate, edate) }
   
-  scope :to_date, lambda { |date| where("investigated_on <= ?", date) }
-
   scope :for_user, lambda {|user|
     joins("join admissions on admissions.patient_id = investigations.patient_id").
     where("admissions.user_id =?", user.id)

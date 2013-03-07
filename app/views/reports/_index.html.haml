@@ -1,31 +1,12 @@
-= form_for [current_hospital, @report] do |f|
-  .module
-    %h2
-      %span
-        Report for
-    .module-body
-      .fieldset
-        %p
-          .input1
-            = f.radio_button :investigation, "last_day"
-            %strong Last day of investigation
-          .input5
-            = f.radio_button :investigation, "summary"
-            %strong Summary
-          .input1
-            = f.submit 'Show', :class => 'submit-green'
-        %p
-          .div{:id => 'summary'}  
-            .input1
-              %strong Start Date
-              = f.text_field :start_date,:class => 'datepicker_start_date',"data-date-format" => "yyyy-mm-dd", :size => 20
-            .input1
-              %strong End Date
-              = f.text_field :end_date,:class => 'datepicker_end_date', "data-date-format" => "yyyy-mm-dd", :size => 20
-            .input1
-              %strong Patient
-              = f.text_field :patient, :class => "span3", :style => "margin: 0 auto;", "data-provide" => "typeahead", "data-items" => "8", data:{source: @patients } , :autocomplete => "off"
-              = hidden_field_tag :selected_patient_id
+= simple_form_for [current_hospital, @report], html: { class: 'form-inline well' }, wrapper: 'inline'  do |f|
+  %h3
+    %strong Report for
+  = f.input :investigation, as: :radio_buttons, collection: [['Last day of investigation', 'last_day'], ['Summary', 'summary']], label: false,item_wrapper_class: 'inline'
+  = f.submit 'show', class: 'btn btn-primary left4', style: 'margin-bottom:10.5px'
+  #summary
+    = f.text_field :start_date, class: 'datepicker', readonly: :readonly, placeholder: 'Start Date'
+    = f.text_field :end_date, class: 'datepicker', readonly: :readonly, placeholder: "End Date"
+    = f.select :patient, @patients.collect{|a| [a.name, a.id]}
 
 :javascript
   $("#summary").hide();
@@ -40,8 +21,11 @@
     $("#summary").show();
   });  
   
-  $('.datepicker_start_date').datepicker();
-  $('.datepicker_end_date').datepicker();
+  $('.datepicker').datepicker({
+        autoclose: true,
+        format: 'dd/mm/yyyy',
+        todayBtn: true
+  });
   
   $("#new_report").submit( function () {
     if( $("input[name='report[investigation]']:checked").val() == 'summary'){

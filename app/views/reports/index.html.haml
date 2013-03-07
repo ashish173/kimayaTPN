@@ -1,117 +1,84 @@
-= render :partial => 'index'
+.span10
+  = render :partial => 'index'
 
--if !@report_type.nil? and !@investigations.empty?
-  .input0
+.span12.well
+  -if !@report_type.nil? and !@investigations.empty?
     - if @report_type == 'summary'
-      %strong Patient Name -: 
-      %strong #{@patient.name}
-  .module
-    %h2
-      %span 
-        Report
-    .module-table-body
-      #report{:style => "width:15%;float:left"}
-        %table#myTable.tablesorter
-          %thead
-          %tbody
-            - if @report_type == 'last_day'
-              %tr{:style => "height:25px"}
-                %th Name
-            %tr
-              %th Date
-            %tr
-              %th REG NO
-            %tr
-              %th Weight
-            %tr
-              %th GA
-            %tr
-              %th Fluid
-            %tr
-              %th Amino Acid
-            %tr
-              %th Lipids
-            %tr
-              %th Sodium
-            %tr
-              %th Potassium
-            %tr
-              %th Calcium
-            %tr
-              %th Triglycerides
-            %tr
-              %th Urea
-            %tr
-              %th Creatinine
-            %tr
-              %th BSL
-            %tr
-              %th CNR
-      #report{:style => "width:85%;float:left"}
-        - if @investigations.empty?
-          %strong No investigation for #{Date.today-1}
-        - else
-          - @investigations.each do |inv|
-            .div{:style => "width:10%;float:left"}
-              %table#myTable.tablesorter
-                %thead
-                %tbody
-                  - if @report_type == 'last_day'
-                    %tr
-                      %th
-                        = inv.patient.name 
-                  %tr
-                    %th
-                      = inv.investigated_on
-                  %tr
-                    %th
-                      = inv.patient.registration_number
-                  %tr
-                    %th
-                      = inv.patient.birth_weight
-                  %tr
-                    %th
-                      = inv.patient.patient_history ? inv.patient.patient_history.ga : "-"
-                  %tr
-                    %th
-                      = (!inv.tpn_additive.nil? and inv.tpn_additive.fluid_intake.present?) ? inv.tpn_additive.fluid_intake : "- " 
-                  %tr
-                    %th
-                      = (!inv.tpn_additive.nil? and inv.tpn_additive.amino_acids.present?) ? inv.tpn_additive.amino_acids : "-" 
-                  %tr
-                    %th
-                      = (!inv.tpn_additive.nil? and inv.tpn_additive.lipids.present?) ? inv.tpn_additive.lipids : " -"
-                  %tr
-                    %th
-                      = (!inv.electrolyte.nil? and inv.electrolyte.sodium.present?) ? inv.electrolyte.sodium : " -"
-                  %tr
-                    %th
-                      = (!inv.electrolyte.nil? and inv.electrolyte.potassium.present?) ? inv.electrolyte.potassium : "- "
-                  %tr
-                    %th
-                      = (!inv.electrolyte.nil? and  inv.electrolyte.calcium.present?) ? inv.electrolyte.calcium : " -"
-                  %tr
-                    %th
-                      = (!inv.biochemistry_assessment.nil? and inv.biochemistry_assessment.triglycerides.present?) ? inv.biochemistry_assessment.triglycerides : " -"
-                  %tr
-                    %th
-                      =  (!inv.biochemistry_assessment.nil? and inv.biochemistry_assessment.urine_area.present?) ? inv.biochemistry_assessment.urine_area : " -"
-                  %tr
-                    %th
-                      =  (!inv.biochemistry_assessment.nil? and inv.biochemistry_assessment.serum_creatinine.present?) ? inv.biochemistry_assessment.serum_creatinine : " -"
-                  %tr
-                    %th
-                      = "Remained"#inv.patient.name 
-                  %tr
-                    %th
-                      = "Remained"#inv.patient.name 
+      %h3
+        %strong Patient Name -: #{@patient.name}
+    .span2.report 
+      - if @report_type == 'last_day'
+        %div    
+          %strong Name
+      %div
+        %strong Date
+      %div
+        %strong REG NO
+      %div
+        %strong Weight
+      %div    
+        %strong GA
+      %div
+        %strong Fluid
+      %div
+        %strong Amino Acid
+      %div
+        %strong Lipids
+      %div
+        %strong Sodium
+      %div
+        %strong Potassium
+      %div
+        %strong Calcium
+      %div
+        %strong Triglycerides
+      %div
+        %strong Urea
+      %div
+        %strong Creatinine
+      %div
+        %strong BSL
+      %div
+        %strong CNR
+    - @investigations.each do |inv|
+      .span2.report{class: @investigations.last == inv && "last"} 
+        - if @report_type == 'last_day'
+          %div
+            = inv.patient.name 
+        %div
+          = inv.investigated_on
+        %div
+          = inv.patient.registration_number
+        %div
+          = inv.patient.birth_weight
+        %div
+          = inv.patient.patient_history ? inv.patient.patient_history.ga : "-"
+        %div
+          = (!inv.tpn_additive.nil? and inv.tpn_additive.fluid_intake.present?) ? inv.tpn_additive.fluid_intake : "- " 
+        %div
+          = (!inv.tpn_additive.nil? and inv.tpn_additive.amino_acids.present?) ? inv.tpn_additive.amino_acids : "-" 
+        %div
+          = (!inv.tpn_additive.nil? and inv.tpn_additive.lipids.present?) ? inv.tpn_additive.lipids : " -"
+        %div
+          = (!inv.electrolyte.nil? and inv.electrolyte.sodium.present?) ? inv.electrolyte.sodium : " -"
+        %div
+          = (!inv.electrolyte.nil? and inv.electrolyte.potassium.present?) ? inv.electrolyte.potassium : "- "
+        %div
+          = (!inv.electrolyte.nil? and  inv.electrolyte.calcium.present?) ? inv.electrolyte.calcium : " -"
+        %div
+          = (!inv.biochemistry_assessment.nil? and inv.biochemistry_assessment.triglycerides.present?) ? inv.biochemistry_assessment.triglycerides : " -"
+        %div
+          =  (!inv.biochemistry_assessment.nil? and inv.biochemistry_assessment.urine_area.present?) ? inv.biochemistry_assessment.urine_area : " -"
+        %div
+          =  (!inv.biochemistry_assessment.nil? and inv.biochemistry_assessment.serum_creatinine.present?) ? inv.biochemistry_assessment.serum_creatinine : " -"
+        %div
+          = "Remained"#inv.patient.name 
+        %div
+          = "Remained"#inv.patient.name 
     .pagination
       .current
         .numbers
           %span
             = will_paginate @investigations
-            = page_entries_info @investigations
-- else 
-  %span
-    %strong
-      No entries found
+  - else
+    %strong No Investigations found!!

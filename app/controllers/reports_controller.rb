@@ -1,33 +1,38 @@
 class ReportsController < ApplicationController
+  before_filter :set_menu
+
   def index
     @report =  Report.new
     @investigations = [].paginate(:page => params[:page], :per_page => 10)
-    @patients = Patient.all.map(&:name)
+    @patients = current_user.admin? ? current_hospital.patients : current_user.patients
   end
 
   def create
     @report =  Report.new(params[:report])
+    @patients = current_hospital.patients 
     if @report.valid?
-      @selected_menu = 'report'
-      @investigations = Investigation.paginate(:page => params[:page], :per_page => 10)
       if params[:report] 
         @report_type = params[:report][:investigation]
       else
         @report_type = ""
       end
       if @report_type == 'last_day'
-        @investigations = Investigation.all.paginate(:page => params[:page], :per_page =>10)
+        @investigations = Investigation.day(Date.today - 1.day).paginate(:page => params[:page], :per_page =>10)
       elsif @report_type == 'summary'
         @from_date = params[:report][:start_date].to_date
         @to_date = params[:report][:end_date].to_date
-        @patient = Patient.find_by_name(params[:report][:patient])
-        @investigations = @patient.investigations.from_date(@from_date).to_date(@to_date).paginate(:page => params[:page], :per_page => 10)
+        @patient = Patient.find(params[:report][:patient])
+        @investigations = @patient.investigations.between_date(@from_date, @to_date).paginate(:page => params[:page], :per_page => 10)
       end
       render :action => 'index'
     else
       @investigations = Investigation.paginate(:page => params[:page], :per_page => 10)
       render :action => 'index'
     end
+  end
+
+  def set_menu
+    @selected_menu = 'report' 
   end
 
 end

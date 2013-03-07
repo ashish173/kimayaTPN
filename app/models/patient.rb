@@ -13,6 +13,7 @@ class Patient < ActiveRecord::Base
   has_many :tpns
   has_one :admission, :dependent => :destroy
   belongs_to :hospital
+  belongs_to :gender
 
   accepts_nested_attributes_for :mother_history, :allow_destroy => true
   accepts_nested_attributes_for :patient_history, :allow_destroy => true

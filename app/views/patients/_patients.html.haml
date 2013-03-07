@@ -16,9 +16,9 @@
         %td
           =  counter
         %td
-          =  link_to patient.registration_number, [current_hospital, patient]
+          =  link_to patient.registration_number, edit_hospital_patient_path(current_hospital, patient)
         %td
-          =  link_to patient.name, [current_hospital, patient]
+          =  link_to patient.name, edit_hospital_patient_path(current_hospital, patient)
         %td
           =  patient.admission.try(:admitted_on).try(:strftime,"%d-%m-%Y")
         %td
@@ -28,12 +28,13 @@
         %td
           =  patient.emergency_telephone
         %td
-          = link_to edit_hospital_patient_path(current_hospital, patient) do
-            %i.icon-edit
-          = link_to hospital_patient_path(current_hospital, patient) do  
-            %i.icon-list 
+          = link_to [current_hospital, patient] do
+            %i.icon-list
+          = link_to new_hospital_tpn_path(current_hospital, patient: patient), title: 'Add TPN' do  
+            %i.icon-tag 
           = link_to hospital_patient_path(current_hospital, patient), :method => 'delete', :title => 'Delete', :confirm => 'Are you sure?' do
             %i.icon-remove
           - if patient.investigations.exists?
-            %i.icon-ok
+            = link_to hospital_patient_investigations_path(current_hospital, patient), title: "Investigation Added" do 
+              %i.icon-ok
       - counter = counter+1

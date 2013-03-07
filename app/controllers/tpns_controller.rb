@@ -1,9 +1,10 @@
 class TpnsController < ApplicationController
   before_filter :load_doctors_and_patients, :only => [ :new, :create ]
   before_filter :load_tpn, :only => [ :report, :label]
+  before_filter :set_menu
   
   def new 
-    @tpn = Tpn.new 
+    @tpn = Tpn.new(patient_id: params[:patient]) 
     @doctors = User.doctors(current_user)
     @patients = current_user.user_patients
   end
@@ -83,6 +84,10 @@ class TpnsController < ApplicationController
   end
 
 private
+
+  def set_menu
+    @selected_menu = 'tpn' 
+  end
 
   def load_doctors_and_patients
     @doctors = User.doctors(current_user)

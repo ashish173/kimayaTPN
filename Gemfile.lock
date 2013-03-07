@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/joshsoftware/kimaya.git
-  revision: 2dc9602b5b8a1909ffb5ce530dffa4b4af636542
+  revision: b57165ef40bff18b7d734c037e2e654837d95a8c
   specs:
-    kimaya (0.0.3)
+    kimaya (0.0.5)
       activemodel
       activesupport
       i18n
