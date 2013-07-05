@@ -18,7 +18,7 @@ gem "autotest"
 gem "autotest-rails"
 gem "factory_girl"
 #gem 'capybara'
-
+# both development and test group
 group :development, :test do
     gem 'hpricot'
 #    gem 'ruby_parser'
