@@ -1,0 +1,186 @@
+Connecting to database specified by database.yml
+  [1m[36m (176.1ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (244.7ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (0.5ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to DeviseCreateUsers (20110317180130)
+  [1m[35m (114.6ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `address` varchar(255), `city` varchar(255), `pincode` varchar(255), `residence_telephone` varchar(255), `emergency_telephone` varchar(255), `mobile_number` varchar(255), `additional_detail` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (29.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110317180130')[0m
+Migrating to AddRolesMaskToUsers (20110321125603)
+  [1m[35m (264.8ms)[0m  ALTER TABLE `users` ADD `roles_mask` int(11)
+  [1m[36m (32.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110321125603')[0m
+Migrating to CreatePatients (20110405063310)
+  [1m[35m (76.7ms)[0m  CREATE TABLE `patients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `gender_id` varchar(255), `name` varchar(255), `registration_number` varchar(255), `date_of_birth` date, `birth_weight` float, `address` varchar(255), `city` varchar(255), `pincode` varchar(255), `state` varchar(255), `residence_telephone` varchar(255), `emergency_telephone` varchar(255), `mobile_number` varchar(255), `additional_detail` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (155.3ms)[0m  [1mCREATE INDEX `index_patients_on_registration_number` ON `patients` (`registration_number`)[0m
+  [1m[35m (213.2ms)[0m  CREATE INDEX `index_patients_on_gender_id` ON `patients` (`gender_id`)
+  [1m[36m (32.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110405063310')[0m
+Migrating to CreateGenders (20110406132851)
+  [1m[35m (77.2ms)[0m  CREATE TABLE `genders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `gender_id` int(11), `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (32.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110406132851')[0m
+Migrating to CreateTpns (20110419083501)
+  [1m[35m (86.6ms)[0m  CREATE TABLE `tpns` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `patient_id` int(11), `current_weight` float, `day_of_tpn` int(11), `dextrose_conc` float, `tpn_date` datetime, `administration` varchar(255), `total_fluid_intake` float, `feed_volume` float, `fat_volume` float, `fat_concentration` float, `factor` float, `losses` float, `amino_acid` float, `sodium_chloride` float, `potassium_chloride` float, `calcium` float, `magnesium` float, `mvi` float, `amino_acid_additive_id` int(11), `sodium_chloride_additive_id` int(11), `potassium_chloride_additive_id` int(11), `calcium_additive_id` int(11), `magnesium_additive_id` int(11), `heparin` float, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (32.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110419083501')[0m
+Migrating to CreateTpnMarketAdditives (20110419100129)
+  [1m[35m (98.8ms)[0m  CREATE TABLE `tpn_market_additives` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `market_name` varchar(255), `constant` float, `unit` varchar(255), `max_value` float, `min_value` float, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (43.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110419100129')[0m
+Migrating to CreatePatientHistories (20110429132012)
+  [1m[35m (87.7ms)[0m  CREATE TABLE `patient_histories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `patient_id` int(11), `gestational_age` varchar(255), `gender_details` varchar(255), `ga` varchar(255), `mode_of_delivery` varchar(255), `rupture_of_membranes` varchar(255), `apgar_score_1` varchar(255), `apgar_score_5` varchar(255), `apgar_score_20` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (32.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110429132012')[0m
+Migrating to CreateMotherHistories (20110429132051)
+  [1m[35m (86.4ms)[0m  CREATE TABLE `mother_histories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `patient_id` int(11), `is_anc` tinyint(1), `g` float, `p` float, `a` float, `maternal_usg` varchar(255), `age` varchar(255), `pre_pregnancy_weight` varchar(255), `height` varchar(255), `toxemia` varchar(255), `diabetes` varchar(255), `is_antenatal_steroids` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (32.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110429132051')[0m
+Migrating to CreateInvestigations (20110502063949)
+  [1m[35m (87.9ms)[0m  CREATE TABLE `investigations` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `patient_id` int(11), `investigated_on` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (32.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110502063949')[0m
+Migrating to CreateBloodAnalyses (20110502064759)
+  [1m[35m (89.4ms)[0m  CREATE TABLE `blood_analyses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `investigation_id` int(11), `ph` varchar(255), `pco2` varchar(255), `pao2` varchar(255), `hco3` varchar(255), `abe` varchar(255), `so2` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (32.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110502064759')[0m
+Migrating to CreateDiagnoses (20110502065011)
+  [1m[35m (98.4ms)[0m  CREATE TABLE `diagnoses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `investigation_id` int(11), `hypoglycemia` tinyint(1), `hypoglycemia_episode` varchar(255), `hyperglycemia` tinyint(1), `hyperglycemia_episode` varchar(255), `sepsis` varchar(255), `exhange` tinyint(1), `thrombocytopenia` tinyint(1), `dol` varchar(255), `haemorrhage` tinyint(1), `grade` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (32.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110502065011')[0m
+Migrating to CreateBiochemistryAssessments (20110502072225)
+  [1m[35m (98.2ms)[0m  CREATE TABLE `biochemistry_assessments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `investigation_id` int(11), `serum_urea` varchar(255), `serum_creatinine` varchar(255), `triglycerides` varchar(255), `urine_area` varchar(255), `bilirubin` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (32.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110502072225')[0m
+Migrating to CreateElectrolytes (20110502072453)
+  [1m[35m (98.0ms)[0m  CREATE TABLE `electrolytes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `investigation_id` int(11), `sodium` varchar(255), `potassium` varchar(255), `calcium` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (43.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110502072453')[0m
+Migrating to CreateTpnAdditives (20110502073922)
+  [1m[35m (98.8ms)[0m  CREATE TABLE `tpn_additives` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `investigation_id` int(11), `day_of_life` int(11), `day_of_tpn` int(11), `fluid_intake` float, `enteral_feeds` float, `tpn_volume` float, `amino_acids` float, `lipids` float, `tpn_calories` float, `dir` float, `ner` float, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (43.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110502073922')[0m
+Migrating to CreateEnteralDiagnoses (20110502081232)
+  [1m[35m (87.4ms)[0m  CREATE TABLE `enteral_diagnoses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `investigation_id` int(11), `ebm` tinyint(1), `formula_feeds` tinyint(1), `enteral_nutrition` varchar(255), `total_enteral_calories` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (32.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110502081232')[0m
+Migrating to CreateAnthropometricMeasurements (20110502082521)
+  [1m[35m (87.2ms)[0m  CREATE TABLE `anthropometric_measurements` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `investigation_id` int(11), `weight` float, `head_circ` float, `length` float, `weight_measured_date` date, `head_circ_measured_date` date, `length_measured_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (32.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110502082521')[0m
+Migrating to CreateAdmissions (20110506132245)
+  [1m[35m (87.0ms)[0m  CREATE TABLE `admissions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `patient_id` int(11), `user_id` int(11), `admitted_on` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (32.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110506132245')[0m
+Migrating to CreateBloodSugarMonitors (20110511084349)
+  [1m[35m (86.8ms)[0m  CREATE TABLE `blood_sugar_monitors` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `investigation_id` int(11), `blood_sugar_monitored_on` time, `details` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (32.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110511084349')[0m
+Migrating to CreateReports (20110523102010)
+  [1m[35m (111.5ms)[0m  CREATE TABLE `reports` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (32.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110523102010')[0m
+Migrating to AddMedicalHistoryForMother (20110525121556)
+  [1m[35m (211.4ms)[0m  ALTER TABLE `mother_histories` ADD `medical_history` varchar(255)
+  [1m[36m (212.7ms)[0m  [1mALTER TABLE `mother_histories` ADD `other_medical_problems` text[0m
+  [1m[35m (32.7ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20110525121556')
+Migrating to DropColumnGenderidFromGender (20110614075947)
+  [1m[36m (200.6ms)[0m  [1mALTER TABLE `genders` DROP `gender_id`[0m
+  [1m[35m (31.9ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20110614075947')
+Migrating to ChangeBirthDateToDate (20110830092831)
+  [1m[36m (64.7ms)[0m  [1mALTER TABLE `patients` CHANGE `date_of_birth` `date_of_birth` date DEFAULT NULL[0m
+  [1m[35m (32.8ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20110830092831')
+Migrating to AddDeviseToUsers (20130212090512)
+  [1m[36m (190.7ms)[0m  [1mALTER TABLE `users` ADD `email` varchar(255) DEFAULT '' NOT NULL[0m
+  [1m[35m (223.5ms)[0m  ALTER TABLE `users` ADD `encrypted_password` varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (201.4ms)[0m  [1mALTER TABLE `users` ADD `reset_password_token` varchar(255)[0m
+  [1m[35m (190.6ms)[0m  ALTER TABLE `users` ADD `reset_password_sent_at` datetime
+  [1m[36m (179.6ms)[0m  [1mALTER TABLE `users` ADD `remember_created_at` datetime[0m
+  [1m[35m (181.0ms)[0m  ALTER TABLE `users` ADD `sign_in_count` int(11) DEFAULT 0
+  [1m[36m (234.8ms)[0m  [1mALTER TABLE `users` ADD `current_sign_in_at` datetime[0m
+  [1m[35m (190.7ms)[0m  ALTER TABLE `users` ADD `last_sign_in_at` datetime
+  [1m[36m (179.3ms)[0m  [1mALTER TABLE `users` ADD `current_sign_in_ip` varchar(255)[0m
+  [1m[35m (190.6ms)[0m  ALTER TABLE `users` ADD `last_sign_in_ip` varchar(255)
+  [1m[36m (179.4ms)[0m  [1mALTER TABLE `users` ADD `confirmation_token` varchar(255)[0m
+  [1m[35m (214.4ms)[0m  ALTER TABLE `users` ADD `confirmed_at` datetime
+  [1m[36m (190.7ms)[0m  [1mALTER TABLE `users` ADD `confirmation_sent_at` datetime[0m
+  [1m[35m (190.6ms)[0m  ALTER TABLE `users` ADD `unconfirmed_email` varchar(255)
+  [1m[36m (167.1ms)[0m  [1mCREATE UNIQUE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [1m[35m (155.9ms)[0m  CREATE UNIQUE INDEX `index_users_on_reset_password_token` ON `users` (`reset_password_token`)
+  [1m[36m (33.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130212090512')[0m
+Migrating to CreateHospitals (20130215062909)
+  [1m[35m (98.7ms)[0m  CREATE TABLE `hospitals` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `doctors_count` int(11), `nutritionists_count` int(11), `patients_count` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (45.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130215062909')[0m
+Migrating to AddHospitalIdToPatient (20130215075723)
+  [1m[35m (211.7ms)[0m  ALTER TABLE `patients` ADD `hospital_id` int(11)
+  [1m[36m (32.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130215075723')[0m
+Migrating to AddingHospitalIdToAllModel (20130215075911)
+  [1m[35m (189.7ms)[0m  ALTER TABLE `investigations` ADD `hospital_id` int(11)
+  [1m[36m (190.2ms)[0m  [1mALTER TABLE `tpns` ADD `hospital_id` int(11)[0m
+  [1m[35m (201.7ms)[0m  ALTER TABLE `admissions` ADD `hospital_id` int(11)
+  [1m[36m (223.9ms)[0m  [1mALTER TABLE `mother_histories` ADD `hospital_id` int(11)[0m
+  [1m[35m (203.1ms)[0m  ALTER TABLE `patient_histories` ADD `hospital_id` int(11)
+  [1m[36m (201.5ms)[0m  [1mALTER TABLE `tpn_additives` ADD `hospital_id` int(11)[0m
+  [1m[35m (190.5ms)[0m  ALTER TABLE `diagnoses` ADD `hospital_id` int(11)
+  [1m[36m (190.5ms)[0m  [1mALTER TABLE `reports` ADD `hospital_id` int(11)[0m
+  [1m[35m (32.5ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20130215075911')
+Migrating to AddUserIdToTpn (20130218122638)
+  [1m[36m (245.5ms)[0m  [1mALTER TABLE `tpns` ADD `user_id` int(11)[0m
+  [1m[35m (43.5ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20130218122638')
+Migrating to RemoveTpnDateFromTpn (20130219063200)
+  [1m[36m (202.3ms)[0m  [1mALTER TABLE `tpns` DROP `tpn_date`[0m
+  [1m[35m (32.5ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20130219063200')
+Migrating to AddTpnDateToTpn (20130219063328)
+  [1m[36m (401.2ms)[0m  [1mALTER TABLE `tpns` ADD `tpn_date` date[0m
+  [1m[35m (159.0ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20130219063328')
+Migrating to DeviseCreateAdmins (20130220080337)
+  [1m[36m (243.7ms)[0m  [1mCREATE TABLE `admins` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int(11) DEFAULT 0, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (289.5ms)[0m  CREATE UNIQUE INDEX `index_admins_on_email` ON `admins` (`email`)
+  [1m[36m (178.4ms)[0m  [1mCREATE UNIQUE INDEX `index_admins_on_reset_password_token` ON `admins` (`reset_password_token`)[0m
+  [1m[35m (34.8ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20130220080337')
+Migrating to CreateRailsAdminHistoriesTable (20130220080358)
+  [1m[36m (86.2ms)[0m  [1mCREATE TABLE `rails_admin_histories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `message` text, `username` varchar(255), `item` int(11), `table` varchar(255), `month` smallint, `year` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (166.7ms)[0m  CREATE INDEX `index_rails_admin_histories` ON `rails_admin_histories` (`item`, `table`, `month`, `year`)
+  [1m[36m (33.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130220080358')[0m
+Migrating to HospitalsUsers (20130220095813)
+  [1m[35m (88.1ms)[0m  CREATE TABLE `hospitals_users` (`hospital_id` int(11), `user_id` int(11)) ENGINE=InnoDB
+  [1m[36m (32.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130220095813')[0m
+Migrating to AddSlugToHospitals (20130220101736)
+  [1m[35m (267.2ms)[0m  ALTER TABLE `hospitals` ADD `slug` varchar(255)
+  [1m[36m (43.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130220101736')[0m
+Migrating to DeviseInvitableAddToUsers (20130220103211)
+  [1m[35m (211.4ms)[0m  ALTER TABLE `users` ADD `invitation_token` varchar(60)
+  [1m[36m (180.6ms)[0m  [1mALTER TABLE `users` ADD `invitation_sent_at` datetime[0m
+  [1m[35m (190.6ms)[0m  ALTER TABLE `users` ADD `invitation_accepted_at` datetime
+  [1m[36m (179.4ms)[0m  [1mALTER TABLE `users` ADD `invitation_limit` int(11)[0m
+  [1m[35m (235.1ms)[0m  ALTER TABLE `users` ADD `invited_by_id` int(11)
+  [1m[36m (212.9ms)[0m  [1mALTER TABLE `users` ADD `invited_by_type` varchar(255)[0m
+  [1m[35m (155.3ms)[0m  CREATE INDEX `index_users_on_invitation_token` ON `users` (`invitation_token`)
+  [1m[36m (179.7ms)[0m  [1mCREATE INDEX `index_users_on_invited_by_id` ON `users` (`invited_by_id`)[0m
+  [1m[35m (205.0ms)[0m  ALTER TABLE `users` CHANGE `encrypted_password` `encrypted_password` varchar(255) DEFAULT ''
+  [1m[36m (32.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130220103211')[0m
+Migrating to CreateRoles (20130220113807)
+  [1m[35m (98.8ms)[0m  CREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (43.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130220113807')[0m
+Migrating to AddRoleToUser (20130220113925)
+  [1m[35m (234.3ms)[0m  ALTER TABLE `users` ADD `role_id` int(11)
+  [1m[36m (32.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130220113925')[0m
+Migrating to RemoveRolemarkFromUser (20130220115412)
+  [1m[35m (200.4ms)[0m  ALTER TABLE `users` DROP `roles_mask`
+  [1m[36m (32.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130220115412')[0m
+Migrating to CreateTpnInfusions (20130221054624)
+  [1m[35m (98.2ms)[0m  CREATE TABLE `tpn_infusions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `feed_volume_over_24_hour` float, `arterial_line_infusion` float, `inotrope_infusion` float, `other_infusion` float, `tpn_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (33.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130221054624')[0m
+Migrating to RemoveLossesFromTpn (20130226092608)
+  [1m[35m (189.9ms)[0m  ALTER TABLE `tpns` DROP `losses`
+  [1m[36m (32.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130226092608')[0m
+Migrating to ChangeBloodSugarMonitoredOnFromBloodSugarMonitor (20130227074755)
+  [1m[35m (243.0ms)[0m  ALTER TABLE `blood_sugar_monitors` CHANGE `blood_sugar_monitored_on` `blood_sugar_monitored_on` datetime DEFAULT NULL
+  [1m[36m (54.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130227074755')[0m
+Migrating to ChangeInvestigationOnToDatetime (20130228134200)
+  [1m[35m (188.3ms)[0m  ALTER TABLE `investigations` CHANGE `investigated_on` `investigated_on` datetime DEFAULT NULL
+  [1m[36m (32.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130228134200')[0m
+  [1m[35m (0.4ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m

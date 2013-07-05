@@ -7,7 +7,7 @@ Kimaya::Application.routes.draw do
     match '/hospitals/:hospital_id/reset_password' => 'admin/home#reset_password', as: :reset_password
   end
 
-  match 'hospitals/:hospital_id' => "home#index"
+  match 'hospitals/:hospital_id' => "home#index", as: :hospital_home 
   
   resources :hospitals do
     resources :home

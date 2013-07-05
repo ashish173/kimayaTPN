@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
       if params[:hospital_id].present?
         @current_hospital = Hospital.find_by_slug params[:hospital_id]
         if @current_hospital.nil?
-          flash[:message] = "Uauthorized access!!"
+          flash[:message] = "Unauthorized access!!"
           redirect_to root_url
         end
       else
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     elsif (current_user.present? and current_user.doctor?)
       hospital_patients_path(current_hospital)
     else
-      root_path(current_hospital)
+      hospital_home_path(current_hospital)
     end
   end
 

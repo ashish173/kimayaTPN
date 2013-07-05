@@ -5,10 +5,12 @@ class Admission < ActiveRecord::Base
 
   validates :admitted_on, :presence => true  
 
+=begin
   validate do |admission|
     return unless errors.empty?
     admission.validate_admitted_on
   end
+
 
   def validate_admitted_on
     if admitted_on < self.patient.date_of_birth || admitted_on > Date.today
@@ -16,4 +18,6 @@ class Admission < ActiveRecord::Base
       puts("")
     end
   end
+=end
+
 end
