@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Hospital do
-   
   it "should have a unique name" do
     create(:hospital, name: "ruby")
     expect(build(:hospital, name: "ruby")).to have(1).errors_on(:name)
@@ -11,5 +10,4 @@ describe Hospital do
     p1= create(:patient)
     expect(build(:patient, hospital: p1.hospital)).to_not be_valid
   end
-
 end
