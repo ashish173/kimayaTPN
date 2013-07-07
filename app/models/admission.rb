@@ -3,9 +3,8 @@ class Admission < ActiveRecord::Base
   belongs_to :user
   belongs_to :hospital
 
-  validates :admitted_on, :presence => true  
+  validates :admitted_on, :hospital_id, :patient_id, :presence => true  
 
-=begin
   validate do |admission|
     return unless errors.empty?
     admission.validate_admitted_on
@@ -18,6 +17,6 @@ class Admission < ActiveRecord::Base
       puts("")
     end
   end
-=end
 
 end
+
