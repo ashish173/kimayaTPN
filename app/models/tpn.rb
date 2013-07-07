@@ -12,8 +12,8 @@ class Tpn < ActiveRecord::Base
   validates :total_fluid_intake, :numericality => { :greater_than_or_equal_to => 40, :less_than_or_equal_to => 250 }
   validates :day_of_tpn, :numericality => { :only_integer => true, :greater_than => 0 }
   validates :current_weight, :numericality => { :greater_than => 0 }
-  validates :fat_volume, :fat_concentration, :numericality => true 
-  validates :patient, :presence => true
+  validates :fat_volume, :fat_concentration, :numericality => true  # changed patient to patient_id 
+  validates :patient_id, :hospital_id, :user_id, :presence => true
   has_one :tpn_infusion
   scope :doctors, lambda { |current_user|
     if current_user.admin?
