@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Admission do
-    
   it "must be done by a user" do
     expect(build(:admission, user_id: nil)).to have(1).errors_on(:user_id) 
   end
