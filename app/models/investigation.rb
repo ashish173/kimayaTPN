@@ -21,7 +21,7 @@ class Investigation < ActiveRecord::Base
   accepts_nested_attributes_for :anthropometric_measurement, :allow_destroy => true
   accepts_nested_attributes_for :blood_sugar_monitors, :allow_destroy => true
 
-
+  validates :patient_id, :presence => true
   validates :investigated_on, :presence => true
   validates :investigated_on, :uniqueness => { :scope => :patient_id }
   
