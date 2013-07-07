@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :hospitals
   belongs_to :role
   validates :name, :role_id, :presence => true
+  #validates :email, uniqueness: true
   #validates :residence_telephone, presence: true, on: :update
   # Setup accessible (or protected) attributes for your model
 
