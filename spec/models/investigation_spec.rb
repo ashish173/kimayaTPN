@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Investigation do
-
   it "a patient should have a unique date of investigation" do
     i1=create(:investigation)
     expect(build(:investigation, patient: i1.patient)).to have(1).errors_on(:investigated_on)
