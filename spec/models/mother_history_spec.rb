@@ -4,8 +4,8 @@ describe MotherHistory do
   let(:patient){Patient.new(gender_id:"24", name: "jolly", registration_number: "57", date_of_birth: "2013-07-3", birth_weight: 5,
                             address: "pune")}
   let(:mother){MotherHistory.new(g: 2.3, p: 4.4, a: 3.3, maternal_usg:"7887", age: "27", pre_pregnancy_weight: ">40", height: "145",
-                               toxemia: "mild", diabetes: "IDDM", is_antenatal_steroids: "no", medical_history: "drugs", 
-                               other_medical_problems: "none", hospital_id: 8) }
+                                 toxemia: "mild", diabetes: "IDDM", is_antenatal_steroids: "no", medical_history: "drugs",
+                                 other_medical_problems: "none", hospital_id: 8) }
 
 
 
