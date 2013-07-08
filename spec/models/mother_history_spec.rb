@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe MotherHistory do
-
-
   it "must belong to a patient"do 
     expect(build(:motherHistory, patient_id: nil)).to have(1).errors_on(:patient_id)
 
