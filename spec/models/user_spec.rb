@@ -30,7 +30,7 @@ describe User do
     # as in the background on user create it tries to 
     # send an email and smtp connection is not being 
     # estabilished for some reason.
-=begin    user1 = User.create(
+    user1 = User.create!(
       name: "ashish singh",
       email: "aitashish173@gmail.com",
       password: "fedora",
@@ -39,7 +39,6 @@ describe User do
       name: "c0mrade",
       email: "aitashish173@gmail.com")  
       expect(user).to have(1).errors_on(:email)  
-=end      
   end
   
    
