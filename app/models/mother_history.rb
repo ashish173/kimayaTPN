@@ -1,7 +1,11 @@
 class MotherHistory < ActiveRecord::Base
   belongs_to :patient
-  validates :patient, :is_anc, :g , :p , :a, :maternal_usg, :age, :pre_pregnancy_weight, :height, :toxemia, :diabetes, :is_antenatal_steroids, :medical_history, :presence => true
+  validates :patient_id, :g , :p , :a, :maternal_usg, :age, :pre_pregnancy_weight, :height, :toxemia, :diabetes, :is_antenatal_steroids,
+    :medical_history, :presence => true
 
+  attr_accessible  :patient_id, :g , :p , :a, :maternal_usg, :age, :pre_pregnancy_weight, :height, :toxemia, :diabetes,
+    :is_antenatal_steroids, :medical_history
+ 
   serialize :post_obstetric_history, :other_medical_problems
 
   def post_obstetric_history=(post_obstetric_history_array)    

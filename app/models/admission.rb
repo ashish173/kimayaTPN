@@ -3,7 +3,7 @@ class Admission < ActiveRecord::Base
   belongs_to :user
   belongs_to :hospital
 
-  validates :admitted_on, :hospital_id, :patient_id, :presence => true  
+  validates :admitted_on, :hospital_id, :patient_id, :user_id, :presence => true  
 
   validate do |admission|
     return unless errors.empty?
