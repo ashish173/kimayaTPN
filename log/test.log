@@ -1,0 +1,1110 @@
+Connecting to database specified by database.yml
+  [1m[36mRole Load (27.8ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (1.3ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (130.5ms)[0m  INSERT INTO `tpn_market_additives` (`constant`, `created_at`, `market_name`, `max_value`, `min_value`, `name`, `unit`, `updated_at`) VALUES (123.0, '2013-07-09 08:50:41', 'assss', NULL, NULL, 'ashish', 'sfjhdf', '2013-07-09 08:50:41')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (139.8ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (52.3ms)[0m  [1mINSERT INTO `tpn_market_additives` (`constant`, `created_at`, `market_name`, `max_value`, `min_value`, `name`, `unit`, `updated_at`) VALUES (123.0, '2013-07-09 08:50:41', 'assss', NULL, NULL, 'ashish', 'sfjhdf', '2013-07-09 08:50:41')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (94.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (19.1ms)[0m  INSERT INTO `tpn_market_additives` (`constant`, `created_at`, `market_name`, `max_value`, `min_value`, `name`, `unit`, `updated_at`) VALUES (123.0, '2013-07-09 08:50:41', 'assss', NULL, NULL, 'ashish', 'sfjhdf', '2013-07-09 08:50:41')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (124.8ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (13.6ms)[0m  [1mINSERT INTO `tpn_market_additives` (`constant`, `created_at`, `market_name`, `max_value`, `min_value`, `name`, `unit`, `updated_at`) VALUES (123.0, '2013-07-09 08:50:41', 'assss', NULL, NULL, 'ashish', 'sfjhdf', '2013-07-09 08:50:41')[0m
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (76.8ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (48.8ms)[0m  INSERT INTO `tpn_market_additives` (`constant`, `created_at`, `market_name`, `max_value`, `min_value`, `name`, `unit`, `updated_at`) VALUES (123.0, '2013-07-09 08:50:42', 'assss', NULL, NULL, 'ashish', 'sfjhdf', '2013-07-09 08:50:42')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (320.9ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (26.2ms)[0m  [1mINSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 08:50:42', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 08:50:42')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (63.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 08:50:42', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 08:50:42')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (46.6ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 08:50:42', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 08:50:42')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (44.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (17.9ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 08:50:42', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 08:50:42')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (36.6ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (10.6ms)[0m  [1mINSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 08:50:42', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 08:50:42')[0m
+  [1m[35m (0.6ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (34.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 08:50:42', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 08:50:42')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (79.6ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (10.4ms)[0m  [1mINSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 08:50:42', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 08:50:42')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (81.8ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 08:50:43', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 08:50:43')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (34.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (89.3ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`confirmation_token` = 'ZMpTMpByYqfabnoAQqFK' LIMIT 1[0m
+  [1m[35mSQL (76.4ms)[0m  INSERT INTO `users` (`additional_detail`, `address`, `city`, `confirmation_sent_at`, `confirmation_token`, `confirmed_at`, `created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `emergency_telephone`, `encrypted_password`, `invitation_accepted_at`, `invitation_limit`, `invitation_sent_at`, `invitation_token`, `invited_by_id`, `invited_by_type`, `last_sign_in_at`, `last_sign_in_ip`, `mobile_number`, `name`, `pincode`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `residence_telephone`, `role_id`, `sign_in_count`, `unconfirmed_email`, `updated_at`) VALUES (NULL, NULL, NULL, '2013-07-09 08:50:44', 'ZMpTMpByYqfabnoAQqFK', NULL, '2013-07-09 08:50:44', NULL, NULL, 'testuser@gmail.com', NULL, '$2a$10$V.bZmSSkhYmhBYS7EuTqPutnvLk7FOKvYEPs/q9lffQq/0n9DyJNW', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test user', NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '2013-07-09 08:50:44')
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.4ms)
+
+Sent mail to testuser@gmail.com (32ms)
+Date: Tue, 09 Jul 2013 14:20:44 +0530
+From: no-reply@joshsoftware.com
+Reply-To: no-reply@joshsoftware.com
+To: testuser@gmail.com
+Message-ID: <51dbcee4dbc6b_286e4484f6e95870@Maverick.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome testuser@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://kimaya.heroku.com/users/confirmation?confirmation_token=ZMpTMpByYqfabnoAQqFK">Confirm my account</a></p>
+
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36m (91.8ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36mRole Load (1.1ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (22.6ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (5.8ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35mUser Load (51.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`confirmation_token` = '8tNaxqXbiVhq5bQoJWdw' LIMIT 1
+  [1m[36mSQL (17.4ms)[0m  [1mINSERT INTO `users` (`additional_detail`, `address`, `city`, `confirmation_sent_at`, `confirmation_token`, `confirmed_at`, `created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `emergency_telephone`, `encrypted_password`, `invitation_accepted_at`, `invitation_limit`, `invitation_sent_at`, `invitation_token`, `invited_by_id`, `invited_by_type`, `last_sign_in_at`, `last_sign_in_ip`, `mobile_number`, `name`, `pincode`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `residence_telephone`, `role_id`, `sign_in_count`, `unconfirmed_email`, `updated_at`) VALUES (NULL, NULL, NULL, '2013-07-09 09:14:13', '8tNaxqXbiVhq5bQoJWdw', NULL, '2013-07-09 09:14:13', NULL, NULL, 'testuser@gmail.com', NULL, '$2a$10$OdFDiXvLxSoUMcWB0K6yR.pn1yuwQZi1kHt1rmho0gznJ/mJqnnyG', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test user', NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '2013-07-09 09:14:13')[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.2ms)
+
+Sent mail to testuser@gmail.com (39ms)
+Date: Tue, 09 Jul 2013 14:44:13 +0530
+From: no-reply@joshsoftware.com
+Reply-To: no-reply@joshsoftware.com
+To: testuser@gmail.com
+Message-ID: <51dbd4658134d_2b5f439cf7a2086@Maverick.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome testuser@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://kimaya.heroku.com/users/confirmation?confirmation_token=8tNaxqXbiVhq5bQoJWdw">Confirm my account</a></p>
+
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (13.8ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (111.7ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (9.0ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish1@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mUser Exists (21.9ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (18.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (10.7ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36mUser Load (10.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`confirmation_token` = 'orr1s7ZHkz1XQsryDyZr' LIMIT 1[0m
+  [1m[35mSQL (47.4ms)[0m  INSERT INTO `users` (`additional_detail`, `address`, `city`, `confirmation_sent_at`, `confirmation_token`, `confirmed_at`, `created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `emergency_telephone`, `encrypted_password`, `invitation_accepted_at`, `invitation_limit`, `invitation_sent_at`, `invitation_token`, `invited_by_id`, `invited_by_type`, `last_sign_in_at`, `last_sign_in_ip`, `mobile_number`, `name`, `pincode`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `residence_telephone`, `role_id`, `sign_in_count`, `unconfirmed_email`, `updated_at`) VALUES (NULL, NULL, NULL, '2013-07-09 09:21:20', 'orr1s7ZHkz1XQsryDyZr', NULL, '2013-07-09 09:21:20', NULL, NULL, 'testuser@gmail.com', NULL, '$2a$10$ifvI3TMaySWqo2YeEzUWqOagpkL9WTdjpjf4y/NdiTZIgjgufBjG6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test user', NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '2013-07-09 09:21:20')
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.4ms)
+
+Sent mail to testuser@gmail.com (52ms)
+Date: Tue, 09 Jul 2013 14:51:21 +0530
+From: no-reply@joshsoftware.com
+Reply-To: no-reply@joshsoftware.com
+To: testuser@gmail.com
+Message-ID: <51dbd6114a4ce_2bca4e9af6c4176d@Maverick.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome testuser@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://kimaya.heroku.com/users/confirmation?confirmation_token=orr1s7ZHkz1XQsryDyZr">Confirm my account</a></p>
+
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (11.5ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36m (91.8ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish1@gmail.com' LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`confirmation_token` = '4nY6sHaZsttmfPj1KsZA' LIMIT 1[0m
+  [1m[35mSQL (103.5ms)[0m  INSERT INTO `users` (`additional_detail`, `address`, `city`, `confirmation_sent_at`, `confirmation_token`, `confirmed_at`, `created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `emergency_telephone`, `encrypted_password`, `invitation_accepted_at`, `invitation_limit`, `invitation_sent_at`, `invitation_token`, `invited_by_id`, `invited_by_type`, `last_sign_in_at`, `last_sign_in_ip`, `mobile_number`, `name`, `pincode`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `residence_telephone`, `role_id`, `sign_in_count`, `unconfirmed_email`, `updated_at`) VALUES (NULL, NULL, NULL, '2013-07-09 09:21:21', '4nY6sHaZsttmfPj1KsZA', NULL, '2013-07-09 09:21:21', NULL, NULL, 'ashish1@gmail.com', NULL, '$2a$10$J5RqnmDbpQtY/DJD9IYVIuW7VjIuZUDdwF1Ws7p5I2T9mJgD6PhmS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ashish', NULL, NULL, NULL, NULL, NULL, 2, 0, NULL, '2013-07-09 09:21:21')
+  Rendered devise/mailer/confirmation_instructions.html.erb (1.4ms)
+
+Sent mail to ashish1@gmail.com (10ms)
+Date: Tue, 09 Jul 2013 14:51:21 +0530
+From: no-reply@joshsoftware.com
+Reply-To: no-reply@joshsoftware.com
+To: ashish1@gmail.com
+Message-ID: <51dbd611ad2b4_2bca4e9af6c418a9@Maverick.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome ashish1@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://kimaya.heroku.com/users/confirmation?confirmation_token=4nY6sHaZsttmfPj1KsZA">Confirm my account</a></p>
+
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (308.5ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36mRole Load (1.7ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (29.9ms)[0m  BEGIN
+  [1m[36mUser Exists (147.4ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (11.4ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (1.5ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (18.5ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35mUser Load (27.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`confirmation_token` = 'zLrH6ij2PJfgE4rvH5aF' LIMIT 1
+  [1m[36mSQL (44.1ms)[0m  [1mINSERT INTO `users` (`additional_detail`, `address`, `city`, `confirmation_sent_at`, `confirmation_token`, `confirmed_at`, `created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `emergency_telephone`, `encrypted_password`, `invitation_accepted_at`, `invitation_limit`, `invitation_sent_at`, `invitation_token`, `invited_by_id`, `invited_by_type`, `last_sign_in_at`, `last_sign_in_ip`, `mobile_number`, `name`, `pincode`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `residence_telephone`, `role_id`, `sign_in_count`, `unconfirmed_email`, `updated_at`) VALUES (NULL, NULL, NULL, '2013-07-09 09:24:12', 'zLrH6ij2PJfgE4rvH5aF', NULL, '2013-07-09 09:24:12', NULL, NULL, 'testuser@gmail.com', NULL, '$2a$10$1zupFwQYB5gMAgD4dRDg9OQVnl0K2/DchGh5qddE0rcpbhkK6WqQ2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test user', NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '2013-07-09 09:24:12')[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (10.7ms)
+
+Sent mail to testuser@gmail.com (139ms)
+Date: Tue, 09 Jul 2013 14:54:13 +0530
+From: no-reply@joshsoftware.com
+Reply-To: no-reply@joshsoftware.com
+To: testuser@gmail.com
+Message-ID: <51dbd6bd66f16_2c0d4694f7a366e5@Maverick.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome testuser@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://kimaya.heroku.com/users/confirmation?confirmation_token=zLrH6ij2PJfgE4rvH5aF">Confirm my account</a></p>
+
+  [1m[35m (36.4ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (57.3ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (259.8ms)[0m  ROLLBACK
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (1.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (1.5ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish1@gmail.com' LIMIT 1[0m
+  [1m[35mUser Load (1.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`confirmation_token` = 'xSP4qEPX9EvqKBQigyjD' LIMIT 1
+  [1m[36mSQL (17.4ms)[0m  [1mINSERT INTO `users` (`additional_detail`, `address`, `city`, `confirmation_sent_at`, `confirmation_token`, `confirmed_at`, `created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `emergency_telephone`, `encrypted_password`, `invitation_accepted_at`, `invitation_limit`, `invitation_sent_at`, `invitation_token`, `invited_by_id`, `invited_by_type`, `last_sign_in_at`, `last_sign_in_ip`, `mobile_number`, `name`, `pincode`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `residence_telephone`, `role_id`, `sign_in_count`, `unconfirmed_email`, `updated_at`) VALUES (NULL, NULL, NULL, '2013-07-09 09:24:15', 'xSP4qEPX9EvqKBQigyjD', NULL, '2013-07-09 09:24:15', NULL, NULL, 'ashish1@gmail.com', NULL, '$2a$10$FRg79Z1BJrjG7.uMr4jyyuEbixXwK4k3rUkzjzYpzB12Q8owXPTHa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ashish', NULL, NULL, NULL, NULL, NULL, 2, 0, NULL, '2013-07-09 09:24:15')[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.9ms)
+
+Sent mail to ashish1@gmail.com (26ms)
+Date: Tue, 09 Jul 2013 14:54:15 +0530
+From: no-reply@joshsoftware.com
+Reply-To: no-reply@joshsoftware.com
+To: ashish1@gmail.com
+Message-ID: <51dbd6bf16261_2c0d4694f7a3675@Maverick.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome ashish1@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://kimaya.heroku.com/users/confirmation?confirmation_token=xSP4qEPX9EvqKBQigyjD">Confirm my account</a></p>
+
+  [1m[35m (0.5ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (63.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mUser Exists (1.9ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (0.9ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.5ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (58.9ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35mUser Load (1.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`confirmation_token` = 'yqck3e3BnCV8yF5rNBCG' LIMIT 1
+  [1m[36mSQL (38.4ms)[0m  [1mINSERT INTO `users` (`additional_detail`, `address`, `city`, `confirmation_sent_at`, `confirmation_token`, `confirmed_at`, `created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `emergency_telephone`, `encrypted_password`, `invitation_accepted_at`, `invitation_limit`, `invitation_sent_at`, `invitation_token`, `invited_by_id`, `invited_by_type`, `last_sign_in_at`, `last_sign_in_ip`, `mobile_number`, `name`, `pincode`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `residence_telephone`, `role_id`, `sign_in_count`, `unconfirmed_email`, `updated_at`) VALUES (NULL, NULL, NULL, '2013-07-09 09:25:50', 'yqck3e3BnCV8yF5rNBCG', NULL, '2013-07-09 09:25:50', NULL, NULL, 'testuser@gmail.com', NULL, '$2a$10$EO9B.9qyIR1xy4fyR5G7uukIlNipUYStXRu/cXOV35GeHJyragL9K', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test user', NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '2013-07-09 09:25:50')[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (14.1ms)
+
+Sent mail to testuser@gmail.com (88ms)
+Date: Tue, 09 Jul 2013 14:55:50 +0530
+From: no-reply@joshsoftware.com
+Reply-To: no-reply@joshsoftware.com
+To: testuser@gmail.com
+Message-ID: <51dbd71e96f15_2c25483af6e7921e@Maverick.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome testuser@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://kimaya.heroku.com/users/confirmation?confirmation_token=yqck3e3BnCV8yF5rNBCG">Confirm my account</a></p>
+
+  [1m[35m (0.4ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (21.0ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (65.0ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (1.5ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (1.3ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish1@gmail.com' LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mUser Exists (0.8ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.6ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mUser Exists (0.7ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish1@gmail.com' LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (18.6ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.7ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.5ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.7ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35mUser Load (2.9ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`confirmation_token` = 'ebWcRgDGk86x9Fez2Sm9' LIMIT 1
+  [1m[36mSQL (22.0ms)[0m  [1mINSERT INTO `users` (`additional_detail`, `address`, `city`, `confirmation_sent_at`, `confirmation_token`, `confirmed_at`, `created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `emergency_telephone`, `encrypted_password`, `invitation_accepted_at`, `invitation_limit`, `invitation_sent_at`, `invitation_token`, `invited_by_id`, `invited_by_type`, `last_sign_in_at`, `last_sign_in_ip`, `mobile_number`, `name`, `pincode`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `residence_telephone`, `role_id`, `sign_in_count`, `unconfirmed_email`, `updated_at`) VALUES (NULL, NULL, NULL, '2013-07-09 09:28:24', 'ebWcRgDGk86x9Fez2Sm9', NULL, '2013-07-09 09:28:24', NULL, NULL, 'testuser@gmail.com', NULL, '$2a$10$Glj11HTbQIysQkxVJcAlluG/v8ZTPSP0sJxNQkP380g5luY6SfMZa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test user', NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '2013-07-09 09:28:24')[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (8.6ms)
+
+Sent mail to testuser@gmail.com (146ms)
+Date: Tue, 09 Jul 2013 14:58:24 +0530
+From: no-reply@joshsoftware.com
+Reply-To: no-reply@joshsoftware.com
+To: testuser@gmail.com
+Message-ID: <51dbd7b8ac4a6_2c52404cf6e4483a@Maverick.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome testuser@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://kimaya.heroku.com/users/confirmation?confirmation_token=ebWcRgDGk86x9Fez2Sm9">Confirm my account</a></p>
+
+  [1m[35m (0.4ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (11.9ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (56.6ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.8ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`confirmation_token` = 'sjMw7bRhQMceAFdaxPWa' LIMIT 1[0m
+  [1m[35mSQL (23.1ms)[0m  INSERT INTO `users` (`additional_detail`, `address`, `city`, `confirmation_sent_at`, `confirmation_token`, `confirmed_at`, `created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `emergency_telephone`, `encrypted_password`, `invitation_accepted_at`, `invitation_limit`, `invitation_sent_at`, `invitation_token`, `invited_by_id`, `invited_by_type`, `last_sign_in_at`, `last_sign_in_ip`, `mobile_number`, `name`, `pincode`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `residence_telephone`, `role_id`, `sign_in_count`, `unconfirmed_email`, `updated_at`) VALUES (NULL, NULL, NULL, '2013-07-09 09:35:30', 'sjMw7bRhQMceAFdaxPWa', NULL, '2013-07-09 09:35:31', NULL, NULL, 'testuser@gmail.com', NULL, '$2a$10$aiL81Xc7nY4YL2k9gKHuDOqCx8pTPAjpSgJ5UIPVt41yoBAXmD/Nm', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test user', NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '2013-07-09 09:35:31')
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.3ms)
+
+Sent mail to testuser@gmail.com (51ms)
+Date: Tue, 09 Jul 2013 15:05:31 +0530
+From: no-reply@joshsoftware.com
+Reply-To: no-reply@joshsoftware.com
+To: testuser@gmail.com
+Message-ID: <51dbd9634e6a4_2e104296f7c667e@Maverick.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome testuser@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://kimaya.heroku.com/users/confirmation?confirmation_token=sjMw7bRhQMceAFdaxPWa">Confirm my account</a></p>
+
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.7ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36m (58.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (13.8ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish1@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.8ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish2@gmail.com' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (14.7ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish@gmail.com' LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`confirmation_token` = 'cqJ3DcKui3pqrCupbXLx' LIMIT 1[0m
+  [1m[35mSQL (26.2ms)[0m  INSERT INTO `users` (`additional_detail`, `address`, `city`, `confirmation_sent_at`, `confirmation_token`, `confirmed_at`, `created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `emergency_telephone`, `encrypted_password`, `invitation_accepted_at`, `invitation_limit`, `invitation_sent_at`, `invitation_token`, `invited_by_id`, `invited_by_type`, `last_sign_in_at`, `last_sign_in_ip`, `mobile_number`, `name`, `pincode`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `residence_telephone`, `role_id`, `sign_in_count`, `unconfirmed_email`, `updated_at`) VALUES (NULL, NULL, NULL, '2013-07-09 09:37:44', 'cqJ3DcKui3pqrCupbXLx', NULL, '2013-07-09 09:37:44', NULL, NULL, 'ashish@gmail.com', NULL, '$2a$10$K9LczWblqflWsv4ylBVGwuRpfavQbWMKz24vQh8z2SbfdDq6J7Ipq', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ashish', NULL, NULL, NULL, NULL, NULL, 2, 0, NULL, '2013-07-09 09:37:44')
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.4ms)
+
+Sent mail to ashish@gmail.com (21ms)
+Date: Tue, 09 Jul 2013 15:07:44 +0530
+From: no-reply@joshsoftware.com
+Reply-To: no-reply@joshsoftware.com
+To: ashish@gmail.com
+Message-ID: <51dbd9e88a020_2e3c4ac2f7a89527@Maverick.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome ashish@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://kimaya.heroku.com/users/confirmation?confirmation_token=cqJ3DcKui3pqrCupbXLx">Confirm my account</a></p>
+
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.7ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish@gmail.com' LIMIT 1
+  [1m[36m (77.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'testuser@gmail.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish1@gmail.com' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish2@gmail.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (10.9ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish1@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish2@gmail.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.7ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish3@gmail.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.7ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish4@gmail.com' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish@gmail.com' LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`confirmation_token` = 'aRUQBSyBWzixMWz5mfyU' LIMIT 1[0m
+  [1m[35mSQL (28.7ms)[0m  INSERT INTO `users` (`additional_detail`, `address`, `city`, `confirmation_sent_at`, `confirmation_token`, `confirmed_at`, `created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `emergency_telephone`, `encrypted_password`, `invitation_accepted_at`, `invitation_limit`, `invitation_sent_at`, `invitation_token`, `invited_by_id`, `invited_by_type`, `last_sign_in_at`, `last_sign_in_ip`, `mobile_number`, `name`, `pincode`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `residence_telephone`, `role_id`, `sign_in_count`, `unconfirmed_email`, `updated_at`) VALUES (NULL, NULL, NULL, '2013-07-09 09:43:05', 'aRUQBSyBWzixMWz5mfyU', NULL, '2013-07-09 09:43:05', NULL, NULL, 'ashish@gmail.com', NULL, '$2a$10$RtSbl6vw/amlgIAoqzQ/a.Ik8SC2jChSp82sCUXGo5umcfdonNLFK', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ashish', NULL, NULL, NULL, NULL, NULL, 2, 0, NULL, '2013-07-09 09:43:05')
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.8ms)
+
+Sent mail to ashish@gmail.com (21ms)
+Date: Tue, 09 Jul 2013 15:13:06 +0530
+From: no-reply@joshsoftware.com
+Reply-To: no-reply@joshsoftware.com
+To: ashish@gmail.com
+Message-ID: <51dbdb2a249be_2e8a457ef6e924da@Maverick.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome ashish@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://kimaya.heroku.com/users/confirmation?confirmation_token=aRUQBSyBWzixMWz5mfyU">Confirm my account</a></p>
+
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish@gmail.com' LIMIT 1
+  [1m[36m (60.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (23.3ms)[0m  BEGIN
+  [1m[36m (44.4ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (474.2ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:15:12', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:15:12')
+  [1m[36m (17.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (166.0ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (18.6ms)[0m  [1mINSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:15:13', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:15:13')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (75.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:15:13', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:15:13')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (55.0ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (19.5ms)[0m  [1mINSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:15:13', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:15:13')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (61.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (17.1ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:15:13', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:15:13')
+  [1m[36m (0.4ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (107.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:15:13', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:15:13')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (68.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:15:13', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:15:13')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (56.4ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (161.5ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:25:10', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:25:10')
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (151.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (20.0ms)[0m  [1mINSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:25:10', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:25:10')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (60.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:25:10', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:25:10')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (67.6ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (26.2ms)[0m  [1mINSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:25:10', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:25:10')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (70.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (4.1ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:25:11', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:25:11')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (63.9ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (11.5ms)[0m  [1mINSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:25:11', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:25:11')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (42.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (24.0ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:25:11', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:25:11')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (67.3ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (72.7ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:25:40', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:25:40')
+  [1m[36m (0.6ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (44.6ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (16.6ms)[0m  [1mINSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:25:40', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:25:40')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (52.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (11.9ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:25:40', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:25:40')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (55.5ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:25:40', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:25:40')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (68.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:25:40', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:25:40')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (57.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:25:40', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:25:40')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (56.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:25:40', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:25:40')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (57.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (26.4ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:27:52', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:27:52')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (49.0ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:27:53', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:27:53')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (35.9ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:27:53', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:27:53')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (33.5ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (14.7ms)[0m  [1mINSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:27:53', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:27:53')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (35.8ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `patient_histories` (`apgar_score_1`, `apgar_score_20`, `apgar_score_5`, `created_at`, `ga`, `gender_details`, `gestational_age`, `hospital_id`, `mode_of_delivery`, `patient_id`, `rupture_of_membranes`, `updated_at`) VALUES ('asd', 'dff', 'sdd', '2013-07-09 10:27:53', 13, NULL, 12, NULL, 'df', 1, 'qweee', '2013-07-09 10:27:53')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (28.8ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (4.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (17.8ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (17.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (21.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (6.5ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (539.6ms)[0m  INSERT INTO `tpn_market_additives` (`constant`, `created_at`, `market_name`, `max_value`, `min_value`, `name`, `unit`, `updated_at`) VALUES (123.0, '2013-07-09 12:48:51', 'assss', NULL, NULL, 'ashish', 'sfjhdf', '2013-07-09 12:48:51')
+  [1m[36m (18.9ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (104.8ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `tpn_market_additives` (`constant`, `created_at`, `market_name`, `max_value`, `min_value`, `name`, `unit`, `updated_at`) VALUES (123.0, '2013-07-09 12:49:49', 'assss', NULL, NULL, 'ashish', 'sfjhdf', '2013-07-09 12:49:49')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (245.4ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (13.9ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Connecting to database specified by database.yml
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` [0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (13.9ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (367.9ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish@gmail.com' LIMIT 1
+  [1m[36mUser Load (21.9ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`confirmation_token` = 'UPUTJyiTpkJShozGLqoC' LIMIT 1[0m
+  [1m[35mSQL (107.5ms)[0m  INSERT INTO `users` (`additional_detail`, `address`, `city`, `confirmation_sent_at`, `confirmation_token`, `confirmed_at`, `created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `emergency_telephone`, `encrypted_password`, `invitation_accepted_at`, `invitation_limit`, `invitation_sent_at`, `invitation_token`, `invited_by_id`, `invited_by_type`, `last_sign_in_at`, `last_sign_in_ip`, `mobile_number`, `name`, `pincode`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `residence_telephone`, `role_id`, `sign_in_count`, `unconfirmed_email`, `updated_at`) VALUES (NULL, NULL, NULL, '2013-07-09 13:02:59', 'UPUTJyiTpkJShozGLqoC', NULL, '2013-07-09 13:02:59', NULL, NULL, 'ashish@gmail.com', NULL, '$2a$10$Cctyp.1hx0tp8lejISVtLe1vAEldf/FBBq9ZM5qSaWEynwsBC966W', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ashish', NULL, NULL, NULL, NULL, NULL, 2, 0, NULL, '2013-07-09 13:02:59')
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.2ms)
+
+Sent mail to ashish@gmail.com (51ms)
+Date: Tue, 09 Jul 2013 18:33:00 +0530
+From: no-reply@joshsoftware.com
+Reply-To: no-reply@joshsoftware.com
+To: ashish@gmail.com
+Message-ID: <51dc0a045e793_41e14c70f7a52573@Maverick.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome ashish@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://kimaya.heroku.com/users/confirmation?confirmation_token=UPUTJyiTpkJShozGLqoC">Confirm my account</a></p>
+
+  [1m[36m (16.7ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (46.7ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish@gmail.com' LIMIT 1
+  [1m[36m (83.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish1@gmail.com' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.7ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish2@gmail.com' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.8ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish3@gmail.com' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (13.3ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'ashish4@gmail.com' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
