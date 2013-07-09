@@ -9,8 +9,8 @@ describe Admission do
   
   
   it "must be done by a user" do
-  admission=patient.build_admission(admitted_on: Date.yesterday, hospital_id: 2)
-  expect(admission).to have(1).errors_on(:user_id) 
+    admission=patient.build_admission(admitted_on: Date.yesterday, hospital_id: 2)
+    expect(admission).to have(1).errors_on(:user_id) 
   end
 
 
