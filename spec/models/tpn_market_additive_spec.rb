@@ -16,7 +16,6 @@ describe TpnMarketAdditive do
 
   it "is invalid if constant is not a number" do
     tma.constant = "asd"
-    p tma.errors.full_messages
     expect(tma).to have(1).errors_on(:constant)
   end
   it "is invalid if constant is not present" do
