@@ -11,20 +11,17 @@ describe Investigation do
     patient.investigations << invest
     invest=patient.investigations.build(investigated_on:Date.today)
     expect(invest).to have(1).errors_on(:investigated_on)
-    p invest.errors.full_messages
   end
 
   it "should have a date of investigation" do
     patient.investigations << invest
     invest.investigated_on=nil
     expect(invest).to have(1).errors_on(:investigated_on)
-    p invest.errors.full_messages
   end
 
 
   it "should belong to a patient" do
     expect(invest).to have(1).errors_on(:patient_id)
-    p invest.errors.full_messages
   end
 
 end

@@ -9,7 +9,6 @@ describe Hospital do
   it "should have a unique name" do
     Hospital.create(name:"ruby")
     expect(hospital).to have(1).errors_on(:name)
-    p hospital.errors.full_messages
   end
 
   it "should have patients within its limit if specified" do 
@@ -17,7 +16,6 @@ describe Hospital do
     patient=hospital.patients.build(gender_id:"24", name: "jane", registration_number: "60", date_of_birth: "2013-07-4", birth_weight: 5,
                                     address:"pune")
     expect(hospital).to_not be_valid
-    p patient.errors.full_messages
   end
 
 end

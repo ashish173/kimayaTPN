@@ -8,14 +8,10 @@ describe Patient do
   
   it "should have a valid admission date" do
     hospital.patients << patient
-    #p hospital.id
-    admission=patient.build_admission(admitted_on: "2013-07-1", hospital_id: hospital.id)
+    admission=patient.build_admission(admitted_on: "2013-07-1", hospital_id: hospital.id,user_id:3)
     patient.save
-    #p admission.hospital_id
     expect(admission).to have(1).errors_on(:admitted_on)
-    admission.errors.full_messages
   end
-
 
   it "should have a name" do
     patient.name=nil
@@ -40,7 +36,6 @@ describe Patient do
     hospital.patients << patient
     patient=hospital.patients.build(gender_id:"24", name: "khush", registration_number: "57", date_of_birth: "2013-07-4", birth_weight: 5,                                      address:"pune")
     expect(patient).to_not be_valid
-    p patient.errors.full_messages
   end
 
   it "patient count should be within hospital's patient limit" do
@@ -51,13 +46,11 @@ describe Patient do
     patient=hospital.patients.build(gender_id:"24", name: "jane", registration_number: "60", date_of_birth: "2013-07-4", birth_weight: 5,
                                     address:"pune")
     expect(hospital).to_not be_valid
-    p patient.errors.full_messages
   end
 
   it "belong to a hospital" do
     patient.save
     expect(patient).to_not be_valid
-    p patient.errors.full_messages
   end
 
 end
