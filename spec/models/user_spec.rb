@@ -1,14 +1,12 @@
 require 'spec_helper'
 
 describe User do
-  # let(:user) { User.new(name: "test user", email: "testuser@gmail.com", password: "testpass", role_id: 1) }
 
   it "is invalid without a name" do
     expect(build(:user, name: nil)).to have(1).errors_on(:name)
   end
 
   it "is invalid without a role_id" do
-    
     expect(build(:user, role_id: nil)).to have(1).errors_on(:role_id)  
   end
 
