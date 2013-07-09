@@ -31,7 +31,7 @@ class Patient < ActiveRecord::Base
   scope :search, lambda{|keyword| where("registration_number like ? or name like ?", "#{keyword}%", "%#{keyword}%")}
   
   def patient_count_within_limit
-    if self.hospital && self.hospital.patients.count >= self.hospital.patients_count #bug doesn't work if patients.size is used, :patients.size changed to patients.count
+    if self.hospital && self.hospital.patients.count >= self.hospital.patients_count 
       errors.add(:base,"Exceeded no of Patients")
     end
   end
