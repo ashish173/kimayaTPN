@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Patient do
-
   it "should have a name" do
     expect(build(:patient, name: nil)).to have(1).errors_on(:name)
   end
