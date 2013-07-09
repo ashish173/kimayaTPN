@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130228134200) do
+ActiveRecord::Schema.define(:version => 20130708185049) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(:version => 20130228134200) do
 
   create_table "mother_histories", :force => true do |t|
     t.integer  "patient_id"
-    t.boolean  "is_anc"
+    t.boolean  "is_anc",                 :default => false
     t.float    "g"
     t.float    "p"
     t.float    "a"
@@ -159,8 +159,8 @@ ActiveRecord::Schema.define(:version => 20130228134200) do
     t.string   "toxemia"
     t.string   "diabetes"
     t.string   "is_antenatal_steroids"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "medical_history"
     t.text     "other_medical_problems"
     t.integer  "hospital_id"
