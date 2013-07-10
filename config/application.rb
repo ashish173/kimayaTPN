@@ -44,6 +44,11 @@ module Kimaya
     config.assets.initialize_on_precompile = false
     #config.assets.precompile += ['active_admin.css', 'active_admin/print.css', 'active_admin.js']
     #config.middleware.use PDFKit::Middleware, :print_media_type => true
+
+    # tells rails to generate factories instead of fixtures
+    config.generators do |g|
+      g.fixture_replacement :factory_girl, dir: "spec/factories"
+    end
   end
 end
 
