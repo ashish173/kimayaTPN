@@ -1,21 +1,10 @@
-= raw display_message
-.bottom-spacing
-  .float-right
-    %a.button{:href => new_patient_path}
-      %span
-        Add patient 
-        = image_tag('/images/plus-small.gif', :height => "9", :width => "12")
-
-
-- form_tag(search_patients_path, :remote => true) do
-  = text_field_tag 'keyword' 
-  = submit_tag 'Search'
-
+= render 'sidemenu'
 .module
-  %h2
-    %span 
-      Patients
-  .module-table-body{:id => 'patient_info'}
-    = render :partial => 'patients'
+  .span10
+    %h2
+      %span 
+        Patients
+    .module-table-body{:id => 'patient_info'}
+      = render :partial => 'patients'
             
 

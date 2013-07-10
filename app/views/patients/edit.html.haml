@@ -1,19 +1,8 @@
-= content_for :submenu do
-  %ul
-    %li 
-      = link_to "Basic Information" , "#"
-    %li 
-      = link_to "Patient history", patient_info_path(@patient)
-    %li 
-      - if @investigation.nil?
-        = link_to "Daily Investigation", investigation_new_path(@patient, Date.today.strftime("%d-%m-%Y"))
-      - else
-        = link_to "Daily Investigation", edit_patient_investigation_path(@patient, @investigation)
-#frmPop
-  .grid_12
-    .module
-      %h2
-        %span Patient
-      .module-body
-        = render 'form'
-      %div{:style => "clear:both;"}
+= render partial: 'submenu'
+.span10
+  = render partial: 'form'
+
+:javascript
+  $(function(){
+     $('#patient_date_of_birth').datepicker();
+  });

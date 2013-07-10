@@ -1,0 +1,31 @@
+@media print {
+  .span8{
+    width: auto;  
+  }
+  .table{
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse; 
+  }
+  .table td{
+  padding: 8px;
+  }
+  .table th{
+    padding:0px;
+    margin:0px;
+  }
+  .table tbody > tr:nth-child(odd) > td, .table tbody > tr:nth-child(odd) > th {
+    background-color: #eaeaea;
+  }
+  h3{
+    font-size:20px;
+  }
+  h2{
+    text-align:center;
+  }
+  .sign_bottom{
+    margin-right:150px;
+    float:right;
+    display:block;
+  }
+}

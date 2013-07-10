@@ -1,0 +1,12 @@
+= content_for :sidemenu do
+  .span2
+    .well{:style => "padding: 8px 0;"}
+      %ul.nav.nav-list
+        %li.nav-header Users 
+        %li{class: if_current(@sidemenu == DOCTOR)}
+          = link_to "Doctors", hospital_users_path(current_hospital, DOCTOR)
+        %li{class: if_current(@sidemenu == NUTRITIONIST)}
+          = link_to "Nutritionists", hospital_users_path(current_hospital, NUTRITIONIST)
+        %li{class: if_current(@sidemenu == INVITE)}
+          = link_to "Invite User", new_user_invitation_path 
+= render template: 'layouts/application'          

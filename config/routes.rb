@@ -1,28 +1,35 @@
-Kimaya::Application.routes.draw do |map| 
+Kimaya::Application.routes.draw do 
 
-  devise_for :users, :controllers => {:registrations => "admin/home", :sessions => "sessions", :confirmations => "confirmations"} do 
-    match 'reset_password' => 'admin/home#reset_password'
-  end
-  
-  resources :users 
-  resources :additives
-  resources :reports
-  resources :patients do
-    get 'info'
-    put 'history'
-    collection do
-      post 'search'
-    end
-    resources :investigations, :except => [:new] do
-      get 'new', :path_prefix => '/patients/:patient_id/investigations/:invetigation_id/new'
-    end
+  devise_for :admins
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-    resources :tpns, :on => :collection
+  devise_for :users, :controllers => {:registrations => "admin/home", :sessions => "sessions", :confirmations => "confirmations", invitations: "users/invitations"} do 
+    match '/hospitals/:hospital_id/reset_password' => 'admin/home#reset_password', as: :reset_password
   end
+
+  match 'hospitals/:hospital_id' => "home#index", as: :hospital_home 
   
-  match 'investigations/search' => 'investigations#search', :via => :get 
-  match 'investigations/results' => 'investigations#results', :via => :post
-  match 'investigations/autocomplete_patient_name' => 'investigations#autocomplete_patient_name', :via => :get
+  resources :hospitals do
+    resources :home
+    resources :users, path: "/users/:type" 
+    resources :additives
+    resources :reports
+
+    resources :patients do
+      match 'history'
+      collection do
+        post 'search'
+      end
+      resources :investigations 
+    end
+    resources :tpns
+    resources :tpn_market_additives
+    resources :tpn_infusions
+    match 'tpns/report/:id' => 'tpns#report', :via => :get
+    match 'tpns/label/:id' => 'tpns#label', :via => :get
+    match 'tpn/previous_tpn' => 'tpns#previous_tpn'
+    match 'tpn/previous_tpn_date' => 'tpns#previous_tpn_date'
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -72,7 +79,7 @@ Kimaya::Application.routes.draw do |map|
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => "home#index"
+  root :to => "home#index"
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,253 +1,111 @@
-.container_12
-  .grid_6
-    .module
-      %h2
-        %span TPN Additives
-      .module-body
-        = f.fields_for :tpn_additive do |inv|
-          - total = @additives.length==0 ? 1 : @additives.length
-          .input6
-            .input_day1
-              %br
-              %strong  Date
-            .input_days
-              - @additives.each do |obj|
-                .input_day
-                  %p
-                    %strong
-                      = obj.investigation.investigated_on.strftime("%d")
-                      %br
-                      = obj.investigation.investigated_on.strftime("%b")
-              .input_day
-                %strong
-                  =@investigation.investigated_on.strftime('%d')
-                  %br
-                  =@investigation.investigated_on.strftime('%b')
-              .input_day
-                .avg
-                  %strong
-                    AVG 
-          .input6
-            .input_day1
-              %p Day of Life
-            .input_days
-              - sum = 0
-              - @additives.each do |obj|
-                .input_day
-                  %p
-                    = obj.day_of_life
-                    - sum += obj.day_of_life if obj.day_of_life.present?
-              .input_day
-                = inv.text_field :day_of_life, :size => 2
-              .input_day
-                .avg
-                  = number_with_precision(sum/total)
-          .input6
-            .input_day1
-              %p Day of TPN
-            .input_days
-              - sum = 0
-              - @additives.each do |obj|
-                .input_day
-                  %p
-                    = obj.day_of_tpn
-                    - sum += obj.day_of_tpn if obj.day_of_tpn.present?
-              .input_day
-                = inv.text_field :day_of_tpn, :size => 2
-              .input_day
-                .avg
-                  = number_with_precision(sum/total)
-          .input6
-            .input_day1
-              %p Fluid Intake(ml/kg)
-            .input_days
-              - sum = 0
-              - @additives.each do |obj|
-                .input_day
-                  %p
-                    = obj.fluid_intake
-                    - sum += obj.fluid_intake if obj.fluid_intake.present?
-              .input_day
-                = inv.text_field :fluid_intake, :size => 2
-              .input_day
-                .avg
-                  = number_with_precision(sum/total)
-          .input6
-            .input_day1
-              %p Enteral Feeds(ml/day)
-            .input_days
-              - sum = 0
-              - @additives.each do |obj|
-                .input_day
-                  %p
-                    = obj.enteral_feeds
-                    - sum += obj.enteral_feeds if obj.enteral_feeds.present?
-              .input_day
-                = inv.text_field :enteral_feeds, :size => 2
-              .input_day
-                .avg
-                  = number_with_precision(sum/total)
-          .input6
-            .input_day1
-              %p TPN volume
-            .input_days
-              - sum = 0
-              - @additives.each do |obj|
-                .input_day
-                  %p
-                    = obj.tpn_volume
-                    - sum += obj.tpn_volume if obj.tpn_volume.present?
-              .input_day
-                = inv.text_field :tpn_volume, :size => 2
-              .input_day
-                .avg
-                  = number_with_precision(sum/total)
-          .input6
-            .input_day1
-              %p Amino Acids(g/kg)
-            .input_days
-              - sum = 0
-              - @additives.each do |obj|
-                .input_day
-                  %p
-                    = obj.amino_acids
-                    - sum += obj.amino_acids if obj.amino_acids.present?
-              .input_day
-                = inv.text_field :amino_acids, :size => 2
-              .input_day
-                .avg
-                  = number_with_precision(sum/total)
-          .input6
-            .input_day1
-              %p Lipids(g/kg)
-            .input_days
-              - sum = 0
-              - @additives.each do |obj|
-                .input_day
-                  %p
-                    = obj.lipids
-                    - sum += obj.lipids if obj.lipids.present?
-              .input_day
-                = inv.text_field :lipids, :size => 2
-              .input_day
-                .avg
-                  = number_with_precision(sum/total)
-          .input6
-            .input_day1
-              %p TPN Calories(Cal/kg) 
-            .input_days
-              - sum = 0
-              - @additives.each do |obj|
-                .input_day
-                  %p
-                    = obj.tpn_calories
-                    - sum += obj.tpn_calories if obj.tpn_calories.present?
-              .input_day
-                = inv.text_field :tpn_calories, :size => 2
-              .input_day
-                .avg
-                  = number_with_precision(sum/total)
-          .input6
-            .input_day1
-              %p DIR
-            .input_days
-              - sum = 0
-              - @additives.each do |obj|
-                .input_day
-                  %p
-                    = obj.dir
-                    - sum += obj.dir if obj.dir.present?
-              .input_day
-                = inv.text_field :dir, :size => 2
-              .input_day
-                .avg
-                  = number_with_precision(sum/total)
-          .input6
-            .input_day1
-              %p NER
-            .input_days
-              - sum = 0
-              - @additives.each do |obj|
-                .input_day
-                  %p
-                    = obj.ner
-                    - sum += obj.ner if obj.ner.present?
-              .input_day
-                = inv.text_field :ner, :size => 2
-              .input_day
-                .avg
-                  = number_with_precision(sum/total)
-  .grid_6
-    .module
-      %h2
-        %span Enteral Nutrition
-      .module-body{:style => "height:50%"}
-        = f.fields_for :enteral_diagnosis do |inv|
-          .input0
-            .input_left
-              = inv.check_box :ebm
-              EBM 
-            .input_right
-              = inv.check_box :formula_feeds
-              Formula Feeds
-          .input0
-          .module
-            %h2
-              %span EBM
-            .module-body
-              .input
-                .input_left
-                  = inv.radio_button :enteral_nutrition, "EBM only", :class => 'ebm'
-                  EBM only
-                .input_right
-                  = inv.radio_button :enteral_nutrition, "EBM + HMF", :class => 'ebm'
-                  EBM + HMF
-                .input_left
-                  = inv.radio_button :enteral_nutrition, "EBM + MCT", :class => 'ebm'
-                  EBM + MCT
-                .input_right
-                  = inv.radio_button :enteral_nutrition, "EBM + MCT + HMF", :class => 'ebm'
-                  EBM + MCT + HMF
-          .input0
-            %h4
-              Total Enteral Calories
-              = inv.text_field :total_enteral_calories, :size => 7
-  .grid_6
-    .module
-      %h2
-        %span Anthropometric Measurments 
-      .module-body{:style => "height:140px"}
-        = f.fields_for :anthropometric_measurement do |am|
-          .input0
-            .input2
-              %p
-                Weight
-            .input1
-              %p
-                = am.text_field :weight_measured_date,:class => 'datepicker', :size => 7
-            .input1
-              %p
-                = am.text_field :weight,:size => 7
-                Kg.
-          .input0
-            .input2
-              %p
-                Head Circ
-            .input1
-              %p
-                = am.text_field :head_circ_measured_date, :class => 'datepicker', :size => 7
-            .input1
-              %p
-                = am.text_field :head_circ,:size => 7
-                cm.
-          .input0
-            .input2
-              %p
-                Length
-            .input1
-              %p
-                = am.text_field :length_measured_date, :class => 'datepicker', :size => 7
-            .input1
-              %p
-                = am.text_field :length,:size => 7
-                cm.
+.accordion-body.collapse{id: 'additives'}
+  .accordion-inner
+    .span9.left0
+      .well.span8
+        %h5 TPN Additives
+        %hr
+        = f.simple_fields_for :tpn_additive do |inv|
+          - total = @additives.empty? ? 1 : @additives.size
+          %table.table.table-striped{id: "additives_table"}
+            %thead
+              %tr
+                %th Date
+                - @additives.each do |ad|
+                  %th= "#{ad.investigation.investigated_on.strftime('%d')} #{ad.investigation.investigated_on.strftime('%b')}"
+                %th= "#{@investigation.investigated_on.strftime('%d')} #{@investigation.investigated_on.strftime('%b')}"
+                %th AVG 
+            %tbody
+              %tr
+                %td Day Of Life
+                - @additives.each do |ad|
+                  %td= ad.day_of_life
+                %td= inv.input :day_of_life, input_html: {class: 'input-micro-mini'}, label: false
+                %td= (@additives.collect(&:day_of_life).reduce(:+).to_i / total).round(1)
+              %tr
+                %td Day Of TPN 
+                - @additives.each do |ad|
+                  %td= ad.day_of_tpn
+                %td= inv.input :day_of_tpn, input_html: {class: 'input-micro-mini'}, label: false
+                %td= (@additives.collect(&:day_of_tpn).reduce(:+).to_i / total).round(1)
+              %tr
+                %td Fluid Intake(ml/kg)
+                - @additives.each do |ad|
+                  %td= ad.fluid_intake
+                %td= inv.input :fluid_intake, input_html: {class: 'input-micro-mini'}, label: false
+                %td= (@additives.collect(&:fluid_intake).reduce(:+).to_f / total).round(2)
+              %tr
+                %td Enteral Feeds(ml/day)
+                - @additives.each do |ad|
+                  %td= ad.enteral_feeds
+                %td= inv.input :enteral_feeds, input_html: {class: 'input-micro-mini'}, label: false
+                %td= (@additives.collect(&:enteral_feeds).reduce(:+).to_f / total).round(2)
+              %tr
+                %td TPN Volume 
+                - @additives.each do |ad|
+                  %td= ad.tpn_volume
+                %td= inv.input :tpn_volume, input_html: {class: 'input-micro-mini'}, label: false
+                %td= (@additives.collect(&:tpn_volume).reduce(:+).to_f / total).round(2)
+              %tr
+                %td Amino Acids(g/kg)
+                - @additives.each do |ad|
+                  %td= ad.amino_acids
+                %td= inv.input :amino_acids, input_html: {class: 'input-micro-mini'}, label: false
+                %td= (@additives.collect(&:amino_acids).reduce(:+).to_f / total).round(2)
+              %tr
+                %td Lipids(g/kg)
+                - @additives.each do |ad|
+                  %td= ad.lipids
+                %td= inv.input :lipids, input_html: {class: 'input-micro-mini'}, label: false
+                %td= (@additives.collect(&:lipids).reduce(:+).to_f / total).round(2)
+              %tr
+                %td TPN Calories(Cal/kg)
+                - @additives.each do |ad|
+                  %td= ad.tpn_calories
+                %td= inv.input :tpn_calories, input_html: {class: 'input-micro-mini'}, label: false
+                %td= (@additives.collect(&:tpn_calories).reduce(:+).to_f / total).round(2)
+              %tr
+                %td DIR 
+                - @additives.each do |ad|
+                  %td= ad.dir
+                %td= inv.input :dir, input_html: {class: 'input-micro-mini'}, label: false
+                %td= (@additives.collect(&:dir).reduce(:+).to_f / total).round(2)
+              %tr
+                %td NER 
+                - @additives.each do |ad|
+                  %td= ad.ner
+                %td= inv.input :ner, input_html: {class: 'input-micro-mini'}, label: false
+                %td= (@additives.collect(&:ner).reduce(:+).to_f / total).round(2)
+    .span4.left0
+      .well.span4
+        %h5 Enteral Nutrition
+        %hr
+        = f.simple_fields_for :enteral_diagnosis do |inv|
+          = inv.input :ebm, inline_label: 'EBM', label: false, wrapper_html: {class: 'pull-left'} 
+          = inv.input :formula_feeds, inline_label: 'Formula Feeds', label: false
+          %h6 EBM
+          %hr
+          = inv.input :enteral_nutrition, collection: ['EBM Only', 'EBM + HMF', 'EBM + MCT', 'EBM + MCT + HMF'], as: :radio_buttons, label: false, item_wrapper_class: 'inline', wrapper_html: {class: 'pull-left'}, input_html: {class: 'stack3'}
+          = inv.input :total_enteral_calories
+    .span4.left4     
+      .well.span4.measurements
+        %h5  Anthropometric Measurements 
+        %hr
+        = f.simple_fields_for :anthropometric_measurement do |inv|
+          = inv.input :weight do
+            = inv.input :weight_measured_date, as: :string, label: false, wrapper_html: {class: 'pull-left min-bottom'}, input_html: {class: 'input-medium datepicker', readonly: :readonly}
+            = inv.input :weight, wrapper: 'append', label: false, wrapper_html: {class: 'pull-left bg_ele min-bottom'} do
+              = inv.input_field :weight, class: 'input-micro-mini'
+              %span.add-on
+                Kg 
+          = inv.input :head_circ do
+            = inv.input :head_circ_measured_date, as: :string, label: false, wrapper_html: {class: 'pull-left min-bottom'}, input_html: {class: 'input-medium datepicker', readonly: :readonly}
+            = inv.input :head_circ, wrapper: 'append', label: false, wrapper_html: {class: 'pull-left bg_ele min-bottom'} do
+              = inv.input_field :head_circ, class: 'input-micro-mini'
+              %span.add-on
+                cm 
+          = inv.input :length do
+            = inv.input :length_measured_date, as: :string, label: false, wrapper_html: {class: 'pull-left min-bottom'}, input_html: {class: 'input-medium datepicker', readonly: :readonly}
+            = inv.input :length, wrapper: 'append', label: false, wrapper_html: {class: 'pull-left bg_ele min-bottom'} do
+              = inv.input_field :length, class: 'input-micro-mini'
+              %span.add-on
+                cm 

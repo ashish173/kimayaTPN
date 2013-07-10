@@ -1,42 +1,16 @@
 class Admin::HomeController < Devise::RegistrationsController 
 
-  def new 
-    @user = User.new(params[:user])
-    render :layout => false
-  end 
-
-  def create
-    @user = User.new(params[:user])
-    respond_to do |format|
-      if @user.save
-        flash[:notice] = "User is Successfully created" 
-        format.html {redirect_to(users_path(:for => params[:for]))}
-        format.js {
-          render :js => "window.location='#{users_path(:for => params[:for])}'"
-        }
-      else
-        format.js {render :partial => 'new'}
-      end
-    end
-  end
-
   def reset_password
-    @user = User.find(params[:id])
-    if request.get?
-      reset_password_path(:id => params[:id])
-    else
-      success =  @user.reset_password!(params[:user][:password], params[:user][:password_confirmation])
-      
-      if success
-        flash[:notice] = 'Password is successfully changed.'
-        user = User.find(params[:id])
-        if current_user == nil
-          sign_in user
-        end
+    @user = User.find_by_confirmation_token(params[:token])
+    if request.put?
+      @user.reset_password!(params[:user][:password], params[:user][:password_confirmation])
+      if @user.errors.empty? 
+        flash[:notice] = 'Password changed successfully'
+        @user.confirm! 
+        sign_in @user if current_user.nil?
         redirect_to my_home_path 
       else
         flash[:notice] = "Password doesn't matched"
-        redirect_to reset_password_path(:id => params[:id])
       end
     end
   end

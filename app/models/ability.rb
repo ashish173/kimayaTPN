@@ -2,12 +2,16 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-       user ||= User.new # guest user (not logged in)
-       if user.roles_mask == Role.index("Super Admin")
-         can :manage, :all
-       else
-         can :read, :all
-       end
+    @user ||= User.new # guest user (not logged in)
+   # @current_hospital = @user.hospital 
+   # if user.roles_mask == Role.index("Admin")
+   #   can :manage, :all
+   # else
+   #   can :read, :all
+   # end
+   # if user.roles_mask = Role.index("Doctor")
+   #   can :manage, :users
+   # end
     #
     # The first argument to `can` is the action you are giving the user permission to do.
     # If you pass :manage it will apply to every action. Other common actions here are

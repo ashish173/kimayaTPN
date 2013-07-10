@@ -1,0 +1,7 @@
+= content_for :sidemenu do
+  .span2
+    .well{:style => "padding: 8px 0;"}
+      %ul.nav.nav-list
+        %li.nav-header  Patients
+        %li
+          = link_to "Add Patient", new_hospital_patient_path(current_hospital)

@@ -1,286 +1,216 @@
+= simple_form_for [ current_hospital, @tpn ], :html => { :class => "form-horizontal well"}, :wrapper => :tpn do |f|
+  %h3{:style => "text-align:center"}
+    TPN Information
+  .form-inputs.row
+    = f.input :day_of_tpn, :wrapper_html => { :class => 'span3'}, input_html: {style:'width:50px;'}
+    = f.association :user, collection: @doctors, include_blank: false, :wrapper_html => { :class => "span3" }, label: 'Doctor'
+    = f.association :patient, collection: @patients, prompt: "choose", :wrapper_html => {:class => "span3"}
+  %div{:style => "width:40%;float:left;" }
+    %h3{:style => "margin-left:60px;"}
+      Daily Fluid Volume Intake
+    .form-inputs.row
+      %label.label_custom4 Previous TPN Date
+      %input.input_custom2{ :id => "previous_tpn_date", :class => "datepicker", "data-date-format" => "yyyy/mm/dd" }
+      = f.hidden_field :tpn_date, :value => "#{ Date.today }"
+      = f.input :current_weight
+      %input.input_custom{:id => "previous_current_weight", :disabled => true}
+      %label.label_custom Kg
+      = f.input :dextrose_conc
+      %input.input_custom{:id => "previous_dextrose_conc", :disabled => true}
+      %label.label_custom %
+      = f.input :total_fluid_intake, label: 'Fluid Intake'
+      %input.input_custom{:id => "previous_total_fluid_intake", :disabled => true}
+      %label.label_custom ml/kg/day
+      = f.input :fat_volume, label: 'Fat Required'
+      %input.input_custom{:id => "previous_fat_volume", :disabled => true}
+      %label.label_custom gm/kg/day
+      = f.input :fat_concentration, label: 'Lipid Concentration'
+      %input.input_custom{:id => "previous_fat_concentration", :disabled => true}
+      %label.label_custom %
+      = f.input :factor, label: 'Overfill Factor'
+      %input.input_custom{:id => "previous_factor", :disabled => true}
+      %label.label_custom Kg
+  %div{:style => "width:60%;float:left;"}
+    %h3{ :style => "margin-left:222px;" }
+      Additive Nutrients
+    .form-inputs.row{ :style => "margin-top:60px;float:left;"}
+      = f.input :amino_acid
+      %input.input_custom1{ :id => "amino_acid_previous", :disabled => true}
+      %label.label_custom1{:style => "padding-left:8px;"} gm/kg  
+      %a.button{:id => "amino", :class => "button_custom btn btn-primary", 'data-target' => '#amino-modal', 'data-toggle' => 'modal'}
+      = f.input :amino_acid_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
+      %input{:id => :amino_acid_additive, :class => 'input_custom1',  :readonly => true}
+      %label.label_custom1 %  
+      = f.input :sodium_chloride
+      %input.input_custom1{ :id => "sodium_chloride_previous", :disabled => true}
+      %label.label_custom1 meq/kg  
+      %a.button{:id => "sodium", :class => "button_custom btn btn-primary", 'data-target' => '#sodium-modal', 'data-toggle' => 'modal'}
+      = f.input :sodium_chloride_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
+      %input{ :id => :sodium_chloride_additive, :class => 'input_custom1', :readonly => true}
+      %label.label_custom1 meq/ml 
+      = f.input :potassium_chloride
+      %input.input_custom1{ :id => "potassium_chloride_previous", :disabled => true}
+      %label.label_custom1 meq/kg  
+      %a.button{:id => "potassium", :class => "button_custom btn btn-primary",  'data-target' => '#potassium-modal', 'data-toggle' => 'modal'}
+      = f.input :potassium_chloride_additive_id,:as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
+      %input{ :id => :potassium_chloride_additive, :class => 'input_custom1', :readonly => true}
+      %label.label_custom1 meq/ml 
+      = f.input :calcium
+      %input.input_custom1{ :id => "calcium_previous", :disabled => true}
+      %label.label_custom1 meq/kg  
+      %a.button{:id => "calcium", :class => "button_custom btn btn-primary",  'data-target' => '#calcium-modal', 'data-toggle' => 'modal'}
+      = f.input :calcium_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
+      %input{ :id => :calcium_additive, :class => 'input_custom1', :readonly => true}
+      %label.label_custom1 meq/ml 
+      = f.input :magnesium
+      %input.input_custom1{ :id => "magnesium_previous", :disabled => true}
+      %label.label_custom1 meq/kg  
+      %a.button{:id => "magnesium", :class => "button_custom btn btn-primary",  'data-target' => '#magnesium-modal', 'data-toggle' => 'modal'}
+      = f.input :magnesium_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
+      %input{ :id => :magnesium_additive, :class => 'input_custom1', :readonly => true}
+      %label.label_custom1 meq/ml 
+      = f.input :administration, collection: ['Peripheral Line', 'Central Line'], as: :radio_buttons, :wrapper_html => {:class => "span6" }
+  = f.button :submit, :Class => "btn btn-primary", :style => "margin-left:400px;"
+#amino-modal{:class => "modal hide fade"}
+  .modal-header
+    %button{type: 'button', class: 'close', data:{dismiss: "modal"}} x
+    %h2
+      Additives Concentration
+  .modal-body
+    %table#aminoTable.table
+      %thead
+        %th{:style => "display:none;"}
+        %th
+          Available Dose
+        %th
+          Concentration
+        %th
+          Unit
+        %tbody 
+        - TpnMarketAdditive.amino_acid.each do |additive|
+          %tr
+            %td{:style => "display:none;"}
+              = additive.id
+            %td
+              = additive.market_name
+            %td
+              = additive.constant
+            %td
+              = additive.unit
+  .modal-footer
+    %button{class: 'btn btn-primary', data:{dismiss: "modal"}, "aria-hidden" => true } Close    
+#sodium-modal{:class => "modal hide fade"}
+  .modal-header
+    %button{type: 'button', class: 'close', data:{dismiss: "modal"}} x
+    %h2
+      Additives Concentration
+  .modal-body
+    %table#sodiumTable.table
+      %thead
+        %th{:style => "display:none;"}
+        %th
+          Available Dose
+        %th
+          Concentration
+        %th
+          Unit
+        %tbody 
+        - TpnMarketAdditive.sodium_chloride.each do |additive|
+          %tr
+            %td{:style => "display:none;"}
+              = additive.id
+            %td
+              = additive.market_name
+            %td
+              = additive.constant
+            %td
+              = additive.unit
+  .modal-footer
+    %button{class: 'btn btn-primary', data:{dismiss: "modal"}, "aria-hidden" => true } Close    
+#potassium-modal{:class => "modal hide fade"}
+  .modal-header
+    %button{type: 'button', class: 'close', data:{dismiss: "modal"}} x
+    %h2
+      Additives Concentration
+  .modal-body
+    %table#potassiumTable.table
+      %thead
+        %th{:style => "display:none;"}
+        %th
+          Available Dose
+        %th
+          Concentration
+        %th
+          Unit
+        %tbody 
+        - TpnMarketAdditive.potassium_chloride.each do |additive|
+          %tr
+            %td{:style => "display:none;"}
+              = additive.id
+            %td
+              = additive.market_name
+            %td
+              = additive.constant
+            %td
+              = additive.unit
+  .modal-footer
+    %button{class: 'btn btn-primary', data:{dismiss: "modal"}, "aria-hidden" => true } Close    
+#calcium-modal{:class => "modal hide fade"}
+  .modal-header
+    %button{type: 'button', class: 'close', data:{dismiss: "modal"}} x
+    %h2
+      Additives Concentration
+  .modal-body
+    %table#calciumTable.table
+      %thead
+        %th{:style => "display:none;"}
+        %th
+          Available Dose
+        %th
+          Concentration
+        %th
+          Unit
+        %tbody 
+        - TpnMarketAdditive.calcium.each do |additive|
+          %tr
+            %td{:style => "display:none;"}
+              = additive.id
+            %td
+              = additive.market_name
+            %td
+              = additive.constant
+            %td
+              = additive.unit
+  .modal-footer
+    %button{class: 'btn btn-primary', data:{dismiss: "modal"}, "aria-hidden" => true } Close    
+#magnesium-modal{:class => "modal hide fade"}
+  .modal-header
+    %button{type: 'button', class: 'close', data:{dismiss: "modal"}} x
+    %h2
+      Additives Concentration
+  .modal-body
+    %table#magnesiumTable.table
+      %thead
+        %th{:style => "display:none;"}
+        %th
+          Available Dose
+        %th
+          Concentration
+        %th
+          Unit
+        %tbody 
+        - TpnMarketAdditive.magnesium.each do |additive|
+          %tr
+            %td{:style => "display:none;"}
+              = additive.id
+            %td
+              = additive.market_name
+            %td
+              = additive.constant
+            %td
+              = additive.unit
+  .modal-footer
+    %button{class: 'btn btn-primary', data:{dismiss: "modal"}, "aria-hidden" => true } Close   
 :javascript
-  var patients = #{@patients}
-  $(document).ready(function() {
-    $("#patient_name").autocomplete(patients);
-    $([[$('#tpn_amino_acid_additive_id'),$('.amino_acid'),$("input[name='amino[acid]']"),$('#amino')],
-      [$('#tpn_sodium_chloride_additive_id'),$('.sodium_chloride'),$("input[name='sodium[chloride]']"),$('#sodium')],
-      [$('#tpn_potassium_chloride_additive_id'),$('.potassium_chloride'),$("input[name='potassium[chloride]']"),$('#potassium')],
-      [$('#tpn_calcium_additive_id'),$('.calcium'),$("input[name='calcium[]']"),$('#calcium')],
-      [$('#tpn_magnesium_additive_id'),$('.magnesium'),$("input[name='magnesium[]']"),$('#magnesium')]]).each(function(){
-      var temp = this;
-      temp[1].dialog({
-        autoOpen: false,
-        height: 260,
-        width: 400,
-        modal: true,
-        buttons: {
-          OK: function() {
-            $(temp[0]).val(parseFloat(temp[2].filter(':checked').val()))
-            $(this).dialog("close"); 
-          }
-       }     
-      });
-      temp[3].click(function() {
-        temp[1].dialog('open');
-        return false;
-      });
-     });
-  });
-
-
-= form_for(@tpn, :url => patient_tpns_path, :remote => true) do |f|
-  #header
-    .container_16
-      .grid_5
-        = f.label :day_of_tpn
-        = f.text_field :day_of_tpn,  :size => 16
-      .grid_6
-        = label :doctor, "doctor"
-        = text_field :doctor, "doctor", :size => 23, :value => current_user.name
-      .grid_5
-        = label :patient_name, "Patient Name"
-        = text_field :patient, "name", :size => 23
-    %hr
-    .container_16
-      .grid_6
-        %table
-          %thead
-            %tr
-              %th{:style => "width:45%"} 
-              %th{:style => "width:30%"}
-              %th{:style => "width:25%"} 
-          %tbody
-            %tr
-              %td
-                Current Weight
-              %td
-                = f.text_field :current_weight, :size => 5 
-              %td
-                = "(kg)"
-            %tr 
-              %td
-                Dextrose Conc
-              %td
-                = f.text_field :dextrose_conc, :size => 5
-              %td
-                = "(%)"
-            %tr
-              %td
-                Total Fluid Intake
-              %td
-                = f.text_field :total_fluid_intake, :size => 5
-              %td
-                = "(ml/kg/day)"
-            %tr
-              %td
-                Surgical Losses
-              %td
-                = f.text_field :losses, :size => 5
-              %td
-                = "(ml/day)"
-            %tr 
-              %td
-                Fat Required
-              %td
-                = f.text_field :fat_volume, :size => 5
-              %td
-                = "(gm/kg/day)"
-            %tr
-              %td
-                Lipid Concentration
-              %td
-                = f.text_field :fat_concentration, :size => 5
-              %td
-                = "(%)"
-            %tr
-              %td
-                Overfill Factor
-              %td
-                = f.text_field :factor, :size => 5
-              %td
-                = "--"
-        %p
-        = f.submit "Calculate"
-        = button_to_function "Cancel", "$.facebox.close()"
-      .grid_6
-        %table
-          %thead
-            %tr
-              %th{:style => "width:47%"} 
-              %th{:style => "width:27%"}
-              %th{:style => "width:20%"} 
-          %tbody
-            %tr
-              %td
-                = f.label :amino_acid
-              %td
-                = f.text_field :amino_acid, :size => 5, :default => 0
-              %td
-                = "(gm/kg)"
-            %tr
-              %td
-                = f.label :sodium_chloride
-              %td
-                = f.text_field :sodium_chloride, :size => 5
-              %td
-                = "(meq/kg)"
-            %tr 
-              %td
-                = f.label :potassium_chloride
-              %td
-                = f.text_field :potassium_chloride, :size => 5
-              %td
-                = "(meq/kg)"
-            %tr
-              %td
-                = f.label :calcium
-              %td
-                = f.text_field :calcium, :size => 5
-              %td
-                = "(meq/kg)"
-            %tr 
-              %td
-                = f.label :magnesium
-              %td
-                = f.text_field :magnesium, :size => 5
-              %td
-                = "(meq/kg)"
-        %table
-          %tr{:align => 'center'}
-            %td{:style => "width:45%"}
-              = f.label :administration
-            %td{:style => "width:5%"}
-              = radio_button "line", '',"peripheral", :checked => true, :id => "peripheral_line"
-            %td{:style => "width:50%"}
-              = f.label :peripheral_line
-      .grid_3 
-        %table
-          %thead
-            %tr
-              %th{:style => "width:47%"} 
-              %th{:style => "width:27%"}
-              %th{:style => "width:20%"} 
-          %tbody
-            %tr
-              %td
-                = f.text_field :amino_acid_additive_id, :size => 3, :default => 0, :readonly => true
-              %td
-                = "(%)"
-              %td
-                = link_to "Modify", "#", :class => "additive", :id => "amino"
-              %td
-                %div{:class => 'amino_acid', :title => 'Market names'}
-                  %table{:width => 300, :height => 100}
-                    %tr{:align => 'left'}
-                      %th{:width => 50}
-                        = 'Market Name'
-                      %th
-                        = 'Constant'
-                    - TpnMarketAdditive.amino_acid.each do |content|
-                      %tr
-                        %td
-                          = radio_button "amino", 'acid', content.constant, :checked => true
-                        %td 
-                          = content.market_name
-                        %td 
-                          = content.constant
-            %tr
-              %td
-                = f.text_field :sodium_chloride_additive_id, :size => 3, :default => 0, :readonly => true
-              %td
-                = "(meq/ml)"
-              %td
-                = link_to "Modify", "#", :class => "additive", :id => "sodium"
-              %td
-                %div{:class => 'sodium_chloride', :title => 'Market names'}
-                  %table{:width => 300, :height => 100}
-                    %tr
-                      %th{:width => 50}
-                        = 'Market Name'
-                      %th
-                        = 'Constant'
-                    - TpnMarketAdditive.sodium_chloride.each do |content|
-                      %tr
-                        %td
-                          = radio_button "sodium", 'chloride', content.constant, :checked => true
-                        %td 
-                          = content.market_name
-                        %td 
-                          = content.constant
-            %tr
-              %td
-                = f.text_field :potassium_chloride_additive_id, :size => 3, :default => 0, :readonly => true
-              %td
-                = "(meq/ml)"
-              %td
-                = link_to "Modify", "#", :class => "additive", :id => "potassium"
-              %td
-                %div{:class => 'potassium_chloride', :title => 'Market names'}
-                  %table{:width => 300, :height => 100}
-                    %tr{:align => 'left'}
-                      %th{:width => 50}
-                        = 'Market Name'
-                      %th
-                        = 'Constant'
-                    - TpnMarketAdditive.potassium_chloride.each do |content|
-                      %tr
-                        %td
-                          = radio_button "potassium", 'chloride', content.constant, :checked => true
-                        %td 
-                          = content.market_name
-                        %td
-                          = content.constant
-            %tr 
-              %td
-                = f.text_field :calcium_additive_id, :size => 3, :default => 0, :readonly => true
-              %td
-                = "(meq/ml)"
-              %td
-                = link_to "Modify", "#", :class => "additive", :id => "calcium"
-              %td
-                %div{:class => 'calcium', :title => 'Market names'}
-                  %table{:width => 300, :height => 100}
-                    %tr{:align => 'left'}
-                      %th{:width => 50}
-                        = 'Market Name'
-                      %th
-                        = 'Constant'
-                    - TpnMarketAdditive.calcium.each do |content|
-                      %tr
-                        %td
-                          = radio_button "calcium", '', content.constant , :checked => true
-                        %td 
-                          = content.market_name
-                        %td
-                          = content.constant
-            %tr
-              %td
-                = f.text_field :magnesium_additive_id, :size => 3, :default => 0, :readonly => true
-              %td
-                = "(meq/ml)"
-              %td
-                = link_to "Modify", "#", :class => "additive", :id => "magnesium"
-              %td
-                %div{:class => 'magnesium', :title => 'Market names'}
-                  %table{:width => 300, :height => 100}
-                    %tr{:align => 'left'}
-                      %th{:width => 50}
-                        = 'Market Name'
-                      %th
-                        = 'Constant'
-                    - TpnMarketAdditive.magnesium.each do |content|
-                      %tr
-                        %td
-                          = radio_button "magnesium", '', content.constant, :checked => true
-                        %td 
-                          = content.market_name
-                        %td
-                          = content.constant
-  
-        %p
-        %table
-          %tr{:align => 'center'}
-            %td{:style => "width:5%"}
-              = radio_button "line", "","central", :checked => false, :id => "central_line"
-            %td{:style => "width:50%"}
-              = f.label :central_line
+  $('#previous_tpn_date').change(function(){ $.ajax({ url:"/hospitals/#{current_hospital.slug}/tpn/previous_tpn",data:{ patient_id: $('#tpn_patient_id').val(),date: $('#previous_tpn_date').val() }, beforeSend: function() {  } }); });
+  $('#tpn_patient_id').change(function(){ $('#previous_tpn_date').popover('hide'); $.ajax({ url:"/hospitals/#{current_hospital.slug}/tpn/previous_tpn_date", data:{ patient_id: $('#tpn_patient_id').val() }, complete: function(data) { eval(data.responseText);   } }); } );

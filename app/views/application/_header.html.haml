@@ -1,0 +1,16 @@
+%ul.nav
+  - if current_user.admin?
+    %li{:class => if_current(@selected_menu == DOCTOR)}
+      = link_to "Users", hospital_users_path(current_hospital, DOCTOR) 
+    %li{:class => if_current(@selected_menu == PATIENT)}
+      = link_to "Patients", hospital_patients_path(current_hospital) 
+  - else
+    %li{:class => if_current(@selected_menu == PATIENT)}
+      = link_to "Patients", hospital_patients_path(current_hospital) 
+    %li{:class => if_current(@selected_menu == "investigation")}
+      =# link_to "Daily Investigations", hospital_investigations_search_path(current_hospital)
+  %li{:class => if_current(@selected_menu == 'tpn')}
+    = link_to "TPN Calculation", new_hospital_tpn_path(current_hospital)
+  %li{:class => if_current(@selected_menu == 'report')}
+    = link_to "Report", hospital_reports_path(current_hospital)
+

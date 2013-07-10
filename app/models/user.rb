@@ -1,42 +1,60 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :pincode, :residence_telephone,
+    :emergency_telephone, :mobile_number, :additional_detail, :role_id
+  # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
+  devise :invitable, :database_authenticatable, :registerable,
+    :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :user_patients, :through => :admissions, :source => :patient
   has_many :admissions
-
-  devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable, :confirmable
-  validates_presence_of :name, :message => :user_name_blank
-  validates_presence_of :email, :message => :email_blank
-  validates :roles_mask, :presence => true
-  validates_presence_of :residence_telephone, :message => :phone_number_blank
+  has_many :tpns
+  has_and_belongs_to_many :hospitals
+  belongs_to :role
+  validates :name, :role_id, :presence => true
+  #validates :residence_telephone, presence: true, on: :update
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :password, :email, :name, :address, :city, :pincode, :residence_telephone, :emergency_telephone, :mobile_number, :additional_detail, :roles_mask
 
+  # validate :user_count_within_limit, :on => :create
 
-  def reset_email
-    self.confirmed_at = nil
-    self.save!
-    self.send_confirmation_instructions
-  end
-
-  scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**Role.index(role.to_s)} > 0"} }
-  scope :by_role, lambda{|role_mask| {:conditions => "roles_mask = #{role_mask}"}}
+  scope :by_role, lambda{|role_id| where(:role_id => role_id)}
 
   scope :doctors, by_role(DOCTOR)
   scope :nutritionists, by_role(NUTRITIONIST)
 
-  def role=(role)
-    self.roles_mask=role
-  end
 
 
   def role?(role)
-    self.roles_mask == role
+    role.id == role
   end
-  before_validation(:on => :create) do
-    self.password = ActiveSupport::SecureRandom.base64(6) if self.password.nil?
+  
+  def admin?
+    role?(ADMIN)
+  end
+
+  def doctor?
+    role?(DOCTOR)
+  end
+
+  def nutritionist?
+   role?(NUTRITIONIST)
+  end
+
+  def current_hospital
+    hospitals.first
+  end
+  
+  def user_count_within_limit
+    if doctor?
+      errors.add(:base,"Exceeded no. of Doctors. Please contact administrator") if hospitals.users.doctors.size >= hospitals.doctors_count
+    elsif nutritionist?
+      errors.add(:base,"Exceeded no. of Nutritionists. Please contact administrator") if hospitals.users.nutritionists.size >= hospitals.nutritionists_count
+    end
   end
 end
 

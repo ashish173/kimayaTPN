@@ -1,0 +1,209 @@
+/*
+ *= require_self
+ *= require dataTables/jquery.dataTables.bootstrap
+ *= require bootstrap-datepicker
+ *= require datetimepicker
+ *= require reports
+*/
+@import "bootstrap";
+@import "bootstrap-responsive";
+@import "bootswatch";
+
+.form-signin {
+    max-width: 300px;
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.n-error {
+    background-color: #ffc6ca;
+    border-color: #efb9c3;
+}
+.input0{
+    width: 100%;
+    margin: 5px;
+    float: left;
+}
+.input5 {
+    width: 25%;
+    float: left;
+}
+.input_left, .input_right {
+    width: 50%;
+}
+.input_left{
+    float:left;
+}
+.input_right{
+    float:right;
+}
+.input_box{
+    border: 1px solid #CCC;
+    margin-right: 15%;
+    padding: 3px;
+    float: right;
+    width:40px;
+    margin-bottom: 0px !important;
+}
+.input1 {
+    width: 30%;
+    float:left;
+}
+.input2{
+    width:15%;
+    float:left;
+}
+.input_day1 {
+    width: 32%;
+    margin-top: 10px;
+    float:left;
+}
+.input_days, .avg {
+    float: right;
+    width: 65%;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    margin-top: 5px;
+}
+.input6 {
+    width: 100%;
+    margin: 2px;
+    float:left;
+}
+.row_selected
+{
+    background-color:burlywood;
+}
+.inputx input{
+  width: 52px;
+}
+.inputx select{
+    width:180px;
+}
+.inputy input{
+  width: 52px;
+  float: right;
+}
+.inputy label{
+  width: 168px !important;
+}
+.span_custom{
+  width:340px;
+}
+.input_custom{
+  width:40px;
+  float:left;
+}
+.label_custom{
+  float:left;
+  margin-left:10px;
+}
+.label_custom1{
+  float:left; 
+}
+.label_custom2{
+  float: left;
+  width: 70px;
+}
+.label_custom3{
+  float: left;
+  margin-left:20px;
+}
+.label_custom4{
+  float:left;
+  width: 150px;
+  margin-left:100px;
+  margin-bottom:45px;
+}
+.input_custom1{
+  float:left;
+  width:40px;
+  margin-right:20px;
+}
+.input_custom2{
+  float:left;
+  width:100px;
+}
+.button_custom{
+  float:left;
+  width:14px;
+  height:20px;
+  margin-right:32px;
+  margin-left:46px;
+}
+
+.input-micro-mini{
+  width: 30px;
+}
+
+.control-group.pull-left .controls {
+  margin-left: 0px !important;
+}
+
+.control-group.pull-left.bg_ele .controls {
+  margin-left: 21px !important;
+}
+
+.apgar_label {
+  float: left;
+  width: 130px;
+}
+
+.stack3 {
+  margin-left: 18px;
+}
+
+.min-bottom {
+  margin-bottom: 0 !important;
+}
+
+#investigation .control-label, #additives .control-label {
+  width: 130px;
+}
+
+#additives .measurements .control-label {
+  width: 70px;
+}
+
+#investigation .controls, #additives .controls {
+   margin-left: 150px;
+} 
+
+#additives .measurements .controls {
+   margin-left: 100px;
+} 
+
+.left0 {
+  margin-left: 0;
+}
+
+.left4 {
+  margin-left: 80px;
+}
+
+#additives_table .controls {
+  margin-left: 0;
+}
+
+.sign_bottom{
+    display:none;
+}
+
+table.dataTable thead .sorting {
+  background:  url("/assets/dataTables/sort_both.png") no-repeat scroll right center #015B4E !important;
+}
+
+table.dataTable thead .sorting_asc {
+  background:  url("/assets/dataTables/sort_asc.png") no-repeat scroll right center #015B4E !important;
+}
+
+table.dataTable thead .sorting_desc {
+  background:  url("/assets/dataTables/sort_desc.png") no-repeat scroll right center #015B4E !important;
+}

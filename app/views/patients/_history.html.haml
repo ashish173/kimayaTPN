@@ -1,190 +1,61 @@
-= javascript_include_tag "jquery.ui.datepicker", "application"
-= form_for(@patient, :url => patient_history_path(@patient)) do |f|
-  .module
-    %h2
-      %span Patient History
-    .message
-      All Fields are compulsary
-    .module-body
-      .container_12
-        .grid_6
-          .module
-            %h2
-              %span Mother's history
-            .module-body
-              = f.fields_for :mother_history do |m|
-                .input0
-                  .input5
-                  .input5
-                    = m.radio_button :is_anc, true, :class => 'anc'
-                    ANC
-                  .input5
-                    = m.radio_button :is_anc, false, :class => 'anc'
-                    Non ANC
-                .input0
-                  .input5
-                    Past Obstetric History
-                  .input5
-                    G : 
-                    = m.text_field :g , :size => 2
-                  .input5
-                    P :
-                    = m.text_field :p , :size => 2
-                  .input5
-                    A :
-                    = m.text_field :a , :size => 2
-                .input0
-                  .input5
-                    Maternal USG
-                  .input5
-                    = m.text_field :maternal_usg
-                .input0
-                  .input5
-                    Age
-                  .input5
-                    = m.radio_button :age, "< 18", :class => 'age'
-                    = "< 18"
-                  .input5
-                    = m.radio_button :age, "18 - 35", :class => 'age'
-                    = "18 - 35"
-                  .input5
-                    = m.radio_button :age, "> 35", :class => 'age'
-                    = "> 35"
-                .input0
-                  .input5
-                    Pre-pregnancy wt.
-                  .input5
-                    = m.radio_button :pre_pregnancy_weight, "<= 40kg", :class => 'weight'
-                    = "<= 40kg"
-                  .input5
-                    = m.radio_button :pre_pregnancy_weight, "> 40kg", :class => 'weight'
-                    = "> 40kg"
-                .input0
-                  .input5
-                    Height
-                  .input5
-                    = m.radio_button :height, "<= 145 cm", :class => 'height'
-                    = "<= 145 cm"
-                  .input5
-                    = m.radio_button :height, "> 145 cm", :class => 'height'
-                    = "> 145 cm"
-                .input0
-                  .input5
-                    Toxemia
-                  .input5
-                    = m.radio_button :toxemia, "mild", :class => 'toxemia'
-                    mild
-                  .input5
-                    = m.radio_button :toxemia, "moderate", :class => 'toxemia'
-                    moderate
-                  .input5
-                    = m.radio_button :toxemia, "severe", :class => 'toxemia'
-                    severe 
-                .input0
-                  .input5
-                    Diabetes
-                  .input5
-                    = m.radio_button :diabetes, "gestational", :class => 'diabetes'
-                    Gestational
-                  .input5
-                    = m.radio_button :diabetes, "iddm", :class => 'diabetes'
-                    IDDM
-                  .input5
-                    = m.radio_button :diabetes, "niddm", :class => 'diabetes'
-                    NIDDM
-                .input0
-                  .input5
-                    Medical Problems
-                  .input5
-                    = m.text_field :medical_history 
-                .input0
-                  .input5
-                  .input5
-                    = check_box_tag "patient[mother_history_attributes][other_medical_problems][]", MEDICAL_PROBLEMS[0], @patient.mother_history.other_medical_problems.include?(MEDICAL_PROBLEMS[0]) 
-                    = MEDICAL_PROBLEMS[0] 
-                  .input5
-                    = check_box_tag "patient[mother_history_attributes][other_medical_problems][]", MEDICAL_PROBLEMS[1], @patient.mother_history.other_medical_problems.include?(MEDICAL_PROBLEMS[1]) 
-                    = MEDICAL_PROBLEMS[1] 
-                  .input5
-                    = check_box_tag "patient[mother_history_attributes][other_medical_problems][]", MEDICAL_PROBLEMS[2], @patient.mother_history.other_medical_problems.include?(MEDICAL_PROBLEMS[2]) 
-                    = MEDICAL_PROBLEMS[2] 
-                .input0
-                  .input5
-                    Antenatal Steroids
-                  .input5
-                    = m.radio_button :is_antenatal_steroids, true, :class => 'steroids'
-                    Yes
-                  .input5
-                    = m.radio_button :is_antenatal_steroids, false, :class => 'steroids'
-                    No
-        .grid_6 
-          .module
-            %h2
-              %span Birth history
-            .module-body{:style => "height:425px"}
-              = f.fields_for :patient_history do |p|
-                .input0
-                  .input5
-                    Date & time of admission
-                  .input1
-                    = f.fields_for :admission do |adm|
-                      = adm.text_field :admitted_on,:value => @patient.admission.try(:admitted_on).try(:strftime,'%d-%m-%Y'),:class => 'datepicker'
-                      =@patient.admission.errors.on(:admitted_on)
-                .input0
-                  .input5
-                    Gestational Age
-                  .input1
-                    = p.text_field :gestational_age
-                .input0
-                  .input5
-                    GA
-                  .input5
-                    = p.radio_button :ga, "AGA", :class => 'g_age'
-                    = "AGA"
-                  .input5
-                    = p.radio_button :ga, "SGA", :class => 'g_age'
-                    = "SGA"
-                  .input5
-                    = p.radio_button :ga, "LGA", :class => 'g_age'
-                    = "LGA"
-                .input0
-                  .input5
-                    Mode of Delivery
-                  .input4
-                    = p.select :mode_of_delivery, Modes_of_delivery,{:include_blank => "---select---"}, :style => "width:292px;"
-                .input0
-                  .input5
-                    Rupture of Membranes (hours)
-                  .input5
-                    = p.radio_button :rupture_of_membranes, "< 24", :class => 'rupture'
-                    = "< 24"
-                  .input5
-                    = p.radio_button :rupture_of_membranes, "24 - 48", :class => 'rupture'
-                    = " 24 - 48"
-                  .input5
-                    = p.radio_button :rupture_of_membranes, "> 48", :class => 'rupture'
-                    = "> 48"
-                .input0
-                  .input_left
-                    Resuscitation: Apgar scores:
-                  .input_right
-                    1 min:
-                    = p.text_field :apgar_score_1, :size => 13
-                .input0
-                  .input_left
-                  .input_right
-                    5 min:
-                    = p.text_field :apgar_score_5, :size => 13
-                .input0
-                  .input_left
-                  .input_right
-                    20 min:
-                    = p.text_field :apgar_score_20, :size => 13
-      .buttons
-        = f.submit "Next", :class => "submit-green"
-        = link_to "Cancel", patients_path, :class => "submit-gray"
-- unless @patient.errors.empty?
-  :javascript
-    $(function() {
-     clearFormErrors();
-    });
+= simple_form_for @patient, :url => hospital_patient_history_path(current_hospital, @patient), html: { class: 'form-horizontal well' } do |f|
+  %fieldset
+    %legend Patient History
+    .span5
+      %h3 Mothers History
+      %hr
+      = f.simple_fields_for :mother_history do |m|
+        = m.input :is_anc, as: :radio_buttons, collection: [['ANC', true], ['Non ANC', false]], label: false, item_wrapper_class: 'inline'
+        .span4
+          .row
+            = m.label :past_obstetric_history
+            = m.input :g, wrapper: 'prepend', label: false, wrapper_html: {class: 'pull-left bg_ele'}do 
+              %span.add-on
+                G
+              = m.input_field :g, class: 'input-micro-mini'
+            = m.input :p, wrapper: 'prepend', label: false, wrapper_html: {class: 'pull-left'} do
+              %span.add-on
+                P
+              = m.input_field :p, class: 'input-micro-mini'
+            = m.input :a, wrapper: 'prepend', label: false, wrapper_html: {class: 'pull-left'} do 
+              %span.add-on
+                A
+              = m.input_field :a, class: 'input-micro-mini'
+
+        = m.input :maternal_usg, label: "Maternal USG"
+        = m.input :age, as: :radio_buttons, collection: ['< 18', '18 - 35', '> 35'], item_wrapper_class: 'inline'
+        = m.input :pre_pregnancy_weight, as: :radio_buttons, collection: ['<= 40kg', '> 40kg'], item_wrapper_class: 'inline'
+        = m.input :height, as: :radio_buttons, collection: ['<= 145 cm', '> 145 cm'], item_wrapper_class: 'inline'
+        = m.input :toxemia, as: :radio_buttons, collection: ['mild', 'moderate', 'severe'], item_wrapper_class: 'inline'
+        = m.input :diabetes, as: :radio_buttons, collection: ['Gestational', 'IDDM', 'NIDDM'], item_wrapper_class: 'inline'
+        = m.input :medical_history
+        = m.input :other_medical_problems, as: :check_boxes, collection: MEDICAL_PROBLEMS, item_wrapper_class: 'inline'
+        = m.input :is_antenatal_steroids, as: :radio_buttons, label: "Antenatal Steroids", item_wrapper_class: 'inline'
+    .span4
+      %h3 Birth History
+      %hr
+      = f.simple_fields_for :admission do |adm|
+        = adm.input :admitted_on, as: :string, input_html: {class: 'datepicker'}
+      = f.simple_fields_for :patient_history do |p|
+        = p.input :gestational_age
+        = p.input :ga, as: :radio_buttons, collection: ['AGA', 'SGA', 'LGA'], item_wrapper_class: 'inline'
+        = p.input :mode_of_delivery, collection: MODES_OF_DELIVERY, item_wrapper_class: 'inline'
+        = p.input :rupture_of_membranes, as: :radio_buttons, collection: ['< 24', '24 - 48', '> 48'], label: 'Rupture of Membranes(hours)', item_wrapper_class: 'inline'
+        .span4
+          .row
+            = p.label :score, 'Resuscitation Apgar scores (minutes)', class: 'apgar_label'
+            = p.input :apgar_score_1, wrapper: 'prepend', label: false, wrapper_html: {class: 'pull-left bg_ele'} do
+              %span.add-on
+                1
+              = p.input_field :apgar_score_1, class: 'input-micro-mini'
+            = p.input :apgar_score_5, wrapper: 'prepend', label: false, wrapper_html: {class: 'pull-left'} do
+              %span.add-on
+                5
+              = p.input_field :apgar_score_5, class: 'input-micro-mini'
+            = p.input :apgar_score_1, wrapper: 'prepend', label: false, wrapper_html: {class: 'pull-left'} do
+              %span.add-on
+                20
+              = p.input_field :apgar_score_20, class: 'input-micro-mini'
+  .form-actions    
+    = f.submit "Next", :class => "btn btn-primary"
+    = link_to "Cancel", [current_hospital, @patient], :class => "btn"

@@ -1,14 +1,14 @@
-%table#myTable.tablesorter
+%table#myTable.table.table-bordered.table-striped.table-hover
   %thead
     %tr
-      %th{:style => "width:5%"} No
-      %th{:style => "width:15%"} Registration number
-      %th{:style => "width:10%"} Name 
-      %th{:style => "width:10%"} Admitted on 
-      %th{:style => "width:10%"} Birth Wt. 
-      %th{:style => "width:10%"} Gender
-      %th{:style => "width:10%"} Phone Number 
-      %th{:style => "width:7%"} Profile
+      %th No
+      %th Registration number
+      %th Name 
+      %th Admitted on 
+      %th Birth Wt. 
+      %th Gender
+      %th Phone Number 
+      %th Profile
   %tbody
     - counter = 1
     - @patients.each do |patient|
@@ -16,9 +16,9 @@
         %td
           =  counter
         %td
-          =  patient.registration_number
+          =  link_to patient.registration_number, edit_hospital_patient_path(current_hospital, patient)
         %td
-          =  patient.name
+          =  link_to patient.name, edit_hospital_patient_path(current_hospital, patient)
         %td
           =  patient.admission.try(:admitted_on).try(:strftime,"%d-%m-%Y")
         %td
@@ -28,17 +28,13 @@
         %td
           =  patient.emergency_telephone
         %td
-          %a{:href => edit_patient_path(patient.id), :title => 'Edit'}
-            %img{:alt => "edit", :height => "16", :src => "/images/pencil.gif", :width => "16"}/
-          %a{:href => patient_path(patient.id), :title => 'Show'}
-            %img{:alt => "show", :height => "16", :src => "/images/bin.gif", :width => "16"}/
-          = link_to(image_tag("/images/cross-small.gif",:height => "16", :width => "16"), patient_path(patient.id), :method => 'delete', :title => 'Delete', :confirm => 'Are you sure?')
+          = link_to [current_hospital, patient] do
+            %i.icon-list
+          = link_to new_hospital_tpn_path(current_hospital, patient: patient), title: 'Add TPN' do  
+            %i.icon-tag 
+          = link_to hospital_patient_path(current_hospital, patient), :method => 'delete', :title => 'Delete', :confirm => 'Are you sure?' do
+            %i.icon-remove
           - if patient.investigations.exists?
-            %img{:alt => "", :height => "16", :src => "/images/tick-circle.gif", :width => "16"}/
+            = link_to hospital_patient_investigations_path(current_hospital, patient), title: "Investigation Added" do 
+              %i.icon-ok
       - counter = counter+1
-.pagination
-  .current
-    .numbers
-      %span
-        = will_paginate @patients
-        = page_entries_info @patients

@@ -1,0 +1,4 @@
+$('#previous_tpn_date').datepicker('remove');
+var dates = #{raw @dates };
+function custom_dates(date){ ymd = date.getFullYear() + '-' + ("0" + (date.getMonth()+1)).slice(-2) + '-' + ( "0" + date.getDate()).slice(-2) ;if ( $.inArray(ymd,dates) < 0) return [true,""];else return [true,"active"]; };
+$('#previous_tpn_date').datepicker({ beforeShowDay: custom_dates });

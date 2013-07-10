@@ -1,28 +1,39 @@
-#accordion
-  %h4 
-    Investigation
-    %span{:style => "float: right; width: auto; margin-right: 10px;", :id => "investigation"} Collapse
-  %div
-    = render :partial => 'investigation', :locals => {:f => f}
-  %h4 
-    TPN additives
-    %span{:style => "float: right; width: auto; margin-right: 10px;", :id => "additives"} Expand
-  %div
-    = render :partial => 'additives', :locals => {:f => f}
+= simple_form_for [current_hospital, @patient, @investigation], html: { class: 'form-horizontal well' }  do |f|
+  %fieldset
+    %legend #{@patient.name}  -  #{@investigation.investigated_on}
+    = f.input :investigated_on, as: :string, input_html: {class: 'datetimepicker', readonly: :readonly}
+    .accordion{id: 'accordion'}
+      .accordion-group
+        .accordion-heading
+          = link_to "Investigation", "#investigation", class: "accordion-toggle", data: {toggle: "collapse", parent: "#accordion"} 
+        = render :partial => 'investigation', :locals => {:f => f}
+      .accordion-group
+        .accordion-heading
+          = link_to "TPN Additives", "#additives", class: "accordion-toggle", data: {toggle: "collapse", parent: "#accordion"} 
+        = render :partial => 'additives', :locals => {:f => f}
+    .form-actions
+      = f.submit "Save", :class => "btn btn-primary"
+      = link_to "Cancel", [current_hospital, @patient], :class => "btn"
     
 :javascript
+  var ind_dt1 = "#{@investigation.investigated_on.to_s}"
+  var ind_dt2 = "#{@investigation.blood_sugar_monitors.first.blood_sugar_monitored_on.to_s}"
+  var ind_dt3 = "#{@investigation.blood_sugar_monitors.last.blood_sugar_monitored_on.to_s}"
   $(function() {
-    $('.datetimepicker').timepicker({});
+    $('.datetimepicker').datetimepicker({
+          format: "dd/mm/yyyy - hh:ii",
+          autoclose: true,
+          todayBtn: true,
+          todayHighlight: true,
+    });
+    $('.datepicker').datepicker({
+      autoclose: true,
+      format: 'dd/mm/yyyy',
+      todayBtn: true
+    });
+    $(".collapse").collapse();
+    $('#investigation_investigated_on').val(ind_dt1);
+    $('#investigation_blood_sugar_monitors_attributes_0_blood_sugar_monitored_on').val(ind_dt2);
+    $('#investigation_blood_sugar_monitors_attributes_1_blood_sugar_monitored_on').val(ind_dt3);
   });
-
-  $(function() {
-    $( "#accordion" ).accordion({
-      collapsible: true,
-      active: 0, 
-      change: function(event, ui) {
-      ui.newHeader.children().last().html("Collapse");
-      ui.oldHeader.children().last().html("Expand");
-      }
-    }); 
-   });
   

@@ -1,0 +1,12 @@
+%ul.dropdown-menu{:role => 'menu', 'aria-labelledby' => 'dropdownMenu', :style => "display:block;position:relative;" }
+  %li
+    %a{ :tabindex => '-1', :href => '#'} Graph
+  %li.divider
+  %li
+    %a{ :tabindex => '-1', :href => "/hospitals/#{current_hospital.slug}/tpns/report/#{ @tpn.id }" }  Print Report
+  %li.divider
+  %li
+    %a{ :tabindex => '-1', :href => "/hospitals/#{current_hospital.slug}/tpns/label/#{ @tpn.id }"} Print label
+  %li.divider
+  %li
+    %a{ :tabindex => '-1', :href => '#'} cancel

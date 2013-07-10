@@ -1,7 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-
+#require 'pdfkit'
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
@@ -27,12 +27,10 @@ module Kimaya
      config.time_zone = 'Mumbai'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    #config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    #config.i18n.default_locale = :en
 
     # JavaScript files you want as :defaults (application.js is always included).
-     config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
-
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
@@ -41,15 +39,22 @@ module Kimaya
     config.to_prepare do
         Devise::SessionsController.layout "sign"
     end
-  end
-end
-ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
-  if html_tag =~ /<label/
-    %(<span class=\"field_with_errors_label\">#{html_tag}</span>).html_safe
-  else
-   err_msg = instance.error_message.kind_of?(Array) ? instance.error_message.first : instance.error_message
-    %(<span class=\"field_with_errors\">#{html_tag}</span><span class='notification-input ni-error'>#{err_msg}</span>).html_safe
+    config.assets.enabled = true
+    config.assets.version = '1.0'
+    config.assets.initialize_on_precompile = false
+
+    config.generators do |g|
+      g.test_framework :rspec,
+        fixtures: true,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: false,
+        controller_specs: true,
+        request_specs: false
+      g.fixture_replacement :factory_girl, dir: "spec/factories"
+    end
+    #config.assets.precompile += ['active_admin.css', 'active_admin/print.css', 'active_admin.js']
+    #config.middleware.use PDFKit::Middleware, :print_media_type => true
   end
 end
 
-#Date::DATE_FORMATS[:format] = '%m/%d/%Y'

@@ -4,9 +4,34 @@
 en:
   activerecord:
     errors:
+      models:
+        patient:
+          attributes:
+            date_of_birth: 
+              on_or_before: "invalid birth date"
       messages:
-      
-      #patient
+        record_invalid: "is invalid"
+        inclusion: "is not included in the list"
+        exclusion: "is reserved"
+        invalid: "is invalid"
+        confirmation: "doesn't match confirmation"
+        accepted: "must be accepted"
+        empty: "can't be empty"
+        blank: "can't be blank"
+        too_long: "is too long (maximum is {{count}} characters)"
+        too_short: "is too short (minimum is {{count}} characters)"
+        wrong_length: "is the wrong length (should be {{count}} characters)"
+        taken: "has already been taken"
+        not_a_number: "is not a number"
+        greater_than: "must be greater than {{count}}"
+        greater_than_or_equal_to: "must be greater than or equal to {{count}}"
+        equal_to: "must be equal to {{count}}"
+        less_than: "must be less than {{count}}"
+        less_than_or_equal_to: "must be less than or equal to {{count}}"
+        odd: "must be odd"
+        even: "must be even"
+
+#patient
         registration_number_blank: "Please enter rgistration number"
         registration_number_not_unique: "Registration number is already exist"
         patient_name_blank: "Please enter patient name"
@@ -16,16 +41,24 @@ en:
         gender_id_blank: "Please select the gender"
         phone_number_blank: "Please enter telephone number"
         mobile_number_invalid: "Please enter valid mobile number"
-      
-      #additives
+
+#additives
         additive_name_blank: "Please select additive name"
         market_name_blank: "Please enter market name"
         unit_blank: "Unit is blank "
         constant_invalid: "Please enter valid constant"
 
-      #user
+#user
         user_name_blank: "Please enter user name"
-    
-      #investigation
+
+#investigation
         blood_sugar_monitor_on_blank: "Please enter date"
         investigation_exists: "Please select another day" 
+#tpn
+        current_weight_invalid: "Please enter valid number"
+  date:      
+    formats: 
+      default: "%d/%m/%Y"
+  time:      
+    formats: 
+      default: "%d/%m/%Y %H:%M"

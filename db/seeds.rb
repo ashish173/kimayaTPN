@@ -8,13 +8,8 @@
 
 # create admin user
 
-user = User.create!(:name => "admin", :email => "kimaya@joshsoftware.com", :roles_mask => SUPER_ADMIN, :password => "admin123", :residence_telephone => "020-23434244")
-user.confirm!
-user.save
-
-user = User.create!(:name => "Dr. Joshi", :email => "doctor1@joshsoftware.com", :roles_mask => 2, :password => "josh123", :residence_telephone => "020-23434244")
-user.confirm!
-user.save
+Admin.destroy_all
+user = Admin.create!(:name => "admin", :email => "kimaya@joshsoftware.com", :password => "admin123")
 
 Gender.destroy_all
 Gender.create(:name => 'Unknown')
@@ -39,3 +34,9 @@ TpnMarketAdditive.create(:name => 'Sodium Chloride', :market_name => '0.2 Normal
 TpnMarketAdditive.create(:name => 'Potassium Chloride', :market_name => 'Kesol', :constant => 2, :unit => 'meq/ml', :max_value => POTASSIUM_CHLORIDE[MAX], :min_value => POTASSIUM_CHLORIDE[MIN])
 TpnMarketAdditive.create(:name => 'Calcium', :market_name => '10% Calcium Gluconate', :constant => 0.45, :unit => 'meq/ml', :max_value => CALCIUM[MAX], :min_value => CALCIUM[MIN])
 TpnMarketAdditive.create(:name => 'Magnesium', :market_name => '50% Magnesium Sulfate', :constant => 4, :unit => 'meq/ml', :max_value => MAGNESIUM[MAX], :min_value => MAGNESIUM[MIN])
+
+Role.delete_all
+Role.create(name: 'Admin')
+Role.create(name: 'Doctor')
+Role.create(name: 'Nutritionist')
+Role.create(name: 'Patient')
