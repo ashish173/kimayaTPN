@@ -2,6 +2,7 @@ class MotherHistory < ActiveRecord::Base
   belongs_to :patient
   validates :patient_id, :g , :p , :a, :maternal_usg, :age, :pre_pregnancy_weight, :height, :toxemia, :diabetes, :is_antenatal_steroids,
     :medical_history, :presence => true
+  validates :patient_id ,uniqueness: true
 
   attr_accessible  :patient_id, :g , :p , :a, :maternal_usg, :age, :pre_pregnancy_weight, :height, :toxemia, :diabetes,
     :is_antenatal_steroids, :medical_history

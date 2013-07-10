@@ -1,75 +1,58 @@
 require 'spec_helper'
 
 describe MotherHistory do
-  let(:patient){Patient.new(gender_id:"24", name: "jolly", registration_number: "57", date_of_birth: "2013-07-3", birth_weight: 5,
-                            address: "pune")}
-  let(:mother){MotherHistory.new(g: 2.3, p: 4.4, a: 3.3, maternal_usg:"7887", age: "27", pre_pregnancy_weight: ">40", height: "145",
-                                 toxemia: "mild", diabetes: "IDDM", is_antenatal_steroids: "no", medical_history: "drugs",
-                                 other_medical_problems: "none", hospital_id: 8) }
-
 
 
   it "must belong to a patient"do 
-    mother.save
-    expect(mother).to have(1).errors_on(:patient_id)
+    expect(build(:motherHistory, patient_id: nil)).to have(1).errors_on(:patient_id)
+
   end
 
-  it "should specify mother's age" do
-    mother.age=nil
-    expect(mother).to have(1).errors_on(:age)
+  it "should specify mother's  age" do
+    expect(build(:motherHistory, age: nil)).to have(1).errors_on(:age)
   end
 
 
   it "should specify mother's pre_pregnancy weight" do
-    mother.pre_pregnancy_weight=nil
-    expect(mother).to have(1).errors_on(:pre_pregnancy_weight)
+    expect(build(:motherHistory, pre_pregnancy_weight: nil)).to have(1).errors_on(:pre_pregnancy_weight)
   end
 
 
   it "should have toxemia value" do
-    mother.toxemia=nil
-    expect(mother).to have(1).errors_on(:toxemia)
+    expect(build(:motherHistory, toxemia: nil)).to have(1).errors_on(:toxemia)
   end
 
 
   it "should include mother's height" do
-    mother.height=nil
-    expect(mother).to have(1).errors_on(:height)
+    expect(build(:motherHistory, height: nil)).to have(1).errors_on(:height)
   end
 
   it "should include diabetes type" do
-    mother.diabetes=nil
-    expect(mother).to have(1).errors_on(:diabetes)
+    expect(build(:motherHistory, diabetes: nil)).to have(1).errors_on(:diabetes)
   end
 
   it "should have 'g' value " do
-    mother.g=nil
-    expect(mother).to have(1).errors_on(:g)
+    expect(build(:motherHistory, g: nil )).to have(1).errors_on(:g)
   end
 
   it "should have 'p' value" do
-    mother.p=nil
-    expect(mother).to have(1).errors_on(:p)
+    expect(build(:motherHistory, p: nil)).to have(1).errors_on(:p)
   end
   
   it "should have 'a' value" do
-    mother.a=nil
-    expect(mother).to have(1).errors_on(:a)
+    expect(build(:motherHistory, a: nil)).to have(1).errors_on(:a)
   end
 
   it "should specify whether on antenatal_steroids" do
-     mother.is_antenatal_steroids=nil
-     expect(mother).to have(1).errors_on(:is_antenatal_steroids)
+     expect(build(:motherHistory, is_antenatal_steroids: nil)).to have(1).errors_on(:is_antenatal_steroids)
   end
 
   it "should have a medical history" do
-     mother.medical_history=nil
-     expect(mother).to have(1).errors_on(:medical_history)
+     expect(build(:motherHistory, medical_history: nil)).to have(1).errors_on(:medical_history)
   end
 
   it "should specify maternal_usg" do 
-     mother.maternal_usg=nil
-     expect(mother).to have(1).errors_on(:maternal_usg)
+     expect(build(:motherHistory, maternal_usg: nil)).to have(1).errors_on(:maternal_usg)
   end
 
 end

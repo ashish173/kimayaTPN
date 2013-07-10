@@ -17,7 +17,7 @@ class Patient < ActiveRecord::Base
 
   validates :hospital_id, :presence=>true
 
-  accepts_nested_attributes_for :mother_history, :allow_destroy => true
+  accepts_nested_attributes_for :mother_history, :allow_destroy => true 
   accepts_nested_attributes_for :patient_history, :allow_destroy => true
   accepts_nested_attributes_for :admission, :allow_destroy => true
 
