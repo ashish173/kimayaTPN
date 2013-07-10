@@ -1,6 +1,7 @@
 class Investigation < ActiveRecord::Base
 
   self.per_page = 10
+
   belongs_to :patient
   belongs_to :hospital
   has_one :blood_analysis, :dependent => :destroy

@@ -11,9 +11,6 @@ class Admission < ActiveRecord::Base
   end
 
 
-
-
-
   def validate_admitted_on
     if admitted_on < self.patient.date_of_birth || admitted_on > Date.today
       errors.add(:admitted_on, "Date should be between DOB and today's date.")

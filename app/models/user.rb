@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :pincode, :residence_telephone, :emergency_telephone, :mobile_number, :additional_detail, :role_id
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :pincode, :residence_telephone,
+    :emergency_telephone, :mobile_number, :additional_detail, :role_id
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :invitable, :database_authenticatable, :registerable,
@@ -19,7 +20,7 @@ class User < ActiveRecord::Base
   #validates :residence_telephone, presence: true, on: :update
   # Setup accessible (or protected) attributes for your model
 
-#  validate :user_count_within_limit, :on => :create
+  # validate :user_count_within_limit, :on => :create
 
   scope :by_role, lambda{|role_id| where(:role_id => role_id)}
 
@@ -27,31 +28,32 @@ class User < ActiveRecord::Base
   scope :nutritionists, by_role(NUTRITIONIST)
 
 
+
   def role?(role)
-    self.role.id == role
+    role.id == role
   end
   
   def admin?
-    self.role?(ADMIN)
+    role?(ADMIN)
   end
 
   def doctor?
-    self.role?(DOCTOR)
+    role?(DOCTOR)
   end
 
   def nutritionist?
-   self.role?(NUTRITIONIST)
+   role?(NUTRITIONIST)
   end
 
   def current_hospital
-    self.hospitals.first
+    hospitals.first
   end
   
   def user_count_within_limit
-    if self.doctor?
-      errors.add(:base,"Exceeded no. of Doctors. Please contact administrator") if self.hospital.users.doctors.size >= self.hospital.doctors_count
-    elsif self.nutritionist?
-      errors.add(:base,"Exceeded no. of Nutritionists. Please contact administrator") if self.hospital.users.nutritionists.size >= self.hospital.nutritionists_count
+    if doctor?
+      errors.add(:base,"Exceeded no. of Doctors. Please contact administrator") if hospitals.users.doctors.size >= hospitals.doctors_count
+    elsif nutritionist?
+      errors.add(:base,"Exceeded no. of Nutritionists. Please contact administrator") if hospitals.users.nutritionists.size >= hospitals.nutritionists_count
     end
   end
 end
