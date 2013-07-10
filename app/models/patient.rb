@@ -2,7 +2,7 @@ class Patient < ActiveRecord::Base
   self.per_page =10
   validates :registration_number, :uniqueness => true
   validates :registration_number, :name, :date_of_birth, :address, :gender_id, :birth_weight, :presence => true
-  #validates_date :date_of_birth, :on_or_before => lambda{ Date.today } 
+  validates_date :date_of_birth, :on_or_before => lambda{ Date.today } 
   validates :birth_weight, :numericality => true
   validate :patient_count_within_limit, :on => :create
 
@@ -15,7 +15,9 @@ class Patient < ActiveRecord::Base
   belongs_to :hospital
   belongs_to :gender
 
-  accepts_nested_attributes_for :mother_history, :allow_destroy => true
+  validates :hospital_id, :presence=>true
+
+  accepts_nested_attributes_for :mother_history, :allow_destroy => true 
   accepts_nested_attributes_for :patient_history, :allow_destroy => true
   accepts_nested_attributes_for :admission, :allow_destroy => true
 
@@ -29,9 +31,9 @@ class Patient < ActiveRecord::Base
   scope :search, lambda{|keyword| where("registration_number like ? or name like ?", "#{keyword}%", "%#{keyword}%")}
   
   def patient_count_within_limit
-    if self.hospital && self.hospital.patients.count > self.hospital.patients_count
-      # size led to a bug 
-      errors.add(:base, "Exceeded no of Patients")
+    if self.hospital && self.hospital.patients.count >= self.hospital.patients_count 
+      errors.add(:base,"Exceeded no of Patients")
     end
   end
 end
+

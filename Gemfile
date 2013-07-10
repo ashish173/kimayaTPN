@@ -19,6 +19,8 @@ group :development, :test do
 end
 
 #gem "date_validator" not supported for rails 3.2.11
+gem 'database_cleaner', '~>1.0.1'
+gem 'simplecov', :require => false, :group => :test
 gem 'cancan'
 gem 'validates_timeliness', '~> 3.0'
 gem 'bootstrap-sass', '~> 2.2.2.0'
