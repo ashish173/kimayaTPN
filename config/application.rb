@@ -57,9 +57,6 @@ module Kimaya
     #config.middleware.use PDFKit::Middleware, :print_media_type => true
 
     # tells rails to generate factories instead of fixtures
-    config.generators do |g|
-      g.fixture_replacement :factory_girl, dir: "spec/factories"
-    end
   end
 end
 
