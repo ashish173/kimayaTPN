@@ -49,7 +49,6 @@ describe  Tpn do
   it "is invalid for more than one tpn_infusions" do
     tpn = create(:tpn)
     tpn_inf1 = create(:tpn_infusion, tpn: tpn) 
-    #tpn = build(:tpn, tpn_infusion: tpn_wi.tpn_infusion)
     tpn_inf2 = build(:tpn_infusion, tpn: tpn)
     expect(tpn_inf2).to_not be_valid
   end

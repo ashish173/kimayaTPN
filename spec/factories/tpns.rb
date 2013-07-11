@@ -10,12 +10,13 @@ FactoryGirl.define do
     association :user
     association :hospital
     
+=begin
     factory :tpn_with_tpn_infusion do
       after_create do |tpn|
         FactoryGirl.create(:tpn_infusion, tpn: tpn)
       end
     end
-=begin
+
 
     after(:create) do |tpn|
       tpn.tpn_infusion = FactoryGirl.create(:tpn_infusion)
