@@ -8,20 +8,7 @@ FactoryGirl.define do
     fat_concentration 13
     association :patient
     association :user
-    association :hospital
-    
-=begin
-    factory :tpn_with_tpn_infusion do
-      after_create do |tpn|
-        FactoryGirl.create(:tpn_infusion, tpn: tpn)
-      end
-    end
-
-
-    after(:create) do |tpn|
-      tpn.tpn_infusion = FactoryGirl.create(:tpn_infusion)
-    end
-=end    
+    association :hospital 
   end   
   
 end
