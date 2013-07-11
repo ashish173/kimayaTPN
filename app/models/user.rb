@@ -30,28 +30,28 @@ class User < ActiveRecord::Base
 
 
   def role?(role)
-    role.id == role
+    self.role.id == role
   end
   
   def admin?
-    role?(ADMIN)
+    self.role?(ADMIN)
   end
 
   def doctor?
-    role?(DOCTOR)
+    self.role?(DOCTOR)
   end
 
   def nutritionist?
-   role?(NUTRITIONIST)
+   self.role?(NUTRITIONIST)
   end
 
   def current_hospital
-    hospitals.first
+    self.hospitals.first
   end
   
   def user_count_within_limit
     if doctor?
-      errors.add(:base,"Exceeded no. of Doctors. Please contact administrator") if hospitals.users.doctors.size >= hospitals.doctors_count
+      errors.add(:base,"Exceeded no. of Doctors. Please contact administrator") if self.hospitals.users.doctors.size >= self.hospitals.doctors_count
     elsif nutritionist?
       errors.add(:base,"Exceeded no. of Nutritionists. Please contact administrator") if hospitals.users.nutritionists.size >= hospitals.nutritionists_count
     end
