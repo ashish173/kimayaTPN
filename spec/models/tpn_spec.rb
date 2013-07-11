@@ -9,12 +9,12 @@ describe  Tpn do
   it "is invalid for dextrose_conc not a number" do
     expect(build(:tpn, dextrose_conc: "qw")).to have(1).errors_on(:dextrose_conc)
   end
+
   it "is invalid for total_fluid_intake outside 40-150" do
     expect(build(:tpn, total_fluid_intake: 30)).to have(1).errors_on(:total_fluid_intake)
   end
 
   it "is invalid for total_fluid_intake not a number" do
-
     expect(build(:tpn, total_fluid_intake: "some quant" )).to have(1).errors_on(:total_fluid_intake)
   end
 
@@ -37,8 +37,21 @@ describe  Tpn do
   it "is invalid for fat_volume not a number" do
     expect(build(:tpn, fat_volume: "false value")).to have(1).errors_on(:fat_volume) 
   end
+
   it "is invalid without a patient" do
     expect(build(:tpn, patient_id: nil)).to have(1).errors_on(:patient_id)
   end
 
+  it "is invalid without a user" do
+    expect(build(:tpn, user_id: nil)).to have(1).errors_on(:user_id)
+  end
+
+  it "is invalid for more than one tpn_infusions" do
+    tpn = create(:tpn)
+    tpn_inf1 = create(:tpn_infusion, tpn: tpn) 
+    #tpn = build(:tpn, tpn_infusion: tpn_wi.tpn_infusion)
+    tpn_inf2 = build(:tpn_infusion, tpn: tpn)
+    expect(tpn_inf2).to_not be_valid
+  end
+  
 end

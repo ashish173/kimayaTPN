@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :patientHistory do
     association           :patient
     gestational_age       12
-    ga 2
+    ga                    2
     mode_of_delivery      "normal"
     rupture_of_membranes  "normal"
     apgar_score_1         "1"

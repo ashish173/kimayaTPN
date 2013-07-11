@@ -7,6 +7,7 @@ class Hospital < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :patients, :dependent => :destroy
   accepts_nested_attributes_for :users
+  has_many :tpns
 
   validates :name, uniqueness: true
 end
