@@ -2,12 +2,13 @@ FactoryGirl.define do
   factory :user do
     sequence(:email) { |name| "ashish#{name}@gmail.com" }
     name "ashish"
-    role_id 14
+    #role_id 14
     password "asdkljdf"
     #association :hospital
   
   after(:build) do |user|
     user.hospitals = [FactoryGirl.create(:hospital)]
+    user.role = Role.find_by_name('Doctor') 
   end
   
   end
