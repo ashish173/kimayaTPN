@@ -7,7 +7,9 @@ describe User do
   end
 
   it "is invalid without a role_id" do
-    expect(build(:user, role_id: nil)).to have(1).errors_on(:role_id)  
+    user=build(:user)
+    user.role=nil
+    expect(user).to have(1).errors_on(:role_id)  
   end
 
   it "is invalid with already used email address" do
@@ -22,10 +24,6 @@ describe User do
   it "is invalid if the password is not given" do
     
     expect(build(:user, password: nil)).to have(1).errors_on(:password)
-  end
-
-  it "is invalid if role_id not given " do
-    expect(build(:user, role_id: nil)).to have(1).errors_on(:role_id)
   end
   
 end

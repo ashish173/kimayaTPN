@@ -1,7 +1,8 @@
 class PatientsController < ApplicationController
   before_filter :set_menu
 
-  def index
+  def index   
+    
     if current_user.admin?
       @patients = Patient.ordered.paginate(:page => params[:page], :per_page =>10)
     else
@@ -69,15 +70,6 @@ class PatientsController < ApplicationController
         end
       end
     end
-  end
-
-  def search
-    if current_user.doctor?
-      @patients = current_user.user_patients.search(params[:keyword]).ordered.paginate(:page => params[:page], :per_page =>10)
-    else
-      @patients = Patient.search(params[:keyword]).ordered.paginate(:page => params[:page], :per_page =>10)
-    end
-    render :partial => 'search'
   end
 
   def set_menu

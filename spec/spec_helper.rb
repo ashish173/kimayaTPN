@@ -27,12 +27,12 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.strategy = :truncation, {:except => %w[roles]}
+    DatabaseCleaner.clean
   end
 
   config.before(:each) do
-    DatabaseCleaner.start
+    DatabaseCleaner.start 
   end
 
   config.after(:each) do
