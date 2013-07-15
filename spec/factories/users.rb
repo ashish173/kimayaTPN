@@ -7,7 +7,7 @@ FactoryGirl.define do
 
     after(:build) do |user|
       user.hospitals = [FactoryGirl.create(:hospital)]
-      user.role= FactoryGirl.create(:role_doctor)
+      user.role= Role.find_by_name('Doctor')
     end
   end
 
