@@ -10,10 +10,6 @@ describe Investigation do
     expect(build(:investigation, investigated_on: nil)).to have(1).errors_on(:investigated_on)
   end
 
-  it "should belong to a patient" do
-    expect(build(:investigation, patient_id: nil)).to have(1).errors_on(:patient_id)
-  end
-
   it "should have only one blood analysis" do
     b1=create(:blood_analysis)
     expect(build(:blood_analysis, investigation: b1.investigation)).to have(1).errors_on(:investigation_id)
