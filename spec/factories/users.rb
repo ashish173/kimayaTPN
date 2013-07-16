@@ -7,8 +7,7 @@ FactoryGirl.define do
 
     after(:build) do |user|
       user.hospitals = [FactoryGirl.create(:hospital)]
-      user.role= Role.find_by_name('Doctor')
+      user.role= Role.find_by_name('Doctor')#||Role.create(name: 'Doctor')
     end
   end
-
 end

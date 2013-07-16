@@ -22,32 +22,23 @@ RSpec.configure do |config|
   # config.mock_with :rr
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  #config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include Devise::TestHelpers, :type => :controller
 
-  config.include FactoryGirl::Syntax::Methods
   config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation, {:except => %w[roles]}
-    DatabaseCleaner.clean
+   DatabaseCleaner.strategy = :truncation , {:except => %w[roles]}
+   DatabaseCleaner.clean_with(:transaction)
   end
 
   config.before(:each) do
-    DatabaseCleaner.start 
-
+    DatabaseCleaner.start
   end
 
   config.after(:each) do
     DatabaseCleaner.clean
   end
 
-
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  #config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
-  config.use_transactional_fixtures = true
+  #config.use_transactional_fixtures = true
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of

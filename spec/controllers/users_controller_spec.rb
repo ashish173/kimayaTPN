@@ -14,8 +14,7 @@ describe UsersController do
 
   describe "GET #index" do
 
-    it "should give the list of all the doctors" do
-     p User.doctors.count
+    it "should give the list of all the doctors" do    
      get :index, {hospital_id: @user2.hospitals.first, type: DOCTOR}
      expect(assigns(:users)).to eq([@user2])
     end
