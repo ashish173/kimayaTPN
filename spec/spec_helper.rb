@@ -32,6 +32,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
+    load "#{Rails.root}/db/seeds.rb" 
     DatabaseCleaner.start 
   end
 
