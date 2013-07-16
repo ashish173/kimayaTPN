@@ -8,6 +8,7 @@ describe UsersController do
     @user.hospitals= [@user2.hospitals.first]
     @user.save
     @current_hospital=@user.hospitals.first 
+    p User.doctors
     sign_in @user
     @user.confirm!
   end
