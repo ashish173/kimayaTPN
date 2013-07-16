@@ -35,11 +35,14 @@ RSpec.configure do |config|
   #config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include Devise::TestHelpers, :type => :controller
 
+
   config.before(:suite) do
    add_roles
    DatabaseCleaner.strategy = :truncation , {:except => %w[roles]}
    DatabaseCleaner.clean_with(:transaction)
   end
+  config.include FactoryGirl::Syntax::Methods
+  
 
   config.before(:each) do
     DatabaseCleaner.start
@@ -64,6 +67,7 @@ RSpec.configure do |config|
 
   # includes methods from FactoryGirl
   config.include FactoryGirl::Syntax::Methods
+
 end
 
 

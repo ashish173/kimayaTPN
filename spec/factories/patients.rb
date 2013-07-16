@@ -7,5 +7,8 @@ FactoryGirl.define do
     birth_weight                    1.5 
     address                         "pune"
     association                     :hospital
+    #after(:build) do |patient|
+    #  patient.hospital = FactoryGirl.create(:hospital)
+    #end
   end
 end

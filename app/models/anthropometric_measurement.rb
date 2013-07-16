@@ -1,4 +1,4 @@
 class AnthropometricMeasurement < ActiveRecord::Base
   belongs_to :investigation
-  validates :investigation_id, presence: true, uniqueness: true
+  validates :investigation_id, uniqueness: true
 end

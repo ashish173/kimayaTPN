@@ -8,7 +8,7 @@ class InvestigationsController < ApplicationController
         @investigation.send(m)
       end
       2.times{@investigation.blood_sugar_monitors.build}
-      @additives             = @patient.daily_tpn_additives.last(4)
+      @additives = @patient.daily_tpn_additives.last(4)
       @investigation.patient = @patient
   end
 
@@ -26,7 +26,9 @@ class InvestigationsController < ApplicationController
 
   def create
     @patient = Patient.find(params[:patient_id])
-    @investigation = Investigation.new params[:investigation], patient_id: @patient.id, hospital_id: current_hospital.id
+    @investigation = Investigation.new params[:investigation]
+    #@investigation.patient_id = @patient.id 
+    #@investigation.hospital_id = current_hospital.id
     if @investigation.save
       redirect_to hospital_patient_investigations_path(current_hospital, @patient), notice: "Investigation created successfully" 
     else
