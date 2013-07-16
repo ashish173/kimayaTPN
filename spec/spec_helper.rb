@@ -1,6 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'simplecov'
 require 'database_cleaner'
+require 'rake'
 SimpleCov.start 'rails'
 
 ENV["RAILS_ENV"] ||= 'test'
@@ -11,6 +12,15 @@ require 'rspec/autorun'
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+
+def add_roles
+  Role.destroy_all
+  ActiveRecord::Base.connection.execute("ALTER TABLE roles AUTO_INCREMENT = 1" )
+
+  [:role_admin, :role_doctor, :role_nutritionist, :role_patient].each do |r|
+    FactoryGirl.create(r)
+  end
+end
 
 RSpec.configure do |config|
   # ## Mock Framework
@@ -26,6 +36,7 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
 
   config.before(:suite) do
+   add_roles
    DatabaseCleaner.strategy = :truncation , {:except => %w[roles]}
    DatabaseCleaner.clean_with(:transaction)
   end
@@ -54,3 +65,5 @@ RSpec.configure do |config|
   # includes methods from FactoryGirl
   config.include FactoryGirl::Syntax::Methods
 end
+
+
