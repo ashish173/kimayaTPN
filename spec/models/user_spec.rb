@@ -22,7 +22,6 @@ describe User do
   end
    
   it "is invalid if the password is not given" do
-    
     expect(build(:user, password: nil)).to have(1).errors_on(:password)
   end
   
