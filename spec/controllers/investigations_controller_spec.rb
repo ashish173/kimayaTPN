@@ -18,8 +18,7 @@ describe InvestigationsController do
  
   describe "GET #index " do
     before(:each) do
-      # takes arguments according to routes
-      # /hospital/:hospital_id/patient/:patient_id/investigations
+      # takes arguments according to routes /hospital/:hospital_id/patient/:patient_id/investigations
       get :index, hospital_id: @current_hospital.name, patient_id: @patient.id
     end
 
