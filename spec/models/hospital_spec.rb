@@ -8,6 +8,7 @@ describe Hospital do
 
   it "should have patients within its limit if specified" do 
     p1= create(:patient)
+    p2= create(:patient, hospital:p1.hospital)
     expect(build(:patient, hospital: p1.hospital)).to_not be_valid
   end
 end

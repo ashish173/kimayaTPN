@@ -57,7 +57,8 @@ describe InvestigationsController do
       @investigation = build(:investigation)
       @investigation.patient_id = @patient.id
       @investigation.hospital_id = @current_hospital.name
-      post :create,{ :investigation => {investigated_on: @investigation.investigated_on}, hospital_id: @current_hospital.name, patient_id: @patient.id }
+      post :create,{ :investigation => {investigated_on: @investigation.investigated_on}, hospital_id: @current_hospital.name,
+        patient_id: @patient.id }
     end
 
     context "with valid attributes" do 
