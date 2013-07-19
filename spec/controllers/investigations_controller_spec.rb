@@ -45,6 +45,7 @@ describe InvestigationsController do
       expect(response).to render_template(:new)
     end
   end
+
   
   describe "POST #create" do
     before(:each) do
@@ -71,28 +72,47 @@ describe InvestigationsController do
         expect(assigns(:investigation)).to_not eq(Investigation.last)
       end
       it "should re-render the :new template" do
-        @investigation.investigated_on = nil
+        my_new_val =  @investigation.investigated_on = nil
+        expect(assigns(:investigation).investigated_on).to_not eq(my_new_val)
       end
     end
-  end 
+  end
 
   describe "PUT #update" do
-    before(:each) do
-
-      @investigation = create(:investigation)
-      @investigation.patient_id = @patient.id
-      @investigation.hospital_id = @current_hospital.name
-      put :update,{ id: @investigation.id, :investigation => {investigated_on: Date.today}, hospital_id: @current_hospital.name, patient_id: Patient.last.id }
-    end
-
     context "with valid attributes" do
+      before(:each) do
+        @investigation = create(:investigation)
+        @investigation.patient_id = @patient.id
+        @investigation.hospital_id = @current_hospital.name
+        put :update,{ id: @investigation.id, :investigation => {investigated_on: Date.today}, hospital_id: @current_hospital.name, patient_id: Patient.last.id }
+      end
+
       it "should save the investigation" do
         expect(assigns(:investigation).patient_id).to eq(Patient.last.id)
       end
+
       it "should redirect to investigations index" do
         expect(response).to redirect_to hospital_patient_investigations_path
+      end
+      
+    end
+    
+    context "with invalid attributes" do
+      before(:each) do
+        @investigation = create(:investigation)
+        put :update,{ id: @investigation.id, :investigation => {investigated_on: DateTime.tomorrow }, hospital_id: @current_hospital.name, patient_id: Patient.first.id }
+      end
+      
+      it "should not save the investigation" do
+        expect(assigns(:investigation)).to eq(@investigation)
+      end
+      
+      it "should render edit template" do  
+        expect(response).to render_template(:edit)
       end
     end
   end
 
 end
+
+

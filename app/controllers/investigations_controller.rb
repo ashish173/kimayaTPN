@@ -13,7 +13,7 @@ class InvestigationsController < ApplicationController
   end
 
   def index
-    @patient        = Patient.find(params[:patient_id])
+    @patient = Patient.find(params[:patient_id])
     @investigations = @patient.investigations.ordered.paginate(:page => params[:page], :per_page =>10)
     @investigation  = Investigation.today.patient(@patient).last
   end
@@ -28,7 +28,7 @@ class InvestigationsController < ApplicationController
     @patient = Patient.find(params[:patient_id])
     @investigation = Investigation.new params[:investigation]
     @investigation.patient_id = @patient.id 
-    @investigation.hospital_id = current_hospital.id
+    @investigation.hospital_id = current_hospital.name 
     if @investigation.save
       redirect_to hospital_patient_investigations_path(current_hospital, @patient), notice: "Investigation created successfully" 
     else
