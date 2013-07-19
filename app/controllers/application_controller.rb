@@ -40,7 +40,8 @@ class ApplicationController < ActionController::Base
   end
 
   def is_super_admin?
-    request.url.include?('admin')
+    #p request.url
+    request.url.split('/').include?('admin')
   end
 
 end

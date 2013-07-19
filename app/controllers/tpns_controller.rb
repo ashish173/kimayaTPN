@@ -11,6 +11,7 @@ class TpnsController < ApplicationController
 
   def create
     @tpn = Tpn.new(params[:tpn])
+    @tpn.hospital = current_hospital
     @result = Kimaya::TPNCalc.new
     @result = @tpn.build_tpn
     respond_to do |format|
@@ -26,6 +27,7 @@ class TpnsController < ApplicationController
 
   def report
     respond_to do |format|
+      p "you are in report method moron"
       format.html{ render :action => 'report.html.haml' } 
       format.pdf do
         html = render_to_string( :partial => 'report', :formats => :html)
