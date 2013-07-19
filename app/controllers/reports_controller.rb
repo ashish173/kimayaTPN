@@ -4,16 +4,16 @@ class ReportsController < ApplicationController
   def index
     @report =  Report.new
     @investigations = [].paginate(:page => params[:page], :per_page => 10)
-    @patients = current_user.admin? ? current_hospital.patients : current_user.patients
+    @patients = current_user.admin? ? current_hospital.patients : current_user.user_patients
   end
 
   def create
     @report =  Report.new(params[:report])
     @patients = current_hospital.patients 
-    @report_type = params[:report][:investigation]
+    @report_type = params[:report][:investigation]    
     if @report.valid?
-      if @report_type == 'last_day'
-        @investigations = Investigation.day(Date.today - 1.day).paginate(:page => params[:page], :per_page =>10)
+      if @report_type == 'last_day'     
+       @investigations = Investigation.day(Date.today - 1.day).paginate(:page => params[:page], :per_page =>10)
       elsif @report_type == 'summary'
         @from_date = params[:report][:start_date].to_date
         @to_date = params[:report][:end_date].to_date

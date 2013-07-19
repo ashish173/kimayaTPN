@@ -51,7 +51,8 @@ describe InvestigationsController do
       @investigation = build(:investigation)
       @investigation.patient_id = @patient.id
       @investigation.hospital_id = @current_hospital.name
-      post :create,{ :investigation => {investigated_on: @investigation.investigated_on}, hospital_id: @current_hospital.name, patient_id: @patient.id }
+      post :create,{ :investigation => {investigated_on: @investigation.investigated_on}, hospital_id: @current_hospital.name,
+        patient_id: @patient.id }
     end
 
     context "with valid attributes" do 
@@ -99,7 +100,8 @@ describe InvestigationsController do
     context "with invalid attributes" do
       before(:each) do
         @investigation = create(:investigation)
-        put :update,{ id: @investigation.id, :investigation => {investigated_on: DateTime.tomorrow }, hospital_id: @current_hospital.name, patient_id: Patient.first.id }
+        put :update,{ id: @investigation.id, :investigation => {investigated_on: DateTime.tomorrow },
+          hospital_id: @current_hospital.name, patient_id: Patient.first.id }
       end
       
       it "should not save the investigation" do

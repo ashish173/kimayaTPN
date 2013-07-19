@@ -20,8 +20,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.attributes = params[:user]
-    if @user.save
+    if @user.update_attributes(params[:user])
       flash[:notice] = "Successfully updated profile"
       redirect_to(hospital_users_path(current_hospital, params[:type]))
     else
