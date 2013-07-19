@@ -24,6 +24,7 @@ class Investigation < ActiveRecord::Base
 
   #validates :patient_id, :presence => true
   validates :investigated_on, :presence => true
+  validates :investigated_on, :timeliness => {:on_or_before => lambda {Date.current }, :type => :date }
   validates :investigated_on, :uniqueness => { :scope => :patient_id }
   
   scope :day, lambda {|date| where("DATE(investigated_on) = ?", date) }
