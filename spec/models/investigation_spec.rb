@@ -7,7 +7,7 @@ describe Investigation do
   end
 
   it "should have a date of investigation" do
-    expect(build(:investigation, investigated_on: nil)).to have(1).errors_on(:investigated_on)
+    expect(build(:investigation, investigated_on: nil)).to have(2).errors_on(:investigated_on)
   end
 
   it "should have only one blood analysis" do

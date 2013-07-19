@@ -23,8 +23,9 @@ describe Patient do
   end
 
   it "patient count should be within hospital's patient limit" do
-    patient=create(:patient)
-    p1 = build(:patient, hospital: patient.hospital)
+    patient1=create(:patient)
+    patient2=create(:patient, hospital: patient1.hospital)
+    p1 = build(:patient, hospital: patient1.hospital)
     expect(p1).to_not be_valid
   end
 

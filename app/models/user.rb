@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
     if doctor?
       errors.add(:base,"Exceeded no. of Doctors. Please contact administrator") if self.hospitals.users.doctors.size >= self.hospitals.doctors_count
     elsif nutritionist?
-      errors.add(:base,"Exceeded no. of Nutritionists. Please contact administrator") if hospitals.users.nutritionists.size >= hospitals.nutritionists_count
+      errors.add(:base,"Exceeded no. of Nutritionists. Please contact administrator") if self.hospitals.users.nutritionists.size >= hospitals.nutritionists_count
     end
   end
 end

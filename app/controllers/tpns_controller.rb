@@ -11,6 +11,7 @@ class TpnsController < ApplicationController
 
   def create
     @tpn = Tpn.new(params[:tpn])
+    @tpn.hospital = current_hospital
     @result = Kimaya::TPNCalc.new
     @result = @tpn.build_tpn
     respond_to do |format|
@@ -26,6 +27,7 @@ class TpnsController < ApplicationController
 
   def report
     respond_to do |format|
+      p "you are in report method moron"
       format.html{ render :action => 'report.html.haml' } 
       format.pdf do
         html = render_to_string( :partial => 'report', :formats => :html)
@@ -79,7 +81,7 @@ class TpnsController < ApplicationController
       Tpn.select(:tpn_date).where(:patient_id => params[:patient_id]).each do |d| @dates  << d.tpn_date.to_s unless d.tpn_date.nil? end
       render :previous_tpn_date, :formats => [:js]
     else
-      render :nothing, true
+      render :nothing => true
     end
   end
 
