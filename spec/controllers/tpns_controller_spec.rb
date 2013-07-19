@@ -91,8 +91,8 @@ describe TpnsController do
       expect(response).to render_template(:previous_tpn_date)
     end
     it "if patient not present render nothing" do
-      #get :previous_tpn_date, {:hospital_id => @current_hospital.name, :patient_id => nil}
-      # render nothing syntax ???
+      get :previous_tpn_date, {:hospital_id => @current_hospital.name, :patient_id => nil}
+      expect(response.body).to be_blank
     end
   end
 

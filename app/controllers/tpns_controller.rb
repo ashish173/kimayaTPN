@@ -81,7 +81,7 @@ class TpnsController < ApplicationController
       Tpn.select(:tpn_date).where(:patient_id => params[:patient_id]).each do |d| @dates  << d.tpn_date.to_s unless d.tpn_date.nil? end
       render :previous_tpn_date, :formats => [:js]
     else
-      render :nothing, true
+      render :nothing => true
     end
   end
 
