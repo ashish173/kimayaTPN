@@ -18,6 +18,10 @@ class TpnsController < ApplicationController
     end
   end
 
+  def new
+    
+  end
+
   def calculate
     @tpn = Tpn.new(params[:tpn])
     @tpn.hospital = current_hospital
