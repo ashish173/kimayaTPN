@@ -57,51 +57,51 @@
       = f.input_field :amino_acid, min:'0.00', step:'0.10', :type => "number"
       %span.add-on{ :id => "amino_acid_help", "data-toggle" => "popover" }
         %i.icon-info-sign
-    = text_field_tag :amino_acid_previous, "", :class => "input_custom1", :disabled => true, :type => "number"      
+    = text_field_tag :amino_acid_previous, "", :class => "input_custom", :disabled => true, :type => "number"      
     = label_tag '', 'gm/kg', :class => "label_custom1", :style => "padding-left:8px;"
     %a.button{:id => "amino", :class => "button_custom btn btn-primary", :"data-toggle" => "popover"}
-    = f.input :amino_acid_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
-    = text_field_tag :amino_acid_additive, "#{ TpnMarketAdditive.find(@tpn.amino_acid_additive_id).constant }", :class => "input_custom1", :readonly => true, :type => "number"      
+    = f.input :amino_acid_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom'}
+    = text_field_tag :amino_acid_additive, "#{ TpnMarketAdditive.find(@tpn.amino_acid_additive_id).constant }", :class => "input_custom", :readonly => true, :type => "number"      
     = label_tag '', '%', :class => "label_custom1"
     = f.input :sodium_chloride, :wrapper => :append_tpn do
       = f.input_field :sodium_chloride, min:'0.00', step:'0.10', :type => "number"
       %span.add-on{ :id => "sodium_chloride_help", "data-toggle" => "popover" }
         %i.icon-info-sign
-    = text_field_tag :sodium_chloride_previous, "", :class => "input_custom1", :disabled => true, :type => "number"      
+    = text_field_tag :sodium_chloride_previous, "", :class => "input_custom", :disabled => true, :type => "number"      
     = label_tag '', 'meq/kg', :class => "label_custom1"
     %a.button{:id => "sodium", :class => "button_custom btn btn-primary", 'data-toggle' => "popover"}
-    = f.input :sodium_chloride_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
-    = text_field_tag :sodium_chloride_additive, "#{ TpnMarketAdditive.find(@tpn.sodium_chloride_additive_id).constant }", :class => "input_custom1", :readonly => true, :type => "number"      
+    = f.input :sodium_chloride_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom'}
+    = text_field_tag :sodium_chloride_additive, "#{ TpnMarketAdditive.find(@tpn.sodium_chloride_additive_id).constant }", :class => "input_custom", :readonly => true, :type => "number"      
     = label_tag '', 'meq/ml', :class => "label_custom1"
     = f.input :potassium_chloride, :wrapper => :append_tpn do
       = f.input_field :potassium_chloride, min:'0.00', step:'0.10', :type => "number"
       %span.add-on{ :id => "potassium_chloride_help", "data-toggle" => "popover" }
         %i.icon-info-sign
-    = text_field_tag :potassium_chloride_previous, "", :class => "input_custom1", :disabled => true, :type => "number"      
+    = text_field_tag :potassium_chloride_previous, "", :class => "input_custom", :disabled => true, :type => "number"      
     = label_tag '', 'meq/kg', :class => "label_custom1"
     %a.button{:id => "potassium", :class => "button_custom btn btn-primary",  'data-toggle' => "popover"}
-    = f.input :potassium_chloride_additive_id,:as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
-    = text_field_tag :potassium_chloride_additive, "#{ TpnMarketAdditive.find(@tpn.potassium_chloride_additive_id).constant }", :class => "input_custom1", :readonly => true, :type => "number"      
+    = f.input :potassium_chloride_additive_id,:as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom'}
+    = text_field_tag :potassium_chloride_additive, "#{ TpnMarketAdditive.find(@tpn.potassium_chloride_additive_id).constant }", :class => "input_custom", :readonly => true, :type => "number"      
     = label_tag '', 'meq/ml', :class => "label_custom1"
     = f.input :calcium, :wrapper => :append_tpn do
       = f.input_field :calcium, min:'0.00', step:'0.10', :type => "number"
       %span.add-on{ :id => "calcium_help", "data-toggle" => "popover" }
         %i.icon-info-sign
-    = text_field_tag :calcium_previous, "", :class => "input_custom1", :disabled => true, :type => "number"      
+    = text_field_tag :calcium_previous, "", :class => "input_custom", :disabled => true, :type => "number"      
     = label_tag '', 'meq/kg', :class => "label_custom1"
     %a.button{:id => "calcium", :class => "button_custom btn btn-primary",  'data-toggle' => "popover"}
-    = f.input :calcium_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
-    = text_field_tag :calcium_additive, "#{ TpnMarketAdditive.find(@tpn.calcium_additive_id).constant }", :class => "input_custom1", :readonly => true, :type => "number"      
+    = f.input :calcium_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom'}
+    = text_field_tag :calcium_additive, "#{ TpnMarketAdditive.find(@tpn.calcium_additive_id).constant }", :class => "input_custom", :readonly => true, :type => "number"      
     = label_tag '', 'meq/ml', :class => "label_custom1"
     = f.input :magnesium, :wrapper => :append_tpn do
       = f.input_field :magnesium, min:'0.00', step:'0.10', :type => "number"
       %span.add-on{ :id => "magnesium_help", "data-toggle" => "popover" }
         %i.icon-info-sign
-    = text_field_tag :magnesium_previous, "", :class => "input_custom1", :disabled => true, :type => "number"      
+    = text_field_tag :magnesium_previous, "", :class => "input_custom", :disabled => true, :type => "number"      
     = label_tag '', 'meq/kg', :class => "label_custom1"
     %a.button{:id => "magnesium", :class => "button_custom btn btn-primary",  'data-toggle' => "popover"}
-    = f.input :magnesium_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
-    = text_field_tag :magnesium_additive, "#{ TpnMarketAdditive.find(@tpn.magnesium_additive_id).constant }", :class => "input_custom1", :readonly => true, :type => "number"      
+    = f.input :magnesium_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom'}
+    = text_field_tag :magnesium_additive, "#{ TpnMarketAdditive.find(@tpn.magnesium_additive_id).constant }", :class => "input_custom", :readonly => true, :type => "number"      
     = label_tag '', 'meq/ml', :class => "label_custom1"
     = f.input :administration, collection: ['Peripheral Line', 'Central Line'], as: :radio_buttons, :checked => 'Peripheral Line', :wrapper_html => {:class => "span_custom1" }
     = f.simple_fields_for :tpn_infusion do |f|

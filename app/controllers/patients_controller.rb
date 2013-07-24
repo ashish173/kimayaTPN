@@ -1,7 +1,8 @@
 class PatientsController < ApplicationController
   before_filter :set_menu
 
-  def index
+  def index   
+    
     if current_user.admin?
       @patients = Patient.ordered.paginate(:page => params[:page], :per_page =>10)
     else
@@ -33,7 +34,8 @@ class PatientsController < ApplicationController
     @patient.hospital_id = current_hospital.id
     if @patient.save
       flash[:notice] = "Patient is Successfully created" 
-      Admission.create!(:patient_id => @patient.id, :user_id => current_user.id , :admitted_on => Date.today)
+      Admission.create!(:patient_id => @patient.id, :user_id => current_user.id , :admitted_on => Date.today,
+                         hospital_id:current_hospital.id)
       redirect_to hospital_patient_history_path(current_hospital, @patient)
     else
       render :action  => 'new'
@@ -68,15 +70,6 @@ class PatientsController < ApplicationController
         end
       end
     end
-  end
-
-  def search
-    if current_user.doctor?
-      @patients = current_user.user_patients.search(params[:keyword]).ordered.paginate(:page => params[:page], :per_page =>10)
-    else
-      @patients = Patient.search(params[:keyword]).ordered.paginate(:page => params[:page], :per_page =>10)
-    end
-    render :partial => 'search'
   end
 
   def set_menu

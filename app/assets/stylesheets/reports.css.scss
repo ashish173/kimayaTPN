@@ -1,0 +1,19 @@
+
+.report {
+  margin-left: 0px;
+  width: 140px;
+  border-left: 1px solid;
+  border-bottom: 1px solid;
+  div {
+    border-top: 1px solid;
+    line-height: 20px;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top; 
+  }
+}
+
+.last {
+  border-right: 1px solid;
+}
+

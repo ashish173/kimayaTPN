@@ -7,7 +7,9 @@
   - else
     %li{:class => if_current(@selected_menu == PATIENT)}
       = link_to "Patients", hospital_patients_path(current_hospital) 
-  %li
+    %li{:class => if_current(@selected_menu == "investigation")}
+      =# link_to "Daily Investigations", hospital_investigations_search_path(current_hospital)
+  %li{:class => if_current(@selected_menu == 'tpn')}
     = link_to "TPN Calculation", hospital_tpns_path(current_hospital)
   %li{:class => if_current(@selected_menu == 'report')}
     = link_to "Report", hospital_reports_path(current_hospital)

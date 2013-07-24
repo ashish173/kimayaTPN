@@ -1,7 +1,7 @@
 .accordion-body.collapse{id: 'additives'}
   .accordion-inner
-    .span4.left0
-      .well.span4
+    .span9.left0
+      .well.span8
         %h5 TPN Additives
         %hr
         = f.simple_fields_for :tpn_additive do |inv|
@@ -20,62 +20,62 @@
                 - @additives.each do |ad|
                   %td= ad.day_of_life
                 %td= inv.input :day_of_life, input_html: {class: 'input-micro-mini'}, label: false
-                %td= @additives.collect(&:day_of_life).reduce(:+).to_i / total
+                %td= (@additives.collect(&:day_of_life).reduce(:+).to_i / total).round(1)
               %tr
                 %td Day Of TPN 
                 - @additives.each do |ad|
                   %td= ad.day_of_tpn
                 %td= inv.input :day_of_tpn, input_html: {class: 'input-micro-mini'}, label: false
-                %td= @additives.collect(&:day_of_tpn).reduce(:+).to_i / total
+                %td= (@additives.collect(&:day_of_tpn).reduce(:+).to_i / total).round(1)
               %tr
                 %td Fluid Intake(ml/kg)
                 - @additives.each do |ad|
                   %td= ad.fluid_intake
                 %td= inv.input :fluid_intake, input_html: {class: 'input-micro-mini'}, label: false
-                %td= @additives.collect(&:fluid_intake).reduce(:+).to_f / total
+                %td= (@additives.collect(&:fluid_intake).reduce(:+).to_f / total).round(2)
               %tr
                 %td Enteral Feeds(ml/day)
                 - @additives.each do |ad|
                   %td= ad.enteral_feeds
                 %td= inv.input :enteral_feeds, input_html: {class: 'input-micro-mini'}, label: false
-                %td= @additives.collect(&:enteral_feeds).reduce(:+).to_f / total
+                %td= (@additives.collect(&:enteral_feeds).reduce(:+).to_f / total).round(2)
               %tr
                 %td TPN Volume 
                 - @additives.each do |ad|
                   %td= ad.tpn_volume
                 %td= inv.input :tpn_volume, input_html: {class: 'input-micro-mini'}, label: false
-                %td= @additives.collect(&:tpn_volume).reduce(:+).to_f / total
+                %td= (@additives.collect(&:tpn_volume).reduce(:+).to_f / total).round(2)
               %tr
                 %td Amino Acids(g/kg)
                 - @additives.each do |ad|
                   %td= ad.amino_acids
                 %td= inv.input :amino_acids, input_html: {class: 'input-micro-mini'}, label: false
-                %td= @additives.collect(&:amino_acids).reduce(:+).to_f / total
+                %td= (@additives.collect(&:amino_acids).reduce(:+).to_f / total).round(2)
               %tr
                 %td Lipids(g/kg)
                 - @additives.each do |ad|
                   %td= ad.lipids
                 %td= inv.input :lipids, input_html: {class: 'input-micro-mini'}, label: false
-                %td= @additives.collect(&:lipids).reduce(:+).to_f / total
+                %td= (@additives.collect(&:lipids).reduce(:+).to_f / total).round(2)
               %tr
                 %td TPN Calories(Cal/kg)
                 - @additives.each do |ad|
                   %td= ad.tpn_calories
                 %td= inv.input :tpn_calories, input_html: {class: 'input-micro-mini'}, label: false
-                %td= @additives.collect(&:tpn_calories).reduce(:+).to_f / total
+                %td= (@additives.collect(&:tpn_calories).reduce(:+).to_f / total).round(2)
               %tr
                 %td DIR 
                 - @additives.each do |ad|
                   %td= ad.dir
                 %td= inv.input :dir, input_html: {class: 'input-micro-mini'}, label: false
-                %td= @additives.collect(&:dir).reduce(:+).to_f / total
+                %td= (@additives.collect(&:dir).reduce(:+).to_f / total).round(2)
               %tr
                 %td NER 
                 - @additives.each do |ad|
                   %td= ad.ner
                 %td= inv.input :ner, input_html: {class: 'input-micro-mini'}, label: false
-                %td= @additives.collect(&:ner).reduce(:+).to_f / total
-    .span4.left4
+                %td= (@additives.collect(&:ner).reduce(:+).to_f / total).round(2)
+    .span4.left0
       .well.span4
         %h5 Enteral Nutrition
         %hr
@@ -86,6 +86,7 @@
           %hr
           = inv.input :enteral_nutrition, collection: ['EBM Only', 'EBM + HMF', 'EBM + MCT', 'EBM + MCT + HMF'], as: :radio_buttons, label: false, item_wrapper_class: 'inline', wrapper_html: {class: 'pull-left'}, input_html: {class: 'stack3'}
           = inv.input :total_enteral_calories
+    .span4.left4     
       .well.span4.measurements
         %h5  Anthropometric Measurements 
         %hr

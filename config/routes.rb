@@ -7,7 +7,7 @@ Kimaya::Application.routes.draw do
     match '/hospitals/:hospital_id/reset_password' => 'admin/home#reset_password', as: :reset_password
   end
 
-  match 'hospitals/:hospital_id' => "home#index"
+  match 'hospitals/:hospital_id' => "home#index", as: :hospital_home 
   
   resources :hospitals do
     resources :home
@@ -30,8 +30,6 @@ Kimaya::Application.routes.draw do
     end
     resources :tpn_market_additives
     resources :tpn_infusions
-    match 'investigations/search' => 'investigations#search'
-    match 'investigations/autocomplete_patient_name' => 'investigations#autocomplete_patient_name', :via => :get
     match 'tpns/report/:id' => 'tpns#report', :via => :get
     match 'tpns/label/:id' => 'tpns#label', :via => :get
     match 'tpn/previous_tpn' => 'tpns#previous_tpn'

@@ -72,6 +72,19 @@ SimpleForm.setup do |config|
     end
   end
 
+  config.wrappers :inline, :tag => 'div', :class => "control-group pull-left", :error_class => 'error' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label
+    b.wrapper :tag => 'div', :class => 'controls' do |input|
+      input.wrapper :tag => 'div', :class => 'input-prepend' do |append|
+        append.use :input
+      end
+      input.use :hint,  :wrap_with => { :tag => 'span', :class => 'help-block' }
+      input.use :error, :wrap_with => { :tag => 'span', :class => 'help-inline' }
+    end
+  end
+
   config.wrappers :datetime_append, :tag => 'div', :class => "control-group", :error_class => 'error' do |b|
     b.use :html5
     b.use :placeholder

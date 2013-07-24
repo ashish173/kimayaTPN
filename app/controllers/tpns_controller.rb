@@ -2,6 +2,7 @@ class TpnsController < ApplicationController
   before_filter :load_doctors_and_patients, :only => [ :index, :create, :previous_tpn_date ]
   before_filter :load_tpn, :only => [:report, :label, :show]
   before_filter :assign_nil, :only => [:create, :calculate]
+  before_filter :set_menu
 
   def index 
     @tpn = Tpn.new 
@@ -9,6 +10,7 @@ class TpnsController < ApplicationController
 
   def create
     @tpn = Tpn.new
+    @tpn.hospital = current_hospital
     if @tpn.update_attributes(params[:tpn])
       redirect_to hospital_tpn_path(current_hospital,@tpn)
     else
@@ -18,6 +20,7 @@ class TpnsController < ApplicationController
 
   def calculate
     @tpn = Tpn.new(params[:tpn])
+    @tpn.hospital = current_hospital
     if @tpn.valid?
       @result = @tpn.calculate_tpn
       if ( @result.errors.empty? && @result.warnings.empty? ) || params[:warning].present?
@@ -37,7 +40,7 @@ class TpnsController < ApplicationController
     respond_to do |format|
       format.html { render "report.html.haml"}
       format.pdf { generate_report('report', params[:print_type]) and return }
-      end
+    end
   end
 
   def label
@@ -81,6 +84,10 @@ class TpnsController < ApplicationController
   end
 
   private
+
+  def set_menu
+    @selected_menu = 'tpn' 
+  end
 
   def load_doctors_and_patients
     if current_user.admin?

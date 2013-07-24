@@ -3,6 +3,7 @@
  *= require dataTables/jquery.dataTables.bootstrap
  *= require bootstrap-datepicker
  *= require datetimepicker
+ *= require reports
 */
 @import "bootstrap";
 @import "bootstrap-responsive";
@@ -81,7 +82,8 @@
     background-color:burlywood;
 }
 .inputx input{
-  width: 52px;
+  width: 60px;
+  height: 30px;
 }
 .inputx select{
     width:180px;
@@ -105,6 +107,7 @@
 .input_custom{
   width:52px;
   float:left;
+  height: 30px !important;
 }
 .label_custom{
   float:left;

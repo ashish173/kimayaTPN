@@ -12,4 +12,6 @@ class TpnInfusion < ActiveRecord::Base
         self.other_infusion           ||= 0
       end
     end
+  #validates :tpn_id, :uniqueness => true   # has_one relationship with tpn so uniqueness on tpn_id
+   
 end
