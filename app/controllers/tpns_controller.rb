@@ -9,6 +9,7 @@ class TpnsController < ApplicationController
   end
 
   def create
+    p "in create method"
     @tpn = Tpn.new
     @tpn.hospital = current_hospital
     if @tpn.update_attributes(params[:tpn])

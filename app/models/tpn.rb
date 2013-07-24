@@ -1,6 +1,6 @@
 class Tpn < ActiveRecord::Base
   
-  attr_accessible :tpn_infusion_attributes, :day_of_tpn, :user_id, :patient_id, :tpn_date, :current_weight, :dextrose_conc, :total_fluid_intake, :fat_volume, :fat_concentration, :factor, :amino_acid, :amino_acid_additive_id, :sodium_chloride, :sodium_chloride_additive_id, :potassium_chloride, :potassium_chloride_additive_id, :calcium, :calcium_additive_id, :magnesium, :magnesium_additive_id, :administration
+  attr_accessible :tpn_infusion_attributes, :day_of_tpn, :user_id, :patient_id, :hospital_id, :tpn_date, :current_weight, :dextrose_conc, :total_fluid_intake, :fat_volume, :fat_concentration, :factor, :amino_acid, :amino_acid_additive_id, :sodium_chloride, :sodium_chloride_additive_id, :potassium_chloride, :potassium_chloride_additive_id, :calcium, :calcium_additive_id, :magnesium, :magnesium_additive_id, :administration
 
   belongs_to :patient
   belongs_to :user

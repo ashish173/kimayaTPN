@@ -158,7 +158,7 @@ describe PatientsController do
           "admission_attributes"=>{"admitted_on"=>@admission.admitted_on, "id"=>@admission.id}, 
           "patient_history_attributes"=>{"gestational_age"=>"12", "ga"=>"SGA", "mode_of_delivery"=>"Forceps",
             "rupture_of_membranes"=>"24 - 48", "apgar_score_1"=>"3", "apgar_score_5"=>"4", "apgar_score_20"=>"5"}}}
-        expect(response).to redirect_to hospital_patient_investigations_path(@current_hospital, assigns(:patient))
+        expect(response).to redirect_to new_hospital_patient_investigation_path(@current_hospital, assigns(:patient))
     end
   end
 

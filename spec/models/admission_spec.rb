@@ -14,7 +14,7 @@ describe Admission do
   end
 
   it "must have a valid date between patient's DOB and todays date" do 
-    expect(build(:admission,admitted_on: Date.yesterday)).to have(1).errors_on(:admitted_on)
+    expect(build(:admission,admitted_on: Date.tomorrow)).to have(1).errors_on(:admitted_on)
   end
 
   it "must belong to a hospital" do
