@@ -4,7 +4,7 @@
     %td{:style => "font-weight:bold;"}
       Name
     %td{:style => "font-weight:bold;"}
-      = @patient.name 
+      = @tpn.patient.name 
     %td
       Date
     %td{:style => "font-weight:bold;"}
@@ -13,7 +13,7 @@
     %td
       Reg No.
     %td
-      = @patient.registration_number 
+      = @tpn.patient.registration_number 
     %td
       TPN Day
     %td
@@ -22,7 +22,7 @@
     %td
       Doctor
     %td
-      = @doctor.name 
+      = @tpn.user.name if @tpn.user.present? 
     %td{:style => "font-weight:bold;"}
       Dextrose Concentration
     %td{:style => "font-weight:bold;"}
@@ -85,7 +85,7 @@
     %td
       Infuse @
     %td{:style => "font-weight:bold;"}
-      = (@result.tpn_vol / 24 - @tpn_infusion.feed_volume_over_24_hour - @tpn_infusion.arterial_line_infusion - @tpn_infusion.inotrope_infusion - @tpn_infusion.inotrope_infusion - @tpn_infusion.other_infusion).round(2)
+      = final_tpn_infusion
       ml/hr
   %tr
     %td

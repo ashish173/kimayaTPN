@@ -3,7 +3,7 @@ class TpnInfusion < ActiveRecord::Base
   belongs_to :tpn
   after_initialize :init
 
-  private:
+  private
     def init
       if new_record?
         self.feed_volume_over_24_hour ||= 0

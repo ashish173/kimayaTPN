@@ -1,4 +1,7 @@
 class Tpn < ActiveRecord::Base
+  
+  attr_accessible :tpn_infusion_attributes, :day_of_tpn, :user_id, :patient_id, :tpn_date, :current_weight, :dextrose_conc, :total_fluid_intake, :fat_volume, :fat_concentration, :factor, :amino_acid, :amino_acid_additive_id, :sodium_chloride, :sodium_chloride_additive_id, :potassium_chloride, :potassium_chloride_additive_id, :calcium, :calcium_additive_id, :magnesium, :magnesium_additive_id, :administration
+
   belongs_to :patient
   belongs_to :user
   belongs_to :hospital
@@ -24,6 +27,8 @@ class Tpn < ActiveRecord::Base
   validates_inclusion_of :factor, :in => [1.0,1.1,1.2,1.3,1.4,1.5], :allow_nil => false
   has_one :tpn_infusion
   
+  accepts_nested_attributes_for :tpn_infusion
+
   after_initialize :init
 
   scope :doctors, lambda { |current_user|
@@ -34,9 +39,11 @@ class Tpn < ActiveRecord::Base
     end
   }
 
-  def build_tpn
+  scope :ordered, order("created_at DESC")
+
+  def calculate_tpn
     tpn = Kimaya::TPNCalc.new do |tpn|
-      tpn.current_weight               = self.current_weight 
+      tpn.current_weight               = self.current_weight < self.patient.birth_weight ? self.patient.birth_weight : self.current_weight 
       tpn.percent_dextrose_conc        = self.dextrose_conc / 100   
       tpn.total_fluid_intake           = self.total_fluid_intake 
       tpn.fat_intake                   = self.fat_volume
@@ -54,9 +61,12 @@ class Tpn < ActiveRecord::Base
       tpn.calcium_conc                 = TpnMarketAdditive.find(self.calcium_additive_id).constant
       tpn.administration               = self.administration
     end
-    p tpn.calculate_tpn
+    tpn.calculate_tpn
+    return tpn
   end
 
+  private
+  
   def init
     if new_record?
       self.day_of_tpn        ||= 1
@@ -76,6 +86,7 @@ class Tpn < ActiveRecord::Base
       self.potassium_chloride_additive_id ||= TpnMarketAdditive.potassium_chloride.first.id
       self.calcium_additive_id ||= TpnMarketAdditive.calcium.first.id
       self.magnesium_additive_id ||= TpnMarketAdditive.magnesium.first.id 
+      self.build_tpn_infusion
     end
   end
 

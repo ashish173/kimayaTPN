@@ -1,74 +1,68 @@
 class TpnsController < ApplicationController
-  before_filter :load_doctors_and_patients, :only => [ :index, :create ]
-  before_filter :load_tpn, :only => [ :report, :label]
+  before_filter :load_doctors_and_patients, :only => [ :index, :create, :previous_tpn_date ]
+  before_filter :load_tpn, :only => [:report, :label, :show]
+  before_filter :assign_nil, :only => [:create, :calculate]
 
   def index 
     @tpn = Tpn.new 
   end
 
   def create
+    @tpn = Tpn.new
+    if @tpn.update_attributes(params[:tpn])
+      redirect_to hospital_tpn_path(current_hospital,@tpn)
+    else
+      render action: :index
+    end
+  end
+
+  def calculate
     @tpn = Tpn.new(params[:tpn])
-    @result = Kimaya::TPNCalc.new
-    @result = @tpn.build_tpn
-    respond_to do |format|
-      if @tpn.valid?
-        if ( @result.errors.empty? && @result.warnings.empty? ) || params[:warning].present?
-          @tpn.save
-          @tpn_infusion = @tpn.build_tpn_infusion
-          @tpn_infusion.save
-          format.html { render :action => 'show' }
-        elsif @result.errors.empty?
+    if @tpn.valid?
+      @result = @tpn.calculate_tpn
+      if ( @result.errors.empty? && @result.warnings.empty? ) || params[:warning].present?
+        render "show", :formats => [:js] and return 
+      else
+        if @result.errors.empty?
           @warnings = @result.warnings.collect! { |i| i.to_i }
-          format.html { render :action => 'index' }
         else
           @errors = @result.errors.collect! { |i| i.to_i }
-          format.html { render :action => 'index' }
         end
-      else
-        format.html { render :action => 'index'}
       end
     end
+    render 'form_load'
   end
 
   def report
     respond_to do |format|
-      format.html{ render :action => 'report.html.haml' } 
-      format.pdf do
-        html = render_to_string( :partial => 'report', :formats => :html)
-        kit = PDFKit.new(html)
-        kit.stylesheets << "#{Rails.root}/app/assets/stylesheets/pdf.css"
-        if params[:print_type]
-          send_data(kit.to_pdf,:filename => "report.pdf", :type => "application/pdf", :disposition => 'attachment')
-        else
-          send_data(kit.to_pdf,:filename => "report.pdf", :type => "application/pdf", :disposition => 'inline')
-        end
-        return
+      format.html { render "report.html.haml"}
+      format.pdf { generate_report('report', params[:print_type]) and return }
       end
-    end
   end
 
   def label
     respond_to do |format|
-      format.html{ render :action => 'label.html.haml' } 
-      format.pdf do
-        html = render_to_string( :partial => 'label', :formats => :html)
-        kit = PDFKit.new(html)
-        kit.stylesheets << "#{Rails.root}/app/assets/stylesheets/pdf.css"
-        if params[:print_type]
-          send_data(kit.to_pdf,:filename => "label.pdf", :type => "application/pdf", :disposition => 'attachment')
-        else
-          send_data(kit.to_pdf,:filename => "label.pdf", :type => "application/pdf", :disposition => 'inline')
-        end
-        return
-      end
+      format.html { render "label.html.haml" }
+      format.pdf { generate_report('label', params[:print_type]) and return }
     end
   end
-  
+
+  def generate_report(document, type)
+    html = render_to_string( :partial => document, :formats => :html)
+    kit = PDFKit.new(html)
+    kit.stylesheets << "#{Rails.root}/app/assets/stylesheets/pdf.css"
+    if type.present?
+      send_data(kit.to_pdf,:filename => document + ".pdf", :type => "application/pdf", :disposition => 'attachment')
+    else
+      send_data(kit.to_pdf,:filename => document + ".pdf", :type => "application/pdf", :disposition => 'inline')
+    end
+  end
+
   def previous_tpn
     if params[:patient_id].present?
       patient = Patient.find(params[:patient_id])
       date = params[:date]
-      @tpn = patient.tpns.where(:tpn_date => date).first
+      @tpn = patient.tpns.where(:tpn_date => date.to_date.strftime("%F")).first
       if @tpn.present?
         render :previous_tpn, :formats => [:js]
       else
@@ -80,38 +74,31 @@ class TpnsController < ApplicationController
   end
 
   def previous_tpn_date
-    if params[:patient_id].present?
-      @dates = []
-      Tpn.select(:tpn_date).where(:patient_id => params[:patient_id]).each do |d| @dates  << d.tpn_date.to_s unless d.tpn_date.nil? end
-      @tpn = Patient.find(params[:patient_id]).tpns.last
-      render :previous_tpn_date, :formats => [:js]
-    else
-      render :nothing => true
-    end
+    @dates = Tpn.select(:tpn_date).where(:patient_id => params[:patient_id]).collect{ |d| d.tpn_date.to_s}
+    @patient = Patient.find params[:patient_id]
+    @tpn = @patient.tpns.ordered.first_or_initialize
+    render 'form_load'
   end
 
-private
+  private
 
   def load_doctors_and_patients
-    if current_user.role?(ADMIN)
+    if current_user.admin?
       @doctors = current_hospital.users.doctors
-    else
-      @doctors = [current_user]
-    end
-    if current_user.role?(ADMIN)
       @patients = current_hospital.patients.select("patients.id,name").to_json
     else
+      @doctors = [current_user]
       @patients = current_user.user_patients.select("patients.id,name").to_json
     end
   end
 
   def load_tpn
-    @tpn = Tpn.find(params[:id])
-    @result = Kimaya::TPNCalc.new
-    @result = @tpn.build_tpn
-    @tpn_infusion = @tpn.tpn_infusion
-    @doctor = @tpn.user
-    @patient = @tpn.patient
+    @tpn = Tpn.includes([:user, :patient, :tpn_infusion]).find(params[:id])
+    @result = @tpn.calculate_tpn
+  end
+
+  def assign_nil
+    params[:tpn][:tpn_infusion_attributes][:id] = nil
   end
 
 end

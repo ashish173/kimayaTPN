@@ -1,0 +1,95 @@
+#amino-modal{:style => "display:none"}
+  .body
+    %table#aminoTable.table{:style => "margin-bottom:0px;"}
+      %thead
+        %th{:style => "display:none;"}
+        %th
+          Available Dose
+        %th
+          Conc.
+        %tbody 
+        - TpnMarketAdditive.amino_acid.each do |additive|
+          %tr
+            %td{:style => "display:none;"}
+              = additive.id
+            %td
+              = additive.market_name
+            %td
+              = additive.constant
+              = additive.unit
+#sodium-modal{:style => "display:none"}
+  .body
+    %table#sodiumTable.table{:style => "margin-bottom:0px;"}
+      %thead
+        %th{:style => "display:none;"}
+        %th
+          Available Dose
+        %th
+          Conc.
+        %tbody 
+        - TpnMarketAdditive.sodium_chloride.each do |additive|
+          %tr
+            %td{:style => "display:none;"}
+              = additive.id
+            %td
+              = additive.market_name
+            %td
+              = additive.constant
+              = additive.unit
+#potassium-modal{:style => "display:none"}
+  .body
+    %table#potassiumTable.table{:style => "margin-bottom:0px;"}
+      %thead
+        %th{:style => "display:none;"}
+        %th
+          Available Dose
+        %th
+          Conc.
+        %tbody 
+        - TpnMarketAdditive.potassium_chloride.each do |additive|
+          %tr
+            %td{:style => "display:none;"}
+              = additive.id
+            %td
+              = additive.market_name
+            %td
+              = additive.constant
+              = additive.unit
+#calcium-modal{:style => "display:none"}
+  .body
+    %table#calciumTable.table{:style => "margin-bottom:0px;"}
+      %thead
+        %th{:style => "display:none;"}
+        %th
+          Available Dose
+        %th
+          Conc.
+        %tbody 
+        - TpnMarketAdditive.calcium.each do |additive|
+          %tr
+            %td{:style => "display:none;"}
+              = additive.id
+            %td
+              = additive.market_name
+            %td
+              = additive.constant
+              = additive.unit
+#magnesium-modal{:style => "display:none;"}
+  .body
+    %table#magnesiumTable.table{:style => "margin-bottom:0px;"}
+      %thead
+        %th{:style => "display:none;"}
+        %th
+          Available Dose
+        %th
+          Conc.
+        %tbody 
+        - TpnMarketAdditive.magnesium.each do |additive|
+          %tr
+            %td{:style => "display:none;"}
+              = additive.id
+            %td
+              = additive.market_name
+            %td
+              = additive.constant
+              = additive.unit

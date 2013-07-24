@@ -1,0 +1,5 @@
+$("#tpn").html('#{escape_javascript(render :partial => 'form')}');
+addTypehead();
+dates = #{raw @dates || [] };
+form_load(dates);
+popover_bind();

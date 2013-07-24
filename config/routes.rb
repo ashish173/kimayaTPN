@@ -24,6 +24,9 @@ Kimaya::Application.routes.draw do
     end
     resources :tpns do
       get :autocomplete_patient_name, :on => :collection
+      collection do
+        match 'calculate'
+      end
     end
     resources :tpn_market_additives
     resources :tpn_infusions

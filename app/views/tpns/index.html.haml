@@ -1,5 +1,9 @@
-= render :partial => "form"
-- if @errors.present?
-  = render :partial => "errors"
-- if @warnings.present?
-  = render :partial => "warnings"
+#tpn
+  = render :partial => "form"
+= render :partial => "tpn_additives"
+= render :partial => "errors" if @errors.present?
+= render :partial => "warnings" if @warnings.present?
+#tpn-show
+:javascript
+  var patients = #{@patients}
+  var hospital = "#{current_hospital.slug}"

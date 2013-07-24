@@ -1,0 +1,108 @@
+%h3{:style => "text-align:center"}
+  TPN Information
+.form-inputs.row
+  = f.input :day_of_tpn, :wrapper_html => { :class => 'span3'}, input_html: {style:'width:50px;'}
+  = f.input :user_id, collection: @doctors, include_blank: false, :wrapper_html => { :class => "span3" }, label: 'Doctor'
+  = label_tag :patient, nil, class: 'label_custom5'  
+  = text_field_tag :tpn_patient_name, @patient.present? ? @patient.name : nil, autocomplete: "off" 
+  = f.input :patient_id, :label => false, input_html: { :style => "display:none;" }
+%div{:style => "width:40%;float:left;" }
+  %h3{:style => "margin-left:60px;"}
+    Daily Fluid Volume Intake
+  .form-inputs.row
+    %div
+      = label_tag :previous_tpn_date, "Previous TPN Date", class: 'label_custom4'
+      = text_field_tag :previous_tpn_date, "", :class => "input_custom2 datepicker", :readonly => "readonly"
+    = f.hidden_field :tpn_date, :value => "#{ Date.today }"
+    = f.input :current_weight, :wrapper => :append_tpn do
+      = f.input_field :current_weight, min: '0.00', step:'0.10', :type => "number"
+      %span.add-on{:id => "current_weight_help", :"data-toggle" => "popover"}
+        %i.icon-info-sign
+    = text_field_tag :previous_current_weight, "", :class => "input_custom", :disabled => true, :type => "number"      
+    = label_tag '', 'Kg', :class => "label_custom" 
+    = f.input :dextrose_conc, :wrapper => :append_tpn do
+      = f.input_field :dextrose_conc, min: '0.00', step:'0.10', :type => "number"
+      %span.add-on{ :id => "dextrose_conc_help", "data-toggle" => "popover" }
+        %i.icon-info-sign
+    = text_field_tag :previous_dextrose_conc, "", :class => "input_custom", :disabled => true, :type => "number"      
+    = label_tag '', '%', :class => "label_custom" 
+    = f.input :total_fluid_intake, label: 'Fluid Intake', :wrapper => :append_tpn do
+      = f.input_field :total_fluid_intake, min: '0.00', step:'0.10', :type => "number"
+      %span.add-on{ :id => "total_fluid_intake_help", "data-toggle" => "popover" }
+        %i.icon-info-sign
+    = text_field_tag :previous_total_fluid_intake, "", :class => "input_custom", :disabled => true, :type => "number"      
+    = label_tag '', 'ml/kg/day', :class => "label_custom" 
+    = f.input :fat_volume, label: 'Fat Required', :wrapper => :append_tpn do
+      = f.input_field :fat_volume, min: '0.00', step:'0.10', :type => "number"
+      %span.add-on{ :id => "fat_volume_help", "data-toggle" => "popover" }
+        %i.icon-info-sign
+    = text_field_tag :previous_fat_volume, "", :class => "input_custom", :disabled => true, :type => "number"      
+    = label_tag '', 'gm/kg/day', :class => "label_custom" 
+    = f.input :fat_concentration, label: 'Lipid Concentration', :wrapper => :append_tpn do
+      = f.input_field :fat_concentration, as: :select, collection: [10,20], include_blank: false, style: "width:62px;"
+      %span.add-on{ :id => "fat_concentration_help", "data-toggle" => "popover" }
+        %i.icon-info-sign
+    = text_field_tag :previous_fat_concentration, "", :class => "input_custom", :disabled => true, :type => "number"      
+    = label_tag '', '%', :class => "label_custom" 
+    = f.input :factor, label: 'Overfill Factor', :wrapper => :append_tpn do
+      = f.input_field :factor, :collection => ['1.0','1.1','1.2','1.3','1.4','1.5'], include_blank: false, style: "width:62px;"
+      %span.add-on{ :id => "factor_help", "data-toggle" => "popover" }
+        %i.icon-info-sign
+    = text_field_tag :previous_factor, "", :class => "input_custom", :disabled => true, :type => "number"      
+%div{:style => "width:60%;float:left;"}
+  %h3{ :style => "margin-left:222px;" }
+    Additive Nutrients
+  .form-inputs.row{ :style => "margin-top:60px;float:left;"}
+    = f.input :amino_acid, :wrapper => :append_tpn do
+      = f.input_field :amino_acid, min:'0.00', step:'0.10', :type => "number"
+      %span.add-on{ :id => "amino_acid_help", "data-toggle" => "popover" }
+        %i.icon-info-sign
+    = text_field_tag :amino_acid_previous, "", :class => "input_custom1", :disabled => true, :type => "number"      
+    = label_tag '', 'gm/kg', :class => "label_custom1", :style => "padding-left:8px;"
+    %a.button{:id => "amino", :class => "button_custom btn btn-primary", :"data-toggle" => "popover"}
+    = f.input :amino_acid_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
+    = text_field_tag :amino_acid_additive, "#{ TpnMarketAdditive.find(@tpn.amino_acid_additive_id).constant }", :class => "input_custom1", :readonly => true, :type => "number"      
+    = label_tag '', '%', :class => "label_custom1"
+    = f.input :sodium_chloride, :wrapper => :append_tpn do
+      = f.input_field :sodium_chloride, min:'0.00', step:'0.10', :type => "number"
+      %span.add-on{ :id => "sodium_chloride_help", "data-toggle" => "popover" }
+        %i.icon-info-sign
+    = text_field_tag :sodium_chloride_previous, "", :class => "input_custom1", :disabled => true, :type => "number"      
+    = label_tag '', 'meq/kg', :class => "label_custom1"
+    %a.button{:id => "sodium", :class => "button_custom btn btn-primary", 'data-toggle' => "popover"}
+    = f.input :sodium_chloride_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
+    = text_field_tag :sodium_chloride_additive, "#{ TpnMarketAdditive.find(@tpn.sodium_chloride_additive_id).constant }", :class => "input_custom1", :readonly => true, :type => "number"      
+    = label_tag '', 'meq/ml', :class => "label_custom1"
+    = f.input :potassium_chloride, :wrapper => :append_tpn do
+      = f.input_field :potassium_chloride, min:'0.00', step:'0.10', :type => "number"
+      %span.add-on{ :id => "potassium_chloride_help", "data-toggle" => "popover" }
+        %i.icon-info-sign
+    = text_field_tag :potassium_chloride_previous, "", :class => "input_custom1", :disabled => true, :type => "number"      
+    = label_tag '', 'meq/kg', :class => "label_custom1"
+    %a.button{:id => "potassium", :class => "button_custom btn btn-primary",  'data-toggle' => "popover"}
+    = f.input :potassium_chloride_additive_id,:as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
+    = text_field_tag :potassium_chloride_additive, "#{ TpnMarketAdditive.find(@tpn.potassium_chloride_additive_id).constant }", :class => "input_custom1", :readonly => true, :type => "number"      
+    = label_tag '', 'meq/ml', :class => "label_custom1"
+    = f.input :calcium, :wrapper => :append_tpn do
+      = f.input_field :calcium, min:'0.00', step:'0.10', :type => "number"
+      %span.add-on{ :id => "calcium_help", "data-toggle" => "popover" }
+        %i.icon-info-sign
+    = text_field_tag :calcium_previous, "", :class => "input_custom1", :disabled => true, :type => "number"      
+    = label_tag '', 'meq/kg', :class => "label_custom1"
+    %a.button{:id => "calcium", :class => "button_custom btn btn-primary",  'data-toggle' => "popover"}
+    = f.input :calcium_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
+    = text_field_tag :calcium_additive, "#{ TpnMarketAdditive.find(@tpn.calcium_additive_id).constant }", :class => "input_custom1", :readonly => true, :type => "number"      
+    = label_tag '', 'meq/ml', :class => "label_custom1"
+    = f.input :magnesium, :wrapper => :append_tpn do
+      = f.input_field :magnesium, min:'0.00', step:'0.10', :type => "number"
+      %span.add-on{ :id => "magnesium_help", "data-toggle" => "popover" }
+        %i.icon-info-sign
+    = text_field_tag :magnesium_previous, "", :class => "input_custom1", :disabled => true, :type => "number"      
+    = label_tag '', 'meq/kg', :class => "label_custom1"
+    %a.button{:id => "magnesium", :class => "button_custom btn btn-primary",  'data-toggle' => "popover"}
+    = f.input :magnesium_additive_id, :as => "hidden", :wrapper => false, :label => false, input_html: {class: 'input_custom1'}
+    = text_field_tag :magnesium_additive, "#{ TpnMarketAdditive.find(@tpn.magnesium_additive_id).constant }", :class => "input_custom1", :readonly => true, :type => "number"      
+    = label_tag '', 'meq/ml', :class => "label_custom1"
+    = f.input :administration, collection: ['Peripheral Line', 'Central Line'], as: :radio_buttons, :checked => 'Peripheral Line', :wrapper_html => {:class => "span_custom1" }
+    = f.simple_fields_for :tpn_infusion do |f|
+      = render partial: 'tpn_infusion', locals: {f: f}

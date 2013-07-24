@@ -1,113 +1,15 @@
-%h2 
-  Nutri Summary Sheet
-%table.table.table-bordered
-  %tr
-    %th
-      Fluid Volumes
-    %th
-    %th
-      Nutrients Volumes
-    %th
-    %th
-      Nutrients Intake
-    %th
-  %tr
-    %td
-      Total Fluid
-    %td
-      #{ @result.total_fluid_intake} ml/kg/day
-    %td
-      Dextrose
-    %td
-      #{ @result.remaining_dextrose_vol} ml
-    %td
-      Dextrose 10%
-    %td
-      #{ @result.dextrose_10} ml
-  %tr
-    %td
-      TPN Volumne
-    %td
-      #{@result.tpn_vol} ml
-    %td
-      Conc. %  
-    %td
-      #{@result.achieved_dextrose_conc} %
-    %td
-      Dextrose 50%
-    %td
-      #{@result.dextrose_50} ml
-  %tr
-    %td
-      Hyperalimentation Volume
-    %td
-      #{@result.hav_vol} ml
-    %td
-      Fat
-    %td
-      #{@result.fat_vol} ml
-    %td
-      Fat
-    %td
-      #{@result.fat_intake} gm/kg
-    %tr
-      %td
-      %td
-      %td
-        CNR
-      %td
-        #{@result.cnr_rate}
-      %td
-        Amino Acid
-      %td
-        #{@result.amino_acid_intake} gm/kg
-    %tr
-      %td
-      %td
-      %td
-        DIR
-      %td
-        #{@result.dir_rate} mg/kg/min
-      %td
-        Sodium
-      %td
-        #{@result.sodium_chloride_intake} meq/kg
-    %tr
-      %td
-      %td
-      %td
-      %td
-      %td
-        Potassium
-      %td
-        #{@result.potassium_chloride_intake} meq/kg
-    %tr
-      %td
-      %td
-      %td
-      %td
-      %td
-        Calcium
-      %td
-        #{@result.calcium_intake} meq/kg
-    %tr
-      %td
-      %td
-      %td
-      %td
-      %td
-        Magnesium
-      %td
-        #{@result.magnesium_intake} meq/kg
-    %tr
-      %td
-      %td
-      %td
-      %td
-      %td
-        Multivitamins
-      %td
-        #{@result.mvi} ml/kg
-
-
-
+#tpn-show-modal{ :class => "modal hide fade", :style => "width:900px !important; left:36% !important; top:15% !important;"}
+  = simple_form_for [current_hospital, @tpn], url: hospital_tpns_path(current_hospital), method: :post do |f|
+    .hide
+      = render partial: 'tpn_form', locals: {f: f}
+    .modal-header
+      %h2 
+        = link_to 'X', '', class: 'close', type: 'button', data: { dismiss: 'modal' , target: '#tpn-show-modal'}
+        Nutri Summary Sheet
+    .modal-body
+      = render partial: 'tpn_table'  
+    .modal-footer
+      = link_to 'Other infusion / Eternal Feed', '#new-tpn_infusion', class: 'btn btn-primary', data: { toggle: 'modal' } 
+      = f.simple_fields_for :tpn_infusion do |f|
+        = render :partial => 'new_tpn_infusion', locals: {f: f}
+      = f.button :submit, value: 'Create Tpn', class: 'btn btn-primary'

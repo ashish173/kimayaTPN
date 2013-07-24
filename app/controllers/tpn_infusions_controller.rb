@@ -13,4 +13,5 @@ class TpnInfusionsController < ApplicationController
     @tpn_infusion.update_attributes(params[:tpn_infusion])
     render 'tpn_infusion', :formats => [:js]
   end
+
 end

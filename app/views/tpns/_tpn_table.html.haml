@@ -1,0 +1,127 @@
+%table.table.table-bordered
+  %tr
+    %th
+      Fluid Volumes
+    %th
+    %th
+      Nutrients Volumes
+    %th
+    %th
+      Nutrients Intake
+    %th
+  %tr
+    %td
+      %strong
+        Total Fluid
+    %td
+      #{ @result.total_fluid_intake} ml/kg/day
+    %td
+      %strong
+        Dextrose
+    %td
+      #{ @result.remaining_dextrose_vol} ml
+    %td
+      %strong
+        Dextrose 10%
+    %td
+      #{ @result.dextrose_10} ml
+  %tr
+    %td
+      %strong
+        TPN Volumne
+    %td
+      #{@result.tpn_vol} ml
+    %td
+      %strong
+        Conc. %  
+    %td
+      %strong
+        #{@result.achieved_dextrose_conc} %
+    %td
+      %strong
+        Dextrose 50%
+    %td
+      #{@result.dextrose_50} ml
+  %tr
+    %td
+      %strong
+        Hyperalimentation Vol.
+    %td
+      #{@result.hav_vol} ml
+    %td
+      %strong
+        Fat
+    %td
+      #{@result.fat_vol} ml
+    %td
+      %strong
+        Fat
+    %td
+      #{@result.fat_intake} gm/kg
+  %tr
+    %td
+    %td
+    %td
+      %strong
+        CNR
+    %td
+      #{@result.cnr_rate}
+    %td
+      %strong
+        Amino Acid
+    %td
+      #{@result.amino_acid_intake} gm/kg
+    %tr
+      %td
+      %td
+      %td
+        %strong
+          DIR
+      %td
+        #{@result.dir_rate} mg/kg/min
+      %td
+        %strong
+          Sodium
+      %td
+        #{@result.sodium_chloride_intake} meq/kg
+    %tr
+      %td
+      %td
+      %td
+      %td
+      %td
+        %strong
+          Potassium
+      %td
+        #{@result.potassium_chloride_intake} meq/kg
+    %tr
+      %td
+      %td
+      %td
+      %td
+      %td
+        %strong
+          Calcium
+      %td
+        #{@result.calcium_intake} meq/kg
+    %tr
+      %td
+      %td
+      %td
+      %td
+      %td
+        %strong
+          Magnesium
+      %td
+        #{@result.magnesium_intake} meq/kg
+    %tr
+      %td
+      %td
+      %td
+      %td
+      %td
+        %strong
+          Multivitamins
+      %td
+        #{@result.mvi} ml/kg
+

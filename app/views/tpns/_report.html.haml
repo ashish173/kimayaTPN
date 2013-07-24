@@ -5,7 +5,7 @@
     %td{:style => "font-weight:bold;"}
       Name
     %td{:style => "font-weight:bold;"}
-      = @patient.name 
+      = @tpn.patient.name 
     %td
       Date
     %td{:style => "font-weight:bold;"}
@@ -14,7 +14,7 @@
     %td
       Reg No.
     %td
-      = @patient.registration_number 
+      = @tpn.patient.registration_number 
     %td{:style => "font-weight:bold;"}
       TPN Day
     %td{:style => "font-weight:bold;"}
@@ -23,16 +23,17 @@
     %td
       Current Weight
     %td
-      = @tpn.current_weight 
+      = @tpn.current_weight
+      Kg
     %td
       Date of Birth
     %td
-      = @patient.date_of_birth 
+      = @tpn.patient.date_of_birth 
   %tr
     %td
       Doctor
     %td
-      = @doctor.name 
+      = @tpn.user.name if @tpn.user.present? 
     %td
     %td
 %h4
@@ -47,7 +48,7 @@
     %td
       Feed volume over 24 hour
     %td
-      = @tpn_infusion.feed_volume_over_24_hour
+      = @tpn.tpn_infusion.feed_volume_over_24_hour
       ml/hr
   %tr
     %td
@@ -58,7 +59,7 @@
     %td
       Arterial line infusion
     %td
-      = @tpn_infusion.arterial_line_infusion
+      = @tpn.tpn_infusion.arterial_line_infusion
       ml/hr
   %tr
     %td
@@ -69,7 +70,7 @@
     %td
       Inotrope Infusion
     %td
-      = @tpn_infusion.inotrope_infusion
+      = @tpn.tpn_infusion.inotrope_infusion
       ml/hr
   %tr
     %td
@@ -80,7 +81,7 @@
     %td
       Other Infusion
     %td
-      = @tpn_infusion.other_infusion
+      = @tpn.tpn_infusion.other_infusion
       ml/hr
   %tr
     %td
@@ -91,7 +92,7 @@
     %td{:style => "font-weight:bold;"}
       Final TPN orders at initiation
     %td{:style => "font-weight:bold;"}
-      = (@result.tpn_vol / 24 - @tpn_infusion.feed_volume_over_24_hour - @tpn_infusion.arterial_line_infusion - @tpn_infusion.inotrope_infusion - @tpn_infusion.inotrope_infusion - @tpn_infusion.other_infusion).round(2)
+      = final_tpn_infusion
       ml/hr
   %tr
     %td
@@ -127,9 +128,9 @@
         = @tpn.amino_acid_additive.market_name 
     - else
       %td
-        = TpnMarketAdditive.amino_acid.first.constant if TpnMarketAdditive.amino_acid.first.present?
+        = TpnMarketAdditive.amino_acid.first.constant
       %td
-        = TpnMarketAdditive.amino_acid.first.market_name if TpnMarketAdditive.amino_acid.first.present?
+        = TpnMarketAdditive.amino_acid.first.market_name
     %td
       #{@result.amino_acid_vol } ml
   %tr
@@ -144,10 +145,10 @@
         = @tpn.sodium_chloride_additive.market_name 
     - else
       %td
-        = TpnMarketAdditive.sodium_chloride.first.constant if TpnMarketAdditive.sodium_chloride.first.present?
+        = TpnMarketAdditive.sodium_chloride.first.constant
         meq/ml
       %td
-        = TpnMarketAdditive.sodium_chloride.first.market_name if TpnMarketAdditive.sodium_chloride.first.present?
+        = TpnMarketAdditive.sodium_chloride.first.market_name
     %td
       #{ @result.sodium_chloride_vol } ml
   %tr
@@ -162,10 +163,10 @@
         = @tpn.potassium_chloride_additive.market_name 
     - else
       %td
-        = TpnMarketAdditive.potassium_chloride.first.constant if TpnMarketAdditive.potassium_chloride.first.present?
+        = TpnMarketAdditive.potassium_chloride.first.constant 
         meq/ml
       %td
-        = TpnMarketAdditive.potassium_chloride.first.market_name if TpnMarketAdditive.potassium_chloride.first.present?
+        = TpnMarketAdditive.potassium_chloride.first.market_name 
     %td
       #{ @result.potassium_chloride_vol } ml
   %tr
@@ -180,10 +181,10 @@
         = @tpn.magnesium_additive.market_name 
     - else
       %td
-        = TpnMarketAdditive.magnesium.first.constant if TpnMarketAdditive.magnesium.first.present?
+        = TpnMarketAdditive.magnesium.first.constant 
         meq/ml
       %td
-        = TpnMarketAdditive.magnesium.first.market_name if TpnMarketAdditive.magnesium.first.present?
+        = TpnMarketAdditive.magnesium.first.market_name
     %td
       #{ @result.magnesium_vol } ml
   %tr
@@ -198,9 +199,9 @@
         = @tpn.calcium_additive.market_name 
     - else
       %td
-        = TpnMarketAdditive.calcium.first.constant if TpnMarketAdditive.calcium.first.present?
+        = TpnMarketAdditive.calcium.first.constant
       %td
-        = TpnMarketAdditive.calcium.first.market_name if TpnMarketAdditive.calcium.first.present?
+        = TpnMarketAdditive.calcium.first.market_name
     %td
       #{ @result.calcium_vol } ml
   %tr

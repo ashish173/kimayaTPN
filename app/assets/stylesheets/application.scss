@@ -94,10 +94,16 @@
   width: 168px !important;
 }
 .span_custom{
-  width:340px;
+  width:320px;
+}
+.span_custom1{
+  width:500px;
+}
+.inputx .radio{
+  float:left;
 }
 .input_custom{
-  width:40px;
+  width:52px;
   float:left;
 }
 .label_custom{
@@ -121,10 +127,26 @@
   margin-left:100px;
   margin-bottom:45px;
 }
+.label_custom5{
+  margin-left: 85px;
+  float: left;
+  margin-right: 20px;
+}
+.label_custom6{
+  width: 180px;
+  float: left;
+}
+.label_custom7{
+  width: 300px;
+  float: left;
+}
+.margin_top{
+  margin-top:20px;
+}
 .input_custom1{
   float:left;
-  width:40px;
-  margin-right:20px;
+  width:52px;
+  margin-right:7px;
 }
 .input_custom2{
   float:left;
@@ -135,7 +157,7 @@
   width:14px;
   height:20px;
   margin-right:32px;
-  margin-left:46px;
+  margin-left:28px;
 }
 
 .input-micro-mini{
@@ -205,4 +227,22 @@ table.dataTable thead .sorting_asc {
 
 table.dataTable thead .sorting_desc {
   background:  url("/assets/dataTables/sort_desc.png") no-repeat scroll right center #015B4E !important;
+}
+.datepicker table tr td.day.red, .datepicker table tr td.day.red:hover{
+    background-color: #FF0000;
+}
+.popover{
+ max-width:380px;
+}
+#new-tpn_infusion{
+  z-index: 1060 !important;
+}
+#new-tpn_infusion .body{
+  margin: 40px 90px;
+}
+#new-tpn_infusion input{
+  width: 52px;
+}
+#new-tpn_infusion .unit{
+  float: right;
 }

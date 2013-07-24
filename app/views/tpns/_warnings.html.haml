@@ -1,0 +1,19 @@
+#warning-modal{ :class => "modal hide fade" }
+  %div
+    %button{type: 'button', class: 'close', data:{dismiss: "modal"}} x
+    %head
+      %h3{:style => "text-align:center;"}
+        Warnings
+    %div{:style => "margin:26px;"}
+      - @warnings.each do |e|
+        = I18n.translate("errors.#{e}.message")
+    %div{:style => "text-align:center; margin:10px;"}
+      %button{ :class => "btn btn-primary", :id => "supress_warning" } Yes
+      %a{ :class => "btn btn-primary", data:{dismiss:"modal" }} No
+:javascript
+  $('#warning-modal').modal('show');
+  $('#supress_warning').click(function (){
+    var input = $("<input>").attr("type", "hidden").attr("name", "warning").val("supress");
+    $('#new_tpn').append($(input));
+    $('#new_tpn').submit();
+  });
