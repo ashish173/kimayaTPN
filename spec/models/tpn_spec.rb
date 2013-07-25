@@ -1,22 +1,25 @@
 require 'spec_helper'
 
 describe  Tpn do
-=begin
+
   it "is invalid for dextrose_conc outside 5-20" do
     expect(build(:tpn, dextrose_conc: 1)).to have(1).errors_on(:dextrose_conc)
   end
-  
+
   it "is invalid for dextrose_conc not a number" do
     expect(build(:tpn, dextrose_conc: "qw")).to have(1).errors_on(:dextrose_conc)
   end
 
-  it "is invalid for total_fluid_intake outside 40-150" do
+
+  it "is invalid for total_fluid_intake outside 40-250" do
     expect(build(:tpn, total_fluid_intake: 30)).to have(1).errors_on(:total_fluid_intake)
   end
+
 
   it "is invalid for total_fluid_intake not a number" do
     expect(build(:tpn, total_fluid_intake: "some quant" )).to have(1).errors_on(:total_fluid_intake)
   end
+
 
   it "is invalid if day_of_tpn not a number" do
     expect(build(:tpn, day_of_tpn: "some days")).to have(1).errors_on(:day_of_tpn) 
@@ -35,7 +38,7 @@ describe  Tpn do
   end
 
   it "is invalid for fat_volume not a number" do
-    expect(build(:tpn, fat_volume: "false value")).to have(1).errors_on(:fat_volume) 
+    expect(build(:tpn, fat_volume: "false value")).to have(2).errors_on(:fat_volume) 
   end
 
   it "is invalid without a patient" do
@@ -45,13 +48,5 @@ describe  Tpn do
   it "is invalid without a user" do
     expect(build(:tpn, user_id: nil)).to have(1).errors_on(:user_id)
   end
-
-  it "is invalid for more than one tpn_infusions" do
-    tpn = create(:tpn)
-    tpn_inf1 = create(:tpn_infusion, tpn: tpn) 
-    tpn_inf2 = build(:tpn_infusion, tpn: tpn)
-    expect(tpn_inf2).to_not be_valid
-  end
-=end
 
 end
