@@ -13,7 +13,7 @@ require 'rspec/autorun'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
-
+=begin
 def add_roles
   Role.destroy_all
   ActiveRecord::Base.connection.execute("ALTER TABLE roles AUTO_INCREMENT = 1")
@@ -22,7 +22,11 @@ def add_roles
   end
 end
 
-
+def add_tpn_market_additives
+  TpnMarketAdditives.destroy_all
+  ActiveRecord::Base.connection.execute("ALTER TABLE tpn_market_additves AUTO_INCREMENT =1")
+end
+=end
 
 RSpec.configure do |config|
   # ## Mock Framework
@@ -39,7 +43,7 @@ RSpec.configure do |config|
 
 
   config.before(:suite) do
-    add_roles 
+    # add_roles 
     DatabaseCleaner.strategy = :truncation , {:except => %w[roles tpn_market_additives]}
     DatabaseCleaner.clean
   end

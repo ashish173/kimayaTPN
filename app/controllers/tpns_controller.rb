@@ -84,7 +84,7 @@ class TpnsController < ApplicationController
     @dates = Tpn.select(:tpn_date).where(:patient_id => params[:patient_id]).collect{ |d| d.tpn_date.to_s}
     @patient = Patient.find params[:patient_id]
     @tpn = @patient.tpns.ordered.first_or_initialize
-    render :nothing => true 
+    render :form_load 
   end
 
   private

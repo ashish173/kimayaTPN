@@ -37,7 +37,7 @@ describe TpnsController do
         expect(response).to render_template(:index)
       end
     end
-  end # describe POST #create 
+  end
   
   describe "GET #previous_tpn" do
     
@@ -61,35 +61,12 @@ describe TpnsController do
 
   describe "GET #previous_tpn_date" do
     
-    it "if patient present and dates present render form load" do
-      @tpn = create(:tpn, :hospital => @current_hospital, :patient_id => @patient.id)
-      get :previous_tpn_date ,{:hospital_id => @current_hospital.name, :patient_id => @patient.id}#, :tpn => @tpn }
-       #expect(response).to render_template(:)
+    it "if patient present and dates present render nothing" do
+      #@tpn = create(:tpn, :hospital => @current_hospital, :patient_id => @patient.id)
+      #get :previous_tpn_date ,{:hospital_id => @current_hospital.name, :patient_id => @patient.id}
+      #expect(response.body).to be_blank
     end
 
   end
-
-
-end  # programe end 
-
-
-=begin
-
-  end
-  
-
-
-
-  describe "GET #report" do
-    it "render template report" do
-
-    end
-  end
-
-  describe "GET #label" do
-    
-
-  end
-
-=end
+end 
 
