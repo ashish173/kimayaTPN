@@ -13,6 +13,17 @@ require 'rspec/autorun'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+
+def add_roles
+  Role.destroy_all
+  ActiveRecord::Base.connection.execute("ALTER TABLE roles AUTO_INCREMENT = 1")
+  [:role_admin, :role_doctor, :role_nutritionist, :role_patient].each do |r|
+    FactoryGirl.create(r)
+  end
+end
+
+
+
 RSpec.configure do |config|
   # ## Mock Framework
   #
@@ -28,8 +39,9 @@ RSpec.configure do |config|
 
 
   config.before(:suite) do
-   DatabaseCleaner.strategy = :truncation , {:except => %w[roles tpn_market_additives]}
-   DatabaseCleaner.clean
+    add_roles 
+    DatabaseCleaner.strategy = :truncation , {:except => %w[roles tpn_market_additives]}
+    DatabaseCleaner.clean
   end
   config.include FactoryGirl::Syntax::Methods
   

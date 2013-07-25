@@ -11,15 +11,13 @@ class TpnsController < ApplicationController
   def create
     @tpn = Tpn.new
     @tpn.hospital = current_hospital
+
     if @tpn.update_attributes(params[:tpn])
+      #@tpn.save
       redirect_to hospital_tpn_path(current_hospital,@tpn)
     else
       render action: :index
     end
-  end
-
-  def new
-    
   end
 
   def calculate
@@ -69,8 +67,10 @@ class TpnsController < ApplicationController
     if params[:patient_id].present?
       patient = Patient.find(params[:patient_id])
       date = params[:date]
-      @tpn = patient.tpns.where(:tpn_date => date.to_date.strftime("%F")).first
-      if @tpn.present?
+      @tpn = patient.tpns.where(:tpn_date => date.to_date.strftime("%F")).first # for used in views
+      @tpn_date = patient.tpns.where(:tpn_date => date).first
+      print "tpn is #{@tpn}"
+      if @tpn_date.present?
         render :previous_tpn, :formats => [:js]
       else
         render :previous_tpn_none, :formats => [:js]
@@ -84,7 +84,7 @@ class TpnsController < ApplicationController
     @dates = Tpn.select(:tpn_date).where(:patient_id => params[:patient_id]).collect{ |d| d.tpn_date.to_s}
     @patient = Patient.find params[:patient_id]
     @tpn = @patient.tpns.ordered.first_or_initialize
-    render 'form_load'
+    render :nothing => true 
   end
 
   private
