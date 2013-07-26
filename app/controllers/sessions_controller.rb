@@ -5,7 +5,6 @@ class SessionsController < Devise::SessionsController
   end
 
   def after_sign_out_path_for(scope)
-    # params[:return_url] ? params[:return_url] : root_path       # gets redirected to root_path then user/sign_in
     params[:return_url] ? params[:return_url] : new_user_session_path    # redirects straight to user/sign_in 
   end
 
