@@ -4,7 +4,7 @@
   = f.input :day_of_tpn, :wrapper_html => { :class => 'span3'}, input_html: {style:'width:50px;'}
   = f.input :user_id, collection: @doctors, include_blank: false, :wrapper_html => { :class => "span3" }, label: 'Doctor'
   = label_tag :patient, nil, class: 'label_custom5'  
-  = text_field_tag :tpn_patient_name, @patient.present? ? @patient.name : nil, autocomplete: "off" 
+  = text_field_tag :tpn_patient_name, @patient.present? ? @patient.name : nil, autocomplete: "off", :class => 'input_custom' 
   = f.input :patient_id, :label => false, input_html: { :style => "display:none;" }
 %div{:style => "width:40%;float:left;" }
   %h3{:style => "margin-left:60px;"}

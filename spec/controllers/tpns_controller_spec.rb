@@ -7,7 +7,6 @@ describe TpnsController do
     @user.confirm!
     sign_in @user
     @current_hospital = @user.hospitals.first
-    #p "hospital is #{@current_hospital.name}"
     @patient = FactoryGirl.create :patient, hospital: @current_hospital
     @admission = create :admission, hospital: @current_hospital, patient: @patient 
   end
@@ -25,7 +24,7 @@ describe TpnsController do
         expect(response).to redirect_to hospital_tpn_path(@current_hospital, assigns(:tpn))
       end
 
-    end # end of context
+    end
     
     context "invalid parameters" do
       before(:each) do
@@ -61,8 +60,8 @@ describe TpnsController do
 
   describe "GET #previous_tpn_date" do
     
-    it "if patient present and dates present render nothing" do
-      #@tpn = create(:tpn, :hospital => @current_hospital, :patient_id => @patient.id)
+    it "if patient present and dates present" do
+      @tpn = create(:tpn, :hospital => @current_hospital, :patient_id => @patient.id)
       #get :previous_tpn_date ,{:hospital_id => @current_hospital.name, :patient_id => @patient.id}
       #expect(response.body).to be_blank
     end

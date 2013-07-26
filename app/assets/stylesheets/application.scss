@@ -1,5 +1,5 @@
 /*
- *= require_self
+/ *= require_self
  *= require dataTables/jquery.dataTables.bootstrap
  *= require bootstrap-datepicker
  *= require datetimepicker
@@ -107,6 +107,7 @@
 .input_custom{
   width:52px;
   float:left;
+  height: 30px;
   height: 30px !important;
 }
 .label_custom{
@@ -127,11 +128,13 @@
 .label_custom4{
   float:left;
   width: 150px;
+  height: 30px;
   margin-left:100px;
   margin-bottom:45px;
 }
 .label_custom5{
   margin-left: 85px;
+  height: 30px;
   float: left;
   margin-right: 20px;
 }
