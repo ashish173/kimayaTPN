@@ -4,15 +4,16 @@
   = f.input :day_of_tpn, :wrapper_html => { :class => 'span3'}, input_html: {style:'width:50px;'}
   = f.input :user_id, collection: @doctors, include_blank: false, :wrapper_html => { :class => "span3" }, label: 'Doctor'
   = label_tag :patient, nil, class: 'label_custom5'  
-  = text_field_tag :tpn_patient_name, @patient.present? ? @patient.name : nil, autocomplete: "off", :class => 'input_custom' 
-  = f.input :patient_id, :label => false, input_html: { :style => "display:none;" }
+  = text_field_tag :tpn_patient_name, @patient.present? ? @patient.name : nil, autocomplete: "off", :class => 'input_custom', style: "width:150px"
+
+  = f.input :patient_id, :label => false, input_html: { :style => "display:none;width:150px;" }
 %div{:style => "width:40%;float:left;" }
   %h3{:style => "margin-left:60px;"}
     Daily Fluid Volume Intake
   .form-inputs.row
     %div
       = label_tag :previous_tpn_date, "Previous TPN Date", class: 'label_custom4'
-      = text_field_tag :previous_tpn_date, "", :class => "input_custom2 datepicker", :readonly => "readonly"
+      = text_field_tag :previous_tpn_date, "", :class => "input_custom2 datepicker", :readonly => "readonly", style: "height:30px;width:150px" 
     = f.hidden_field :tpn_date, :value => "#{ Date.today }"
     = f.input :current_weight, :wrapper => :append_tpn do
       = f.input_field :current_weight, min: '0.00', step:'0.10', :type => "number"

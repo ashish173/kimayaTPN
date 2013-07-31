@@ -21,6 +21,7 @@ class TpnsController < ApplicationController
   def calculate
     @tpn = Tpn.new(params[:tpn])
     @tpn.hospital = current_hospital
+    @patient = Patient.find(params[:tpn][:patient_id])
     if @tpn.valid?
       @result = @tpn.calculate_tpn
       if ( @result.errors.empty? && @result.warnings.empty? ) || params[:warning].present?
@@ -32,9 +33,9 @@ class TpnsController < ApplicationController
           @errors = @result.errors.collect! { |i| i.to_i }
         end
       end
-      
-    end
-    render 'form_load'
+    else   
+     render "form_load"
+   end
   end
 
   def report
