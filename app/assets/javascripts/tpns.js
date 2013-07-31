@@ -72,9 +72,9 @@ function form_load(dates){
     beforeShowDay: function(date) {
       ymd = ( "0" + date.getDate()).slice(-2) + '/' +  ("0" + (date.getMonth()+1)).slice(-2) + '/' + date.getFullYear();
       if ($.inArray(ymd,dates) < 0) 
-    return [true,""];
+        return [true,""];
       else 
-    return [true,"red"]; 
+        return [true,"red"]; 
     }
   });
 }

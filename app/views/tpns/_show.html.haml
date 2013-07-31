@@ -1,4 +1,4 @@
-#tpn-show-modal{ :class => "modal hide fade", :style => "width:900px !important; left:36% !important; top:15% !important;"}
+#tpn-show-modal{ :class => "modal hide fade",:tabindex => "-1", :style => "width:900px !important; left:36% !important; top:15% !important;"}
   = simple_form_for [current_hospital, @tpn], url: hospital_tpns_path(current_hospital), method: :post do |f|
     .hide
       = render partial: 'tpn_form', locals: {f: f}
@@ -7,7 +7,7 @@
         = link_to 'X', '', class: 'close', type: 'button', data: { dismiss: 'modal' , target: '#tpn-show-modal'}
         Nutri Summary Sheet
     .modal-body
-      = render partial: 'tpn_table'  
+      = render partial: 'tpn_table' 
     .modal-footer
       = link_to 'Other infusion / Eternal Feed', '#new-tpn_infusion', class: 'btn btn-primary', data: { toggle: 'modal' } 
       = f.simple_fields_for :tpn_infusion do |f|

@@ -11,9 +11,7 @@ class TpnsController < ApplicationController
   def create
     @tpn = Tpn.new
     @tpn.hospital = current_hospital
-
     if @tpn.update_attributes(params[:tpn])
-      #@tpn.save
       redirect_to hospital_tpn_path(current_hospital,@tpn)
     else
       render action: :index
@@ -34,6 +32,7 @@ class TpnsController < ApplicationController
           @errors = @result.errors.collect! { |i| i.to_i }
         end
       end
+      
     end
     render 'form_load'
   end
